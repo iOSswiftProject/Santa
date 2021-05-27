@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BC7A6585265F202900C22E1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7A6584265F202900C22E1C /* AppDelegate.swift */; };
-		BC7A6587265F202900C22E1C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7A6586265F202900C22E1C /* SceneDelegate.swift */; };
 		BC7A6589265F202900C22E1C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7A6588265F202900C22E1C /* ViewController.swift */; };
 		BC7A658C265F202900C22E1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7A658A265F202900C22E1C /* Main.storyboard */; };
 		BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC7A658D265F202900C22E1C /* santaProject.xcdatamodeld */; };
@@ -19,7 +18,6 @@
 /* Begin PBXFileReference section */
 		BC7A6581265F202900C22E1C /* santaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = santaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7A6584265F202900C22E1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BC7A6586265F202900C22E1C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BC7A6588265F202900C22E1C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BC7A658B265F202900C22E1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC7A658E265F202900C22E1C /* santaProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = santaProject.xcdatamodel; sourceTree = "<group>"; };
@@ -59,7 +57,6 @@
 			isa = PBXGroup;
 			children = (
 				BC7A6584265F202900C22E1C /* AppDelegate.swift */,
-				BC7A6586265F202900C22E1C /* SceneDelegate.swift */,
 				BC7A6588265F202900C22E1C /* ViewController.swift */,
 				BC7A658A265F202900C22E1C /* Main.storyboard */,
 				BC7A6590265F202900C22E1C /* Assets.xcassets */,
@@ -142,7 +139,6 @@
 			files = (
 				BC7A6589265F202900C22E1C /* ViewController.swift in Sources */,
 				BC7A6585265F202900C22E1C /* AppDelegate.swift in Sources */,
-				BC7A6587265F202900C22E1C /* SceneDelegate.swift in Sources */,
 				BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
