@@ -8,9 +8,24 @@
 import UIKit
 
 class RootTabBarController: UITabBarController {
+
+    private let tabs: [UIViewController] = [
+        HomeViewController(),
+        UIViewController(), // Dummy
+        UIViewController(), // Dummy
+    ]
+
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
 
-        view.backgroundColor = .brown
+    init() {
+        super.init(nibName: nil, bundle: nil)
+
+        setViewControllers(tabs, animated: false)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 }
