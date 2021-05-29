@@ -13,6 +13,7 @@
 		BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC7A658D265F202900C22E1C /* santaProject.xcdatamodeld */; };
 		BC7A6591265F202900C22E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7A6590265F202900C22E1C /* Assets.xcassets */; };
 		BC7A6594265F202900C22E1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7A6592265F202900C22E1C /* LaunchScreen.storyboard */; };
+		CE0E1910266260C1003916E3 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E190F266260C1003916E3 /* RootTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		BC7A6590265F202900C22E1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC7A6593265F202900C22E1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC7A6595265F202900C22E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE0E190F266260C1003916E3 /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				BC7A6584265F202900C22E1C /* AppDelegate.swift */,
 				BC7A6588265F202900C22E1C /* ViewController.swift */,
+				CE0E190F266260C1003916E3 /* RootTabBarController.swift */,
 				BC7A658A265F202900C22E1C /* Main.storyboard */,
 				BC7A6590265F202900C22E1C /* Assets.xcassets */,
 				BC7A6592265F202900C22E1C /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC7A6589265F202900C22E1C /* ViewController.swift in Sources */,
+				CE0E1910266260C1003916E3 /* RootTabBarController.swift in Sources */,
 				BC7A6585265F202900C22E1C /* AppDelegate.swift in Sources */,
 				BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */,
 			);
