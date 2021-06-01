@@ -9,23 +9,33 @@
 /* Begin PBXBuildFile section */
 		BC7A6585265F202900C22E1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7A6584265F202900C22E1C /* AppDelegate.swift */; };
 		BC7A6587265F202900C22E1C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7A6586265F202900C22E1C /* SceneDelegate.swift */; };
-		BC7A6589265F202900C22E1C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7A6588265F202900C22E1C /* ViewController.swift */; };
 		BC7A658C265F202900C22E1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7A658A265F202900C22E1C /* Main.storyboard */; };
 		BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC7A658D265F202900C22E1C /* santaProject.xcdatamodeld */; };
 		BC7A6591265F202900C22E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7A6590265F202900C22E1C /* Assets.xcassets */; };
 		BC7A6594265F202900C22E1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7A6592265F202900C22E1C /* LaunchScreen.storyboard */; };
+		BC7A659C265F333900C22E1C /* regionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7A659B265F333900C22E1C /* regionViewController.swift */; };
+		BC7A659F265F356700C22E1C /* yomi.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7A659E265F356700C22E1C /* yomi.png */; };
+		BC7A65A1265F36E400C22E1C /* regionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7A65A0265F36E400C22E1C /* regionData.swift */; };
+		BC7A65A3265F37A700C22E1C /* regionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7A65A2265F37A700C22E1C /* regionCell.swift */; };
+		BCCA1BE82664AE60006D8464 /* searchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA1BE72664AE60006D8464 /* searchBarViewController.swift */; };
+		BCCA1BEA2664C1E0006D8464 /* searchBarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA1BE92664C1E0006D8464 /* searchBarData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BC7A6581265F202900C22E1C /* santaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = santaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7A6584265F202900C22E1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC7A6586265F202900C22E1C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BC7A6588265F202900C22E1C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BC7A658B265F202900C22E1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC7A658E265F202900C22E1C /* santaProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = santaProject.xcdatamodel; sourceTree = "<group>"; };
 		BC7A6590265F202900C22E1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC7A6593265F202900C22E1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC7A6595265F202900C22E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC7A659B265F333900C22E1C /* regionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = regionViewController.swift; sourceTree = "<group>"; };
+		BC7A659E265F356700C22E1C /* yomi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yomi.png; sourceTree = "<group>"; };
+		BC7A65A0265F36E400C22E1C /* regionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = regionData.swift; sourceTree = "<group>"; };
+		BC7A65A2265F37A700C22E1C /* regionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = regionCell.swift; sourceTree = "<group>"; };
+		BCCA1BE72664AE60006D8464 /* searchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchBarViewController.swift; sourceTree = "<group>"; };
+		BCCA1BE92664C1E0006D8464 /* searchBarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchBarData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +52,7 @@
 		BC7A6578265F202800C22E1C = {
 			isa = PBXGroup;
 			children = (
+				BC7A659D265F354200C22E1C /* Resource */,
 				BC7A6583265F202900C22E1C /* santaProject */,
 				BC7A6582265F202900C22E1C /* Products */,
 			);
@@ -60,14 +71,26 @@
 			children = (
 				BC7A6584265F202900C22E1C /* AppDelegate.swift */,
 				BC7A6586265F202900C22E1C /* SceneDelegate.swift */,
-				BC7A6588265F202900C22E1C /* ViewController.swift */,
 				BC7A658A265F202900C22E1C /* Main.storyboard */,
+				BCCA1BE72664AE60006D8464 /* searchBarViewController.swift */,
+				BCCA1BE92664C1E0006D8464 /* searchBarData.swift */,
+				BC7A659B265F333900C22E1C /* regionViewController.swift */,
+				BC7A65A2265F37A700C22E1C /* regionCell.swift */,
+				BC7A65A0265F36E400C22E1C /* regionData.swift */,
 				BC7A6590265F202900C22E1C /* Assets.xcassets */,
 				BC7A6592265F202900C22E1C /* LaunchScreen.storyboard */,
 				BC7A6595265F202900C22E1C /* Info.plist */,
 				BC7A658D265F202900C22E1C /* santaProject.xcdatamodeld */,
 			);
 			path = santaProject;
+			sourceTree = "<group>";
+		};
+		BC7A659D265F354200C22E1C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				BC7A659E265F356700C22E1C /* yomi.png */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC7A6594265F202900C22E1C /* LaunchScreen.storyboard in Resources */,
+				BC7A659F265F356700C22E1C /* yomi.png in Resources */,
 				BC7A6591265F202900C22E1C /* Assets.xcassets in Resources */,
 				BC7A658C265F202900C22E1C /* Main.storyboard in Resources */,
 			);
@@ -140,8 +164,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC7A6589265F202900C22E1C /* ViewController.swift in Sources */,
+				BC7A65A1265F36E400C22E1C /* regionData.swift in Sources */,
+				BC7A65A3265F37A700C22E1C /* regionCell.swift in Sources */,
+				BC7A659C265F333900C22E1C /* regionViewController.swift in Sources */,
+				BCCA1BEA2664C1E0006D8464 /* searchBarData.swift in Sources */,
 				BC7A6585265F202900C22E1C /* AppDelegate.swift in Sources */,
+				BCCA1BE82664AE60006D8464 /* searchBarViewController.swift in Sources */,
 				BC7A6587265F202900C22E1C /* SceneDelegate.swift in Sources */,
 				BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */,
 			);
@@ -220,7 +248,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -275,7 +303,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
