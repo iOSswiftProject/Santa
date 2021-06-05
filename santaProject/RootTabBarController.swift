@@ -12,11 +12,12 @@ class RootTabBarController: UITabBarController {
     private let tabs: [UIViewController] = [
         HomeViewController(),
         UIViewController(), // Dummy
-        UIViewController(), // Dummy
+        MyListViewController(),
     ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
     }
 
     init() {
