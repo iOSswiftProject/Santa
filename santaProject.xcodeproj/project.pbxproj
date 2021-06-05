@@ -17,6 +17,7 @@
 		CE0E191426626434003916E3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E191326626434003916E3 /* HomeViewController.swift */; };
 		CE0E1928266B3D49003916E3 /* MyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E1927266B3D49003916E3 /* MyListViewController.swift */; };
 		CE0E192C266B3FC7003916E3 /* MyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E192B266B3FC7003916E3 /* MyListView.swift */; };
+		CE0E192F266B9248003916E3 /* MyListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E192E266B9248003916E3 /* MyListHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		CE0E191326626434003916E3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CE0E1927266B3D49003916E3 /* MyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListViewController.swift; sourceTree = "<group>"; };
 		CE0E192B266B3FC7003916E3 /* MyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListView.swift; sourceTree = "<group>"; };
+		CE0E192E266B9248003916E3 /* MyListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				CE0E190F266260C1003916E3 /* RootTabBarController.swift */,
 				CE0E1927266B3D49003916E3 /* MyListViewController.swift */,
 				CE0E192B266B3FC7003916E3 /* MyListView.swift */,
+				CE0E192E266B9248003916E3 /* MyListHeaderView.swift */,
 				CE0E191326626434003916E3 /* HomeViewController.swift */,
 				BC7A658A265F202900C22E1C /* Main.storyboard */,
 				BC7A6590265F202900C22E1C /* Assets.xcassets */,
@@ -155,6 +158,7 @@
 				BC7A6589265F202900C22E1C /* ViewController.swift in Sources */,
 				CE0E1910266260C1003916E3 /* RootTabBarController.swift in Sources */,
 				BC7A6585265F202900C22E1C /* AppDelegate.swift in Sources */,
+				CE0E192F266B9248003916E3 /* MyListHeaderView.swift in Sources */,
 				BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

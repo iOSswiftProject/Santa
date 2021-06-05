@@ -19,13 +19,12 @@ class MyListView: UIView {
     }
 
     private func setupHeaderView() {
-        let headerView = UIView()
-        headerView.translatesAutoresizingMaskIntoConstraints = false
+        let headerView = MyListHeaderView()
         addSubview(headerView)
-        headerView.backgroundColor = .gray
+        headerView.translatesAutoresizingMaskIntoConstraints = false
         headerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         headerView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        headerView.heightAnchor.constraint(equalToConstant: 54).isActive = true
+        headerView.heightAnchor.constraint(equalToConstant: 53).isActive = true
     }
 }
