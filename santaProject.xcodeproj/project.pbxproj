@@ -69,9 +69,7 @@
 				BC7A6584265F202900C22E1C /* AppDelegate.swift */,
 				BC7A6588265F202900C22E1C /* ViewController.swift */,
 				CE0E190F266260C1003916E3 /* RootTabBarController.swift */,
-				CE0E1927266B3D49003916E3 /* MyListViewController.swift */,
-				CE0E192B266B3FC7003916E3 /* MyListView.swift */,
-				CE0E192E266B9248003916E3 /* MyListHeaderView.swift */,
+				CE0E1936266BDF80003916E3 /* MyList */,
 				CE0E191326626434003916E3 /* HomeViewController.swift */,
 				BC7A658A265F202900C22E1C /* Main.storyboard */,
 				BC7A6590265F202900C22E1C /* Assets.xcassets */,
@@ -80,6 +78,16 @@
 				BC7A658D265F202900C22E1C /* santaProject.xcdatamodeld */,
 			);
 			path = santaProject;
+			sourceTree = "<group>";
+		};
+		CE0E1936266BDF80003916E3 /* MyList */ = {
+			isa = PBXGroup;
+			children = (
+				CE0E1927266B3D49003916E3 /* MyListViewController.swift */,
+				CE0E192B266B3FC7003916E3 /* MyListView.swift */,
+				CE0E192E266B9248003916E3 /* MyListHeaderView.swift */,
+			);
+			path = MyList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
