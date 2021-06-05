@@ -22,4 +22,6 @@ extension UIColor {
                   alpha: alpha
         )
     }
+
+    static let selectedColor = UIColor(hex: "FF8C8C")
 }

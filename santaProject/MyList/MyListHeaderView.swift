@@ -58,6 +58,8 @@ class MyListHeaderView: UIView {
 
         historyButton.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -Layout.innerMargin).isActive = true
         historyButton.widthAnchor.constraint(equalTo: favoriteButton.widthAnchor, multiplier: 1).isActive = true
+
+        historyButton.setTitleColor(.selectedColor, for: .normal)
     }
 
     private func setupSelectBar() {
@@ -65,7 +67,7 @@ class MyListHeaderView: UIView {
         selectBar.translatesAutoresizingMaskIntoConstraints = false
         selectBar.heightAnchor.constraint(equalToConstant: 2).isActive = true
         selectBar.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        selectBar.backgroundColor = .systemPink
+        selectBar.backgroundColor = .selectedColor
 
         historySelectConstraint = [
             selectBar.leadingAnchor.constraint(equalTo: historyButton.leadingAnchor),
@@ -95,6 +97,8 @@ class MyListHeaderView: UIView {
             guard let self = self else { return }
             self.favoriteSelectConstraint.forEach { $0.isActive = false }
             self.historySelectConstraint.forEach { $0.isActive = true }
+            self.favoriteButton.setTitleColor(.black, for: .normal)
+            self.historyButton.setTitleColor(.selectedColor, for: .normal)
             self.layoutIfNeeded()
         }
     }
@@ -104,6 +108,8 @@ class MyListHeaderView: UIView {
             guard let self = self else { return }
             self.historySelectConstraint.forEach { $0.isActive = false }
             self.favoriteSelectConstraint.forEach { $0.isActive = true }
+            self.historyButton.setTitleColor(.black, for: .normal)
+            self.favoriteButton.setTitleColor(.selectedColor, for: .normal)
             self.layoutIfNeeded()
         }
     }
