@@ -31,6 +31,7 @@ class MyListHeaderView: UIView {
 
     init() {
         super.init(frame: .zero)
+        backgroundColor = .white
         setupButtons()
         setupSelectBar()
     }

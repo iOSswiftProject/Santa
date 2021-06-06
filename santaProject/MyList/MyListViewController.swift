@@ -38,7 +38,6 @@ extension MyListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewCell.identifier) as? MyListTableViewCell else { return UITableViewCell() }
         // TODO: update content
-        cell.textLabel?.text = String(indexPath.row)
         return cell
     }
 

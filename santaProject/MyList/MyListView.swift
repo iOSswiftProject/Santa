@@ -17,6 +17,8 @@ class MyListView: UIView {
         super.init(frame: .zero)
         setupHeaderView()
         setupTableView()
+
+        backgroundColor = UIColor(hex: "F0F0F0")
     }
 
     required init?(coder: NSCoder) {

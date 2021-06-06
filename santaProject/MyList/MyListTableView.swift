@@ -15,6 +15,7 @@ class MyListTableView: UITableView {
         register(MyListTableViewCell.self, forCellReuseIdentifier: MyListTableViewCell.identifier)
         showsVerticalScrollIndicator = false
         separatorStyle = .none
+        backgroundColor = .clear
     }
 
     required init?(coder: NSCoder) {
