@@ -28,6 +28,7 @@ class MyListTableViewCell: UITableViewCell {
 
         layer.cornerRadius = Layout.cornerRadius
         clipsToBounds = true
+        contentView.isUserInteractionEnabled = true
 
         setupNameLabel()
         setupLocationLabel()
@@ -121,6 +122,28 @@ class MyListTableViewCell: UITableViewCell {
         bookmarkButton.widthAnchor.constraint(equalToConstant: 14).isActive = true
         bookmarkButton.heightAnchor.constraint(equalToConstant: 18).isActive = true
         bookmarkButton.isHidden = true
+
+        bookmarkButton.addTarget(self, action: #selector(didTapBookmarkButton), for: .touchUpInside)
+    }
+
+    @objc
+    private func didTapBookmarkButton() {
+        print("bookmark button tapped. TODO: remove from bookmark list")
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        timestampLabel.isHidden = true
+        bookmarkButton.isHidden = true
+    }
+
+    public func showTimestampLabel() {
+        timestampLabel.isHidden = false
+    }
+
+    public func showBookmarkButton() {
+        bookmarkButton.isHidden = false
     }
 }
 

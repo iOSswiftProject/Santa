@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol MyListHeaderViewDelegate: AnyObject {
+    func myListHeaderViewDidSelectHistory()
+    func myListHeaderViewDidSelectFavorite()
+}
+
 class MyListHeaderView: UIView {
+
+    weak var delegate: MyListHeaderViewDelegate?
 
     private var historySelectConstraint: [NSLayoutConstraint] = []
     private var favoriteSelectConstraint: [NSLayoutConstraint] = []
@@ -86,8 +93,10 @@ class MyListHeaderView: UIView {
         switch sender {
         case historyButton:
             selectHistory()
+            delegate?.myListHeaderViewDidSelectHistory()
         case favoriteButton:
             selectFavorite()
+            delegate?.myListHeaderViewDidSelectFavorite()
         default:
             fatalError("Cannot be excecuted")
         }

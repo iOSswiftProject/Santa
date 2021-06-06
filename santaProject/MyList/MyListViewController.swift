@@ -9,6 +9,13 @@ import UIKit
 
 class MyListViewController: UIViewController {
 
+    enum ListCategory {
+        case history
+        case favorite
+    }
+
+    private var listCategory: ListCategory = .history
+
     let headerView = MyListHeaderView()
 
     let tableView = MyListTableView(frame: .zero, style: .plain)
@@ -37,6 +44,8 @@ class MyListViewController: UIViewController {
         headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         headerView.heightAnchor.constraint(equalToConstant: 53).isActive = true
+
+        headerView.delegate = self
     }
 
     private func setupTableView() {
@@ -52,6 +61,17 @@ class MyListViewController: UIViewController {
     }
 }
 
+extension MyListViewController: MyListHeaderViewDelegate {
+    func myListHeaderViewDidSelectHistory() {
+        listCategory = .history
+        tableView.reloadData()
+    }
+
+    func myListHeaderViewDidSelectFavorite() {
+        listCategory = .favorite
+        tableView.reloadData()
+    }
+}
 
 extension MyListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,6 +81,12 @@ extension MyListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewCell.identifier) as? MyListTableViewCell else { return UITableViewCell() }
         // TODO: update content
+        switch listCategory {
+        case .history:
+            cell.showTimestampLabel()
+        case .favorite:
+            cell.showBookmarkButton()
+        }
         return cell
     }
 
