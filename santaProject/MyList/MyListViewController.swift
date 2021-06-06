@@ -9,14 +9,16 @@ import UIKit
 
 class MyListViewController: UIViewController {
 
+    let headerView = MyListHeaderView()
+
+    let tableView = MyListTableView(frame: .zero, style: .plain)
+
     override func loadView() {
         super.loadView()
 
-        // TODO: Retain views in controller?
-        let listView = MyListView()
-        listView.tableView.dataSource = self
-        listView.tableView.delegate = self
-        view = listView
+        setupHeaderView()
+        setupTableView()
+        view.backgroundColor = UIColor(hex: "F0F0F0")
     }
 
     init() {
@@ -26,6 +28,27 @@ class MyListViewController: UIViewController {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+
+    private func setupHeaderView() {
+        view.addSubview(headerView)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        headerView.heightAnchor.constraint(equalToConstant: 53).isActive = true
+    }
+
+    private func setupTableView() {
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 11).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+
+        tableView.dataSource = self
+        tableView.delegate = self
     }
 }
 

@@ -16,7 +16,6 @@
 		CE0E1910266260C1003916E3 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E190F266260C1003916E3 /* RootTabBarController.swift */; };
 		CE0E191426626434003916E3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E191326626434003916E3 /* HomeViewController.swift */; };
 		CE0E1928266B3D49003916E3 /* MyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E1927266B3D49003916E3 /* MyListViewController.swift */; };
-		CE0E192C266B3FC7003916E3 /* MyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E192B266B3FC7003916E3 /* MyListView.swift */; };
 		CE0E192F266B9248003916E3 /* MyListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E192E266B9248003916E3 /* MyListHeaderView.swift */; };
 		CE0E1938266BDFFF003916E3 /* MyListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E1937266BDFFF003916E3 /* MyListTableView.swift */; };
 		CE0E193C266BE103003916E3 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */; };
@@ -35,7 +34,6 @@
 		CE0E190F266260C1003916E3 /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		CE0E191326626434003916E3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CE0E1927266B3D49003916E3 /* MyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListViewController.swift; sourceTree = "<group>"; };
-		CE0E192B266B3FC7003916E3 /* MyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListView.swift; sourceTree = "<group>"; };
 		CE0E192E266B9248003916E3 /* MyListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListHeaderView.swift; sourceTree = "<group>"; };
 		CE0E1937266BDFFF003916E3 /* MyListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableView.swift; sourceTree = "<group>"; };
 		CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				CE0E1927266B3D49003916E3 /* MyListViewController.swift */,
-				CE0E192B266B3FC7003916E3 /* MyListView.swift */,
 				CE0E192E266B9248003916E3 /* MyListHeaderView.swift */,
 				CE0E1937266BDFFF003916E3 /* MyListTableView.swift */,
 				CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */,
@@ -169,7 +166,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE0E192C266B3FC7003916E3 /* MyListView.swift in Sources */,
 				CE0E191426626434003916E3 /* HomeViewController.swift in Sources */,
 				CE0E1928266B3D49003916E3 /* MyListViewController.swift in Sources */,
 				CE0E193F266BF4CE003916E3 /* UIColor+Extension.swift in Sources */,
