@@ -19,6 +19,10 @@ class MyListTableViewCell: UITableViewCell {
 
     let heightLabel = UILabel()
 
+    let timestampLabel = UILabel()
+
+    let bookmarkButton = UIButton()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -29,6 +33,8 @@ class MyListTableViewCell: UITableViewCell {
         setupLocationLabel()
         setupSeparator()
         setupHeightLabel()
+        setupTimestampLabel()
+        setupBookmarkButton()
     }
 
     required init?(coder: NSCoder) {
@@ -83,6 +89,38 @@ class MyListTableViewCell: UITableViewCell {
         heightLabel.leadingAnchor.constraint(equalTo: separator.trailingAnchor, constant: 8).isActive = true
         heightLabel.bottomAnchor.constraint(equalTo: locationLabel.bottomAnchor).isActive = true
         heightLabel.sizeToFit()
+    }
+
+    private func setupTimestampLabel() {
+        addSubview(timestampLabel)
+
+        timestampLabel.font = .systemFont(ofSize: 12)
+        timestampLabel.textColor = .white
+        timestampLabel.textAlignment = .center
+        timestampLabel.text = "2021.05.03"
+
+        timestampLabel.backgroundColor = UIColor(hex: "FF8E8E")
+        timestampLabel.layer.cornerRadius = 12
+        timestampLabel.clipsToBounds = true
+
+        timestampLabel.translatesAutoresizingMaskIntoConstraints = false
+        timestampLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor).isActive = true
+        timestampLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        timestampLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        timestampLabel.widthAnchor.constraint(equalToConstant: 72).isActive = true
+    }
+
+    private func setupBookmarkButton() {
+        addSubview(bookmarkButton)
+
+        bookmarkButton.backgroundColor = UIColor(hex: "FF8C8C")
+
+        bookmarkButton.translatesAutoresizingMaskIntoConstraints = false
+        bookmarkButton.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor).isActive = true
+        bookmarkButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25).isActive = true
+        bookmarkButton.widthAnchor.constraint(equalToConstant: 14).isActive = true
+        bookmarkButton.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        bookmarkButton.isHidden = true
     }
 }
 
