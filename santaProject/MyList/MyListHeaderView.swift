@@ -102,7 +102,7 @@ class MyListHeaderView: UIView {
         }
     }
 
-    private func selectHistory() {
+    func selectHistory() {
         UIView.animate(withDuration: Layout.animationDuration) { [weak self] in
             guard let self = self else { return }
             self.favoriteSelectConstraint.forEach { $0.isActive = false }
@@ -113,7 +113,7 @@ class MyListHeaderView: UIView {
         }
     }
 
-    private func selectFavorite() {
+    func selectFavorite() {
         UIView.animate(withDuration: Layout.animationDuration) { [weak self] in
             guard let self = self else { return }
             self.historySelectConstraint.forEach { $0.isActive = false }

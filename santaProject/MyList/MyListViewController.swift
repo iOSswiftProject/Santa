@@ -9,17 +9,17 @@ import UIKit
 
 class MyListViewController: UIViewController {
 
-    enum ListCategory {
-        case history
-        case favorite
-    }
-
     let models: [String] = [
         "History",
         "Favorite"
     ]
 
-    private var listCategory: ListCategory = .history
+    private var selectedIndex: Int = 0 {
+        didSet {
+            guard selectedIndex != oldValue else { return }
+            selectItem(at: selectedIndex)
+        }
+    }
 
     let headerView = MyListHeaderView()
 
@@ -75,6 +75,20 @@ class MyListViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
+
+    private func selectItem(at index: Int) {
+        let indexPath = IndexPath(row: index, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+
+        switch index {
+        case 0:
+            headerView.selectHistory()
+        case 1:
+            headerView.selectFavorite()
+        default:
+            fatalError("cannot be executed")
+        }
+    }
 }
 
 // MARK: - CollectionView
@@ -105,14 +119,21 @@ extension MyListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.frame.size
     }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView.isDragging || scrollView.isTracking || scrollView.isDecelerating else { return }
+        let width = scrollView.frame.width
+        let pageIndex = Int((scrollView.contentOffset.x + width / 2) / width)
+        selectedIndex = pageIndex
+    }
 }
 
 extension MyListViewController: MyListHeaderViewDelegate {
     func myListHeaderViewDidSelectHistory() {
-        listCategory = .history
+        selectItem(at: 0)
     }
 
     func myListHeaderViewDidSelectFavorite() {
-        listCategory = .favorite
+        selectItem(at: 1)
     }
 }
