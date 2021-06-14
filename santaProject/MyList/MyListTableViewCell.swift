@@ -7,6 +7,19 @@
 
 import UIKit
 
+class MyListTableViewHeaderFooterView: UITableViewHeaderFooterView {
+    static let identifier = "MyListTableViewHeaderFooterView"
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        backgroundView = UIView()
+        backgroundView?.backgroundColor = .clear
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
 class MyListTableViewCell: UITableViewCell {
 
     static let identifier = "MyListTableViewCell"
@@ -109,6 +122,7 @@ class MyListTableViewCell: UITableViewCell {
         timestampLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
         timestampLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         timestampLabel.widthAnchor.constraint(equalToConstant: 72).isActive = true
+        timestampLabel.isHidden = true
     }
 
     private func setupBookmarkButton() {
@@ -149,7 +163,6 @@ class MyListTableViewCell: UITableViewCell {
 
 extension MyListTableViewCell {
     public enum Layout {
-        static var cellHeight: CGFloat = 88
         static let cornerRadius: CGFloat = 12
     }
 }
