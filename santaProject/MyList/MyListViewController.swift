@@ -14,18 +14,31 @@ class MyListViewController: UIViewController {
         case favorite
     }
 
+    let models: [String] = [
+        "History",
+        "Favorite"
+    ]
+
     private var listCategory: ListCategory = .history
 
     let headerView = MyListHeaderView()
 
-    let tableView = MyListTableView(frame: .zero, style: .plain)
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
 
     override func loadView() {
         super.loadView()
 
         setupHeaderView()
-        setupTableView()
-        view.backgroundColor = UIColor(hex: "F0F0F0")
+        setupCollectionView()
+        view.backgroundColor = UIColor(hex: "CFCFCF")
     }
 
     init() {
@@ -48,70 +61,58 @@ class MyListViewController: UIViewController {
         headerView.delegate = self
     }
 
-    private func setupTableView() {
-        view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 11).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    private func setupCollectionView() {
+        view.addSubview(collectionView)
+        collectionView.isPagingEnabled = true
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
 
-        tableView.dataSource = self
-        tableView.delegate = self
+        collectionView.register(MyListCollectionViewCell.self, forCellWithReuseIdentifier: MyListCollectionViewCell.identifier)
+
+        collectionView.dataSource = self
+        collectionView.delegate = self
+    }
+}
+
+// MARK: - CollectionView
+
+extension MyListViewController: UICollectionViewDataSource {
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        models.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyListCollectionViewCell.identifier, for: indexPath)
+        guard  let listCollectionViewCell = cell as? MyListCollectionViewCell else { return UICollectionViewCell() }
+        listCollectionViewCell.applyModel(models[indexPath.item])
+        return cell
+    }
+}
+
+extension MyListViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.frame.size
     }
 }
 
 extension MyListViewController: MyListHeaderViewDelegate {
     func myListHeaderViewDidSelectHistory() {
         listCategory = .history
-        tableView.reloadData()
     }
 
     func myListHeaderViewDidSelectFavorite() {
         listCategory = .favorite
-        tableView.reloadData()
     }
-}
-
-extension MyListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewCell.identifier) as? MyListTableViewCell else { return UITableViewCell() }
-        // TODO: update content
-        switch listCategory {
-        case .history:
-            cell.showTimestampLabel()
-        case .favorite:
-            cell.showBookmarkButton()
-        }
-        return cell
-    }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // TODO: apply data model
-        10
-    }
-
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        UIView()
-    }
-
-}
-
-extension MyListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        MyListTableViewCell.Layout.cellHeight
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-    }
-
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        MyListTableView.Layout.cellPadding
-    }
-    
 }
