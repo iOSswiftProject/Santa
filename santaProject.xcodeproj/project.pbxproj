@@ -21,6 +21,7 @@
 		CE0E193C266BE103003916E3 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */; };
 		CE0E193F266BF4CE003916E3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */; };
 		CE0E19432675D38C003916E3 /* MyListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E19422675D38C003916E3 /* MyListCollectionView.swift */; };
+		CE0E19462675D75C003916E3 /* MyListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
 		CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		CE0E19422675D38C003916E3 /* MyListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListCollectionView.swift; sourceTree = "<group>"; };
+		CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				CE0E1927266B3D49003916E3 /* MyListViewController.swift */,
+				CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */,
 				CE0E19422675D38C003916E3 /* MyListCollectionView.swift */,
 				CE0E192E266B9248003916E3 /* MyListHeaderView.swift */,
 				CE0E1937266BDFFF003916E3 /* MyListTableView.swift */,
@@ -171,6 +174,7 @@
 			files = (
 				CE0E191426626434003916E3 /* HomeViewController.swift in Sources */,
 				CE0E1928266B3D49003916E3 /* MyListViewController.swift in Sources */,
+				CE0E19462675D75C003916E3 /* MyListCollectionViewCell.swift in Sources */,
 				CE0E193F266BF4CE003916E3 /* UIColor+Extension.swift in Sources */,
 				CE0E19432675D38C003916E3 /* MyListCollectionView.swift in Sources */,
 				CE0E193C266BE103003916E3 /* MyListTableViewCell.swift in Sources */,
