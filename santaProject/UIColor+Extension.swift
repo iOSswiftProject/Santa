@@ -24,4 +24,5 @@ extension UIColor {
     }
 
     static let selectedColor = UIColor(hex: "FF8C8C")
+    static let notSelected = UIColor(hex: "CCCCCC")
 }
