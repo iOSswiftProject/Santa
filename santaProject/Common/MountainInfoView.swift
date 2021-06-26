@@ -21,11 +21,13 @@ class MountainInfoView: UIView {
 
     let mountainNameLabel = UILabel()
     let separatorView = UIView()
+    let regionTagView = RegionTagView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupMountainNameLabel()
         setupSeparatorView()
+        setupRegionTagView()
     }
 
     required init?(coder: NSCoder) {
@@ -50,6 +52,15 @@ class MountainInfoView: UIView {
         separatorView.heightAnchor.constraint(equalToConstant: Layout.Separator.height).isActive = true
         separatorView.backgroundColor = UIColor(hex: "EEEEEE")
     }
+
+    private func setupRegionTagView() {
+        addSubview(regionTagView)
+        regionTagView.translatesAutoresizingMaskIntoConstraints = false
+        regionTagView.leadingAnchor.constraint(equalTo: mountainNameLabel.trailingAnchor, constant: 8).isActive = true
+        regionTagView.centerYAnchor.constraint(equalTo: mountainNameLabel.centerYAnchor).isActive = true
+        regionTagView.heightAnchor.constraint(equalToConstant: Layout.RegionTag.height).isActive = true
+        updateRegionTag(regionName: "경기도", color: UIColor(hex: "#85DC40"))
+    }
 }
 
 extension MountainInfoView {
@@ -64,6 +75,10 @@ extension MountainInfoView {
                                       value: Layout.MountainNameLabel.peakFont,
                                       range: textAsNSString.range(of: peakName ?? ""))
         mountainNameLabel.attributedText = attributedString
+    }
+
+    private func updateRegionTag(regionName: String, color: UIColor) {
+        regionTagView.applyRegionName(regionName, color: color)
     }
 }
 
@@ -80,6 +95,9 @@ extension MountainInfoView {
             static let sideMargin: CGFloat = 20
             static let topMargin: CGFloat = 54
             static let height: CGFloat = 1
+        }
+        enum RegionTag {
+            static let height: CGFloat = 24
         }
     }
 }

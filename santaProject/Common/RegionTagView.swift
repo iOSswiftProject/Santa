@@ -12,11 +12,8 @@ class RegionTagView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        layoutMargins = UIEdgeInsets(top: 6, left: 8, bottom: 6, right: 8)
         layer.cornerRadius = 12
         layer.borderWidth = 1.2
-        layer.borderColor = UIColor(hex: "#85DC40").cgColor
         setupLabel()
     }
 
@@ -26,8 +23,26 @@ class RegionTagView: UIView {
 
     private func setupLabel() {
         addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.sideMargin).isActive = true
+        label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.sideMargin).isActive = true
+        label.topAnchor.constraint(equalTo: topAnchor, constant: Layout.topMargin).isActive = true
+        label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Layout.topMargin).isActive = true
 
         label.font = .boldSystemFont(ofSize: 12)
         label.text = "서울"
+    }
+
+    func applyRegionName(_ name: String, color: UIColor) {
+        label.text = name
+        label.textColor = color
+        layer.borderColor = color.cgColor
+    }
+}
+
+extension RegionTagView {
+    enum Layout {
+        static let sideMargin: CGFloat = 8
+        static let topMargin: CGFloat = 6
     }
 }
