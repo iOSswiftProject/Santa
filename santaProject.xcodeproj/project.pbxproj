@@ -21,6 +21,7 @@
 		CE0E193C266BE103003916E3 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */; };
 		CE0E193F266BF4CE003916E3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */; };
 		CE0E19462675D75C003916E3 /* MyListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */; };
+		CE5DE71F2686DDCE009FA3E8 /* RegionTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */; };
 		CED529E32680E559005E05A7 /* MountainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED529E22680E559005E05A7 /* MountainInfoView.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
 		CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionTagView.swift; sourceTree = "<group>"; };
 		CED529E22680E559005E05A7 /* MountainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				CED529E22680E559005E05A7 /* MountainInfoView.swift */,
+				CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				CED529E32680E559005E05A7 /* MountainInfoView.swift in Sources */,
 				BC7A6585265F202900C22E1C /* AppDelegate.swift in Sources */,
 				CE0E192F266B9248003916E3 /* MyListHeaderView.swift in Sources */,
+				CE5DE71F2686DDCE009FA3E8 /* RegionTagView.swift in Sources */,
 				BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */,
 				CE0E1938266BDFFF003916E3 /* MyListTableView.swift in Sources */,
 			);
