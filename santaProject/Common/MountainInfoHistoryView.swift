@@ -28,7 +28,9 @@ class MountainInfoHistoryView: MountainInfoBaseView {
         moreButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.sideMargin).isActive = true
         moreButton.centerYAnchor.constraint(equalTo: mountainNameLabel.centerYAnchor).isActive = true
 
-        moreButton.setImage(UIImage(named: "santaMoreButton"), for: .normal)
+        let buttonImage = UIImage(named: "santaMoreButton")?.withRenderingMode(.alwaysTemplate)
+        moreButton.setImage(buttonImage, for: .normal)
+        moreButton.tintColor = UIColor(hex: "#CECAC9")
         moreButton.addTarget(self, action: #selector(didTapMoreButton(_:)), for: .touchUpInside)
     }
 
