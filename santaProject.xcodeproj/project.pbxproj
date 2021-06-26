@@ -24,6 +24,7 @@
 		CE5DE71F2686DDCE009FA3E8 /* RegionTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */; };
 		CE5DE7212686F7E1009FA3E8 /* MountainInfoBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE7202686F7E1009FA3E8 /* MountainInfoBookmarkView.swift */; };
 		CE5DE72326870ACC009FA3E8 /* VisitedFlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE72226870ACC009FA3E8 /* VisitedFlagView.swift */; };
+		CE5DE72526871350009FA3E8 /* MountainInfoHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE72426871350009FA3E8 /* MountainInfoHistoryView.swift */; };
 		CED529E32680E559005E05A7 /* MountainInfoBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionTagView.swift; sourceTree = "<group>"; };
 		CE5DE7202686F7E1009FA3E8 /* MountainInfoBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoBookmarkView.swift; sourceTree = "<group>"; };
 		CE5DE72226870ACC009FA3E8 /* VisitedFlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedFlagView.swift; sourceTree = "<group>"; };
+		CE5DE72426871350009FA3E8 /* MountainInfoHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoHistoryView.swift; sourceTree = "<group>"; };
 		CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoBaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 				CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */,
 				CE5DE7202686F7E1009FA3E8 /* MountainInfoBookmarkView.swift */,
 				CE5DE72226870ACC009FA3E8 /* VisitedFlagView.swift */,
+				CE5DE72426871350009FA3E8 /* MountainInfoHistoryView.swift */,
 				CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */,
 			);
 			path = Common;
@@ -201,6 +204,7 @@
 				BC7A6585265F202900C22E1C /* AppDelegate.swift in Sources */,
 				CE5DE7212686F7E1009FA3E8 /* MountainInfoBookmarkView.swift in Sources */,
 				CE0E192F266B9248003916E3 /* MyListHeaderView.swift in Sources */,
+				CE5DE72526871350009FA3E8 /* MountainInfoHistoryView.swift in Sources */,
 				CE5DE71F2686DDCE009FA3E8 /* RegionTagView.swift in Sources */,
 				BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */,
 				CE0E1938266BDFFF003916E3 /* MyListTableView.swift in Sources */,
