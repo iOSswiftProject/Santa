@@ -22,12 +22,18 @@ class MountainInfoView: UIView {
     let mountainNameLabel = UILabel()
     let separatorView = UIView()
     let regionTagView = RegionTagView()
+    let subRegionLabel = UILabel()
+    let lowerSeparatorView = UIView()
+    let heightLabel = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupMountainNameLabel()
         setupSeparatorView()
         setupRegionTagView()
+        setupSubRegionLabel()
+        setupLowerSeparatorView()
+        setupHeightLabel()
     }
 
     required init?(coder: NSCoder) {
@@ -61,6 +67,38 @@ class MountainInfoView: UIView {
         regionTagView.heightAnchor.constraint(equalToConstant: Layout.RegionTag.height).isActive = true
         updateRegionTag(regionName: "서울", color: UIColor(hex: "#85DC40"))
     }
+
+    private func setupSubRegionLabel() {
+        addSubview(subRegionLabel)
+        subRegionLabel.translatesAutoresizingMaskIntoConstraints = false
+        subRegionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.SubRegionLabel.sideMargin).isActive = true
+        subRegionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Layout.SubRegionLabel.bottomMargin).isActive = true
+
+        subRegionLabel.font = .systemFont(ofSize: Layout.LowerPart.fontSize)
+        subRegionLabel.textColor = Layout.LowerPart.textColor
+        updateSubRegion(subregionName: "관악구")
+    }
+
+    private func setupLowerSeparatorView() {
+        addSubview(lowerSeparatorView)
+        lowerSeparatorView.translatesAutoresizingMaskIntoConstraints = false
+        lowerSeparatorView.leadingAnchor.constraint(equalTo: subRegionLabel.trailingAnchor, constant: Layout.LowerSeparator.margin).isActive = true
+        lowerSeparatorView.centerYAnchor.constraint(equalTo: subRegionLabel.centerYAnchor).isActive = true
+        lowerSeparatorView.widthAnchor.constraint(equalToConstant: 1).isActive = true
+        lowerSeparatorView.heightAnchor.constraint(equalToConstant: Layout.LowerSeparator.height).isActive = true
+        lowerSeparatorView.backgroundColor = UIColor(hex: "EEEEEE")
+    }
+
+    private func setupHeightLabel() {
+        addSubview(heightLabel)
+        heightLabel.translatesAutoresizingMaskIntoConstraints = false
+        heightLabel.leadingAnchor.constraint(equalTo: lowerSeparatorView.trailingAnchor, constant: Layout.LowerSeparator.margin).isActive = true
+        heightLabel.centerYAnchor.constraint(equalTo: subRegionLabel.centerYAnchor).isActive = true
+
+        heightLabel.font = .systemFont(ofSize: Layout.LowerPart.fontSize)
+        heightLabel.textColor = Layout.LowerPart.textColor
+        updateHeight(632)
+    }
 }
 
 extension MountainInfoView {
@@ -80,6 +118,15 @@ extension MountainInfoView {
     private func updateRegionTag(regionName: String, color: UIColor) {
         regionTagView.applyRegionName(regionName, color: color)
     }
+
+    private func updateSubRegion(subregionName: String) {
+        subRegionLabel.text = subregionName
+    }
+
+    private func updateHeight(_ height: Double) {
+        let heightText = "높이 \(Int(height))m"
+        heightLabel.text = heightText
+    }
 }
 
 extension MountainInfoView {
@@ -98,6 +145,18 @@ extension MountainInfoView {
         }
         enum RegionTag {
             static let height: CGFloat = 24
+        }
+        enum LowerPart {
+            static let fontSize: CGFloat = 12
+            static let textColor = UIColor(hex: "B9B3B2")
+        }
+        enum SubRegionLabel {
+            static let sideMargin: CGFloat = 24
+            static let bottomMargin: CGFloat = 15
+        }
+        enum LowerSeparator {
+            static let margin: CGFloat = 4
+            static let height = LowerPart.fontSize
         }
     }
 }
