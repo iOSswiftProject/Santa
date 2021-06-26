@@ -48,7 +48,7 @@ extension MountainInfoBookmarkView {
 extension MountainInfoBookmarkView {
     private enum Layout {
         enum BookmarkButton {
-            static let sideMargin: CGFloat = 25
+            static let sideMargin: CGFloat = 20
         }
     }
 }
