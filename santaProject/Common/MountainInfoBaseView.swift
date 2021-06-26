@@ -1,5 +1,5 @@
 //
-//  MountainInfoView.swift
+//  MountainInfoBaseView.swift
 //  santaProject
 //
 //  Created by Juwon Kim on 2021/06/22.
@@ -17,7 +17,7 @@ struct MockDataModel {
     var isBookmark: Bool = false
 }
 
-class MountainInfoView: UIView {
+class MountainInfoBaseView: UIView {
 
     let mountainNameLabel = UILabel()
     let separatorView = UIView()
@@ -101,7 +101,7 @@ class MountainInfoView: UIView {
     }
 }
 
-extension MountainInfoView {
+extension MountainInfoBaseView {
     private func updateMountainNameLabelAttributedText(mountainName: String, peakName: String?) {
         let text = mountainName + " " + (peakName ?? "")
         let textAsNSString = text as NSString
@@ -129,7 +129,7 @@ extension MountainInfoView {
     }
 }
 
-extension MountainInfoView {
+extension MountainInfoBaseView {
     private enum Layout {
         enum MountainNameLabel {
             static let sideMargin: CGFloat = 24

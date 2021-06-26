@@ -22,7 +22,8 @@
 		CE0E193F266BF4CE003916E3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */; };
 		CE0E19462675D75C003916E3 /* MyListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */; };
 		CE5DE71F2686DDCE009FA3E8 /* RegionTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */; };
-		CED529E32680E559005E05A7 /* MountainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED529E22680E559005E05A7 /* MountainInfoView.swift */; };
+		CE5DE7212686F7E1009FA3E8 /* MountainInfoBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE7202686F7E1009FA3E8 /* MountainInfoBookmarkView.swift */; };
+		CED529E32680E559005E05A7 /* MountainInfoBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +44,8 @@
 		CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionTagView.swift; sourceTree = "<group>"; };
-		CED529E22680E559005E05A7 /* MountainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoView.swift; sourceTree = "<group>"; };
+		CE5DE7202686F7E1009FA3E8 /* MountainInfoBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoBookmarkView.swift; sourceTree = "<group>"; };
+		CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoBaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +109,8 @@
 		CED529E12680E53E005E05A7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				CED529E22680E559005E05A7 /* MountainInfoView.swift */,
+				CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */,
+				CE5DE7202686F7E1009FA3E8 /* MountainInfoBookmarkView.swift */,
 				CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */,
 			);
 			path = Common;
@@ -190,8 +193,9 @@
 				CE0E193C266BE103003916E3 /* MyListTableViewCell.swift in Sources */,
 				BC7A6589265F202900C22E1C /* ViewController.swift in Sources */,
 				CE0E1910266260C1003916E3 /* RootTabBarController.swift in Sources */,
-				CED529E32680E559005E05A7 /* MountainInfoView.swift in Sources */,
+				CED529E32680E559005E05A7 /* MountainInfoBaseView.swift in Sources */,
 				BC7A6585265F202900C22E1C /* AppDelegate.swift in Sources */,
+				CE5DE7212686F7E1009FA3E8 /* MountainInfoBookmarkView.swift in Sources */,
 				CE0E192F266B9248003916E3 /* MyListHeaderView.swift in Sources */,
 				CE5DE71F2686DDCE009FA3E8 /* RegionTagView.swift in Sources */,
 				BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */,
