@@ -59,7 +59,7 @@ class MountainInfoView: UIView {
         regionTagView.leadingAnchor.constraint(equalTo: mountainNameLabel.trailingAnchor, constant: 8).isActive = true
         regionTagView.centerYAnchor.constraint(equalTo: mountainNameLabel.centerYAnchor).isActive = true
         regionTagView.heightAnchor.constraint(equalToConstant: Layout.RegionTag.height).isActive = true
-        updateRegionTag(regionName: "경기도", color: UIColor(hex: "#85DC40"))
+        updateRegionTag(regionName: "서울", color: UIColor(hex: "#85DC40"))
     }
 }
 
