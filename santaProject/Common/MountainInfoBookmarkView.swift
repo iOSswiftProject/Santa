@@ -16,12 +16,23 @@ class MountainInfoBookmarkView: MountainInfoBaseView {
         }
     }
 
+    private var flagged: Bool = false {
+        didSet {
+            unflaggedView.isHidden = flagged
+            flaggedView.isHidden = !flagged
+        }
+    }
+
     let bookMarkButton = UIButton()
+    let unflaggedView = VisitedFlagView.unflaggedView()
+    let flaggedView = VisitedFlagView.flaggedView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         setupBookmarkButton()
+        setupUnflaggedView()
+        setupFlaggedView()
     }
 
     required init?(coder: NSCoder) {
@@ -36,6 +47,24 @@ class MountainInfoBookmarkView: MountainInfoBaseView {
         bookMarkButton.addTarget(self, action: #selector(didTapBookmarkButton(_:)), for: .touchUpInside)
         isBookmark = false
     }
+
+    private func setupUnflaggedView() {
+        addSubview(unflaggedView)
+        unflaggedView.translatesAutoresizingMaskIntoConstraints = false
+        unflaggedView.trailingAnchor.constraint(equalTo: bookMarkButton.leadingAnchor, constant: -Layout.Flagged.spacing).isActive = true
+        unflaggedView.centerYAnchor.constraint(equalTo: bookMarkButton.centerYAnchor).isActive = true
+
+        // TODO: hide on init
+//        unflaggedView.isHidden = true
+    }
+
+    private func setupFlaggedView() {
+        addSubview(flaggedView)
+        flaggedView.translatesAutoresizingMaskIntoConstraints = false
+        flaggedView.trailingAnchor.constraint(equalTo: bookMarkButton.leadingAnchor, constant: -Layout.Flagged.spacing).isActive = true
+        flaggedView.centerYAnchor.constraint(equalTo: bookMarkButton.centerYAnchor).isActive = true
+        flaggedView.isHidden = true
+    }
 }
 
 extension MountainInfoBookmarkView {
@@ -49,6 +78,9 @@ extension MountainInfoBookmarkView {
     private enum Layout {
         enum BookmarkButton {
             static let sideMargin: CGFloat = 20
+        }
+        enum Flagged {
+            static let spacing: CGFloat = 16
         }
     }
 }
