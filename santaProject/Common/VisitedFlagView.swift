@@ -8,6 +8,9 @@
 import UIKit
 
 class VisitedFlagView: UIView {
+
+    private let label = UILabel()
+
     private convenience init(imageName: String, text: String, font: UIFont, textColor: UIColor) {
         self.init(frame: .zero)
 
@@ -17,7 +20,6 @@ class VisitedFlagView: UIView {
         imageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         imageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
 
-        let label = UILabel()
         addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: Layout.spacing).isActive = true
@@ -37,6 +39,12 @@ class VisitedFlagView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    public func updateText(_ text: String) {
+        let attributedString = NSMutableAttributedString(string: text)
+        attributedString.addAttribute(.kern, value: Layout.letterSpacing, range: NSRange(location: 0, length: text.count))
+        label.attributedText = attributedString
     }
 }
 
