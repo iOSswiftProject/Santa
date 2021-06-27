@@ -26,7 +26,7 @@ class MountainInfoHistoryView: MountainInfoBaseView {
         addSubview(moreButton)
         moreButton.translatesAutoresizingMaskIntoConstraints = false
         moreButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.sideMargin).isActive = true
-        moreButton.centerYAnchor.constraint(equalTo: mountainNameLabel.centerYAnchor).isActive = true
+        moreButton.centerYAnchor.constraint(equalTo: mountainNameView.centerYAnchor).isActive = true
 
         let buttonImage = UIImage(named: "santaMoreButton")?.withRenderingMode(.alwaysTemplate)
         moreButton.setImage(buttonImage, for: .normal)
