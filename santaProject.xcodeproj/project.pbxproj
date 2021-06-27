@@ -25,6 +25,7 @@
 		CE5DE7212686F7E1009FA3E8 /* MountainInfoBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE7202686F7E1009FA3E8 /* MountainInfoBookmarkView.swift */; };
 		CE5DE72326870ACC009FA3E8 /* VisitedFlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE72226870ACC009FA3E8 /* VisitedFlagView.swift */; };
 		CE5DE72526871350009FA3E8 /* MountainInfoHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE72426871350009FA3E8 /* MountainInfoHistoryView.swift */; };
+		CE880A12268888720034B0A5 /* MountainNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A11268888720034B0A5 /* MountainNameView.swift */; };
 		CED529E32680E559005E05A7 /* MountainInfoBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		CE5DE7202686F7E1009FA3E8 /* MountainInfoBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoBookmarkView.swift; sourceTree = "<group>"; };
 		CE5DE72226870ACC009FA3E8 /* VisitedFlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedFlagView.swift; sourceTree = "<group>"; };
 		CE5DE72426871350009FA3E8 /* MountainInfoHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoHistoryView.swift; sourceTree = "<group>"; };
+		CE880A11268888720034B0A5 /* MountainNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainNameView.swift; sourceTree = "<group>"; };
 		CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoBaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,8 +117,9 @@
 			children = (
 				CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */,
 				CE5DE7202686F7E1009FA3E8 /* MountainInfoBookmarkView.swift */,
-				CE5DE72226870ACC009FA3E8 /* VisitedFlagView.swift */,
 				CE5DE72426871350009FA3E8 /* MountainInfoHistoryView.swift */,
+				CE880A11268888720034B0A5 /* MountainNameView.swift */,
+				CE5DE72226870ACC009FA3E8 /* VisitedFlagView.swift */,
 				CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */,
 			);
 			path = Common;
@@ -198,6 +201,7 @@
 				CE5DE72326870ACC009FA3E8 /* VisitedFlagView.swift in Sources */,
 				CE0E193F266BF4CE003916E3 /* UIColor+Extension.swift in Sources */,
 				CE0E193C266BE103003916E3 /* MyListTableViewCell.swift in Sources */,
+				CE880A12268888720034B0A5 /* MountainNameView.swift in Sources */,
 				BC7A6589265F202900C22E1C /* ViewController.swift in Sources */,
 				CE0E1910266260C1003916E3 /* RootTabBarController.swift in Sources */,
 				CED529E32680E559005E05A7 /* MountainInfoBaseView.swift in Sources */,
