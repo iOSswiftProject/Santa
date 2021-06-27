@@ -23,6 +23,10 @@ extension UIColor {
         )
     }
 
+    // TODO: remove
+    static let selectedColor = UIColor(hex: "FF8C8C")
+    static let notSelected = UIColor(hex: "CCCCCC")
+
     class var stCoolGray00: UIColor { UIColor(hex: "#FFFFFF") }
     class var stCoolGray02: UIColor { UIColor(hex: "#F8F5F3") }
     class var stCoolGray05: UIColor { UIColor(hex: "#F2EDEB") }
