@@ -30,6 +30,7 @@ class MyListViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
+        collectionView.allowsSelection = false
         return collectionView
     }()
 
