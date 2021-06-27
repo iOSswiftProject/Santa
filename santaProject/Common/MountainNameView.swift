@@ -31,6 +31,8 @@ class MountainNameView: UIView {
         mountainNameLabel.translatesAutoresizingMaskIntoConstraints = false
         mountainNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         mountainNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+
+        mountainNameLabel.textColor = .stCoolGray120
     }
 
     private func setupRegionTagView() {

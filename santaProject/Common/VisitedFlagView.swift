@@ -43,7 +43,7 @@ class VisitedFlagView: UIView {
 
     public func updateText(_ text: String) {
         let attributedString = NSMutableAttributedString(string: text)
-        attributedString.addAttribute(.kern, value: Layout.letterSpacing, range: NSRange(location: 0, length: text.count))
+        attributedString.addAttribute(.kern, value: Layout.histroyLetterSpacing, range: NSRange(location: 0, length: text.count))
         label.attributedText = attributedString
     }
 }
@@ -52,6 +52,7 @@ extension VisitedFlagView {
     enum Layout {
         static let spacing: CGFloat = 2
         static let letterSpacing: CGFloat = -0.08
+        static let histroyLetterSpacing: CGFloat = -0.04
         static let fontSize: CGFloat = 12
     }
 
@@ -59,13 +60,13 @@ extension VisitedFlagView {
         VisitedFlagView(imageName: "santaFlagInactive",
                         text: "안 다녀온",
                         font: .systemFont(ofSize: Layout.fontSize),
-                        textColor: UIColor(hex: "B9B3B2"))
+                        textColor: .stCoolGray60)
     }
 
     public static func flaggedView() -> VisitedFlagView {
         VisitedFlagView(imageName: "santaFlagActive",
                         text: "다녀온 산",
                         font: .boldSystemFont(ofSize: Layout.fontSize),
-                        textColor: UIColor(hex: "FC7459"))
+                        textColor: .stOrange30)
     }
 }

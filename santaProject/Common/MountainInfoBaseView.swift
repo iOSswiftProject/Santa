@@ -53,7 +53,7 @@ class MountainInfoBaseView: UIView {
         separatorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.Separator.sideMargin).isActive = true
         separatorView.topAnchor.constraint(equalTo: topAnchor, constant: Layout.Separator.topMargin).isActive = true
         separatorView.heightAnchor.constraint(equalToConstant: Layout.Separator.height).isActive = true
-        separatorView.backgroundColor = UIColor(hex: "EEEEEE")
+        separatorView.backgroundColor = Layout.Separator.color
     }
 
     private func setupSubRegionLabel() {
@@ -74,7 +74,7 @@ class MountainInfoBaseView: UIView {
         lowerSeparatorView.centerYAnchor.constraint(equalTo: subRegionLabel.centerYAnchor).isActive = true
         lowerSeparatorView.widthAnchor.constraint(equalToConstant: 1).isActive = true
         lowerSeparatorView.heightAnchor.constraint(equalToConstant: Layout.LowerSeparator.height).isActive = true
-        lowerSeparatorView.backgroundColor = UIColor(hex: "EEEEEE")
+        lowerSeparatorView.backgroundColor = Layout.LowerSeparator.color
     }
 
     private func setupHeightLabel() {
@@ -113,10 +113,11 @@ extension MountainInfoBaseView {
             static let sideMargin: CGFloat = 20
             static let topMargin: CGFloat = 54
             static let height: CGFloat = 1
+            static let color = UIColor.stCoolGray20
         }
         enum LowerPart {
             static let fontSize: CGFloat = 12
-            static let textColor = UIColor(hex: "B9B3B2")
+            static let textColor = UIColor.stCoolGray60
         }
         enum SubRegionLabel {
             static let sideMargin: CGFloat = 24
@@ -125,6 +126,7 @@ extension MountainInfoBaseView {
         enum LowerSeparator {
             static let margin: CGFloat = 4
             static let height = LowerPart.fontSize
+            static let color = UIColor.stCoolGray10
         }
     }
 }

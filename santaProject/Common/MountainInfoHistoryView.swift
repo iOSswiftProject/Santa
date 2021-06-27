@@ -30,7 +30,7 @@ class MountainInfoHistoryView: MountainInfoBaseView {
 
         let buttonImage = UIImage(named: "santaMoreButton")?.withRenderingMode(.alwaysTemplate)
         moreButton.setImage(buttonImage, for: .normal)
-        moreButton.tintColor = UIColor(hex: "#CECAC9")
+        moreButton.tintColor = .stCoolGray50
         moreButton.addTarget(self, action: #selector(didTapMoreButton(_:)), for: .touchUpInside)
     }
 
