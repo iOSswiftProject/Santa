@@ -56,8 +56,8 @@ class MyListViewController: UIViewController {
         headerView.translatesAutoresizingMaskIntoConstraints = false
         headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        headerView.heightAnchor.constraint(equalToConstant: 53).isActive = true
+        headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Layout.Header.topMargin).isActive = true
+        headerView.heightAnchor.constraint(equalToConstant: Layout.Header.height).isActive = true
 
         headerView.delegate = self
     }
@@ -136,5 +136,14 @@ extension MyListViewController: MyListHeaderViewDelegate {
 
     func myListHeaderViewDidSelectFavorite() {
         selectItem(at: 1)
+    }
+}
+
+extension MyListViewController {
+    private enum Layout {
+        enum Header {
+            static let topMargin: CGFloat = 20
+            static let height: CGFloat = 56
+        }
     }
 }

@@ -23,17 +23,38 @@ class MyListHeaderView: UIView {
 
     private let historyButton: UIButton = {
         let button = UIButton()
-        button.setTitleColor(.notSelected, for: .normal)
-        button.setTitle("다녀온 산", for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: Layout.fontSize)
+        button.titleLabel?.font = .systemFont(ofSize: Layout.fontSize, weight: UIFont.Weight(0.7))
+
+        let normalString = NSMutableAttributedString(string: "다녀온 산")
+        let range = NSRange(location: 0, length: normalString.length)
+        normalString.addAttribute(.foregroundColor, value: Layout.unselectedColor, range: range)
+        normalString.addAttribute(.kern, value: Layout.kern, range: range)
+        button.setAttributedTitle(normalString, for: .normal)
+
+        let selectedString = NSMutableAttributedString(string: "다녀온 산")
+        selectedString.addAttribute(.foregroundColor, value: Layout.selectedColor, range: range)
+        selectedString.addAttribute(.kern, value: Layout.kern, range: range)
+        button.setAttributedTitle(selectedString, for: .selected)
+
+        button.isSelected = true
+
         return button
     }()
 
     private let favoriteButton: UIButton = {
         let button = UIButton()
-        button.setTitleColor(.notSelected, for: .normal)
-        button.setTitle("북마크", for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: Layout.fontSize)
+        button.titleLabel?.font = .systemFont(ofSize: Layout.fontSize, weight: UIFont.Weight(0.7))
+        let normalString = NSMutableAttributedString(string: "북마크")
+        let range = NSRange(location: 0, length: normalString.length)
+        normalString.addAttribute(.foregroundColor, value: Layout.unselectedColor, range: range)
+        normalString.addAttribute(.kern, value: Layout.kern, range: range)
+        button.setAttributedTitle(normalString, for: .normal)
+
+        let selectedString = NSMutableAttributedString(string: "북마크")
+        selectedString.addAttribute(.foregroundColor, value: Layout.selectedColor, range: range)
+        selectedString.addAttribute(.kern, value: Layout.kern, range: range)
+        button.setAttributedTitle(selectedString, for: .selected)
+
         return button
     }()
 
@@ -79,7 +100,7 @@ class MyListHeaderView: UIView {
         favoriteButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         favoriteButton.addTarget(self, action: #selector(handleButtonSelect(_:)), for: .touchUpInside)
 
-        historyButton.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -Layout.innerMargin).isActive = true
+        historyButton.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -Layout.spacing).isActive = true
         historyButton.widthAnchor.constraint(equalTo: favoriteButton.widthAnchor, multiplier: 1).isActive = true
 
         historyButton.setTitleColor(.white, for: .normal)
@@ -95,8 +116,10 @@ class MyListHeaderView: UIView {
 
         selectView.layer.cornerRadius = Layout.SelectView.cornerRadius
 
-        historySelectConstraint = selectView.centerXAnchor.constraint(equalTo: historyButton.centerXAnchor)
-        favoriteSelectConstraint = selectView.centerXAnchor.constraint(equalTo: favoriteButton.centerXAnchor)
+        historySelectConstraint = selectView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor,
+                                                                      constant: Layout.SelectView.sideMargin)
+        favoriteSelectConstraint = selectView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor,
+                                                                        constant: -Layout.SelectView.sideMargin)
         historySelectConstraint?.isActive = true
     }
 
@@ -119,8 +142,8 @@ class MyListHeaderView: UIView {
             guard let self = self else { return }
             self.favoriteSelectConstraint?.isActive = false
             self.historySelectConstraint?.isActive = true
-            self.favoriteButton.setTitleColor(.notSelected, for: .normal)
-            self.historyButton.setTitleColor(.white, for: .normal)
+            self.favoriteButton.isSelected = false
+            self.historyButton.isSelected = true
             self.layoutIfNeeded()
         }
     }
@@ -130,8 +153,8 @@ class MyListHeaderView: UIView {
             guard let self = self else { return }
             self.historySelectConstraint?.isActive = false
             self.favoriteSelectConstraint?.isActive = true
-            self.historyButton.setTitleColor(.notSelected, for: .normal)
-            self.favoriteButton.setTitleColor(.white, for: .normal)
+            self.historyButton.isSelected = false
+            self.favoriteButton.isSelected = true
             self.layoutIfNeeded()
         }
     }
@@ -140,15 +163,20 @@ class MyListHeaderView: UIView {
 extension MyListHeaderView {
     private enum Layout {
         static let sideMargin: CGFloat = 20
-        static let innerMargin: CGFloat = 15
+        static let spacing: CGFloat = 1
         static let cornerRadius: CGFloat = 12
         static let fontSize: CGFloat = 16
+
+        static let selectedColor = UIColor.white
+        static let unselectedColor = UIColor(hex: "#CECAC9")
+        static let kern: CGFloat = -0.04
 
         enum SelectView {
             static let width: CGFloat = 161
             static let height: CGFloat = 44
+            static let sideMargin: CGFloat = 6
             static let cornerRadius: CGFloat = 8
-            static let backgroundColor = UIColor(hex: "35C183")
+            static let backgroundColor = UIColor.stGreen50
         }
 
         static let animationDuration: TimeInterval = 0.3
