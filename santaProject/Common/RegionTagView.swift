@@ -12,8 +12,8 @@ class RegionTagView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        layer.cornerRadius = 12
-        layer.borderWidth = 1.2
+        layer.cornerRadius = Layout.cornerRadius
+        layer.borderWidth = Layout.borderWidth
         setupLabel()
     }
 
@@ -29,7 +29,7 @@ class RegionTagView: UIView {
         label.topAnchor.constraint(equalTo: topAnchor, constant: Layout.topMargin).isActive = true
         label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Layout.topMargin).isActive = true
 
-        label.font = .boldSystemFont(ofSize: 12)
+        label.font = .boldSystemFont(ofSize: Layout.fontSize)
         label.text = "서울"
     }
 
@@ -44,5 +44,8 @@ extension RegionTagView {
     enum Layout {
         static let sideMargin: CGFloat = 8
         static let topMargin: CGFloat = 6
+        static let fontSize: CGFloat = 12
+        static let cornerRadius: CGFloat = 12
+        static let borderWidth: CGFloat = 1.2
     }
 }
