@@ -21,6 +21,7 @@
 		CE0E193C266BE103003916E3 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */; };
 		CE0E193F266BF4CE003916E3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */; };
 		CE0E19462675D75C003916E3 /* MyListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */; };
+		FE7E2D09268A200600B536C5 /* MountainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7E2D08268A200600B536C5 /* MountainView.swift */; };
 		FED8D7AE268A1DDD00F91FFF /* DBInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8D7AD268A1DDD00F91FFF /* DBInterface.swift */; };
 		FED8D7B1268A1DF700F91FFF /* Mountain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8D7B0268A1DF700F91FFF /* Mountain.swift */; };
 		FED8D7B4268A1E1600F91FFF /* Santa.db in Resources */ = {isa = PBXBuildFile; fileRef = FED8D7B3268A1E1600F91FFF /* Santa.db */; };
@@ -43,6 +44,7 @@
 		CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
 		CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListCollectionViewCell.swift; sourceTree = "<group>"; };
+		FE7E2D08268A200600B536C5 /* MountainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainView.swift; sourceTree = "<group>"; };
 		FED8D7AD268A1DDD00F91FFF /* DBInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBInterface.swift; sourceTree = "<group>"; };
 		FED8D7B0268A1DF700F91FFF /* Mountain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mountain.swift; sourceTree = "<group>"; };
 		FED8D7B3268A1E1600F91FFF /* Santa.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Santa.db; sourceTree = "<group>"; };
@@ -106,9 +108,18 @@
 			path = MyList;
 			sourceTree = "<group>";
 		};
+		FE7E2D07268A1FEE00B536C5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE7E2D08268A200600B536C5 /* MountainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FED8D7A9268A1D6F00F91FFF /* YBR */ = {
 			isa = PBXGroup;
 			children = (
+				FE7E2D07268A1FEE00B536C5 /* View */,
 				FED8D7AB268A1D8300F91FFF /* Class */,
 				FED8D7AC268A1D8F00F91FFF /* Resource */,
 			);
@@ -214,6 +225,7 @@
 				CE0E192F266B9248003916E3 /* MyListHeaderView.swift in Sources */,
 				BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */,
 				FED8D7B1268A1DF700F91FFF /* Mountain.swift in Sources */,
+				FE7E2D09268A200600B536C5 /* MountainView.swift in Sources */,
 				CE0E1938266BDFFF003916E3 /* MyListTableView.swift in Sources */,
 				FED8D7AE268A1DDD00F91FFF /* DBInterface.swift in Sources */,
 			);
