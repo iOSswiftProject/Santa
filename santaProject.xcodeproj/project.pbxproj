@@ -23,6 +23,8 @@
 		CE0E19462675D75C003916E3 /* MyListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */; };
 		FE98D3C5268A20D200CDEA72 /* RegionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE98D3C4268A20D200CDEA72 /* RegionInfo.swift */; };
 		FE98D3C8268A20E000CDEA72 /* location2.json in Resources */ = {isa = PBXBuildFile; fileRef = FE98D3C7268A20E000CDEA72 /* location2.json */; };
+		FE7E2D09268A200600B536C5 /* MountainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7E2D08268A200600B536C5 /* MountainView.swift */; };
+		FE98D3CC268A214D00CDEA72 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE98D3CB268A214D00CDEA72 /* MapViewController.swift */; };
 		FED8D7AE268A1DDD00F91FFF /* DBInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8D7AD268A1DDD00F91FFF /* DBInterface.swift */; };
 		FED8D7B1268A1DF700F91FFF /* Mountain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8D7B0268A1DF700F91FFF /* Mountain.swift */; };
 		FED8D7B4268A1E1600F91FFF /* Santa.db in Resources */ = {isa = PBXBuildFile; fileRef = FED8D7B3268A1E1600F91FFF /* Santa.db */; };
@@ -47,6 +49,8 @@
 		CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListCollectionViewCell.swift; sourceTree = "<group>"; };
 		FE98D3C4268A20D200CDEA72 /* RegionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionInfo.swift; sourceTree = "<group>"; };
 		FE98D3C7268A20E000CDEA72 /* location2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = location2.json; sourceTree = "<group>"; };
+		FE7E2D08268A200600B536C5 /* MountainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainView.swift; sourceTree = "<group>"; };
+		FE98D3CB268A214D00CDEA72 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FED8D7AD268A1DDD00F91FFF /* DBInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBInterface.swift; sourceTree = "<group>"; };
 		FED8D7B0268A1DF700F91FFF /* Mountain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mountain.swift; sourceTree = "<group>"; };
 		FED8D7B3268A1E1600F91FFF /* Santa.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Santa.db; sourceTree = "<group>"; };
@@ -110,9 +114,19 @@
 			path = MyList;
 			sourceTree = "<group>";
 		};
+		FE7E2D07268A1FEE00B536C5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE98D3CB268A214D00CDEA72 /* MapViewController.swift */,
+				FE7E2D08268A200600B536C5 /* MountainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FED8D7A9268A1D6F00F91FFF /* YBR */ = {
 			isa = PBXGroup;
 			children = (
+				FE7E2D07268A1FEE00B536C5 /* View */,
 				FED8D7AB268A1D8300F91FFF /* Class */,
 				FED8D7AC268A1D8F00F91FFF /* Resource */,
 			);
@@ -222,7 +236,9 @@
 				CE0E192F266B9248003916E3 /* MyListHeaderView.swift in Sources */,
 				BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */,
 				FED8D7B1268A1DF700F91FFF /* Mountain.swift in Sources */,
+				FE7E2D09268A200600B536C5 /* MountainView.swift in Sources */,
 				CE0E1938266BDFFF003916E3 /* MyListTableView.swift in Sources */,
+				FE98D3CC268A214D00CDEA72 /* MapViewController.swift in Sources */,
 				FED8D7AE268A1DDD00F91FFF /* DBInterface.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

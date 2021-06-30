@@ -122,7 +122,9 @@ class DBInterface: NSObject {
     
     /// select Mountain From LOG TABLE
     func selectMountainLog() {
-        // outer Join???
+        /**
+         * briefly use join, late use paing
+         */
     }
     
     
@@ -148,7 +150,6 @@ class DBInterface: NSObject {
             let errorMessage = String.init(cString: sqlite3_errmsg(db))
             print("Quert could not be prepared! \(errorMessage)")
         }
-        
         
         
     }
