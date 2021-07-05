@@ -21,13 +21,13 @@
 		CE0E193C266BE103003916E3 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */; };
 		CE0E193F266BF4CE003916E3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */; };
 		CE0E19462675D75C003916E3 /* MyListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */; };
+		FE7E2D09268A200600B536C5 /* MountainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7E2D08268A200600B536C5 /* MountainView.swift */; };
 		FE98D3C5268A20D200CDEA72 /* RegionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE98D3C4268A20D200CDEA72 /* RegionInfo.swift */; };
 		FE98D3C8268A20E000CDEA72 /* location2.json in Resources */ = {isa = PBXBuildFile; fileRef = FE98D3C7268A20E000CDEA72 /* location2.json */; };
-		FE7E2D09268A200600B536C5 /* MountainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7E2D08268A200600B536C5 /* MountainView.swift */; };
 		FE98D3CC268A214D00CDEA72 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE98D3CB268A214D00CDEA72 /* MapViewController.swift */; };
+		FEC0FB33269356D400FE4D09 /* Santa.db in Resources */ = {isa = PBXBuildFile; fileRef = FEC0FB32269356D400FE4D09 /* Santa.db */; };
 		FED8D7AE268A1DDD00F91FFF /* DBInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8D7AD268A1DDD00F91FFF /* DBInterface.swift */; };
 		FED8D7B1268A1DF700F91FFF /* Mountain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED8D7B0268A1DF700F91FFF /* Mountain.swift */; };
-		FED8D7B4268A1E1600F91FFF /* Santa.db in Resources */ = {isa = PBXBuildFile; fileRef = FED8D7B3268A1E1600F91FFF /* Santa.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,13 +47,13 @@
 		CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
 		CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListCollectionViewCell.swift; sourceTree = "<group>"; };
+		FE7E2D08268A200600B536C5 /* MountainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainView.swift; sourceTree = "<group>"; };
 		FE98D3C4268A20D200CDEA72 /* RegionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionInfo.swift; sourceTree = "<group>"; };
 		FE98D3C7268A20E000CDEA72 /* location2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = location2.json; sourceTree = "<group>"; };
-		FE7E2D08268A200600B536C5 /* MountainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainView.swift; sourceTree = "<group>"; };
 		FE98D3CB268A214D00CDEA72 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		FEC0FB32269356D400FE4D09 /* Santa.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Santa.db; sourceTree = "<group>"; };
 		FED8D7AD268A1DDD00F91FFF /* DBInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBInterface.swift; sourceTree = "<group>"; };
 		FED8D7B0268A1DF700F91FFF /* Mountain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mountain.swift; sourceTree = "<group>"; };
-		FED8D7B3268A1E1600F91FFF /* Santa.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Santa.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,8 +146,8 @@
 		FED8D7AC268A1D8F00F91FFF /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FEC0FB32269356D400FE4D09 /* Santa.db */,
 				FE98D3C7268A20E000CDEA72 /* location2.json */,
-				FED8D7B3268A1E1600F91FFF /* Santa.db */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -209,11 +209,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEC0FB33269356D400FE4D09 /* Santa.db in Resources */,
 				BC7A6594265F202900C22E1C /* LaunchScreen.storyboard in Resources */,
 				BC7A6591265F202900C22E1C /* Assets.xcassets in Resources */,
 				FE98D3C8268A20E000CDEA72 /* location2.json in Resources */,
 				BC7A658C265F202900C22E1C /* Main.storyboard in Resources */,
-				FED8D7B4268A1E1600F91FFF /* Santa.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
