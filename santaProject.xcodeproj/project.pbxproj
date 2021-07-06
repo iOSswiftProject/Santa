@@ -17,10 +17,15 @@
 		CE0E191426626434003916E3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E191326626434003916E3 /* HomeViewController.swift */; };
 		CE0E1928266B3D49003916E3 /* MyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E1927266B3D49003916E3 /* MyListViewController.swift */; };
 		CE0E192F266B9248003916E3 /* MyListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E192E266B9248003916E3 /* MyListHeaderView.swift */; };
-		CE0E1938266BDFFF003916E3 /* MyListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E1937266BDFFF003916E3 /* MyListTableView.swift */; };
 		CE0E193C266BE103003916E3 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */; };
 		CE0E193F266BF4CE003916E3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */; };
 		CE0E19462675D75C003916E3 /* MyListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */; };
+		CE5DE71F2686DDCE009FA3E8 /* RegionTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */; };
+		CE5DE7212686F7E1009FA3E8 /* MountainInfoBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE7202686F7E1009FA3E8 /* MountainInfoBookmarkView.swift */; };
+		CE5DE72326870ACC009FA3E8 /* VisitedFlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE72226870ACC009FA3E8 /* VisitedFlagView.swift */; };
+		CE5DE72526871350009FA3E8 /* MountainInfoHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE72426871350009FA3E8 /* MountainInfoHistoryView.swift */; };
+		CE880A12268888720034B0A5 /* MountainNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A11268888720034B0A5 /* MountainNameView.swift */; };
+		CED529E32680E559005E05A7 /* MountainInfoBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,10 +41,15 @@
 		CE0E191326626434003916E3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CE0E1927266B3D49003916E3 /* MyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListViewController.swift; sourceTree = "<group>"; };
 		CE0E192E266B9248003916E3 /* MyListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListHeaderView.swift; sourceTree = "<group>"; };
-		CE0E1937266BDFFF003916E3 /* MyListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableView.swift; sourceTree = "<group>"; };
 		CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
 		CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionTagView.swift; sourceTree = "<group>"; };
+		CE5DE7202686F7E1009FA3E8 /* MountainInfoBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoBookmarkView.swift; sourceTree = "<group>"; };
+		CE5DE72226870ACC009FA3E8 /* VisitedFlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedFlagView.swift; sourceTree = "<group>"; };
+		CE5DE72426871350009FA3E8 /* MountainInfoHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoHistoryView.swift; sourceTree = "<group>"; };
+		CE880A11268888720034B0A5 /* MountainNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainNameView.swift; sourceTree = "<group>"; };
+		CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoBaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +82,7 @@
 		BC7A6583265F202900C22E1C /* santaProject */ = {
 			isa = PBXGroup;
 			children = (
+				CED529E12680E53E005E05A7 /* Common */,
 				BC7A6584265F202900C22E1C /* AppDelegate.swift */,
 				BC7A6588265F202900C22E1C /* ViewController.swift */,
 				CE0E190F266260C1003916E3 /* RootTabBarController.swift */,
@@ -93,10 +104,22 @@
 				CE0E1927266B3D49003916E3 /* MyListViewController.swift */,
 				CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */,
 				CE0E192E266B9248003916E3 /* MyListHeaderView.swift */,
-				CE0E1937266BDFFF003916E3 /* MyListTableView.swift */,
 				CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */,
 			);
 			path = MyList;
+			sourceTree = "<group>";
+		};
+		CED529E12680E53E005E05A7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */,
+				CE5DE7202686F7E1009FA3E8 /* MountainInfoBookmarkView.swift */,
+				CE5DE72426871350009FA3E8 /* MountainInfoHistoryView.swift */,
+				CE880A11268888720034B0A5 /* MountainNameView.swift */,
+				CE5DE72226870ACC009FA3E8 /* VisitedFlagView.swift */,
+				CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,14 +195,19 @@
 				CE0E191426626434003916E3 /* HomeViewController.swift in Sources */,
 				CE0E1928266B3D49003916E3 /* MyListViewController.swift in Sources */,
 				CE0E19462675D75C003916E3 /* MyListCollectionViewCell.swift in Sources */,
+				CE5DE72326870ACC009FA3E8 /* VisitedFlagView.swift in Sources */,
 				CE0E193F266BF4CE003916E3 /* UIColor+Extension.swift in Sources */,
 				CE0E193C266BE103003916E3 /* MyListTableViewCell.swift in Sources */,
+				CE880A12268888720034B0A5 /* MountainNameView.swift in Sources */,
 				BC7A6589265F202900C22E1C /* ViewController.swift in Sources */,
 				CE0E1910266260C1003916E3 /* RootTabBarController.swift in Sources */,
+				CED529E32680E559005E05A7 /* MountainInfoBaseView.swift in Sources */,
 				BC7A6585265F202900C22E1C /* AppDelegate.swift in Sources */,
+				CE5DE7212686F7E1009FA3E8 /* MountainInfoBookmarkView.swift in Sources */,
 				CE0E192F266B9248003916E3 /* MyListHeaderView.swift in Sources */,
+				CE5DE72526871350009FA3E8 /* MountainInfoHistoryView.swift in Sources */,
+				CE5DE71F2686DDCE009FA3E8 /* RegionTagView.swift in Sources */,
 				BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */,
-				CE0E1938266BDFFF003916E3 /* MyListTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

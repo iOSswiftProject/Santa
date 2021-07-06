@@ -36,7 +36,8 @@ class MyListCollectionViewCell: UICollectionViewCell {
         tableView.allowsSelection = false
         tableView.showsVerticalScrollIndicator = false
 
-        tableView.register(MyListTableViewCell.self, forCellReuseIdentifier: MyListTableViewCell.identifier)
+        tableView.register(MyListTableViewHistoryCell.self, forCellReuseIdentifier: MyListTableViewHistoryCell.identifier)
+        tableView.register(MyListTableViewBookmarkCell.self, forCellReuseIdentifier: MyListTableViewBookmarkCell.identifier)
         tableView.register(MyListTableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: MyListTableViewHeaderFooterView.identifier)
 
         tableView.dataSource = self
@@ -60,18 +61,18 @@ extension MyListCollectionViewCell: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewCell.identifier),
-              let listCell = cell as? MyListTableViewCell else { return UITableViewCell() }
         switch model {
         case "History":
-            listCell.showTimestampLabel()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewHistoryCell.identifier),
+                  let listCell = cell as? MyListTableViewHistoryCell else { return UITableViewCell() }
+            return listCell
         case "Favorite":
-            listCell.showBookmarkButton()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewBookmarkCell.identifier),
+                  let listCell = cell as? MyListTableViewBookmarkCell else { return UITableViewCell() }
+            return listCell
         default:
-            fatalError("not implemented")
+            return UITableViewCell()
         }
-        
-        return listCell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
