@@ -147,10 +147,10 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let mountain = view.annotation as? Mountain {
             print(mountain)
-            let detailVC = MountainDetailTestViewController()
-            detailVC.mountain = mountain
-            detailVC.modalPresentationStyle = .currentContext
-            self.present(detailVC, animated: false, completion: nil)
+//            let detailVC = MountainDetailTestViewController()
+//            detailVC.mountain = mountain
+//            detailVC.modalPresentationStyle = .currentContext
+//            self.present(detailVC, animated: false, completion: nil)
         }
     }
     
