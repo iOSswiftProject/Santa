@@ -68,7 +68,7 @@ class AddHistoryView: UIView {
     private func setupDoneButton() {
         addSubview(doneButton)
         doneButton.translatesAutoresizingMaskIntoConstraints = false
-        doneButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.sideMargin).isActive = true
+        doneButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.LowerButton.sideMargin).isActive = true
         doneButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Layout.bottomMargin).isActive = true
         doneButton.widthAnchor.constraint(equalToConstant: Layout.LowerButton.width).isActive = true
         doneButton.heightAnchor.constraint(equalToConstant: Layout.LowerButton.height).isActive = true
@@ -89,7 +89,7 @@ class AddHistoryView: UIView {
     private func setupCancelButton() {
         addSubview(cancelButton)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
-        cancelButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.sideMargin).isActive = true
+        cancelButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.LowerButton.sideMargin).isActive = true
         cancelButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Layout.bottomMargin).isActive = true
         cancelButton.widthAnchor.constraint(equalToConstant: Layout.LowerButton.width).isActive = true
         cancelButton.heightAnchor.constraint(equalToConstant: Layout.LowerButton.height).isActive = true
@@ -124,7 +124,6 @@ extension AddHistoryView {
     private enum Layout {
         static let topMargin: CGFloat = 58
         static let bottomMargin: CGFloat = 40
-        static let sideMargin: CGFloat = 20
 
         enum Title {
             static let leadingMargin: CGFloat = 24
@@ -136,6 +135,7 @@ extension AddHistoryView {
         }
 
         enum LowerButton {
+            static let sideMargin: CGFloat = 20
             static let width: CGFloat = 163
             static let height: CGFloat = 48
             static let cornerRadius: CGFloat = 12
