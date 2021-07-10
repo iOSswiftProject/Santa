@@ -7,13 +7,21 @@
 
 import UIKit
 
+protocol AddHistoryViewDelegate: AnyObject {
+    func didTapDoneButton()
+    func didTapCancelButton()
+}
+
 class AddHistoryView: UIView {
+
+    weak var delegate: AddHistoryViewDelegate?
 
     let doneButton = UIButton()
     let cancelButton = UIButton()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .white
 
         setupDoneButton()
         setupCancelButton()
@@ -30,6 +38,7 @@ class AddHistoryView: UIView {
         doneButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Layout.bottomMargin).isActive = true
         doneButton.widthAnchor.constraint(equalToConstant: Layout.buttonWidth).isActive = true
         doneButton.heightAnchor.constraint(equalToConstant: Layout.buttonHeight).isActive = true
+        doneButton.addTarget(self, action: #selector(didTapDoneButton(_:)), for: .touchUpInside)
 
         doneButton.backgroundColor = .stOrange40
     }
@@ -41,8 +50,22 @@ class AddHistoryView: UIView {
         cancelButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Layout.bottomMargin).isActive = true
         cancelButton.widthAnchor.constraint(equalToConstant: Layout.buttonWidth).isActive = true
         cancelButton.heightAnchor.constraint(equalToConstant: Layout.buttonHeight).isActive = true
+        cancelButton.addTarget(self, action: #selector(didTapCancelButton(_:)), for: .touchUpInside)
+
+        cancelButton.backgroundColor = .stCoolGray20
     }
 
+
+
+    @objc
+    private func didTapDoneButton(_ sender: UIButton) {
+        delegate?.didTapDoneButton()
+    }
+
+    @objc
+    private func didTapCancelButton(_ sender: UIButton) {
+        delegate?.didTapCancelButton()
+    }
 }
 
 extension AddHistoryView {
