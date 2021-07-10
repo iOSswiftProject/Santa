@@ -26,6 +26,7 @@
 		CE5DE72526871350009FA3E8 /* MountainInfoHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE72426871350009FA3E8 /* MountainInfoHistoryView.swift */; };
 		CE880A12268888720034B0A5 /* MountainNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A11268888720034B0A5 /* MountainNameView.swift */; };
 		CE880A1726994A6C0034B0A5 /* AddHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A1626994A6C0034B0A5 /* AddHistoryViewController.swift */; };
+		CE880A1926994CAD0034B0A5 /* AddHistoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A1826994CAD0034B0A5 /* AddHistoryButton.swift */; };
 		CED529E32680E559005E05A7 /* MountainInfoBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */; };
 		FE480AC62695DC71000A5D20 /* DBInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC32695DC71000A5D20 /* DBInterface.swift */; };
 		FE480AC72695DC71000A5D20 /* RegionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC42695DC71000A5D20 /* RegionInfo.swift */; };
@@ -59,6 +60,7 @@
 		CE5DE72426871350009FA3E8 /* MountainInfoHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoHistoryView.swift; sourceTree = "<group>"; };
 		CE880A11268888720034B0A5 /* MountainNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainNameView.swift; sourceTree = "<group>"; };
 		CE880A1626994A6C0034B0A5 /* AddHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoryViewController.swift; sourceTree = "<group>"; };
+		CE880A1826994CAD0034B0A5 /* AddHistoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoryButton.swift; sourceTree = "<group>"; };
 		CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoBaseView.swift; sourceTree = "<group>"; };
 		FE480AC32695DC71000A5D20 /* DBInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBInterface.swift; sourceTree = "<group>"; };
 		FE480AC42695DC71000A5D20 /* RegionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionInfo.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */,
 				CE0E192E266B9248003916E3 /* MyListHeaderView.swift */,
 				CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */,
+				CE880A1826994CAD0034B0A5 /* AddHistoryButton.swift */,
 			);
 			path = MyList;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE880A1926994CAD0034B0A5 /* AddHistoryButton.swift in Sources */,
 				CE0E191426626434003916E3 /* HomeViewController.swift in Sources */,
 				FE480AD82695DC9B000A5D20 /* Date+Extension.swift in Sources */,
 				CE0E1928266B3D49003916E3 /* MyListViewController.swift in Sources */,

@@ -34,11 +34,14 @@ class MyListViewController: UIViewController {
         return collectionView
     }()
 
+    let addHistoryButton = AddHistoryButton()
+
     override func loadView() {
         super.loadView()
 
         setupHeaderView()
         setupCollectionView()
+        setupAddHistoryButton()
         view.backgroundColor = UIColor(hex: "CFCFCF")
     }
 
@@ -75,6 +78,12 @@ class MyListViewController: UIViewController {
 
         collectionView.dataSource = self
         collectionView.delegate = self
+    }
+
+    private func setupAddHistoryButton() {
+        view.addSubview(addHistoryButton)
+        addHistoryButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        addHistoryButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18).isActive = true
     }
 
     private func selectItem(at index: Int) {
