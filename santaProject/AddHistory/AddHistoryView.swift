@@ -18,6 +18,12 @@ class AddHistoryView: UIView {
 
     let imageView = UIImageView(image: UIImage(named: "santaAddHistoryImage"))
     let titleLabel = UILabel()
+
+    let mountainNameTitleLabel = UILabel()
+    let selectMountainButton = UIButton()
+    let mountainNameLine = UIView()
+    let mountainNameLabel = UILabel()
+
     let doneButton = UIButton()
     let cancelButton = UIButton()
 
@@ -27,6 +33,7 @@ class AddHistoryView: UIView {
 
         setupImageView()
         setupTitleLabel()
+        setupMountainName()
         setupDoneButton()
         setupCancelButton()
     }
@@ -63,6 +70,37 @@ class AddHistoryView: UIView {
         attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: range)
         titleLabel.attributedText = attrString
         titleLabel.sizeToFit()
+    }
+
+    private func setupMountainName() {
+        setupTitleLabel()
+        setupSelectMountainButton()
+        setupMountainNameLine()
+        setupMountainNameLabel()
+
+        func setupTitleLabel() {
+            let label = mountainNameTitleLabel
+            addSubview(label)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 40).isActive = true
+            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.sideMargin).isActive = true
+            label.font = .systemFont(ofSize: 20, weight: .init(rawValue: 400))
+            label.textColor = .stCoolGray70
+
+            let attrString = NSMutableAttributedString(string: "다녀온 산")
+            let range = NSRange(location: 0, length: attrString.length)
+            attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
+            label.attributedText = attrString
+        }
+
+        func setupSelectMountainButton() {
+        }
+
+        func setupMountainNameLine() {
+        }
+
+        func setupMountainNameLabel() {
+        }
     }
 
     private func setupDoneButton() {
@@ -124,6 +162,8 @@ extension AddHistoryView {
     private enum Layout {
         static let topMargin: CGFloat = 58
         static let bottomMargin: CGFloat = 40
+        static let sideMargin: CGFloat = 32
+
         static let letterSpacing: CGFloat = -0.04
 
         enum Title {
