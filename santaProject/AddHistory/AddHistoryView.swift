@@ -59,7 +59,7 @@ class AddHistoryView: UIView {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = Layout.Title.lineSpacing
 
-        attrString.addAttribute(.kern, value: Layout.Title.letterSpacing, range: range)
+        attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
         attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: range)
         titleLabel.attributedText = attrString
         titleLabel.sizeToFit()
@@ -82,7 +82,7 @@ class AddHistoryView: UIView {
         label.textColor = .stCoolGray00
         let attrString = NSMutableAttributedString(string: "완료")
         let range = NSRange(location: 0, length: attrString.length)
-        attrString.addAttribute(.kern, value: Layout.LowerButton.letterSpacing, range: range)
+        attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
         doneButton.setAttributedTitle(attrString, for: .normal)
     }
 
@@ -103,7 +103,7 @@ class AddHistoryView: UIView {
         label.textColor = .stCoolGray70
         let attrString = NSMutableAttributedString(string: "취소")
         let range = NSRange(location: 0, length: attrString.length)
-        attrString.addAttribute(.kern, value: Layout.LowerButton.letterSpacing, range: range)
+        attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
         cancelButton.setAttributedTitle(attrString, for: .normal)
     }
 
@@ -124,13 +124,13 @@ extension AddHistoryView {
     private enum Layout {
         static let topMargin: CGFloat = 58
         static let bottomMargin: CGFloat = 40
+        static let letterSpacing: CGFloat = -0.04
 
         enum Title {
             static let leadingMargin: CGFloat = 24
             static let topMargin: CGFloat = 36
             static let fontSize: CGFloat = 32
             static let lineSpacing: CGFloat = fontSize * 0.4
-            static let letterSpacing: CGFloat = -0.04
             static let weight = UIFont.Weight(700)
         }
 
@@ -140,7 +140,6 @@ extension AddHistoryView {
             static let height: CGFloat = 48
             static let cornerRadius: CGFloat = 12
             static let fontSize: CGFloat = 16
-            static let letterSpacing: CGFloat = -0.04
             static let weight = UIFont.Weight(700)
         }
 
