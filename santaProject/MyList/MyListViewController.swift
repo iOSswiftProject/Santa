@@ -104,6 +104,7 @@ class MyListViewController: UIViewController {
     @objc
     private func didTapAddHistoryButton(_ sender: UIButton) {
         let viewController = AddHistoryViewController()
+        viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: true)
     }
 }
