@@ -19,7 +19,7 @@ class AddHistoryButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: Layout.width).isActive = true
         heightAnchor.constraint(equalToConstant: Layout.height).isActive = true
-        backgroundColor = UIColor(hex: "007F36")
+        backgroundColor = .stGreen50
         layer.cornerRadius = Layout.cornerRadius
 
         setupPlusIcon()
