@@ -84,6 +84,7 @@ class MyListViewController: UIViewController {
         view.addSubview(addHistoryButton)
         addHistoryButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
         addHistoryButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18).isActive = true
+        addHistoryButton.addTarget(self, action: #selector(didTapAddHistoryButton(_:)), for: .touchUpInside)
     }
 
     private func selectItem(at index: Int) {
@@ -98,6 +99,12 @@ class MyListViewController: UIViewController {
         default:
             fatalError("cannot be executed")
         }
+    }
+
+    @objc
+    private func didTapAddHistoryButton(_ sender: UIButton) {
+        let viewController = AddHistoryViewController()
+        present(viewController, animated: true)
     }
 }
 
