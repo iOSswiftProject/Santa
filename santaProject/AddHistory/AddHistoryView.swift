@@ -16,6 +16,8 @@ class AddHistoryView: UIView {
 
     weak var delegate: AddHistoryViewDelegate?
 
+    let imageView = UIImageView(image: UIImage(named: "santaAddHistoryImage"))
+    let titleLabel = UILabel()
     let doneButton = UIButton()
     let cancelButton = UIButton()
 
@@ -23,12 +25,44 @@ class AddHistoryView: UIView {
         super.init(frame: frame)
         backgroundColor = .white
 
+        setupImageView()
+        setupTitleLabel()
         setupDoneButton()
         setupCancelButton()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupImageView() {
+        addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Layout.topMargin).isActive = true
+
+        imageView.contentMode = .scaleToFill
+    }
+
+    private func setupTitleLabel() {
+        addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.Title.leadingMargin).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Layout.Title.topMargin).isActive = true
+        titleLabel.numberOfLines = 2
+        titleLabel.font = .systemFont(ofSize: Layout.Title.fontSize, weight: Layout.Title.weight)
+        titleLabel.textColor = .stGreen50
+
+        let attrString = NSMutableAttributedString(string: "어떤 산을\n다녀오셨나요?")
+        let range = NSRange(location: 0, length: attrString.length)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = Layout.Title.lineSpacing
+
+        attrString.addAttribute(.kern, value: Layout.Title.letterSpacing, range: range)
+        attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: range)
+        titleLabel.attributedText = attrString
+        titleLabel.sizeToFit()
     }
 
     private func setupDoneButton() {
@@ -88,8 +122,18 @@ class AddHistoryView: UIView {
 
 extension AddHistoryView {
     private enum Layout {
+        static let topMargin: CGFloat = 58
         static let bottomMargin: CGFloat = 40
         static let sideMargin: CGFloat = 20
+
+        enum Title {
+            static let leadingMargin: CGFloat = 24
+            static let topMargin: CGFloat = 36
+            static let fontSize: CGFloat = 32
+            static let lineSpacing: CGFloat = fontSize * 0.4
+            static let letterSpacing: CGFloat = -0.04
+            static let weight = UIFont.Weight(700)
+        }
 
         enum LowerButton {
             static let width: CGFloat = 163
