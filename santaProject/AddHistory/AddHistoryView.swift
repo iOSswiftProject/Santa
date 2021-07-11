@@ -220,6 +220,7 @@ class AddHistoryView: UIView {
         delegate?.didTapCancelButton()
     }
 
+    // TODO: Get name from user input
     @objc
     private func didTapSelectMountainButton(_ sender: UIButton) {
 //        delegate?.didTapSelectMountainButton()
