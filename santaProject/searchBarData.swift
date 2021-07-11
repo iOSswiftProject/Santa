@@ -8,6 +8,8 @@
 import UIKit
 
 class searchBarData {
-    let items: [String] = ["설악산", "관악산", "아차산", "지리산", "북한산", "북악산","남산"]
+    var searchItems: [String] = []
+    let localItems: [String] = ["설악산","지리산","무등산","아무산","그냥산","앞산","뒷산","그산","오른쪽산"]
     var filterValue: [String] = []
 }
+
