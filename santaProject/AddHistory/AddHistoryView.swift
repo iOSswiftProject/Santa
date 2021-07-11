@@ -26,6 +26,11 @@ class AddHistoryView: UIView {
     let mountainNamePlaceholderView = UIView()
     let mountainNameLabel = UILabel()
 
+    let dateTitleLabel = UILabel()
+    let datePickButton = UIButton()
+    let dateLine = UIView()
+    let datePickPlaceholderView = UIView()
+
     let doneButton = UIButton()
     let cancelButton = UIButton()
 
@@ -36,6 +41,7 @@ class AddHistoryView: UIView {
         setupImageView()
         setupTitleLabel()
         setupMountainName()
+        setupDate()
         setupDoneButton()
         setupCancelButton()
     }
@@ -166,6 +172,85 @@ class AddHistoryView: UIView {
         }
     }
 
+    private func setupDate() {
+        setupTitleLabel()
+        setupDatePickButton()
+        setupDatePickPlaceHolder()
+        setupDateLine()
+
+        func setupTitleLabel() {
+            let label = dateTitleLabel
+            addSubview(label)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.topAnchor.constraint(equalTo: mountainNameLine.bottomAnchor, constant: 48).isActive = true
+            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.sideMargin).isActive = true
+            label.font = .systemFont(ofSize: 20, weight: .init(400))
+            label.textColor = .stCoolGray70
+
+            let attrString = NSMutableAttributedString(string: "다녀온 날짜")
+            let range = NSRange(location: 0, length: attrString.length)
+            attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
+            label.attributedText = attrString
+        }
+
+        func setupDatePickButton() {
+            let button = datePickButton
+            addSubview(button)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.topAnchor.constraint(equalTo: dateTitleLabel.bottomAnchor, constant: 22).isActive = true
+            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.sideMargin).isActive = true
+            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.sideMargin).isActive = true
+            button.heightAnchor.constraint(equalToConstant: 24).isActive = true
+            button.addTarget(self, action: #selector(didTapDatePickButton(_:)), for: .touchUpInside)
+        }
+
+        func setupDatePickPlaceHolder() {
+            let view = datePickPlaceholderView
+            datePickButton.addSubview(view)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.isUserInteractionEnabled = false
+            view.leadingAnchor.constraint(equalTo: datePickButton.leadingAnchor).isActive = true
+            view.topAnchor.constraint(equalTo: datePickButton.topAnchor).isActive = true
+            view.bottomAnchor.constraint(equalTo: datePickButton.bottomAnchor).isActive = true
+
+            let label = UILabel()
+            view.addSubview(label)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            label.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            label.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+
+            label.font = .systemFont(ofSize: 24, weight: .regular)
+            label.textColor = .stCoolGray70
+
+            let attrString = NSMutableAttributedString(string: "2021.06.15")
+            let range = NSRange(location: 0, length: attrString.length)
+            attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
+            label.attributedText = attrString
+            label.sizeToFit()
+
+            // TBD: need remove?
+            let imageView = UIImageView(image: #imageLiteral(resourceName: "santaIconArrow"))
+            view.addSubview(imageView)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 8).isActive = true
+            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        }
+
+        func setupDateLine() {
+            let line = dateLine
+            addSubview(line)
+            line.translatesAutoresizingMaskIntoConstraints = false
+            line.topAnchor.constraint(equalTo: datePickButton.bottomAnchor, constant: 12).isActive = true
+            line.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.sideMargin).isActive = true
+            line.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.sideMargin).isActive = true
+            line.heightAnchor.constraint(equalToConstant: 2).isActive = true
+            line.backgroundColor = .stCoolGray30
+        }
+    }
+
     private func setupDoneButton() {
         addSubview(doneButton)
         doneButton.translatesAutoresizingMaskIntoConstraints = false
@@ -235,6 +320,10 @@ class AddHistoryView: UIView {
             clearMountainNameLabel()
             mountainNameLine.backgroundColor = .stCoolGray30
         }
+    }
+
+    @objc
+    private func didTapDatePickButton(_ sender: UIButton) {
     }
 
     private func updateMountainNameLabel(name: String, peak: String) {
