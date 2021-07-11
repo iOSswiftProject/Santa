@@ -129,6 +129,14 @@ class AddHistoryView: UIView {
         }
 
         func setupMountainNameLine() {
+            let line = mountainNameLine
+            addSubview(line)
+            line.translatesAutoresizingMaskIntoConstraints = false
+            line.topAnchor.constraint(equalTo: selectMountainButton.bottomAnchor, constant: 12).isActive = true
+            line.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.sideMargin).isActive = true
+            line.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.sideMargin).isActive = true
+            line.heightAnchor.constraint(equalToConstant: 2).isActive = true
+            line.backgroundColor = .stCoolGray30
         }
 
         func setupMountainNameLabel() {
