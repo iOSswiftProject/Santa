@@ -23,6 +23,7 @@ class AddHistoryView: UIView {
     let mountainNameTitleLabel = UILabel()
     let selectMountainButton = UIButton()
     let mountainNameLine = UIView()
+    let mountainNamePlaceholderView = UIView()
     let mountainNameLabel = UILabel()
 
     let doneButton = UIButton()
@@ -76,6 +77,7 @@ class AddHistoryView: UIView {
     private func setupMountainName() {
         setupTitleLabel()
         setupSelectMountainButton()
+        setupMountainNamePlaceHolder()
         setupMountainNameLine()
         setupMountainNameLabel()
 
@@ -100,15 +102,26 @@ class AddHistoryView: UIView {
             button.translatesAutoresizingMaskIntoConstraints = false
             button.topAnchor.constraint(equalTo: mountainNameTitleLabel.bottomAnchor, constant: 22).isActive = true
             button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.sideMargin).isActive = true
+            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.sideMargin).isActive = true
             button.heightAnchor.constraint(equalToConstant: 24).isActive = true
             button.addTarget(self, action: #selector(didTapSelectMountainButton(_:)), for: .touchUpInside)
+        }
+
+        func setupMountainNamePlaceHolder() {
+            let view = mountainNamePlaceholderView
+            selectMountainButton.addSubview(view)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.isUserInteractionEnabled = false
+            view.leadingAnchor.constraint(equalTo: selectMountainButton.leadingAnchor).isActive = true
+            view.topAnchor.constraint(equalTo: selectMountainButton.topAnchor).isActive = true
+            view.bottomAnchor.constraint(equalTo: selectMountainButton.bottomAnchor).isActive = true
 
             let label = UILabel()
-            button.addSubview(label)
+            view.addSubview(label)
             label.translatesAutoresizingMaskIntoConstraints = false
-            label.leadingAnchor.constraint(equalTo: button.leadingAnchor).isActive = true
-            label.topAnchor.constraint(equalTo: button.topAnchor).isActive = true
-            label.bottomAnchor.constraint(equalTo: button.bottomAnchor).isActive = true
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            label.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            label.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 
             label.font = .systemFont(ofSize: 24, weight: .init(400))
             label.textColor = .stCoolGray70
@@ -120,12 +133,12 @@ class AddHistoryView: UIView {
             label.sizeToFit()
 
             let imageView = UIImageView(image: #imageLiteral(resourceName: "santaIconArrow"))
-            button.addSubview(imageView)
+            view.addSubview(imageView)
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 8).isActive = true
-            imageView.trailingAnchor.constraint(equalTo: button.trailingAnchor).isActive = true
-            imageView.topAnchor.constraint(equalTo: button.topAnchor).isActive = true
-            imageView.bottomAnchor.constraint(equalTo: button.bottomAnchor).isActive = true
+            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         }
 
         func setupMountainNameLine() {
