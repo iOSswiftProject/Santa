@@ -38,4 +38,9 @@ extension AddHistoryViewController: AddHistoryViewDelegate {
         print("didTapCancelButton()")
         dismiss(animated: true, completion: nil)
     }
+
+    func didTapSelectMountainButton() {
+        print("didTapSelectMountainButton()")
+        // present select mountain
+    }
 }

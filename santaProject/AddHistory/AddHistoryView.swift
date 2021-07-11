@@ -10,6 +10,7 @@ import UIKit
 protocol AddHistoryViewDelegate: AnyObject {
     func didTapDoneButton()
     func didTapCancelButton()
+    func didTapSelectMountainButton()
 }
 
 class AddHistoryView: UIView {
@@ -84,7 +85,7 @@ class AddHistoryView: UIView {
             label.translatesAutoresizingMaskIntoConstraints = false
             label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 40).isActive = true
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.sideMargin).isActive = true
-            label.font = .systemFont(ofSize: 20, weight: .init(rawValue: 400))
+            label.font = .systemFont(ofSize: 20, weight: .init(400))
             label.textColor = .stCoolGray70
 
             let attrString = NSMutableAttributedString(string: "다녀온 산")
@@ -94,6 +95,37 @@ class AddHistoryView: UIView {
         }
 
         func setupSelectMountainButton() {
+            let button = selectMountainButton
+            addSubview(button)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.topAnchor.constraint(equalTo: mountainNameTitleLabel.bottomAnchor, constant: 22).isActive = true
+            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.sideMargin).isActive = true
+            button.heightAnchor.constraint(equalToConstant: 24).isActive = true
+            button.addTarget(self, action: #selector(didTapSelectMountainButton(_:)), for: .touchUpInside)
+
+            let label = UILabel()
+            button.addSubview(label)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.leadingAnchor.constraint(equalTo: button.leadingAnchor).isActive = true
+            label.topAnchor.constraint(equalTo: button.topAnchor).isActive = true
+            label.bottomAnchor.constraint(equalTo: button.bottomAnchor).isActive = true
+
+            label.font = .systemFont(ofSize: 24, weight: .init(400))
+            label.textColor = .stCoolGray70
+
+            let attrString = NSMutableAttributedString(string: "산 검색하기")
+            let range = NSRange(location: 0, length: attrString.length)
+            attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
+            label.attributedText = attrString
+            label.sizeToFit()
+
+            let imageView = UIImageView(image: #imageLiteral(resourceName: "santaIconArrow"))
+            button.addSubview(imageView)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 8).isActive = true
+            imageView.trailingAnchor.constraint(equalTo: button.trailingAnchor).isActive = true
+            imageView.topAnchor.constraint(equalTo: button.topAnchor).isActive = true
+            imageView.bottomAnchor.constraint(equalTo: button.bottomAnchor).isActive = true
         }
 
         func setupMountainNameLine() {
@@ -155,6 +187,11 @@ class AddHistoryView: UIView {
     @objc
     private func didTapCancelButton(_ sender: UIButton) {
         delegate?.didTapCancelButton()
+    }
+
+    @objc
+    private func didTapSelectMountainButton(_ sender: UIButton) {
+        delegate?.didTapSelectMountainButton()
     }
 }
 
