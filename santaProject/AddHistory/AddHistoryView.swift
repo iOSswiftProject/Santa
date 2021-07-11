@@ -153,6 +153,16 @@ class AddHistoryView: UIView {
         }
 
         func setupMountainNameLabel() {
+            let label = mountainNameLabel
+            selectMountainButton.addSubview(label)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.isUserInteractionEnabled = false
+            label.leadingAnchor.constraint(equalTo: selectMountainButton.leadingAnchor).isActive = true
+            label.topAnchor.constraint(equalTo: selectMountainButton.topAnchor).isActive = true
+            label.bottomAnchor.constraint(equalTo: selectMountainButton.bottomAnchor).isActive = true
+
+            label.font = .systemFont(ofSize: 24)
+            label.textColor = .stGreen40
         }
     }
 
@@ -212,7 +222,35 @@ class AddHistoryView: UIView {
 
     @objc
     private func didTapSelectMountainButton(_ sender: UIButton) {
-        delegate?.didTapSelectMountainButton()
+//        delegate?.didTapSelectMountainButton()
+
+        // testcode
+        mountainNamePlaceholderView.isHidden = !mountainNamePlaceholderView.isHidden
+        if mountainNamePlaceholderView.isHidden {
+            updateMountainNameLabel(name: "관악산", peak: "땡땡봉")
+            mountainNameLine.backgroundColor = .stGreen40
+        }
+        else {
+            clearMountainNameLabel()
+            mountainNameLine.backgroundColor = .stCoolGray30
+        }
+    }
+
+    private func updateMountainNameLabel(name: String, peak: String) {
+        let str = "\(name) \(peak)"
+        let nsStr = str as NSString
+        let attrString = NSMutableAttributedString(string: str)
+        let range = NSRange(location: 0, length: attrString.length)
+        let nameRange = nsStr.range(of: name)
+        let peakRange = nsStr.range(of: peak)
+        attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
+        attrString.addAttribute(.font, value: UIFont.systemFont(ofSize: 24, weight: .bold), range: nameRange)
+        attrString.addAttribute(.font, value: UIFont.systemFont(ofSize: 24, weight: .semibold), range: peakRange)
+        mountainNameLabel.attributedText = attrString
+    }
+
+    private func clearMountainNameLabel() {
+        mountainNameLabel.attributedText = nil
     }
 }
 
