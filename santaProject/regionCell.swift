@@ -11,17 +11,7 @@ class regionCell: UICollectionViewCell {
     var Tul: UILabel!
     var Img: UIImageView!
     
-    override var isSelected: Bool {
-                willSet(newValue) {
-                    let newColor = isSelected ? UIColor.clear : UIColor.green
-                    UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-                        self.backgroundColor = newColor
-                    }, completion: { _ in
-                        // here the animation is done - nothing to do here probably
-                    })
-                }
-    }
-    
+  
     override init(frame: CGRect) {
         super.init(frame: frame)
         makeImage()

@@ -24,7 +24,6 @@ class regionViewController: UIViewController {
         layout.itemSize = CGSize(width: twoPicture - 50 , height: 200)
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionView.backgroundColor = .white
-    
         self.view.addSubview(collectionView)
             
         collectionView.register(regionCell.classForCoder(), forCellWithReuseIdentifier: "cell")
@@ -45,7 +44,6 @@ extension regionViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         cell.Tul.text = self.Data.item[indexPath.row]
-        cell.Img.image = UIImage(named: "yomi")
         return cell
     }
 }
