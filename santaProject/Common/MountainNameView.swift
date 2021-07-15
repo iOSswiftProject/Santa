@@ -44,7 +44,7 @@ class MountainNameView: UIView {
         regionTagView.heightAnchor.constraint(equalToConstant: Layout.RegionTag.height).isActive = true
     }
 
-    private func updateMountainNameLabelAttributedText(mountainName: String, peakName: String?) {
+    func updateMountainNameLabelAttributedText(mountainName: String, peakName: String?) {
         let text = mountainName + " " + (peakName ?? "")
         let textAsNSString = text as NSString
         let attributedString = NSMutableAttributedString(string: text)
@@ -57,7 +57,7 @@ class MountainNameView: UIView {
         mountainNameLabel.attributedText = attributedString
     }
 
-    private func updateRegionTag(regionName: String, color: UIColor) {
+    func updateRegionTag(regionName: String, color: UIColor) {
         regionTagView.applyRegionName(regionName, color: color)
     }
 }

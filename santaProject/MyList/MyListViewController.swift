@@ -8,10 +8,9 @@
 import UIKit
 
 class MyListViewController: UIViewController {
-
-    let models: [String] = [
-        "History",
-        "Favorite"
+    let viewModels: [MyListTableViewModel] = [
+        MyListHistoryTableViewModel(),
+        MyListFavoriteTableViewModel(),
     ]
 
     private var selectedIndex: Int = 0 {
@@ -118,13 +117,13 @@ extension MyListViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        models.count
+        viewModels.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyListCollectionViewCell.identifier, for: indexPath)
         guard  let listCollectionViewCell = cell as? MyListCollectionViewCell else { return UICollectionViewCell() }
-        listCollectionViewCell.applyModel(models[indexPath.item])
+        listCollectionViewCell.applyViewModel(viewModels[indexPath.item])
         return cell
     }
 }

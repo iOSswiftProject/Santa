@@ -90,11 +90,11 @@ class MountainInfoBaseView: UIView {
 }
 
 extension MountainInfoBaseView {
-    private func updateSubRegion(subregionName: String) {
+    func updateSubRegion(subregionName: String) {
         subRegionLabel.text = subregionName
     }
 
-    private func updateHeight(_ height: Double) {
+    func updateHeight(_ height: Double) {
         let heightText = "높이 \(Int(height))m"
         heightLabel.text = heightText
     }

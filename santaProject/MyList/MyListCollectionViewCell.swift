@@ -10,7 +10,7 @@ import UIKit
 class MyListCollectionViewCell: UICollectionViewCell {
     static let identifier = "MyListCollectionViewCell"
 
-    private var model: String = ""
+    private var viewModel: MyListTableViewModel?
 
     private let tableView = UITableView(frame: .zero, style: .plain)
 
@@ -45,15 +45,15 @@ class MyListCollectionViewCell: UICollectionViewCell {
     }
 
     // TODO: apply real model
-    func applyModel(_ model: String) {
-        self.model = model
+    func applyViewModel(_ model: MyListTableViewModel) {
+        self.viewModel = model
         tableView.reloadData()
     }
 }
 
 extension MyListCollectionViewCell: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        viewModel?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,14 +61,18 @@ extension MyListCollectionViewCell: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch model {
-        case "History":
+        switch viewModel {
+        case is MyListHistoryTableViewModel:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewHistoryCell.identifier),
-                  let listCell = cell as? MyListTableViewHistoryCell else { return UITableViewCell() }
+                  let listCell = cell as? MyListTableViewHistoryCell,
+                  let cellModel = viewModel?.cellModel(for: indexPath) as? MyListTableViewHistoryCellModel else { return UITableViewCell() }
+            cellModel.configure(listCell)
             return listCell
-        case "Favorite":
+        case is MyListFavoriteTableViewModel:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewBookmarkCell.identifier),
-                  let listCell = cell as? MyListTableViewBookmarkCell else { return UITableViewCell() }
+                  let listCell = cell as? MyListTableViewBookmarkCell,
+                  let cellModel = viewModel?.cellModel(for: indexPath) as? MyListTableViewBookmarkCellModel else { return UITableViewCell() }
+            cellModel.configure(listCell)
             return listCell
         default:
             return UITableViewCell()

@@ -9,8 +9,8 @@ import UIKit
 
 class MountainInfoHistoryView: MountainInfoBaseView {
 
-    private let moreButton = UIButton()
-    private let timestampView = VisitedFlagView.flaggedView()
+    let moreButton = UIButton()
+    let timestampView = VisitedFlagView.flaggedView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
