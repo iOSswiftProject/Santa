@@ -9,6 +9,10 @@ import UIKit
 
 class AddHistoryViewController: UIViewController {
 
+    var addHistoryView: AddHistoryView {
+        view as! AddHistoryView
+    }
+
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -42,5 +46,12 @@ extension AddHistoryViewController: AddHistoryViewDelegate {
     func didTapSelectMountainButton() {
         print("didTapSelectMountainButton()")
         // present select mountain
+    }
+
+    func didTapDatePickButton(completion: ((Date?) -> ())?) {
+        let vc = DatePickerViewController()
+        vc.pickerCompletion = completion
+        vc.modalPresentationStyle = .formSheet
+        present(vc, animated: true, completion: nil)
     }
 }
