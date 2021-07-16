@@ -13,6 +13,9 @@ class AddHistoryViewController: UIViewController {
         view as! AddHistoryView
     }
 
+    var pickedMountain: Mountain?
+    var pickedDate: Date?
+
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -44,14 +47,27 @@ extension AddHistoryViewController: AddHistoryViewDelegate {
     }
 
     func didTapSelectMountainButton() {
-        print("didTapSelectMountainButton()")
-        // present select mountain
+        let vc = MountainPickerViewController()
+        vc.delegate = self
+        present(vc, animated: true, completion: nil)
     }
 
-    func didTapDatePickButton(completion: ((Date?) -> ())?) {
+    func didTapDatePickButton() {
         let vc = DatePickerViewController()
-        vc.pickerCompletion = completion
+        vc.delegate = self
         vc.modalPresentationStyle = .formSheet
         present(vc, animated: true, completion: nil)
+    }
+}
+
+extension AddHistoryViewController: MountainPickerViewControllerDelegate, DatePickerViewControllerDelegate {
+    func mountainPickerViewController(_ controller: MountainPickerViewController, didFinishPicking mountain: Mountain?) {
+        pickedMountain = mountain
+        addHistoryView.updateMountainNameLabel(with: mountain)
+    }
+
+    func datePickerViewController(_ controller: DatePickerViewController, didFinishPicking date: Date?) {
+        pickedDate = date
+        addHistoryView.updateDateLabel(with: date)
     }
 }

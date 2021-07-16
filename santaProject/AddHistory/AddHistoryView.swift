@@ -11,7 +11,7 @@ protocol AddHistoryViewDelegate: AnyObject {
     func didTapDoneButton()
     func didTapCancelButton()
     func didTapSelectMountainButton()
-    func didTapDatePickButton(completion: ((Date?)->())?)
+    func didTapDatePickButton()
 }
 
 class AddHistoryView: UIView {
@@ -320,31 +320,22 @@ class AddHistoryView: UIView {
         delegate?.didTapCancelButton()
     }
 
-    // TODO: Get name from user input
     @objc
     private func didTapSelectMountainButton(_ sender: UIButton) {
-//        delegate?.didTapSelectMountainButton()
-
-        // testcode
-        mountainNamePlaceholderView.isHidden = !mountainNamePlaceholderView.isHidden
-        if mountainNamePlaceholderView.isHidden {
-            updateMountainNameLabel(name: "관악산", peak: "땡땡봉")
-            mountainNameLine.backgroundColor = .stGreen40
-        }
-        else {
-            clearMountainNameLabel()
-            mountainNameLine.backgroundColor = .stCoolGray30
-        }
+        delegate?.didTapSelectMountainButton()
     }
 
     @objc
     private func didTapDatePickButton(_ sender: UIButton) {
-        delegate?.didTapDatePickButton() { [weak self] date in
-            self?.updateDateLabel(with: date)
-        }
+        delegate?.didTapDatePickButton()
     }
 
-    private func updateMountainNameLabel(name: String, peak: String) {
+    func updateMountainNameLabel(with mountain: Mountain?) {
+        guard let mountain = mountain, let name = mountain.name else { return }
+        mountainNamePlaceholderView.isHidden = true
+        mountainNameLine.backgroundColor = .stGreen40
+        let peak = mountain.peak ?? ""
+
         let str = "\(name) \(peak)"
         let nsStr = str as NSString
         let attrString = NSMutableAttributedString(string: str)
@@ -357,11 +348,7 @@ class AddHistoryView: UIView {
         mountainNameLabel.attributedText = attrString
     }
 
-    private func clearMountainNameLabel() {
-        mountainNameLabel.attributedText = nil
-    }
-
-    private func updateDateLabel(with date: Date?) {
+    func updateDateLabel(with date: Date?) {
         guard let date = date else { return }
         datePickPlaceholderView.isHidden = true
         dateLine.backgroundColor = .stGreen40

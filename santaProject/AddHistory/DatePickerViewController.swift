@@ -17,8 +17,6 @@ class DatePickerViewController: UIViewController {
 
     let datePickerView = DatePickerView()
 
-    var pickerCompletion: ((Date?)->())?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
@@ -49,10 +47,8 @@ class DatePickerViewController: UIViewController {
     }
 
     private func close(with date: Date? = nil) {
-        dismiss(animated: true) { [weak self] in
-            guard let self = self else { return }
-            self.pickerCompletion?(date)
-        }
+        delegate?.datePickerViewController(self, didFinishPicking: date)
+        dismiss(animated: true, completion: nil)
     }
 }
 
