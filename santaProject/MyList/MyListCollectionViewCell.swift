@@ -110,18 +110,8 @@ extension MyListCollectionViewCell: UITableViewDataSource {
         Layout.cellHeight
     }
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard section == 0 else { return 0 }
-        return Layout.topSpacing
-    }
-
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         Layout.cellSpacing
-    }
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard section == 0 else { return nil }
-        return tableView.dequeueReusableHeaderFooterView(withIdentifier: MyListTableViewHeaderFooterView.identifier)
     }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
