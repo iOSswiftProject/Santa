@@ -33,14 +33,11 @@ class MyListViewController: UIViewController {
         return collectionView
     }()
 
-    let addHistoryButton = AddHistoryButton()
-
     override func loadView() {
         super.loadView()
 
         setupHeaderView()
         setupCollectionView()
-        setupAddHistoryButton()
         view.backgroundColor = UIColor(hex: "CFCFCF")
     }
 
@@ -79,13 +76,6 @@ class MyListViewController: UIViewController {
         collectionView.delegate = self
     }
 
-    private func setupAddHistoryButton() {
-        view.addSubview(addHistoryButton)
-        addHistoryButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-        addHistoryButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18).isActive = true
-        addHistoryButton.addTarget(self, action: #selector(didTapAddHistoryButton(_:)), for: .touchUpInside)
-    }
-
     private func selectItem(at index: Int) {
         let indexPath = IndexPath(row: index, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
@@ -99,9 +89,10 @@ class MyListViewController: UIViewController {
             fatalError("cannot be executed")
         }
     }
+}
 
-    @objc
-    private func didTapAddHistoryButton(_ sender: UIButton) {
+extension MyListViewController: MyListCollectionViewCellDelegate {
+    func didTapAddHistoryButton() {
         let viewController = AddHistoryViewController()
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: true)
@@ -123,6 +114,7 @@ extension MyListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyListCollectionViewCell.identifier, for: indexPath)
         guard  let listCollectionViewCell = cell as? MyListCollectionViewCell else { return UICollectionViewCell() }
+        listCollectionViewCell.delegate = self
         listCollectionViewCell.applyViewModel(viewModels[indexPath.item])
         return cell
     }

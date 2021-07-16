@@ -7,17 +7,26 @@
 
 import UIKit
 
+protocol MyListCollectionViewCellDelegate: AnyObject {
+    func didTapAddHistoryButton()
+}
+
 class MyListCollectionViewCell: UICollectionViewCell {
     static let identifier = "MyListCollectionViewCell"
+
+    weak var delegate: MyListCollectionViewCellDelegate?
 
     private var viewModel: MyListTableViewModel?
 
     private let tableView = UITableView(frame: .zero, style: .plain)
 
+    let addHistoryButton = AddHistoryButton()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
         setupTableView()
+        setupAddHistoryButton()
     }
 
     required init?(coder: NSCoder) {
@@ -44,10 +53,28 @@ class MyListCollectionViewCell: UICollectionViewCell {
         tableView.delegate = self
     }
 
-    // TODO: apply real model
+    private func setupAddHistoryButton() {
+        addSubview(addHistoryButton)
+        addHistoryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        addHistoryButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -18).isActive = true
+        addHistoryButton.addTarget(self, action: #selector(didTapAddHistoryButton(_:)), for: .touchUpInside)
+        addHistoryButton.isHidden = true
+    }
+
     func applyViewModel(_ model: MyListTableViewModel) {
         self.viewModel = model
+        switch viewModel {
+        case is MyListHistoryTableViewModel:
+            addHistoryButton.isHidden = false
+        default:
+            addHistoryButton.isHidden = true
+        }
         tableView.reloadData()
+    }
+
+    @objc
+    private func didTapAddHistoryButton(_ sender: UIButton) {
+        delegate?.didTapAddHistoryButton()
     }
 }
 
