@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol AddHistoryViewControllerDelegate: AnyObject {
+    func historyViewController(_ controller: AddHistoryViewController, addedHistoryWith mountain: Mountain, date: Date)
+}
+
 class AddHistoryViewController: UIViewController {
+
+    weak var delegate: AddHistoryViewControllerDelegate?
 
     var addHistoryView: AddHistoryView {
         view as! AddHistoryView
@@ -36,13 +42,32 @@ class AddHistoryViewController: UIViewController {
 }
 
 extension AddHistoryViewController: AddHistoryViewDelegate {
+    private func showToastMessage() {
+        let message: String
+        switch (pickedMountain, pickedDate) {
+        case (nil, nil):
+            message = "다녀온 산, 날짜를 선택해주세요"
+        case (_, nil):
+            message = "다녀온 날짜를 선택해주세요"
+        case (nil, _):
+            message = "다녀온 산을 선택해주세요"
+        default:
+            fatalError("cannot be excecuted")
+        }
+        // TODO: show toast
+        print("showToast: \(message)")
+    }
+
     func didTapDoneButton() {
-        print("didTapDoneButton()")
+        guard let mountain = pickedMountain, let date = pickedDate else {
+            showToastMessage()
+            return
+        }
+        delegate?.historyViewController(self, addedHistoryWith: mountain, date: date)
         dismiss(animated: true, completion: nil)
     }
 
     func didTapCancelButton() {
-        print("didTapCancelButton()")
         dismiss(animated: true, completion: nil)
     }
 
