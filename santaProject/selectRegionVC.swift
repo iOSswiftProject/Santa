@@ -136,7 +136,11 @@ extension selectRegionVC: UITableViewDataSource {
 
 extension selectRegionVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
+       // let cell = collectionView.cellForItem(at: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? regionCell else {
+            NSLog("collectionView cell의 인식자 error ")
+            return
+        }
         if indexPath.row == 0 {
             UserDefaults.standard.setValue(1, forKey: "region")
         } else if indexPath.row == 1 {
@@ -146,9 +150,10 @@ extension selectRegionVC: UICollectionViewDelegate {
         } else {
             UserDefaults.standard.setValue(4, forKey: "region")
         }
+        
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-
-        cell?.contentView.layer.cornerRadius = 10
+        
+        cell.contentView.layer.cornerRadius = 10
         tableView.reloadData()
     }
 
@@ -164,6 +169,7 @@ extension selectRegionVC: UICollectionViewDataSource {
             NSLog("cell의 식별자 에러")
             return UICollectionViewCell()
         }
+    
         cell.Tul.text = self.Data.item[indexPath.row]
         return cell
     }

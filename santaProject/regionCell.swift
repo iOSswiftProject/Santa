@@ -11,12 +11,27 @@ class regionCell: UICollectionViewCell {
     var Tul: UILabel!
     var Img: UIImageView!
     
+    
+    override var isSelected: Bool {
+           didSet{
+               if isSelected {
+                self.contentView.backgroundColor = UIColor.setColor(_names: .searchFontGreen)
+                self.Tul.textColor = .white
+               }
+               else {
+                self.contentView.backgroundColor = UIColor.setColor(_names: .searchUnselectback)
+                self.Tul.textColor = UIColor.setColor(_names: .searchUnselectFont)
+               }
+           }
+       }
   
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.contentView.layer.borderWidth = 0.5
+        self.contentView.layer.cornerRadius = 10
+        self.contentView.backgroundColor = UIColor.setColor(_names: .searchUnselectback)
         makeImage()
         makeLabel()
-
     }
 
     required init?(coder aDecorder: NSCoder) {
@@ -27,8 +42,8 @@ class regionCell: UICollectionViewCell {
         Tul = UILabel()
         contentView.addSubview(Tul)
         
+        Tul.textColor = UIColor.setColor(_names: .searchUnselectFont)
         Tul.font = UIFont.boldSystemFont(ofSize: 20)
-        Tul.textColor = .darkGray
         Tul.textAlignment = .center
         Tul.translatesAutoresizingMaskIntoConstraints = false
         
@@ -50,8 +65,6 @@ class regionCell: UICollectionViewCell {
         Img.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
         Img.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         Img.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
-        
-        
     }
-
+    
 }
