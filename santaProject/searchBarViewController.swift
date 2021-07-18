@@ -58,6 +58,7 @@ class searchBarViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = barbuttonItem
     }
+    
     @objc func backToEx(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
         print("custom Button")
@@ -87,7 +88,8 @@ class searchBarViewController: UIViewController {
         
         self.view.addSubview(tableView)
 
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "mountinCell")
+        let nib = UINib(nibName: "searchCell", bundle: nil)
+        self.tableView.register(searchCell.self, forCellReuseIdentifier: "mountinCell")
         /* 테이블 헤더 뷰 커스텀 하기 위한 */
         self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "customHeader")
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -129,30 +131,28 @@ extension searchBarViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "mountinCell")!
-        //07_11 설정을 위해
+        let cell = tableView.dequeueReusableCell(withIdentifier: "mountinCell", for: indexPath) as? searchCell
         
-        cell.contentView.isUserInteractionEnabled = true
         let searchedItems = UserDefaults.standard.array(forKey: "searchArray") as! [String]
 
         if self.isFiltering == false {
-            cell.textLabel?.text = searchedItems[indexPath.row]
+            cell!.mountainLabel.text = searchedItems[indexPath.row]
             
-            let deleteImage = UIImage(named: "delete")
-            let deleteImageView = UIImageView(image: deleteImage)
-            let deleteButton = UIButton(frame: CGRect(x: 0, y: 0, width: deleteImageView.frame.width, height: deleteImageView.frame.height))
+//            let deleteImage = UIImage(named: "delete")
+//            let deleteImageView = UIImageView(image: deleteImage)
+//            let deleteButton = UIButton(frame: CGRect(x: 0, y: 0, width: deleteImageView.frame.width, height: deleteImageView.frame.height))
             
-            deleteButton.addTarget(self, action: #selector(pushDeleteButton(_:)), for: .touchUpInside)
+//            deleteButton.addTarget(self, action: #selector(pushDeleteButton(_:)), for: .touchUpInside)
             
-            cell.accessoryView = deleteImageView
-            deleteImageView.addSubview(deleteButton)
+//            cell.accessoryView = deleteImageView
+//            deleteImageView.addSubview(deleteButton)
           
         } else {
-            cell.textLabel?.text = self.data.filterValue[indexPath.row]
-            cell.accessoryType = .none
+            cell!.mountainLabel.text = self.data.filterValue[indexPath.row]
+            cell!.accessoryImage.isHidden = true
         }
         
-        return cell
+        return cell!
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
