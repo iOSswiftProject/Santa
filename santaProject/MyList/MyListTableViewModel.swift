@@ -109,16 +109,11 @@ class MyListFavoriteTableViewModel: MyListTableViewModel {
     // Need to remove
     private func bookmarkSomeMountainsIfNeeded() {
         guard bookmarks.isEmpty else { return }
-        print("bookmark empty! check 1,3 as favorite")
         let allMountains = DBInterface.shared.selectMountain()
-        var ids: [Int32] = []
-        ids.append(allMountains[1].id ?? -1)
-        ids.append(allMountains[3].id ?? -1)
+        let ids: [Int32] = allMountains.map{ $0.id! }
         ids.forEach {
             DBInterface.shared.updateIsFavorite(mountainId: $0, isFavorite: true)
         }
-
-        DBInterface.shared.updateIsVisit(mountainId: 1, isVisit: true)
 
         loadFavorite()
     }
