@@ -13,6 +13,14 @@ class MyListViewController: UIViewController {
         MyListFavoriteTableViewModel(),
     ]
 
+    var historyTableViewModel: MyListHistoryTableViewModel {
+        viewModels[0] as! MyListHistoryTableViewModel
+    }
+
+    var favoriteTableViewModel: MyListFavoriteTableViewModel {
+        viewModels[1] as! MyListFavoriteTableViewModel
+    }
+
     private var selectedIndex: Int = 0 {
         didSet {
             guard selectedIndex != oldValue else { return }
@@ -94,8 +102,25 @@ class MyListViewController: UIViewController {
 extension MyListViewController: MyListCollectionViewCellDelegate {
     func didTapAddHistoryButton() {
         let viewController = AddHistoryViewController()
+        viewController.delegate = self
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: true)
+    }
+}
+
+extension MyListViewController: AddHistoryViewControllerDelegate {
+    func historyViewController(_ controller: AddHistoryViewController, addedHistoryWith mountain: Mountain, dateString: String) {
+        guard let mountainId = mountain.id else { return }
+
+        DBInterface.shared.insertLOG(mountainId: mountainId, date: dateString)
+
+        // TODO: handle in DB?
+        DBInterface.shared.updateIsVisit(mountainId: mountainId, isVisit: true)
+
+        historyTableViewModel.addHistory(mountain: mountain, date: dateString)
+        favoriteTableViewModel.updateVisited(id: Int(mountainId))
+        collectionView.reloadData()
+
     }
 }
 

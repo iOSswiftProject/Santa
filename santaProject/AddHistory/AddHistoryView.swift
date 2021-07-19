@@ -348,16 +348,10 @@ class AddHistoryView: UIView {
         mountainNameLabel.attributedText = attrString
     }
 
-    func updateDateLabel(with date: Date?) {
-        guard let date = date else { return }
+    func updateDateLabel(with str: String) {
         datePickPlaceholderView.isHidden = true
         dateLine.backgroundColor = .stGreen40
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd"
-        dateFormatter.locale = Locale(identifier:"ko_KR")
-
-        let str = dateFormatter.string(from: date)
+        
         let attrString = NSMutableAttributedString(string: str)
         let range = NSRange(location: 0, length: attrString.length)
         attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)

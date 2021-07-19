@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddHistoryViewControllerDelegate: AnyObject {
-    func historyViewController(_ controller: AddHistoryViewController, addedHistoryWith mountain: Mountain, date: Date)
+    func historyViewController(_ controller: AddHistoryViewController, addedHistoryWith mountain: Mountain, dateString: String)
 }
 
 class AddHistoryViewController: UIViewController {
@@ -20,7 +20,7 @@ class AddHistoryViewController: UIViewController {
     }
 
     var pickedMountain: Mountain?
-    var pickedDate: Date?
+    var pickedDateString: String?
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -44,7 +44,7 @@ class AddHistoryViewController: UIViewController {
 extension AddHistoryViewController: AddHistoryViewDelegate {
     private func showToastMessage() {
         let message: String
-        switch (pickedMountain, pickedDate) {
+        switch (pickedMountain, pickedDateString) {
         case (nil, nil):
             message = "다녀온 산, 날짜를 선택해주세요"
         case (_, nil):
@@ -59,11 +59,11 @@ extension AddHistoryViewController: AddHistoryViewDelegate {
     }
 
     func didTapDoneButton() {
-        guard let mountain = pickedMountain, let date = pickedDate else {
+        guard let mountain = pickedMountain, let dateString = pickedDateString else {
             showToastMessage()
             return
         }
-        delegate?.historyViewController(self, addedHistoryWith: mountain, date: date)
+        delegate?.historyViewController(self, addedHistoryWith: mountain, dateString: dateString)
         dismiss(animated: true, completion: nil)
     }
 
@@ -92,7 +92,13 @@ extension AddHistoryViewController: MountainPickerViewControllerDelegate, DatePi
     }
 
     func datePickerViewController(_ controller: DatePickerViewController, didFinishPicking date: Date?) {
-        pickedDate = date
-        addHistoryView.updateDateLabel(with: date)
+        guard let date = date else { return }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        dateFormatter.locale = Locale(identifier:"ko_KR")
+
+        let dateString = dateFormatter.string(from: date)
+        pickedDateString = dateString
+        addHistoryView.updateDateLabel(with: dateString)
     }
 }

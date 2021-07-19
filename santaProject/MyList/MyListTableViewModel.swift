@@ -23,7 +23,8 @@ class MyListHistoryTableViewModel: MyListTableViewModel {
     }
 
     init() {
-        loadHistory()
+        history = DBInterface.shared.selectMountainLog()
+        sortHistory()
         createCellModels()
     }
 
@@ -32,14 +33,26 @@ class MyListHistoryTableViewModel: MyListTableViewModel {
         return cellModels[indexPath.section]
     }
 
-    private func loadHistory() {
-        var result = DBInterface.shared.selectMountainLog()
-        result = result.sorted(by: {
+    func addHistory(mountain: Mountain, date: String) {
+        mountain.date = date
+        var index: Int = 0
+        for idx in 0..<history.count {
+            if let historyDate = history[idx].date, historyDate < date {
+                index = idx
+                break
+            }
+        }
+        history.insert(mountain, at: index)
+        let cellModel = MyListTableViewHistoryCellModel(with: mountain)
+        cellModels.insert(cellModel, at: index)
+    }
+
+    private func sortHistory() {
+        history = history.sorted(by: {
             let date1 = $0.date ?? "0000.00.00"
             let date2 = $1.date ?? "0000.00.00"
             return date1 > date2
         })
-        history = result
     }
 
     private func createCellModels() {
@@ -68,6 +81,19 @@ class MyListFavoriteTableViewModel: MyListTableViewModel {
     func cellModel(for indexPath: IndexPath) -> MyListTableViewCellModel? {
         guard indexPath.row < count else { return nil }
         return cellModels[indexPath.section]
+    }
+
+    func updateVisited(id: Int) {
+        bookmarks.forEach {
+            if let mountainId = $0.id, mountainId == id {
+                $0.isVisit = true
+            }
+        }
+        cellModels.forEach {
+            if let mountainId = $0.mountain.id, mountainId == id {
+                $0.mountain.isVisit = true
+            }
+        }
     }
 
     private func loadFavorite() {

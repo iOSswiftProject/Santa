@@ -18,7 +18,7 @@ class MyListCollectionViewCell: UICollectionViewCell {
 
     private var viewModel: MyListTableViewModel?
 
-    private let tableView = UITableView(frame: .zero, style: .plain)
+    let tableView = UITableView(frame: .zero, style: .plain)
 
     let addHistoryButton = AddHistoryButton()
 
