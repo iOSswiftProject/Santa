@@ -33,4 +33,14 @@ class MountainView: MKAnnotationView {
         imgView.image = #imageLiteral(resourceName: "SantaBm")
         self.addSubview(imgView)
     }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: false)
+        if selected {
+            image = image?.resizeImage(image: image!, targetSize: CGSize(width: 35, height: 35))
+        } else {
+            image = image?.resizeImage(image: image!, targetSize: CGSize(width: 28, height: 28))
+        
+        }
+    }
 }
