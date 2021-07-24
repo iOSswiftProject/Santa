@@ -226,7 +226,7 @@ class AddHistoryView: UIView {
             label.font = .systemFont(ofSize: 24, weight: .init(400))
             label.textColor = .stCoolGray70
 
-            let attrString = NSMutableAttributedString(string: "날짜 선택")
+            let attrString = NSMutableAttributedString(string: "날짜 선택하기")
             let range = NSRange(location: 0, length: attrString.length)
             attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
             label.attributedText = attrString
