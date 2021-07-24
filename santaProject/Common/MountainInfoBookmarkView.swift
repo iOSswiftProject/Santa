@@ -8,7 +8,7 @@
 import UIKit
 
 class MountainInfoBookmarkView: MountainInfoBaseView {
-    private var isBookmark: Bool = false {
+    var isBookmark: Bool = false {
         didSet {
             let imageName = isBookmark ? "santaBookmarkActive" : "santaBookmarkInactive"
             let image = UIImage(named: imageName)
@@ -16,7 +16,7 @@ class MountainInfoBookmarkView: MountainInfoBaseView {
         }
     }
 
-    private var flagged: Bool = false {
+    var flagged: Bool = false {
         didSet {
             unflaggedView.isHidden = flagged
             flaggedView.isHidden = !flagged
@@ -53,9 +53,7 @@ class MountainInfoBookmarkView: MountainInfoBaseView {
         unflaggedView.translatesAutoresizingMaskIntoConstraints = false
         unflaggedView.trailingAnchor.constraint(equalTo: bookMarkButton.leadingAnchor, constant: -Layout.Flagged.spacing).isActive = true
         unflaggedView.centerYAnchor.constraint(equalTo: bookMarkButton.centerYAnchor).isActive = true
-
-        // TODO: hide on init
-//        unflaggedView.isHidden = true
+        unflaggedView.isHidden = true
     }
 
     private func setupFlaggedView() {
@@ -70,7 +68,8 @@ class MountainInfoBookmarkView: MountainInfoBaseView {
 extension MountainInfoBookmarkView {
     @objc
     private func didTapBookmarkButton(_ sender: UIButton) {
-        isBookmark = !isBookmark
+        // TODO: remove from data
+//        isBookmark = !isBookmark
     }
 }
 

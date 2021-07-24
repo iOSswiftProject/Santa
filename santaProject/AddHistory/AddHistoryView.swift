@@ -11,6 +11,7 @@ protocol AddHistoryViewDelegate: AnyObject {
     func didTapDoneButton()
     func didTapCancelButton()
     func didTapSelectMountainButton()
+    func didTapDatePickButton()
 }
 
 class AddHistoryView: UIView {
@@ -30,6 +31,7 @@ class AddHistoryView: UIView {
     let datePickButton = UIButton()
     let dateLine = UIView()
     let datePickPlaceholderView = UIView()
+    let dateLabel = UILabel()
 
     let doneButton = UIButton()
     let cancelButton = UIButton()
@@ -177,6 +179,7 @@ class AddHistoryView: UIView {
         setupDatePickButton()
         setupDatePickPlaceHolder()
         setupDateLine()
+        setupDateLabel()
 
         func setupTitleLabel() {
             let label = dateTitleLabel
@@ -220,16 +223,15 @@ class AddHistoryView: UIView {
             label.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             label.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 
-            label.font = .systemFont(ofSize: 24, weight: .regular)
+            label.font = .systemFont(ofSize: 24, weight: .init(400))
             label.textColor = .stCoolGray70
 
-            let attrString = NSMutableAttributedString(string: "2021.06.15")
+            let attrString = NSMutableAttributedString(string: "날짜 선택하기")
             let range = NSRange(location: 0, length: attrString.length)
             attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
             label.attributedText = attrString
             label.sizeToFit()
 
-            // TBD: need remove?
             let imageView = UIImageView(image: #imageLiteral(resourceName: "santaIconArrow"))
             view.addSubview(imageView)
             imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -248,6 +250,19 @@ class AddHistoryView: UIView {
             line.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.sideMargin).isActive = true
             line.heightAnchor.constraint(equalToConstant: 2).isActive = true
             line.backgroundColor = .stCoolGray30
+        }
+
+        func setupDateLabel() {
+            let label = dateLabel
+            datePickButton.addSubview(label)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.isUserInteractionEnabled = false
+            label.leadingAnchor.constraint(equalTo: datePickButton.leadingAnchor).isActive = true
+            label.topAnchor.constraint(equalTo: datePickButton.topAnchor).isActive = true
+            label.bottomAnchor.constraint(equalTo: datePickButton.bottomAnchor).isActive = true
+
+            label.font = .systemFont(ofSize: 24, weight: .bold)
+            label.textColor = .stGreen40
         }
     }
 
@@ -305,28 +320,22 @@ class AddHistoryView: UIView {
         delegate?.didTapCancelButton()
     }
 
-    // TODO: Get name from user input
     @objc
     private func didTapSelectMountainButton(_ sender: UIButton) {
-//        delegate?.didTapSelectMountainButton()
-
-        // testcode
-        mountainNamePlaceholderView.isHidden = !mountainNamePlaceholderView.isHidden
-        if mountainNamePlaceholderView.isHidden {
-            updateMountainNameLabel(name: "관악산", peak: "땡땡봉")
-            mountainNameLine.backgroundColor = .stGreen40
-        }
-        else {
-            clearMountainNameLabel()
-            mountainNameLine.backgroundColor = .stCoolGray30
-        }
+        delegate?.didTapSelectMountainButton()
     }
 
     @objc
     private func didTapDatePickButton(_ sender: UIButton) {
+        delegate?.didTapDatePickButton()
     }
 
-    private func updateMountainNameLabel(name: String, peak: String) {
+    func updateMountainNameLabel(with mountain: Mountain?) {
+        guard let mountain = mountain, let name = mountain.name else { return }
+        mountainNamePlaceholderView.isHidden = true
+        mountainNameLine.backgroundColor = .stGreen40
+        let peak = mountain.peak ?? ""
+
         let str = "\(name) \(peak)"
         let nsStr = str as NSString
         let attrString = NSMutableAttributedString(string: str)
@@ -339,8 +348,14 @@ class AddHistoryView: UIView {
         mountainNameLabel.attributedText = attrString
     }
 
-    private func clearMountainNameLabel() {
-        mountainNameLabel.attributedText = nil
+    func updateDateLabel(with str: String) {
+        datePickPlaceholderView.isHidden = true
+        dateLine.backgroundColor = .stGreen40
+        
+        let attrString = NSMutableAttributedString(string: str)
+        let range = NSRange(location: 0, length: attrString.length)
+        attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
+        dateLabel.attributedText = attrString
     }
 }
 

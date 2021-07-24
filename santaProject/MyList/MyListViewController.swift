@@ -8,11 +8,18 @@
 import UIKit
 
 class MyListViewController: UIViewController {
-
-    let models: [String] = [
-        "History",
-        "Favorite"
+    let viewModels: [MyListTableViewModel] = [
+        MyListHistoryTableViewModel(),
+        MyListFavoriteTableViewModel(),
     ]
+
+    var historyTableViewModel: MyListHistoryTableViewModel {
+        viewModels[0] as! MyListHistoryTableViewModel
+    }
+
+    var favoriteTableViewModel: MyListFavoriteTableViewModel {
+        viewModels[1] as! MyListFavoriteTableViewModel
+    }
 
     private var selectedIndex: Int = 0 {
         didSet {
@@ -34,14 +41,11 @@ class MyListViewController: UIViewController {
         return collectionView
     }()
 
-    let addHistoryButton = AddHistoryButton()
-
     override func loadView() {
         super.loadView()
 
         setupHeaderView()
         setupCollectionView()
-        setupAddHistoryButton()
         view.backgroundColor = UIColor(hex: "CFCFCF")
     }
 
@@ -71,20 +75,13 @@ class MyListViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 20).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
 
         collectionView.register(MyListCollectionViewCell.self, forCellWithReuseIdentifier: MyListCollectionViewCell.identifier)
 
         collectionView.dataSource = self
         collectionView.delegate = self
-    }
-
-    private func setupAddHistoryButton() {
-        view.addSubview(addHistoryButton)
-        addHistoryButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-        addHistoryButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18).isActive = true
-        addHistoryButton.addTarget(self, action: #selector(didTapAddHistoryButton(_:)), for: .touchUpInside)
     }
 
     private func selectItem(at index: Int) {
@@ -100,12 +97,30 @@ class MyListViewController: UIViewController {
             fatalError("cannot be executed")
         }
     }
+}
 
-    @objc
-    private func didTapAddHistoryButton(_ sender: UIButton) {
+extension MyListViewController: MyListCollectionViewCellDelegate {
+    func didTapAddHistoryButton() {
         let viewController = AddHistoryViewController()
+        viewController.delegate = self
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: true)
+    }
+}
+
+extension MyListViewController: AddHistoryViewControllerDelegate {
+    func historyViewController(_ controller: AddHistoryViewController, addedHistoryWith mountain: Mountain, dateString: String) {
+        guard let mountainId = mountain.id else { return }
+
+        DBInterface.shared.insertLOG(mountainId: mountainId, date: dateString)
+
+        // TODO: handle in DB?
+        DBInterface.shared.updateIsVisit(mountainId: mountainId, isVisit: true)
+
+        historyTableViewModel.addHistory(mountain: mountain, date: dateString)
+        favoriteTableViewModel.updateVisited(id: Int(mountainId))
+        collectionView.reloadData()
+
     }
 }
 
@@ -118,13 +133,14 @@ extension MyListViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        models.count
+        viewModels.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyListCollectionViewCell.identifier, for: indexPath)
         guard  let listCollectionViewCell = cell as? MyListCollectionViewCell else { return UICollectionViewCell() }
-        listCollectionViewCell.applyModel(models[indexPath.item])
+        listCollectionViewCell.delegate = self
+        listCollectionViewCell.applyViewModel(viewModels[indexPath.item])
         return cell
     }
 }
