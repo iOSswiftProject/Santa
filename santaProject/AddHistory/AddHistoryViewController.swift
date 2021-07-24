@@ -42,25 +42,18 @@ class AddHistoryViewController: UIViewController {
 }
 
 extension AddHistoryViewController: AddHistoryViewDelegate {
-    private func showToastMessage() {
-        let message: String
-        switch (pickedMountain, pickedDateString) {
-        case (nil, nil):
-            message = "다녀온 산, 날짜를 선택해주세요"
-        case (_, nil):
-            message = "다녀온 날짜를 선택해주세요"
-        case (nil, _):
-            message = "다녀온 산을 선택해주세요"
-        default:
-            fatalError("cannot be excecuted")
+    private func showEmptyMessage() {
+        if pickedMountain == nil {
+            addHistoryView.showMountainEmptyMessage()
         }
-        // TODO: show toast
-        print("showToast: \(message)")
+        if pickedDateString == nil {
+            addHistoryView.showDateEmptyMessage()
+        }
     }
 
     func didTapDoneButton() {
         guard let mountain = pickedMountain, let dateString = pickedDateString else {
-            showToastMessage()
+            showEmptyMessage()
             return
         }
         delegate?.historyViewController(self, addedHistoryWith: mountain, dateString: dateString)
@@ -87,7 +80,9 @@ extension AddHistoryViewController: AddHistoryViewDelegate {
 
 extension AddHistoryViewController: MountainPickerViewControllerDelegate, DatePickerViewControllerDelegate {
     func mountainPickerViewController(_ controller: MountainPickerViewController, didFinishPicking mountain: Mountain?) {
+        guard let mountain = mountain else { return }
         pickedMountain = mountain
+        addHistoryView.hideMountainEmptyMessage()
         addHistoryView.updateMountainNameLabel(with: mountain)
     }
 
@@ -99,6 +94,7 @@ extension AddHistoryViewController: MountainPickerViewControllerDelegate, DatePi
 
         let dateString = dateFormatter.string(from: date)
         pickedDateString = dateString
+        addHistoryView.hideDateEmptyMessage()
         addHistoryView.updateDateLabel(with: dateString)
     }
 }
