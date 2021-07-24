@@ -36,6 +36,9 @@ class AddHistoryView: UIView {
     let doneButton = UIButton()
     let cancelButton = UIButton()
 
+    let mountainEmptyMessageView = UIView()
+    let dateEmptyMessageView = UIView()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -180,6 +183,8 @@ class AddHistoryView: UIView {
         setupDatePickPlaceHolder()
         setupDateLine()
         setupDateLabel()
+        setupMountainEmptyMessage()
+        setupDateEmptyMessage()
 
         func setupTitleLabel() {
             let label = dateTitleLabel
@@ -308,6 +313,51 @@ class AddHistoryView: UIView {
         cancelButton.setAttributedTitle(attrString, for: .normal)
     }
 
+    private func addErrorMessageView(in view: UIView, message: String) {
+        let errorIcon = UIImageView(image: #imageLiteral(resourceName: "santaIconError"))
+        view.addSubview(errorIcon)
+        errorIcon.translatesAutoresizingMaskIntoConstraints = false
+        errorIcon.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+
+        let messageLabel = UILabel()
+        view.addSubview(messageLabel)
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.leadingAnchor.constraint(equalTo: errorIcon.trailingAnchor, constant: 4).isActive = true
+
+        messageLabel.font = .systemFont(ofSize: 12, weight: .init(700))
+        messageLabel.textColor = .stOrange40
+
+        let attrString = NSMutableAttributedString(string: message)
+        let range = NSRange(location: 0, length: attrString.length)
+        attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
+        messageLabel.attributedText = attrString
+    }
+
+    private func setupMountainEmptyMessage() {
+        let view = mountainEmptyMessageView
+        addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.sideMargin).isActive = true
+        view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.sideMargin).isActive = true
+        view.topAnchor.constraint(equalTo: mountainNameLine.bottomAnchor, constant: 8).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 12).isActive = true
+
+        addErrorMessageView(in: view, message: "다녀온 산을 선택해 주세요")
+        view.isHidden = true
+    }
+
+    private func setupDateEmptyMessage() {
+        let view = dateEmptyMessageView
+        addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.sideMargin).isActive = true
+        view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.sideMargin).isActive = true
+        view.topAnchor.constraint(equalTo: dateLine.bottomAnchor, constant: 8).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 12).isActive = true
+
+        addErrorMessageView(in: view, message: "다녀온 날짜를 선택해 주세요")
+        view.isHidden = true
+    }
 
 
     @objc
@@ -356,6 +406,26 @@ class AddHistoryView: UIView {
         let range = NSRange(location: 0, length: attrString.length)
         attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
         dateLabel.attributedText = attrString
+    }
+
+    func showMountainEmptyMessage() {
+        mountainEmptyMessageView.isHidden = false
+        mountainNameLine.backgroundColor = .stOrange40
+    }
+
+    func showDateEmptyMessage() {
+        dateEmptyMessageView.isHidden = false
+        dateLine.backgroundColor = .stOrange40
+    }
+
+    func hideMountainEmptyMessage() {
+        mountainEmptyMessageView.isHidden = true
+        mountainNameLine.backgroundColor = .stGreen40
+    }
+
+    func hideDateEmptyMessage() {
+        dateEmptyMessageView.isHidden = true
+        dateLine.backgroundColor = .stGreen40
     }
 }
 
