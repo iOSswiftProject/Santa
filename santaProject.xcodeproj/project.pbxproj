@@ -13,11 +13,16 @@
 		BC48BBB02685A02E0094127C /* extensionFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC48BBAF2685A02E0094127C /* extensionFile.swift */; };
 		BC4E7C622686C640000FF38D /* searchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4E7C612686C640000FF38D /* searchCell.swift */; };
 		BC7A6585265F202900C22E1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7A6584265F202900C22E1C /* AppDelegate.swift */; };
+<<<<<<< HEAD
 		BC7A6587265F202900C22E1C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7A6586265F202900C22E1C /* SceneDelegate.swift */; };
+=======
+		BC7A6589265F202900C22E1C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7A6588265F202900C22E1C /* ViewController.swift */; };
+>>>>>>> main
 		BC7A658C265F202900C22E1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7A658A265F202900C22E1C /* Main.storyboard */; };
 		BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC7A658D265F202900C22E1C /* santaProject.xcdatamodeld */; };
 		BC7A6591265F202900C22E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7A6590265F202900C22E1C /* Assets.xcassets */; };
 		BC7A6594265F202900C22E1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7A6592265F202900C22E1C /* LaunchScreen.storyboard */; };
+<<<<<<< HEAD
 		BC7A659C265F333900C22E1C /* regionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7A659B265F333900C22E1C /* regionViewController.swift */; };
 		BC7A659F265F356700C22E1C /* yomi.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7A659E265F356700C22E1C /* yomi.png */; };
 		BC7A65A1265F36E400C22E1C /* regionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7A65A0265F36E400C22E1C /* regionData.swift */; };
@@ -25,6 +30,38 @@
 		BCB35F1126784E50009D13C0 /* mapkitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB35F1026784E50009D13C0 /* mapkitViewController.swift */; };
 		BCCA1BE82664AE60006D8464 /* searchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA1BE72664AE60006D8464 /* searchBarViewController.swift */; };
 		BCCA1BEA2664C1E0006D8464 /* searchBarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA1BE92664C1E0006D8464 /* searchBarData.swift */; };
+=======
+		CE0E1910266260C1003916E3 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E190F266260C1003916E3 /* RootTabBarController.swift */; };
+		CE0E191426626434003916E3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E191326626434003916E3 /* HomeViewController.swift */; };
+		CE0E1928266B3D49003916E3 /* MyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E1927266B3D49003916E3 /* MyListViewController.swift */; };
+		CE0E192F266B9248003916E3 /* MyListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E192E266B9248003916E3 /* MyListHeaderView.swift */; };
+		CE0E193C266BE103003916E3 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */; };
+		CE0E193F266BF4CE003916E3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */; };
+		CE0E19462675D75C003916E3 /* MyListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */; };
+		CE5DE71F2686DDCE009FA3E8 /* RegionTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */; };
+		CE5DE7212686F7E1009FA3E8 /* MountainInfoBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE7202686F7E1009FA3E8 /* MountainInfoBookmarkView.swift */; };
+		CE5DE72326870ACC009FA3E8 /* VisitedFlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE72226870ACC009FA3E8 /* VisitedFlagView.swift */; };
+		CE5DE72526871350009FA3E8 /* MountainInfoHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DE72426871350009FA3E8 /* MountainInfoHistoryView.swift */; };
+		CE880A12268888720034B0A5 /* MountainNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A11268888720034B0A5 /* MountainNameView.swift */; };
+		CE880A1726994A6C0034B0A5 /* AddHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A1626994A6C0034B0A5 /* AddHistoryViewController.swift */; };
+		CE880A1926994CAD0034B0A5 /* AddHistoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A1826994CAD0034B0A5 /* AddHistoryButton.swift */; };
+		CE880A1B26995EFB0034B0A5 /* AddHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A1A26995EFB0034B0A5 /* AddHistoryView.swift */; };
+		CE880A1D269AD36C0034B0A5 /* MyListTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A1C269AD36C0034B0A5 /* MyListTableViewModel.swift */; };
+		CE880A21269AE37E0034B0A5 /* MyListTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A20269AE37E0034B0A5 /* MyListTableViewCellModel.swift */; };
+		CE880A2326A099C30034B0A5 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A2226A099C30034B0A5 /* DatePickerViewController.swift */; };
+		CE880A2526A0A02B0034B0A5 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A2426A0A02B0034B0A5 /* DatePickerView.swift */; };
+		CE880A2726A1E85E0034B0A5 /* MountainPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A2626A1E85E0034B0A5 /* MountainPickerViewController.swift */; };
+		CE880A2926A1E86B0034B0A5 /* MountainPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A2826A1E86B0034B0A5 /* MountainPickerView.swift */; };
+		CED529E32680E559005E05A7 /* MountainInfoBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */; };
+		FE480AC62695DC71000A5D20 /* DBInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC32695DC71000A5D20 /* DBInterface.swift */; };
+		FE480AC72695DC71000A5D20 /* RegionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC42695DC71000A5D20 /* RegionInfo.swift */; };
+		FE480AC82695DC71000A5D20 /* Mountain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC52695DC71000A5D20 /* Mountain.swift */; };
+		FE480ACD2695DC7C000A5D20 /* Santa.db in Resources */ = {isa = PBXBuildFile; fileRef = FE480ACB2695DC7C000A5D20 /* Santa.db */; };
+		FE480ACE2695DC7C000A5D20 /* location2.json in Resources */ = {isa = PBXBuildFile; fileRef = FE480ACC2695DC7C000A5D20 /* location2.json */; };
+		FE480AD32695DC94000A5D20 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AD12695DC94000A5D20 /* MapViewController.swift */; };
+		FE480AD42695DC94000A5D20 /* MountainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AD22695DC94000A5D20 /* MountainView.swift */; };
+		FE480AD82695DC9B000A5D20 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AD72695DC9B000A5D20 /* Date+Extension.swift */; };
+>>>>>>> main
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,12 +72,17 @@
 		BC4E7C612686C640000FF38D /* searchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchCell.swift; sourceTree = "<group>"; };
 		BC7A6581265F202900C22E1C /* santaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = santaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7A6584265F202900C22E1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		BC7A6586265F202900C22E1C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+=======
+		BC7A6588265F202900C22E1C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+>>>>>>> main
 		BC7A658B265F202900C22E1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC7A658E265F202900C22E1C /* santaProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = santaProject.xcdatamodel; sourceTree = "<group>"; };
 		BC7A6590265F202900C22E1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC7A6593265F202900C22E1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC7A6595265F202900C22E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		BC7A659B265F333900C22E1C /* regionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = regionViewController.swift; sourceTree = "<group>"; };
 		BC7A659E265F356700C22E1C /* yomi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yomi.png; sourceTree = "<group>"; };
 		BC7A65A0265F36E400C22E1C /* regionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = regionData.swift; sourceTree = "<group>"; };
@@ -48,6 +90,38 @@
 		BCB35F1026784E50009D13C0 /* mapkitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapkitViewController.swift; sourceTree = "<group>"; };
 		BCCA1BE72664AE60006D8464 /* searchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchBarViewController.swift; sourceTree = "<group>"; };
 		BCCA1BE92664C1E0006D8464 /* searchBarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchBarData.swift; sourceTree = "<group>"; };
+=======
+		CE0E190F266260C1003916E3 /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
+		CE0E191326626434003916E3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CE0E1927266B3D49003916E3 /* MyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListViewController.swift; sourceTree = "<group>"; };
+		CE0E192E266B9248003916E3 /* MyListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListHeaderView.swift; sourceTree = "<group>"; };
+		CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
+		CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionTagView.swift; sourceTree = "<group>"; };
+		CE5DE7202686F7E1009FA3E8 /* MountainInfoBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoBookmarkView.swift; sourceTree = "<group>"; };
+		CE5DE72226870ACC009FA3E8 /* VisitedFlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedFlagView.swift; sourceTree = "<group>"; };
+		CE5DE72426871350009FA3E8 /* MountainInfoHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoHistoryView.swift; sourceTree = "<group>"; };
+		CE880A11268888720034B0A5 /* MountainNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainNameView.swift; sourceTree = "<group>"; };
+		CE880A1626994A6C0034B0A5 /* AddHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoryViewController.swift; sourceTree = "<group>"; };
+		CE880A1826994CAD0034B0A5 /* AddHistoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoryButton.swift; sourceTree = "<group>"; };
+		CE880A1A26995EFB0034B0A5 /* AddHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoryView.swift; sourceTree = "<group>"; };
+		CE880A1C269AD36C0034B0A5 /* MyListTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewModel.swift; sourceTree = "<group>"; };
+		CE880A20269AE37E0034B0A5 /* MyListTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCellModel.swift; sourceTree = "<group>"; };
+		CE880A2226A099C30034B0A5 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		CE880A2426A0A02B0034B0A5 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		CE880A2626A1E85E0034B0A5 /* MountainPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainPickerViewController.swift; sourceTree = "<group>"; };
+		CE880A2826A1E86B0034B0A5 /* MountainPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainPickerView.swift; sourceTree = "<group>"; };
+		CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoBaseView.swift; sourceTree = "<group>"; };
+		FE480AC32695DC71000A5D20 /* DBInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBInterface.swift; sourceTree = "<group>"; };
+		FE480AC42695DC71000A5D20 /* RegionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionInfo.swift; sourceTree = "<group>"; };
+		FE480AC52695DC71000A5D20 /* Mountain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mountain.swift; sourceTree = "<group>"; };
+		FE480ACB2695DC7C000A5D20 /* Santa.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Santa.db; sourceTree = "<group>"; };
+		FE480ACC2695DC7C000A5D20 /* location2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = location2.json; sourceTree = "<group>"; };
+		FE480AD12695DC94000A5D20 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		FE480AD22695DC94000A5D20 /* MountainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainView.swift; sourceTree = "<group>"; };
+		FE480AD72695DC9B000A5D20 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+>>>>>>> main
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +155,18 @@
 		BC7A6583265F202900C22E1C /* santaProject */ = {
 			isa = PBXGroup;
 			children = (
+				FE480AC12695DC52000A5D20 /* YBR */,
+				CED529E12680E53E005E05A7 /* Common */,
 				BC7A6584265F202900C22E1C /* AppDelegate.swift */,
+<<<<<<< HEAD
 				BC7A6586265F202900C22E1C /* SceneDelegate.swift */,
+=======
+				BC7A6588265F202900C22E1C /* ViewController.swift */,
+				CE0E190F266260C1003916E3 /* RootTabBarController.swift */,
+				CE0E1936266BDF80003916E3 /* MyList */,
+				CE880A1526994A480034B0A5 /* AddHistory */,
+				CE0E191326626434003916E3 /* HomeViewController.swift */,
+>>>>>>> main
 				BC7A658A265F202900C22E1C /* Main.storyboard */,
 				BC26559A2679D3B600B4B671 /* colorSet.swift */,
 				BC15EF4126797D4E00B23AC4 /* selectRegionVC.swift */,
@@ -96,6 +180,7 @@
 				BC7A65A2265F37A700C22E1C /* regionCell.swift */,
 				BC7A65A0265F36E400C22E1C /* regionData.swift */,
 				BC7A6590265F202900C22E1C /* Assets.xcassets */,
+				CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */,
 				BC7A6592265F202900C22E1C /* LaunchScreen.storyboard */,
 				BC7A6595265F202900C22E1C /* Info.plist */,
 				BC7A658D265F202900C22E1C /* santaProject.xcdatamodeld */,
@@ -103,14 +188,103 @@
 			path = santaProject;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		BC7A659D265F354200C22E1C /* Resource */ = {
 			isa = PBXGroup;
 			children = (
 				BC7A659E265F356700C22E1C /* yomi.png */,
+=======
+		CE0E1936266BDF80003916E3 /* MyList */ = {
+			isa = PBXGroup;
+			children = (
+				CE0E1927266B3D49003916E3 /* MyListViewController.swift */,
+				CE0E19452675D75C003916E3 /* MyListCollectionViewCell.swift */,
+				CE0E192E266B9248003916E3 /* MyListHeaderView.swift */,
+				CE0E193B266BE103003916E3 /* MyListTableViewCell.swift */,
+				CE880A1826994CAD0034B0A5 /* AddHistoryButton.swift */,
+				CE880A1C269AD36C0034B0A5 /* MyListTableViewModel.swift */,
+				CE880A20269AE37E0034B0A5 /* MyListTableViewCellModel.swift */,
+			);
+			path = MyList;
+			sourceTree = "<group>";
+		};
+		CE880A1526994A480034B0A5 /* AddHistory */ = {
+			isa = PBXGroup;
+			children = (
+				CE880A1626994A6C0034B0A5 /* AddHistoryViewController.swift */,
+				CE880A1A26995EFB0034B0A5 /* AddHistoryView.swift */,
+				CE880A2226A099C30034B0A5 /* DatePickerViewController.swift */,
+				CE880A2426A0A02B0034B0A5 /* DatePickerView.swift */,
+				CE880A2626A1E85E0034B0A5 /* MountainPickerViewController.swift */,
+				CE880A2826A1E86B0034B0A5 /* MountainPickerView.swift */,
+			);
+			path = AddHistory;
+			sourceTree = "<group>";
+		};
+		CED529E12680E53E005E05A7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */,
+				CE5DE7202686F7E1009FA3E8 /* MountainInfoBookmarkView.swift */,
+				CE5DE72426871350009FA3E8 /* MountainInfoHistoryView.swift */,
+				CE880A11268888720034B0A5 /* MountainNameView.swift */,
+				CE5DE72226870ACC009FA3E8 /* VisitedFlagView.swift */,
+				CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		FE480AC12695DC52000A5D20 /* YBR */ = {
+			isa = PBXGroup;
+			children = (
+				FE480AD62695DC9B000A5D20 /* Util */,
+				FE480AD02695DC94000A5D20 /* View */,
+				FE480AC22695DC71000A5D20 /* Class */,
+				FE480ACA2695DC7C000A5D20 /* Resource */,
+			);
+			path = YBR;
+			sourceTree = "<group>";
+		};
+		FE480AC22695DC71000A5D20 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				FE480AC32695DC71000A5D20 /* DBInterface.swift */,
+				FE480AC42695DC71000A5D20 /* RegionInfo.swift */,
+				FE480AC52695DC71000A5D20 /* Mountain.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		FE480ACA2695DC7C000A5D20 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				FE480ACB2695DC7C000A5D20 /* Santa.db */,
+				FE480ACC2695DC7C000A5D20 /* location2.json */,
+>>>>>>> main
 			);
 			path = Resource;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
+=======
+		FE480AD02695DC94000A5D20 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE480AD12695DC94000A5D20 /* MapViewController.swift */,
+				FE480AD22695DC94000A5D20 /* MountainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE480AD62695DC9B000A5D20 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				FE480AD72695DC9B000A5D20 /* Date+Extension.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+>>>>>>> main
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -171,7 +345,9 @@
 				BC7A6594265F202900C22E1C /* LaunchScreen.storyboard in Resources */,
 				BC7A659F265F356700C22E1C /* yomi.png in Resources */,
 				BC7A6591265F202900C22E1C /* Assets.xcassets in Resources */,
+				FE480ACE2695DC7C000A5D20 /* location2.json in Resources */,
 				BC7A658C265F202900C22E1C /* Main.storyboard in Resources */,
+				FE480ACD2695DC7C000A5D20 /* Santa.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				BC26559B2679D3B600B4B671 /* colorSet.swift in Sources */,
 				BC15EF4226797D4E00B23AC4 /* selectRegionVC.swift in Sources */,
 				BC7A65A1265F36E400C22E1C /* regionData.swift in Sources */,
@@ -195,6 +372,38 @@
 				BC15EF442679A09000B23AC4 /* regionTableCell.swift in Sources */,
 				BCCA1BE82664AE60006D8464 /* searchBarViewController.swift in Sources */,
 				BC7A6587265F202900C22E1C /* SceneDelegate.swift in Sources */,
+=======
+				CE880A1926994CAD0034B0A5 /* AddHistoryButton.swift in Sources */,
+				CE880A1D269AD36C0034B0A5 /* MyListTableViewModel.swift in Sources */,
+				CE880A2526A0A02B0034B0A5 /* DatePickerView.swift in Sources */,
+				CE880A2926A1E86B0034B0A5 /* MountainPickerView.swift in Sources */,
+				CE880A21269AE37E0034B0A5 /* MyListTableViewCellModel.swift in Sources */,
+				CE0E191426626434003916E3 /* HomeViewController.swift in Sources */,
+				FE480AD82695DC9B000A5D20 /* Date+Extension.swift in Sources */,
+				CE0E1928266B3D49003916E3 /* MyListViewController.swift in Sources */,
+				CE0E19462675D75C003916E3 /* MyListCollectionViewCell.swift in Sources */,
+				FE480AD32695DC94000A5D20 /* MapViewController.swift in Sources */,
+				FE480AC62695DC71000A5D20 /* DBInterface.swift in Sources */,
+				CE5DE72326870ACC009FA3E8 /* VisitedFlagView.swift in Sources */,
+				CE0E193F266BF4CE003916E3 /* UIColor+Extension.swift in Sources */,
+				CE0E193C266BE103003916E3 /* MyListTableViewCell.swift in Sources */,
+				CE880A12268888720034B0A5 /* MountainNameView.swift in Sources */,
+				BC7A6589265F202900C22E1C /* ViewController.swift in Sources */,
+				CE0E1910266260C1003916E3 /* RootTabBarController.swift in Sources */,
+				FE480AD42695DC94000A5D20 /* MountainView.swift in Sources */,
+				CE880A2326A099C30034B0A5 /* DatePickerViewController.swift in Sources */,
+				CED529E32680E559005E05A7 /* MountainInfoBaseView.swift in Sources */,
+				CE880A1726994A6C0034B0A5 /* AddHistoryViewController.swift in Sources */,
+				CE880A1B26995EFB0034B0A5 /* AddHistoryView.swift in Sources */,
+				CE880A2726A1E85E0034B0A5 /* MountainPickerViewController.swift in Sources */,
+				FE480AC72695DC71000A5D20 /* RegionInfo.swift in Sources */,
+				BC7A6585265F202900C22E1C /* AppDelegate.swift in Sources */,
+				CE5DE7212686F7E1009FA3E8 /* MountainInfoBookmarkView.swift in Sources */,
+				FE480AC82695DC71000A5D20 /* Mountain.swift in Sources */,
+				CE0E192F266B9248003916E3 /* MyListHeaderView.swift in Sources */,
+				CE5DE72526871350009FA3E8 /* MountainInfoHistoryView.swift in Sources */,
+				CE5DE71F2686DDCE009FA3E8 /* RegionTagView.swift in Sources */,
+>>>>>>> main
 				BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
