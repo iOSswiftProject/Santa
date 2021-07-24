@@ -10,13 +10,16 @@ import UIKit
 class searchCell: UITableViewCell {
     var mountainLabel: UILabel!
     var accessoryImage: UIImageView!
+    //2번쨰 방법
+    var deleteButton: UIButton!
     let margin: CGFloat = 20
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         makeMountainLabel()
-        makeAccessoryImage()
+//        makeAccessoryImage()
+        makeButton()
     }
     
     required init?(coder: NSCoder) {
@@ -39,16 +42,24 @@ class searchCell: UITableViewCell {
         accessoryImage.image = image
         
         self.contentView.addSubview(accessoryImage)
-        let tapGesture = UIGestureRecognizer(target: self, action: #selector(selectButton(_:)))
         
-        accessoryImage.addGestureRecognizer(tapGesture)
-        
+        accessoryImage.isUserInteractionEnabled = true
         accessoryImage.translatesAutoresizingMaskIntoConstraints = false
         accessoryImage.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -margin).isActive = true
         accessoryImage.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: margin).isActive = true
+    }
+    func makeButton() {
+        deleteButton = UIButton()
+        let image = UIImage(named: "delete")
+        deleteButton.setImage(image, for: .normal)
         
+        self.contentView.addSubview(deleteButton)
+        deleteButton.isUserInteractionEnabled = true
+        
+        deleteButton.translatesAutoresizingMaskIntoConstraints = false
+        deleteButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -margin).isActive = true
+        deleteButton.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: margin).isActive = true
     }
-    @objc func selectButton(_ sender: Any) {
-        NSLog("tap Event")
-    }
+
+    
 }

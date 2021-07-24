@@ -25,16 +25,22 @@ class selectRegionVC: UIViewController {
     
     lazy var tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
-        let view = UIView()
+//        let image = UIImageView(image: UIImage(named: "yomi"))
         tv.delegate = self
         tv.dataSource = self
         tv.separatorStyle = UITableViewCell.SeparatorStyle.none
         tv.register(regionTableCell.classForCoder(), forCellReuseIdentifier: "regionCell")
         tv.backgroundColor = UIColor.setColor(_names: .lightlightgray)
         tv.tableHeaderView = collectionView
-        tv.tableFooterView = view
+        tv.tableFooterView = UIImageView(image: UIImage(named: "santa"))
         return tv
     }()
+//    lazy var image: UIImageView = {
+//        let imageView = UIImageView(frame: .zero)
+//        let image = UIImage(named: "santa")
+//        imageView.image = image
+//        return imageView
+//    }()
     
     let Data = regionData()
 
@@ -43,8 +49,12 @@ class selectRegionVC: UIViewController {
        
         setView()
         setAutolayout()
+//        setImageViewlayout()
         collectionView.reloadData()
         tableView.reloadData()
+//        if(UserDefaults.standard.integer(forKey: "region") == 0) {
+//            tableView.tableFooterView = image
+//        }
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.barTintColor = .white
         UINavigationBar.appearance().barTintColor = UIColor.white
@@ -54,14 +64,17 @@ class selectRegionVC: UIViewController {
         
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.backgroundColor = .white
-        //self.Data.seoulItem = []
+        
+        
     }
+    
     override func viewDidDisappear(_ animated: Bool) {
         /* 화면 등장했을떄 아무것도 안뜨게 하기 위해서*/
         UserDefaults.standard.setValue(0, forKey: "region")
         super.viewDidDisappear(animated)
         UIView.setAnimationsEnabled(true)
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         UIView.setAnimationsEnabled(false)
@@ -150,7 +163,10 @@ extension selectRegionVC: UICollectionViewDelegate {
         } else {
             UserDefaults.standard.setValue(4, forKey: "region")
         }
-        
+        if(UserDefaults.standard.integer(forKey: "region") != 0) {
+            let view = UIView()
+            tableView.tableFooterView = view
+        }
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
         cell.contentView.layer.cornerRadius = 10

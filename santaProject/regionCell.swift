@@ -27,7 +27,7 @@ class regionCell: UICollectionViewCell {
   
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.layer.borderWidth = 0.5
+//        self.contentView.layer.borderWidth = 0.5
         self.contentView.layer.cornerRadius = 10
         self.contentView.backgroundColor = UIColor.setColor(_names: .searchUnselectback)
         makeImage()

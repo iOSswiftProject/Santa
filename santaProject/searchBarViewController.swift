@@ -88,7 +88,6 @@ class searchBarViewController: UIViewController {
         
         self.view.addSubview(tableView)
 
-        let nib = UINib(nibName: "searchCell", bundle: nil)
         self.tableView.register(searchCell.self, forCellReuseIdentifier: "mountinCell")
         /* 테이블 헤더 뷰 커스텀 하기 위한 */
         self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "customHeader")
@@ -112,12 +111,19 @@ class searchBarViewController: UIViewController {
         
     }
     
-    @objc func pushDeleteButton(_ sender: Any) {
+    @objc func pushDeleteButton(_ sender: UIButton) {
+//        let point = sender.convert(CGPoint.zero, to: tableView)
+//        guard let indexPath = tableView.indexPathForRow(at: point) else { return }
+//        self.data.searchItems.remove(at: indexPath.row)
+//        NSLog("\(self.data.searchItems)" + " " + "\(indexPath.row)")
+//        tableView.deleteRows(at: [indexPath], with: .automatic)
         print("pushDeleteButton")
     }
     deinit {
         print("searchBarViewController deinit")
     }
+    
+   
 }
 extension searchBarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -137,21 +143,13 @@ extension searchBarViewController: UITableViewDataSource {
 
         if self.isFiltering == false {
             cell!.mountainLabel.text = searchedItems[indexPath.row]
-            
-//            let deleteImage = UIImage(named: "delete")
-//            let deleteImageView = UIImageView(image: deleteImage)
-//            let deleteButton = UIButton(frame: CGRect(x: 0, y: 0, width: deleteImageView.frame.width, height: deleteImageView.frame.height))
-            
-//            deleteButton.addTarget(self, action: #selector(pushDeleteButton(_:)), for: .touchUpInside)
-            
-//            cell.accessoryView = deleteImageView
-//            deleteImageView.addSubview(deleteButton)
+            cell!.deleteButton.isHidden = false
+            cell!.deleteButton.addTarget(self, action: #selector(pushDeleteButton(_:)), for: .touchUpInside)
           
         } else {
             cell!.mountainLabel.text = self.data.filterValue[indexPath.row]
-            cell!.accessoryImage.isHidden = true
+            cell!.deleteButton.isHidden = true
         }
-        
         return cell!
     }
     
