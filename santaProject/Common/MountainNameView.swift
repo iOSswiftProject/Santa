@@ -19,7 +19,7 @@ class MountainNameView: UIView {
         setupRegionTagView()
 
         updateMountainNameLabelAttributedText(mountainName: "관악산", peakName: "땡땡봉")
-        updateRegionTag(regionName: "서울", color: UIColor(hex: "#85DC40"))
+        updateRegionTag(regionName: "서울특별시")
     }
 
     required init?(coder: NSCoder) {
@@ -55,6 +55,10 @@ class MountainNameView: UIView {
                                       value: Layout.MountainNameLabel.peakFont,
                                       range: textAsNSString.range(of: peakName ?? ""))
         mountainNameLabel.attributedText = attributedString
+    }
+
+    func updateRegionTag(regionName: String) {
+        regionTagView.applyRegionName(regionName)
     }
 
     func updateRegionTag(regionName: String, color: UIColor) {

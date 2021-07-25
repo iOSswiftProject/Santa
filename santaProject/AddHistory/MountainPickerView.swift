@@ -86,11 +86,10 @@ class MountainPickerTableViewCell: UITableViewCell {
         else { return }
 
         let peakName = model.peak ?? ""
-        let regionColor = UIColor.red
         let nameView = baseInfoView.mountainNameView
 
         nameView.updateMountainNameLabelAttributedText(mountainName: mountainName, peakName: peakName)
-        nameView.updateRegionTag(regionName: regionName, color: regionColor)
+        nameView.updateRegionTag(regionName: regionName)
 
         baseInfoView.updateSubRegion(subregionName: subRegionName)
         baseInfoView.updateHeight(height)
