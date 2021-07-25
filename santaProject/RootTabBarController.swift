@@ -22,6 +22,7 @@ class RootTabBarController: UITabBarController {
         // TODO: Remove or move
         tabs[1].tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "santaTabImageSearchInactive"), tag: 2)
         tabs[1].tabBarItem.selectedImage = UIImage(named: "santaTabImageSearchActive")
+        tabs[1].tabBarItem.imageInsets = UIEdgeInsets(top: 10, left: 0, bottom: -10, right: 0)
     }
 
     init() {
