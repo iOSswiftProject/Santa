@@ -11,7 +11,8 @@ class HomeViewController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        self.tabBarItem = UITabBarItem(title: "Home", image: nil, tag: 1)
+        self.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "santaTabImageHomeInactive"), tag: 1)
+        self.tabBarItem.selectedImage = UIImage(named: "santaTabImageHomeActive")
     }
 
     required init?(coder aDecoder: NSCoder) {

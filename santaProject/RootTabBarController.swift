@@ -18,11 +18,16 @@ class RootTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+
+        // TODO: Remove or move
+        tabs[1].tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "santaTabImageSearchInactive"), tag: 2)
+        tabs[1].tabBarItem.selectedImage = UIImage(named: "santaTabImageSearchActive")
     }
 
     init() {
         super.init(nibName: nil, bundle: nil)
 
+        tabBar.tintColor = .stGreen50
         setViewControllers(tabs, animated: false)
     }
 
