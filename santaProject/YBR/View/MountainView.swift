@@ -36,11 +36,26 @@ class MountainView: MKAnnotationView {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: false)
-        if selected {
-            image = image?.resizeImage(image: image!, targetSize: CGSize(width: 35, height: 35))
-        } else {
-            image = image?.resizeImage(image: image!, targetSize: CGSize(width: 28, height: 28))
+
+        guard let mountain = annotation as? Mountain, let isVisit = mountain.isVisit else { return }
         
+        var imgName = ""
+        
+        if selected {
+            if isVisit {
+                imgName = "SantaFlagBig"
+            } else {
+                imgName = "SantaMtBig"
+            }
+        } else {
+            if isVisit {
+                imgName = "SantaFlag"
+            } else {
+                imgName = "SantaMt"
+            }
         }
+        
+        image = UIImage(named: imgName)
+
     }
 }
