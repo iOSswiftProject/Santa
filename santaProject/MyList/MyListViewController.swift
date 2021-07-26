@@ -51,7 +51,9 @@ class MyListViewController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        self.tabBarItem = UITabBarItem(title: "List", image: nil, tag: 3)
+        self.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "santaTabImageListInactive"), tag: 3)
+        self.tabBarItem.selectedImage = UIImage(named: "santaTabImageListActive")
+        self.tabBarItem.imageInsets = UIEdgeInsets(top: 10, left: 0, bottom: -10, right: 0)
     }
 
     required init?(coder aDecoder: NSCoder) {
