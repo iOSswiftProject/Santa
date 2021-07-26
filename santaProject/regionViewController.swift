@@ -50,10 +50,7 @@ extension regionViewController: UICollectionViewDataSource {
 
 extension regionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let searchVC = self.storyboard?.instantiateViewController(identifier: "searchBarVC") as? searchBarViewController else {
-            NSLog("searchBarViewController 식별자 에러")
-            return
-        }
+        let searchVC = searchBarViewController()
         if indexPath.row == 0 {
             self.navigationController?.pushViewController(searchVC, animated: true)
         }

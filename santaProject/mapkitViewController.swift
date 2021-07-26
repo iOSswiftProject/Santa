@@ -46,25 +46,51 @@ class mapkitViewController: UIViewController {
         button.addSubview(label)
         return button
     }()
-    @IBOutlet weak var MapView: MKMapView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        makeCustomTextField()
-        //self.MapView.addSubview(searchBar)
-        self.MapView.addSubview(textField)
-        self.MapView.addSubview(regionButton)
-        //self.searchBar.addSubview(searchButton)
-       // self.MapView.bringSubviewToFront(searchButton)
+    let MapView:MKMapView = MKMapView.init(frame:.zero)
 
-        self.textField.delegate = self
+    //mapViewSetting
+    func setMapView() {
+        self.view.addSubview(MapView)
+        MapView.isRotateEnabled = false
+        MapView.translatesAutoresizingMaskIntoConstraints = false
+        MapView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        MapView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        MapView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        MapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 200).isActive = true
+    }
+    
+    func setRegionButton() {
+        self.MapView.addSubview(regionButton)
         regionButton.translatesAutoresizingMaskIntoConstraints = false
         regionButton.centerXAnchor.constraint(equalTo: self.MapView.centerXAnchor).isActive = true
         regionButton.widthAnchor.constraint(equalToConstant: 330).isActive = true
+       // regionButton.centerYAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 200 + 30).isActive = true
         regionButton.heightAnchor.constraint(equalTo: regionButton.widthAnchor, multiplier: 1/6).isActive = true
-        regionButton.bottomAnchor.constraint(equalTo: self.MapView.bottomAnchor, constant: -26).isActive = true
-//        regionButton.leadingAnchor.constraint(equalTo: self.MapView.leadingAnchor, constant: 50).isActive = true
-//        regionButton.trailingAnchor.constraint(equalTo: self.MapView.trailingAnchor, constant: -50).isActive = true
+        regionButton.bottomAnchor.constraint(equalTo: self.MapView.bottomAnchor, constant: -280).isActive = true
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        self.tabBarItem = UITabBarItem(title: "Map", image: nil, tag: 2)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setMapView()
+        makeCustomTextField()
+        self.MapView.addSubview(textField)
+        //self.searchBar.addSubview(searchButton)
+       // self.MapView.bringSubviewToFront(searchButton)
+        setRegionButton()
+        self.MapView.bringSubviewToFront(regionButton)
+
+        self.textField.delegate = self
+
         /* 체크를 위한 값 저장 */
         UserDefaults.standard.setValue(0, forKey: "region")
 
@@ -87,7 +113,6 @@ class mapkitViewController: UIViewController {
         }
     override func viewWillAppear(_ animated: Bool) {
         UINavigationBar.appearance().barTintColor = UIColor.white
-        /* navigationBar를 보이다가 숨김처리하면 뒤에 background에 검은색 화면이 등장*/
         self.navigationController?.navigationBar.isHidden = true
         //
        // self.navigationController?.navigationBar.barTintColor = .white
