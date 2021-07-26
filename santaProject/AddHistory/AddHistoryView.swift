@@ -274,18 +274,18 @@ class AddHistoryView: UIView {
     private func setupDoneButton() {
         addSubview(doneButton)
         doneButton.translatesAutoresizingMaskIntoConstraints = false
-        doneButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.LowerButton.sideMargin).isActive = true
+        doneButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.LowerButton.sideMargin).isActive = true
         doneButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Layout.bottomMargin).isActive = true
         doneButton.widthAnchor.constraint(equalToConstant: Layout.LowerButton.width).isActive = true
         doneButton.heightAnchor.constraint(equalToConstant: Layout.LowerButton.height).isActive = true
         doneButton.addTarget(self, action: #selector(didTapDoneButton(_:)), for: .touchUpInside)
 
-        doneButton.backgroundColor = .stOrange40
+        doneButton.backgroundColor = UIColor(hex: "FF9A83")
         doneButton.layer.cornerRadius = Layout.LowerButton.cornerRadius
 
         guard let label = doneButton.titleLabel else { return }
         label.font = .systemFont(ofSize: Layout.LowerButton.fontSize, weight: Layout.LowerButton.weight)
-        label.textColor = .stCoolGray00
+        label.textColor = UIColor(hex: "FFE1E1")
         let attrString = NSMutableAttributedString(string: "완료")
         let range = NSRange(location: 0, length: attrString.length)
         attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
@@ -295,7 +295,7 @@ class AddHistoryView: UIView {
     private func setupCancelButton() {
         addSubview(cancelButton)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
-        cancelButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.LowerButton.sideMargin).isActive = true
+        cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.LowerButton.sideMargin).isActive = true
         cancelButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Layout.bottomMargin).isActive = true
         cancelButton.widthAnchor.constraint(equalToConstant: Layout.LowerButton.width).isActive = true
         cancelButton.heightAnchor.constraint(equalToConstant: Layout.LowerButton.height).isActive = true
@@ -380,6 +380,12 @@ class AddHistoryView: UIView {
         delegate?.didTapDatePickButton()
     }
 
+    private func activateDoneButtonIfNeeded() {
+        guard mountainNamePlaceholderView.isHidden, datePickPlaceholderView.isHidden else { return }
+        doneButton.titleLabel?.textColor = .stCoolGray00
+        doneButton.backgroundColor = .stOrange40
+    }
+
     func updateMountainNameLabel(with mountain: Mountain?) {
         guard let mountain = mountain, let name = mountain.name else { return }
         mountainNamePlaceholderView.isHidden = true
@@ -396,6 +402,8 @@ class AddHistoryView: UIView {
         attrString.addAttribute(.font, value: UIFont.systemFont(ofSize: 24, weight: .bold), range: nameRange)
         attrString.addAttribute(.font, value: UIFont.systemFont(ofSize: 24, weight: .semibold), range: peakRange)
         mountainNameLabel.attributedText = attrString
+
+        activateDoneButtonIfNeeded()
     }
 
     func updateDateLabel(with str: String) {
@@ -406,6 +414,8 @@ class AddHistoryView: UIView {
         let range = NSRange(location: 0, length: attrString.length)
         attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
         dateLabel.attributedText = attrString
+
+        activateDoneButtonIfNeeded()
     }
 
     func showMountainEmptyMessage() {

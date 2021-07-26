@@ -47,6 +47,16 @@ class MyListHistoryTableViewModel: MyListTableViewModel {
         cellModels.insert(cellModel, at: index)
     }
 
+    func removeHistory(at index: Int) {
+        guard index < history.count else { fatalError("Index error! history count: \(history.count), index: \(index)") }
+        history.remove(at: index)
+        cellModels.remove(at: index)
+    }
+
+    func countFor(id: Int32) -> Int {
+        history.filter{ $0.id == id }.count
+    }
+
     private func sortHistory() {
         history = history.sorted(by: {
             let date1 = $0.date ?? "0000.00.00"
@@ -83,15 +93,15 @@ class MyListFavoriteTableViewModel: MyListTableViewModel {
         return cellModels[indexPath.section]
     }
 
-    func updateVisited(id: Int) {
+    func updateVisited(id: Int, visited: Bool) {
         bookmarks.forEach {
             if let mountainId = $0.id, mountainId == id {
-                $0.isVisit = true
+                $0.isVisit = visited
             }
         }
         cellModels.forEach {
             if let mountainId = $0.mountain.id, mountainId == id {
-                $0.mountain.isVisit = true
+                $0.mountain.isVisit = visited
             }
         }
     }

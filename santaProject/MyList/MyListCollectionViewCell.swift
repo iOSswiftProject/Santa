@@ -9,6 +9,7 @@ import UIKit
 
 protocol MyListCollectionViewCellDelegate: AnyObject {
     func didTapAddHistoryButton()
+    func didTapMoreButtonForHistoryIndexPath(_ indexPath: IndexPath)
 }
 
 class MyListCollectionViewCell: UICollectionViewCell {
@@ -61,6 +62,13 @@ class MyListCollectionViewCell: UICollectionViewCell {
         addHistoryButton.isHidden = true
     }
 
+    func removeHistory(at index: Int) {
+        guard viewModel is MyListHistoryTableViewModel else { return }
+        tableView.beginUpdates()
+        tableView.deleteSections([index], with: .automatic)
+        tableView.endUpdates()
+    }
+
     func applyViewModel(_ model: MyListTableViewModel) {
         self.viewModel = model
         switch viewModel {
@@ -93,6 +101,7 @@ extension MyListCollectionViewCell: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewHistoryCell.identifier),
                   let listCell = cell as? MyListTableViewHistoryCell,
                   let cellModel = viewModel?.cellModel(for: indexPath) as? MyListTableViewHistoryCellModel else { return UITableViewCell() }
+            listCell.delegate = self
             cellModel.configure(listCell)
             return listCell
         case is MyListFavoriteTableViewModel:
@@ -116,6 +125,15 @@ extension MyListCollectionViewCell: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return tableView.dequeueReusableHeaderFooterView(withIdentifier: MyListTableViewHeaderFooterView.identifier)
+    }
+}
+
+extension MyListCollectionViewCell: MyListTableViewHistoryCellDelegate {
+    func historyCellDidTapMoreButton(_ historyCell: MyListTableViewHistoryCell) {
+        guard viewModel is MyListHistoryTableViewModel,
+              let indexPath = tableView.indexPath(for: historyCell)
+        else { return }
+        delegate?.didTapMoreButtonForHistoryIndexPath(indexPath)
     }
 }
 
