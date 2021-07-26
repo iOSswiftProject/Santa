@@ -9,6 +9,16 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    let homeView = HomeView()
+    var homeViewModel = HomeViewModel()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupHomeView()
+        setupHomeViewModel()
+    }
+
     init() {
         super.init(nibName: nil, bundle: nil)
         self.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "santaTabImageHomeInactive"), tag: 1)
@@ -18,5 +28,18 @@ class HomeViewController: UIViewController {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+
+    private func setupHomeViewModel() {
+        homeViewModel.update()
+    }
+
+    private func setupHomeView() {
+        view.addSubview(homeView)
+        homeView.translatesAutoresizingMaskIntoConstraints = false
+        homeView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        homeView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        homeView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        homeView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 }
