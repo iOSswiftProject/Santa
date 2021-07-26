@@ -34,6 +34,7 @@
 		CE880A2526A0A02B0034B0A5 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A2426A0A02B0034B0A5 /* DatePickerView.swift */; };
 		CE880A2726A1E85E0034B0A5 /* MountainPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A2626A1E85E0034B0A5 /* MountainPickerViewController.swift */; };
 		CE880A2926A1E86B0034B0A5 /* MountainPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A2826A1E86B0034B0A5 /* MountainPickerView.swift */; };
+		CECD577626AE9BF20091E66D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECD577526AE9BF20091E66D /* HomeView.swift */; };
 		CED529E32680E559005E05A7 /* MountainInfoBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */; };
 		FE480AC62695DC71000A5D20 /* DBInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC32695DC71000A5D20 /* DBInterface.swift */; };
 		FE480AC72695DC71000A5D20 /* RegionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC42695DC71000A5D20 /* RegionInfo.swift */; };
@@ -75,6 +76,7 @@
 		CE880A2426A0A02B0034B0A5 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		CE880A2626A1E85E0034B0A5 /* MountainPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainPickerViewController.swift; sourceTree = "<group>"; };
 		CE880A2826A1E86B0034B0A5 /* MountainPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainPickerView.swift; sourceTree = "<group>"; };
+		CECD577526AE9BF20091E66D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoBaseView.swift; sourceTree = "<group>"; };
 		FE480AC32695DC71000A5D20 /* DBInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBInterface.swift; sourceTree = "<group>"; };
 		FE480AC42695DC71000A5D20 /* RegionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionInfo.swift; sourceTree = "<group>"; };
@@ -121,9 +123,9 @@
 				BC7A6584265F202900C22E1C /* AppDelegate.swift */,
 				BC7A6588265F202900C22E1C /* ViewController.swift */,
 				CE0E190F266260C1003916E3 /* RootTabBarController.swift */,
+				CECD577426AE9BB00091E66D /* Home */,
 				CE0E1936266BDF80003916E3 /* MyList */,
 				CE880A1526994A480034B0A5 /* AddHistory */,
-				CE0E191326626434003916E3 /* HomeViewController.swift */,
 				BC7A658A265F202900C22E1C /* Main.storyboard */,
 				BC7A6590265F202900C22E1C /* Assets.xcassets */,
 				CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */,
@@ -159,6 +161,15 @@
 				CE880A2826A1E86B0034B0A5 /* MountainPickerView.swift */,
 			);
 			path = AddHistory;
+			sourceTree = "<group>";
+		};
+		CECD577426AE9BB00091E66D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CE0E191326626434003916E3 /* HomeViewController.swift */,
+				CECD577526AE9BF20091E66D /* HomeView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		CED529E12680E53E005E05A7 /* Common */ = {
@@ -324,6 +335,7 @@
 				CE5DE72526871350009FA3E8 /* MountainInfoHistoryView.swift in Sources */,
 				CE5DE71F2686DDCE009FA3E8 /* RegionTagView.swift in Sources */,
 				BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */,
+				CECD577626AE9BF20091E66D /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
