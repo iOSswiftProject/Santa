@@ -280,12 +280,12 @@ class AddHistoryView: UIView {
         doneButton.heightAnchor.constraint(equalToConstant: Layout.LowerButton.height).isActive = true
         doneButton.addTarget(self, action: #selector(didTapDoneButton(_:)), for: .touchUpInside)
 
-        doneButton.backgroundColor = UIColor(hex: "FF9A83")
+        doneButton.backgroundColor = .stCoolGray20
         doneButton.layer.cornerRadius = Layout.LowerButton.cornerRadius
 
         guard let label = doneButton.titleLabel else { return }
         label.font = .systemFont(ofSize: Layout.LowerButton.fontSize, weight: Layout.LowerButton.weight)
-        label.textColor = UIColor(hex: "FFE1E1")
+        label.textColor = .stCoolGray60
         let attrString = NSMutableAttributedString(string: "완료")
         let range = NSRange(location: 0, length: attrString.length)
         attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
@@ -301,12 +301,14 @@ class AddHistoryView: UIView {
         cancelButton.heightAnchor.constraint(equalToConstant: Layout.LowerButton.height).isActive = true
         cancelButton.addTarget(self, action: #selector(didTapCancelButton(_:)), for: .touchUpInside)
 
-        cancelButton.backgroundColor = .stCoolGray20
+        cancelButton.backgroundColor = .stCoolGray00
         cancelButton.layer.cornerRadius = Layout.LowerButton.cornerRadius
+        cancelButton.layer.borderWidth = 2
+        cancelButton.layer.borderColor = UIColor.stGreen40.cgColor
 
         guard let label = cancelButton.titleLabel else { return }
         label.font = .systemFont(ofSize: Layout.LowerButton.fontSize, weight: Layout.LowerButton.weight)
-        label.textColor = .stCoolGray70
+        label.textColor = .stGreen40
         let attrString = NSMutableAttributedString(string: "취소")
         let range = NSRange(location: 0, length: attrString.length)
         attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
