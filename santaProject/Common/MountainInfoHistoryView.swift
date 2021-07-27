@@ -7,10 +7,16 @@
 
 import UIKit
 
+protocol MountainInfoHistoryViewDelegate: AnyObject {
+    func historyViewDidTapMoreButton(_ historyView: MountainInfoHistoryView)
+}
+
 class MountainInfoHistoryView: MountainInfoBaseView {
 
-    private let moreButton = UIButton()
-    private let timestampView = VisitedFlagView.flaggedView()
+    weak var delegate: MountainInfoHistoryViewDelegate?
+
+    let moreButton = UIButton()
+    let timestampView = VisitedFlagView.flaggedView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,7 +52,7 @@ class MountainInfoHistoryView: MountainInfoBaseView {
 extension MountainInfoHistoryView {
     @objc
     private func didTapMoreButton(_ sender: UIButton) {
-        print("more button tapped")
+        delegate?.historyViewDidTapMoreButton(self)
     }
 }
 

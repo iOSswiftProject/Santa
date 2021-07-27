@@ -11,6 +11,7 @@ protocol AddHistoryViewDelegate: AnyObject {
     func didTapDoneButton()
     func didTapCancelButton()
     func didTapSelectMountainButton()
+    func didTapDatePickButton()
 }
 
 class AddHistoryView: UIView {
@@ -30,9 +31,13 @@ class AddHistoryView: UIView {
     let datePickButton = UIButton()
     let dateLine = UIView()
     let datePickPlaceholderView = UIView()
+    let dateLabel = UILabel()
 
     let doneButton = UIButton()
     let cancelButton = UIButton()
+
+    let mountainEmptyMessageView = UIView()
+    let dateEmptyMessageView = UIView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -177,6 +182,9 @@ class AddHistoryView: UIView {
         setupDatePickButton()
         setupDatePickPlaceHolder()
         setupDateLine()
+        setupDateLabel()
+        setupMountainEmptyMessage()
+        setupDateEmptyMessage()
 
         func setupTitleLabel() {
             let label = dateTitleLabel
@@ -220,16 +228,15 @@ class AddHistoryView: UIView {
             label.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             label.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 
-            label.font = .systemFont(ofSize: 24, weight: .regular)
+            label.font = .systemFont(ofSize: 24, weight: .init(400))
             label.textColor = .stCoolGray70
 
-            let attrString = NSMutableAttributedString(string: "2021.06.15")
+            let attrString = NSMutableAttributedString(string: "날짜 선택하기")
             let range = NSRange(location: 0, length: attrString.length)
             attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
             label.attributedText = attrString
             label.sizeToFit()
 
-            // TBD: need remove?
             let imageView = UIImageView(image: #imageLiteral(resourceName: "santaIconArrow"))
             view.addSubview(imageView)
             imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -249,23 +256,36 @@ class AddHistoryView: UIView {
             line.heightAnchor.constraint(equalToConstant: 2).isActive = true
             line.backgroundColor = .stCoolGray30
         }
+
+        func setupDateLabel() {
+            let label = dateLabel
+            datePickButton.addSubview(label)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.isUserInteractionEnabled = false
+            label.leadingAnchor.constraint(equalTo: datePickButton.leadingAnchor).isActive = true
+            label.topAnchor.constraint(equalTo: datePickButton.topAnchor).isActive = true
+            label.bottomAnchor.constraint(equalTo: datePickButton.bottomAnchor).isActive = true
+
+            label.font = .systemFont(ofSize: 24, weight: .bold)
+            label.textColor = .stGreen40
+        }
     }
 
     private func setupDoneButton() {
         addSubview(doneButton)
         doneButton.translatesAutoresizingMaskIntoConstraints = false
-        doneButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.LowerButton.sideMargin).isActive = true
+        doneButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.LowerButton.sideMargin).isActive = true
         doneButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Layout.bottomMargin).isActive = true
         doneButton.widthAnchor.constraint(equalToConstant: Layout.LowerButton.width).isActive = true
         doneButton.heightAnchor.constraint(equalToConstant: Layout.LowerButton.height).isActive = true
         doneButton.addTarget(self, action: #selector(didTapDoneButton(_:)), for: .touchUpInside)
 
-        doneButton.backgroundColor = .stOrange40
+        doneButton.backgroundColor = UIColor(hex: "FF9A83")
         doneButton.layer.cornerRadius = Layout.LowerButton.cornerRadius
 
         guard let label = doneButton.titleLabel else { return }
         label.font = .systemFont(ofSize: Layout.LowerButton.fontSize, weight: Layout.LowerButton.weight)
-        label.textColor = .stCoolGray00
+        label.textColor = UIColor(hex: "FFE1E1")
         let attrString = NSMutableAttributedString(string: "완료")
         let range = NSRange(location: 0, length: attrString.length)
         attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
@@ -275,7 +295,7 @@ class AddHistoryView: UIView {
     private func setupCancelButton() {
         addSubview(cancelButton)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
-        cancelButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.LowerButton.sideMargin).isActive = true
+        cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.LowerButton.sideMargin).isActive = true
         cancelButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Layout.bottomMargin).isActive = true
         cancelButton.widthAnchor.constraint(equalToConstant: Layout.LowerButton.width).isActive = true
         cancelButton.heightAnchor.constraint(equalToConstant: Layout.LowerButton.height).isActive = true
@@ -293,6 +313,51 @@ class AddHistoryView: UIView {
         cancelButton.setAttributedTitle(attrString, for: .normal)
     }
 
+    private func addErrorMessageView(in view: UIView, message: String) {
+        let errorIcon = UIImageView(image: #imageLiteral(resourceName: "santaIconError"))
+        view.addSubview(errorIcon)
+        errorIcon.translatesAutoresizingMaskIntoConstraints = false
+        errorIcon.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+
+        let messageLabel = UILabel()
+        view.addSubview(messageLabel)
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.leadingAnchor.constraint(equalTo: errorIcon.trailingAnchor, constant: 4).isActive = true
+
+        messageLabel.font = .systemFont(ofSize: 12, weight: .init(700))
+        messageLabel.textColor = .stOrange40
+
+        let attrString = NSMutableAttributedString(string: message)
+        let range = NSRange(location: 0, length: attrString.length)
+        attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
+        messageLabel.attributedText = attrString
+    }
+
+    private func setupMountainEmptyMessage() {
+        let view = mountainEmptyMessageView
+        addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.sideMargin).isActive = true
+        view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.sideMargin).isActive = true
+        view.topAnchor.constraint(equalTo: mountainNameLine.bottomAnchor, constant: 8).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 12).isActive = true
+
+        addErrorMessageView(in: view, message: "다녀온 산을 선택해 주세요")
+        view.isHidden = true
+    }
+
+    private func setupDateEmptyMessage() {
+        let view = dateEmptyMessageView
+        addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.sideMargin).isActive = true
+        view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.sideMargin).isActive = true
+        view.topAnchor.constraint(equalTo: dateLine.bottomAnchor, constant: 8).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 12).isActive = true
+
+        addErrorMessageView(in: view, message: "다녀온 날짜를 선택해 주세요")
+        view.isHidden = true
+    }
 
 
     @objc
@@ -305,28 +370,28 @@ class AddHistoryView: UIView {
         delegate?.didTapCancelButton()
     }
 
-    // TODO: Get name from user input
     @objc
     private func didTapSelectMountainButton(_ sender: UIButton) {
-//        delegate?.didTapSelectMountainButton()
-
-        // testcode
-        mountainNamePlaceholderView.isHidden = !mountainNamePlaceholderView.isHidden
-        if mountainNamePlaceholderView.isHidden {
-            updateMountainNameLabel(name: "관악산", peak: "땡땡봉")
-            mountainNameLine.backgroundColor = .stGreen40
-        }
-        else {
-            clearMountainNameLabel()
-            mountainNameLine.backgroundColor = .stCoolGray30
-        }
+        delegate?.didTapSelectMountainButton()
     }
 
     @objc
     private func didTapDatePickButton(_ sender: UIButton) {
+        delegate?.didTapDatePickButton()
     }
 
-    private func updateMountainNameLabel(name: String, peak: String) {
+    private func activateDoneButtonIfNeeded() {
+        guard mountainNamePlaceholderView.isHidden, datePickPlaceholderView.isHidden else { return }
+        doneButton.titleLabel?.textColor = .stCoolGray00
+        doneButton.backgroundColor = .stOrange40
+    }
+
+    func updateMountainNameLabel(with mountain: Mountain?) {
+        guard let mountain = mountain, let name = mountain.name else { return }
+        mountainNamePlaceholderView.isHidden = true
+        mountainNameLine.backgroundColor = .stGreen40
+        let peak = mountain.peak ?? ""
+
         let str = "\(name) \(peak)"
         let nsStr = str as NSString
         let attrString = NSMutableAttributedString(string: str)
@@ -337,10 +402,40 @@ class AddHistoryView: UIView {
         attrString.addAttribute(.font, value: UIFont.systemFont(ofSize: 24, weight: .bold), range: nameRange)
         attrString.addAttribute(.font, value: UIFont.systemFont(ofSize: 24, weight: .semibold), range: peakRange)
         mountainNameLabel.attributedText = attrString
+
+        activateDoneButtonIfNeeded()
     }
 
-    private func clearMountainNameLabel() {
-        mountainNameLabel.attributedText = nil
+    func updateDateLabel(with str: String) {
+        datePickPlaceholderView.isHidden = true
+        dateLine.backgroundColor = .stGreen40
+        
+        let attrString = NSMutableAttributedString(string: str)
+        let range = NSRange(location: 0, length: attrString.length)
+        attrString.addAttribute(.kern, value: Layout.letterSpacing, range: range)
+        dateLabel.attributedText = attrString
+
+        activateDoneButtonIfNeeded()
+    }
+
+    func showMountainEmptyMessage() {
+        mountainEmptyMessageView.isHidden = false
+        mountainNameLine.backgroundColor = .stOrange40
+    }
+
+    func showDateEmptyMessage() {
+        dateEmptyMessageView.isHidden = false
+        dateLine.backgroundColor = .stOrange40
+    }
+
+    func hideMountainEmptyMessage() {
+        mountainEmptyMessageView.isHidden = true
+        mountainNameLine.backgroundColor = .stGreen40
+    }
+
+    func hideDateEmptyMessage() {
+        dateEmptyMessageView.isHidden = true
+        dateLine.backgroundColor = .stGreen40
     }
 }
 

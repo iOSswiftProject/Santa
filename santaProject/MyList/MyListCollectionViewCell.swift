@@ -7,17 +7,27 @@
 
 import UIKit
 
+protocol MyListCollectionViewCellDelegate: AnyObject {
+    func didTapAddHistoryButton()
+    func didTapMoreButtonForHistoryIndexPath(_ indexPath: IndexPath)
+}
+
 class MyListCollectionViewCell: UICollectionViewCell {
     static let identifier = "MyListCollectionViewCell"
 
-    private var model: String = ""
+    weak var delegate: MyListCollectionViewCellDelegate?
 
-    private let tableView = UITableView(frame: .zero, style: .plain)
+    private var viewModel: MyListTableViewModel?
+
+    let tableView = UITableView(frame: .zero, style: .plain)
+
+    let addHistoryButton = AddHistoryButton()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
         setupTableView()
+        setupAddHistoryButton()
     }
 
     required init?(coder: NSCoder) {
@@ -44,16 +54,41 @@ class MyListCollectionViewCell: UICollectionViewCell {
         tableView.delegate = self
     }
 
-    // TODO: apply real model
-    func applyModel(_ model: String) {
-        self.model = model
+    private func setupAddHistoryButton() {
+        addSubview(addHistoryButton)
+        addHistoryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        addHistoryButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -18).isActive = true
+        addHistoryButton.addTarget(self, action: #selector(didTapAddHistoryButton(_:)), for: .touchUpInside)
+        addHistoryButton.isHidden = true
+    }
+
+    func removeHistory(at index: Int) {
+        guard viewModel is MyListHistoryTableViewModel else { return }
+        tableView.beginUpdates()
+        tableView.deleteSections([index], with: .automatic)
+        tableView.endUpdates()
+    }
+
+    func applyViewModel(_ model: MyListTableViewModel) {
+        self.viewModel = model
+        switch viewModel {
+        case is MyListHistoryTableViewModel:
+            addHistoryButton.isHidden = false
+        default:
+            addHistoryButton.isHidden = true
+        }
         tableView.reloadData()
+    }
+
+    @objc
+    private func didTapAddHistoryButton(_ sender: UIButton) {
+        delegate?.didTapAddHistoryButton()
     }
 }
 
 extension MyListCollectionViewCell: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        viewModel?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,14 +96,19 @@ extension MyListCollectionViewCell: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch model {
-        case "History":
+        switch viewModel {
+        case is MyListHistoryTableViewModel:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewHistoryCell.identifier),
-                  let listCell = cell as? MyListTableViewHistoryCell else { return UITableViewCell() }
+                  let listCell = cell as? MyListTableViewHistoryCell,
+                  let cellModel = viewModel?.cellModel(for: indexPath) as? MyListTableViewHistoryCellModel else { return UITableViewCell() }
+            listCell.delegate = self
+            cellModel.configure(listCell)
             return listCell
-        case "Favorite":
+        case is MyListFavoriteTableViewModel:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewBookmarkCell.identifier),
-                  let listCell = cell as? MyListTableViewBookmarkCell else { return UITableViewCell() }
+                  let listCell = cell as? MyListTableViewBookmarkCell,
+                  let cellModel = viewModel?.cellModel(for: indexPath) as? MyListTableViewBookmarkCellModel else { return UITableViewCell() }
+            cellModel.configure(listCell)
             return listCell
         default:
             return UITableViewCell()
@@ -79,22 +119,21 @@ extension MyListCollectionViewCell: UITableViewDataSource {
         Layout.cellHeight
     }
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard section == 0 else { return 0 }
-        return Layout.topSpacing
-    }
-
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         Layout.cellSpacing
     }
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard section == 0 else { return nil }
-        return tableView.dequeueReusableHeaderFooterView(withIdentifier: MyListTableViewHeaderFooterView.identifier)
-    }
-
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return tableView.dequeueReusableHeaderFooterView(withIdentifier: MyListTableViewHeaderFooterView.identifier)
+    }
+}
+
+extension MyListCollectionViewCell: MyListTableViewHistoryCellDelegate {
+    func historyCellDidTapMoreButton(_ historyCell: MyListTableViewHistoryCell) {
+        guard viewModel is MyListHistoryTableViewModel,
+              let indexPath = tableView.indexPath(for: historyCell)
+        else { return }
+        delegate?.didTapMoreButtonForHistoryIndexPath(indexPath)
     }
 }
 

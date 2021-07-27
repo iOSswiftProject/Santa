@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol MyListTableViewHistoryCellDelegate: AnyObject {
+    func historyCellDidTapMoreButton(_ historyCell: MyListTableViewHistoryCell)
+}
+
 class MyListTableViewHeaderFooterView: UITableViewHeaderFooterView {
     static let identifier = "MyListTableViewHeaderFooterView"
     override init(reuseIdentifier: String?) {
@@ -22,6 +26,7 @@ class MyListTableViewHeaderFooterView: UITableViewHeaderFooterView {
 
 class MyListTableViewHistoryCell: UITableViewCell {
     static let identifier = "MyListTableViewHistoryCell"
+    weak var delegate: MyListTableViewHistoryCellDelegate?
     let infoView = MountainInfoHistoryView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -44,10 +49,18 @@ class MyListTableViewHistoryCell: UITableViewCell {
         infoView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         infoView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         infoView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        infoView.delegate = self
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        delegate = nil
+    }
+}
+
+extension MyListTableViewHistoryCell: MountainInfoHistoryViewDelegate {
+    func historyViewDidTapMoreButton(_ historyView: MountainInfoHistoryView) {
+        delegate?.historyCellDidTapMoreButton(self)
     }
 }
 
