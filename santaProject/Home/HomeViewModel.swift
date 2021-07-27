@@ -46,8 +46,6 @@ class HomeViewModel: NSObject {
             }
             return imagePrefix + imagePostfix
         }
-
-        print("index: \(index), name: \(imageName(for: index))")
         return UIImage(named: imageName(for: index))
     }
 
