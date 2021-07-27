@@ -87,27 +87,16 @@ class MountainView: MKAnnotationView {
         for v in self.subviews {
             setLabelOfCallout(view: v)
         }
-//        if self.subviews.count > 0 {
-//            let calloutView = self.subviews[0]
-//            setLabelOfCallout(view: calloutView)
-//            if calloutView.subviews.count > 0 {
-//                let bubbleView = calloutView.subviews[0]
-//
-//                setLabelOfCallout(view: bubbleView)
-//            }
-//        }
 
     }
 
     func setLabelOfCallout(view: UIView) {
-        print("loop")
-        print(view)
         
         //UILabel만 찾아 superView background color 바꾸기
         for v in view.subviews {
             
             if v.isKind(of: UILabel.self) {
-                view.backgroundColor = .green
+                view.backgroundColor = UIColor.stGreen30
                 
                 guard let label = v as? UILabel, let text = label.text else { return }
 
@@ -124,12 +113,12 @@ class MountainView: MKAnnotationView {
     
     
     func setToAttributedString(str: String) -> NSMutableAttributedString {
-        let attributedString = NSMutableAttributedString(string: (str), attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .medium), .foregroundColor: UIColor.black, .kern: 1.0])
+        let attributedString = NSMutableAttributedString(string: (str), attributes: [.font: UIFont.systemFont(ofSize: 15, weight: .medium), .foregroundColor: UIColor.white, .kern: 1.0])
         
         if let idx = str.firstIndex(of: " ") {
             
             let pos = str.distance(from: str.startIndex, to: idx)
-            attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 8), range: NSMakeRange(pos, str.count-pos))
+            attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 12), range: NSMakeRange(pos, str.count-pos))
             
         }
 
