@@ -21,8 +21,31 @@ class HomeViewHistoryCellModel: NSObject {
         return "\(mountainName) \(peakName)"
     }
 
-    init(with mountain: Mountain) {
+    var mountainImage: UIImage?
+
+    init(with mountain: Mountain, image: UIImage?) {
         self.mountain = mountain
+        self.mountainImage = image
+    }
+
+    func configure(cell: HomeViewTableViewCell) {
+        cell.dateLabel.attributedText = attrDate()
+        cell.nameLabel.attributedText = attrName()
+        cell.mountainImageView.image = mountainImage
+    }
+
+    func attrDate() -> NSAttributedString {
+        let attrString = NSMutableAttributedString(string: dateString)
+        let range = NSRange(location: 0, length: attrString.length)
+        attrString.addAttribute(.kern, value: -0.04, range: range)
+        return attrString
+    }
+
+    func attrName() -> NSAttributedString {
+        let attrString = NSMutableAttributedString(string: nameString)
+        let range = NSRange(location: 0, length: attrString.length)
+        attrString.addAttribute(.kern, value: -0.08, range: range)
+        return attrString
     }
 }
 
@@ -32,7 +55,7 @@ class HomeViewModel: NSObject {
     var historyCellModels: [HomeViewHistoryCellModel] = []
     var accumulateHeight: Int = 0
 
-    func cellImage(for index: Int) -> UIImage? {
+    private func cellImage(for index: Int) -> UIImage? {
         func imageName(for index: Int) -> String {
             let imagePrefix = "home_illust_"
             var imagePostfix = ""
@@ -53,10 +76,6 @@ class HomeViewModel: NSObject {
         loadHistory()
         makeHistoryModel()
         calculateAccumulateHeight()
-
-        for idx in 0...history.count {
-            _ = cellImage(for: idx)
-        }
     }
 
     private func loadHistory() {
@@ -69,7 +88,11 @@ class HomeViewModel: NSObject {
     }
 
     private func makeHistoryModel() {
-        historyCellModels = history.map{ HomeViewHistoryCellModel(with: $0) }
+        for (idx, mountain) in history.enumerated() {
+            let image = cellImage(for: idx)
+            let model = HomeViewHistoryCellModel(with: mountain, image: image)
+            historyCellModels.append(model)
+        }
     }
 
     private func calculateAccumulateHeight() {

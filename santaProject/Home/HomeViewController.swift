@@ -56,7 +56,8 @@ extension HomeViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeViewTableViewCell.identifier),
               let homeCell = cell as? HomeViewTableViewCell
         else { return UITableViewCell() }
-        homeCell.mountainImage = homeViewModel.cellImage(for: indexPath.row)
+        let cellModel = homeViewModel.historyCellModels[indexPath.row]
+        cellModel.configure(cell: homeCell)
         return cell
     }
 
@@ -72,7 +73,7 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let image = homeViewModel.cellImage(for: indexPath.row)
+        let image = homeViewModel.historyCellModels[indexPath.row].mountainImage
         return image?.size.height ?? 0
     }
 
