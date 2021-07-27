@@ -106,7 +106,7 @@ class MapViewController: UIViewController {
         self.view.addSubview(bottomSheetVC.view)
         bottomSheetVC.didMove(toParent: self)
         
-        bottomSheetVC.view.backgroundColor = UIColor(hex: "CFCFCF")
+        bottomSheetVC.view.backgroundColor = UIColor.stCoolGray25
 //        let height = view.frame.height
 //        let width = view.frame.width
 //        bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY - bottomHeight, width: width, height: height)
@@ -231,8 +231,8 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         let mountain = self.mountains[indexPath.row + indexPath.section]
         let cell = tableView.cellForRow(at: indexPath)
        
-        cell?.layer.borderColor = UIColor.green.cgColor
-        cell?.layer.borderWidth = 5
+        cell?.layer.borderColor = UIColor(hex: "#007F36").cgColor
+        cell?.layer.borderWidth = 3
         
         mapView.centerToLocation(CLLocation(latitude: mountain.coordinate.latitude, longitude: mountain.coordinate.longitude), regionRadius: 8_000)
     }
@@ -257,8 +257,6 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
 
 //        tableView.allowsSelection = false
         tableView.showsVerticalScrollIndicator = false
-        
-        tableView.register(MyListTableViewBookmarkCell.self, forCellReuseIdentifier: "MyListTableViewCell")
     
     }
 }
