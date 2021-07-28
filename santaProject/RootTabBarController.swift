@@ -11,7 +11,7 @@ class RootTabBarController: UITabBarController {
 
     private let tabs: [UIViewController] = [
         HomeViewController(),
-        UIViewController(), // Dummy
+        UINavigationController(rootViewController: mapkitViewController()), // Dummy
         MyListViewController(),
     ]
 

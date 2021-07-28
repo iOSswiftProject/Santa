@@ -2,9 +2,8 @@
 //  ViewController.swift
 //  santaProject
 //
-//  Created by 이병훈 on 2021/05/27.
+//  Created by 이병훈 on 2021/07/26.
 //
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -16,4 +15,3 @@ class ViewController: UIViewController {
 
 
 }
-
