@@ -22,10 +22,6 @@ class MyListTableViewCellModel: NSObject {
         mountain.depth1 ?? "지역"
     }
 
-    var regionColor: UIColor {
-        UIColor(hex: "85DC40")
-    }
-
     var subRegionName: String {
         mountain.depth2 ?? "소지역"
     }
@@ -42,7 +38,7 @@ class MyListTableViewCellModel: NSObject {
     func updateInfo(for view: MountainInfoBaseView) {
         let nameView = view.mountainNameView
         nameView.updateMountainNameLabelAttributedText(mountainName: mountainName, peakName: peakName)
-        nameView.updateRegionTag(regionName: regionName, color: regionColor)
+        nameView.updateRegionTag(regionName: regionName)
 
         view.updateSubRegion(subregionName: subRegionName)
         view.updateHeight(height)

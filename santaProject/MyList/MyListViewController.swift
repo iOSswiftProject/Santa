@@ -51,7 +51,9 @@ class MyListViewController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        self.tabBarItem = UITabBarItem(title: "List", image: nil, tag: 3)
+        self.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "santaTabImageListInactive"), tag: 3)
+        self.tabBarItem.selectedImage = UIImage(named: "santaTabImageListActive")
+        self.tabBarItem.imageInsets = UIEdgeInsets(top: 10, left: 0, bottom: -10, right: 0)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -106,6 +108,37 @@ extension MyListViewController: MyListCollectionViewCellDelegate {
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: true)
     }
+
+    func didTapMoreButtonForHistoryIndexPath(_ indexPath: IndexPath) {
+        func removeHistory(at indexPath: IndexPath) {
+            guard let collectionViewCell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: 0)),
+                  let collectionViewHistoryCell = collectionViewCell as? MyListCollectionViewCell
+            else { return }
+
+            // TODO: remove with history id
+            let mountain = historyTableViewModel.history[indexPath.section]
+            guard let id = mountain.id, let date = mountain.date else { return }
+            DBInterface.shared.deleteLog(mountainId: id, date: date)
+
+            historyTableViewModel.removeHistory(at: indexPath.section)
+            collectionViewHistoryCell.removeHistory(at: indexPath.section)
+
+            if historyTableViewModel.countFor(id: id) == 0 {
+                DBInterface.shared.updateIsVisit(mountainId: id, isVisit: false)
+                favoriteTableViewModel.updateVisited(id: Int(id), visited: false)
+                collectionView.reloadItems(at: [IndexPath(row: 1, section: 0)])
+            }
+        }
+
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let destructiveAction = UIAlertAction(title: "삭제", style: .destructive) { _ in
+            removeHistory(at: indexPath)
+        }
+        let actionCancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        alertController.addAction(destructiveAction)
+        alertController.addAction(actionCancel)
+        present(alertController, animated: true)
+    }
 }
 
 extension MyListViewController: AddHistoryViewControllerDelegate {
@@ -118,7 +151,7 @@ extension MyListViewController: AddHistoryViewControllerDelegate {
         DBInterface.shared.updateIsVisit(mountainId: mountainId, isVisit: true)
 
         historyTableViewModel.addHistory(mountain: mountain, date: dateString)
-        favoriteTableViewModel.updateVisited(id: Int(mountainId))
+        favoriteTableViewModel.updateVisited(id: Int(mountainId), visited: true)
         collectionView.reloadData()
 
     }

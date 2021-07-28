@@ -7,19 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC66DA6A26AED13B004160A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66DA6926AED13B004160A0 /* ViewController.swift */; };
-		BC66DA7626AED1A9004160A0 /* colorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66DA6B26AED1A9004160A0 /* colorSet.swift */; };
-		BC66DA7726AED1A9004160A0 /* regionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66DA6C26AED1A9004160A0 /* regionTableCell.swift */; };
-		BC66DA7826AED1A9004160A0 /* regionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66DA6D26AED1A9004160A0 /* regionData.swift */; };
-		BC66DA7926AED1A9004160A0 /* mapkitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66DA6E26AED1A9004160A0 /* mapkitViewController.swift */; };
-		BC66DA7A26AED1A9004160A0 /* extensionFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66DA6F26AED1A9004160A0 /* extensionFile.swift */; };
-		BC66DA7B26AED1A9004160A0 /* regionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66DA7026AED1A9004160A0 /* regionViewController.swift */; };
-		BC66DA7C26AED1A9004160A0 /* searchBarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66DA7126AED1A9004160A0 /* searchBarData.swift */; };
-		BC66DA7D26AED1A9004160A0 /* searchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66DA7226AED1A9004160A0 /* searchBarViewController.swift */; };
-		BC66DA7E26AED1A9004160A0 /* regionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66DA7326AED1A9004160A0 /* regionCell.swift */; };
-		BC66DA7F26AED1A9004160A0 /* selectRegionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66DA7426AED1A9004160A0 /* selectRegionVC.swift */; };
-		BC66DA8026AED1A9004160A0 /* searchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66DA7526AED1A9004160A0 /* searchCell.swift */; };
 		BC7A6585265F202900C22E1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7A6584265F202900C22E1C /* AppDelegate.swift */; };
+		BC7A6589265F202900C22E1C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7A6588265F202900C22E1C /* ViewController.swift */; };
 		BC7A658C265F202900C22E1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7A658A265F202900C22E1C /* Main.storyboard */; };
 		BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC7A658D265F202900C22E1C /* santaProject.xcdatamodeld */; };
 		BC7A6591265F202900C22E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7A6590265F202900C22E1C /* Assets.xcassets */; };
@@ -45,6 +34,9 @@
 		CE880A2526A0A02B0034B0A5 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A2426A0A02B0034B0A5 /* DatePickerView.swift */; };
 		CE880A2726A1E85E0034B0A5 /* MountainPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A2626A1E85E0034B0A5 /* MountainPickerViewController.swift */; };
 		CE880A2926A1E86B0034B0A5 /* MountainPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE880A2826A1E86B0034B0A5 /* MountainPickerView.swift */; };
+		CECD577626AE9BF20091E66D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECD577526AE9BF20091E66D /* HomeView.swift */; };
+		CECD577826AE9E020091E66D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECD577726AE9E020091E66D /* HomeViewModel.swift */; };
+		CECD578D26AF8EDB0091E66D /* HomeViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECD578C26AF8EDB0091E66D /* HomeViewTableViewCell.swift */; };
 		CED529E32680E559005E05A7 /* MountainInfoBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */; };
 		FE480AC62695DC71000A5D20 /* DBInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC32695DC71000A5D20 /* DBInterface.swift */; };
 		FE480AC72695DC71000A5D20 /* RegionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC42695DC71000A5D20 /* RegionInfo.swift */; };
@@ -57,20 +49,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BC66DA6926AED13B004160A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BC66DA6B26AED1A9004160A0 /* colorSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = colorSet.swift; sourceTree = "<group>"; };
-		BC66DA6C26AED1A9004160A0 /* regionTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = regionTableCell.swift; sourceTree = "<group>"; };
-		BC66DA6D26AED1A9004160A0 /* regionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = regionData.swift; sourceTree = "<group>"; };
-		BC66DA6E26AED1A9004160A0 /* mapkitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mapkitViewController.swift; sourceTree = "<group>"; };
-		BC66DA6F26AED1A9004160A0 /* extensionFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensionFile.swift; sourceTree = "<group>"; };
-		BC66DA7026AED1A9004160A0 /* regionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = regionViewController.swift; sourceTree = "<group>"; };
-		BC66DA7126AED1A9004160A0 /* searchBarData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchBarData.swift; sourceTree = "<group>"; };
-		BC66DA7226AED1A9004160A0 /* searchBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchBarViewController.swift; sourceTree = "<group>"; };
-		BC66DA7326AED1A9004160A0 /* regionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = regionCell.swift; sourceTree = "<group>"; };
-		BC66DA7426AED1A9004160A0 /* selectRegionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectRegionVC.swift; sourceTree = "<group>"; };
-		BC66DA7526AED1A9004160A0 /* searchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchCell.swift; sourceTree = "<group>"; };
 		BC7A6581265F202900C22E1C /* santaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = santaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7A6584265F202900C22E1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BC7A6588265F202900C22E1C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BC7A658B265F202900C22E1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC7A658E265F202900C22E1C /* santaProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = santaProject.xcdatamodel; sourceTree = "<group>"; };
 		BC7A6590265F202900C22E1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -97,6 +78,9 @@
 		CE880A2426A0A02B0034B0A5 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		CE880A2626A1E85E0034B0A5 /* MountainPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainPickerViewController.swift; sourceTree = "<group>"; };
 		CE880A2826A1E86B0034B0A5 /* MountainPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainPickerView.swift; sourceTree = "<group>"; };
+		CECD577526AE9BF20091E66D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CECD577726AE9E020091E66D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		CECD578C26AF8EDB0091E66D /* HomeViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewTableViewCell.swift; sourceTree = "<group>"; };
 		CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoBaseView.swift; sourceTree = "<group>"; };
 		FE480AC32695DC71000A5D20 /* DBInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBInterface.swift; sourceTree = "<group>"; };
 		FE480AC42695DC71000A5D20 /* RegionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionInfo.swift; sourceTree = "<group>"; };
@@ -138,25 +122,14 @@
 		BC7A6583265F202900C22E1C /* santaProject */ = {
 			isa = PBXGroup;
 			children = (
-				BC66DA6B26AED1A9004160A0 /* colorSet.swift */,
-				BC66DA6F26AED1A9004160A0 /* extensionFile.swift */,
-				BC66DA6E26AED1A9004160A0 /* mapkitViewController.swift */,
-				BC66DA7326AED1A9004160A0 /* regionCell.swift */,
-				BC66DA6D26AED1A9004160A0 /* regionData.swift */,
-				BC66DA6C26AED1A9004160A0 /* regionTableCell.swift */,
-				BC66DA7026AED1A9004160A0 /* regionViewController.swift */,
-				BC66DA7126AED1A9004160A0 /* searchBarData.swift */,
-				BC66DA7226AED1A9004160A0 /* searchBarViewController.swift */,
-				BC66DA7526AED1A9004160A0 /* searchCell.swift */,
-				BC66DA7426AED1A9004160A0 /* selectRegionVC.swift */,
 				FE480AC12695DC52000A5D20 /* YBR */,
 				CED529E12680E53E005E05A7 /* Common */,
 				BC7A6584265F202900C22E1C /* AppDelegate.swift */,
+				BC7A6588265F202900C22E1C /* ViewController.swift */,
 				CE0E190F266260C1003916E3 /* RootTabBarController.swift */,
+				CECD577426AE9BB00091E66D /* Home */,
 				CE0E1936266BDF80003916E3 /* MyList */,
 				CE880A1526994A480034B0A5 /* AddHistory */,
-				CE0E191326626434003916E3 /* HomeViewController.swift */,
-				BC66DA6926AED13B004160A0 /* ViewController.swift */,
 				BC7A658A265F202900C22E1C /* Main.storyboard */,
 				BC7A6590265F202900C22E1C /* Assets.xcassets */,
 				CE0E193E266BF4CE003916E3 /* UIColor+Extension.swift */,
@@ -192,6 +165,17 @@
 				CE880A2826A1E86B0034B0A5 /* MountainPickerView.swift */,
 			);
 			path = AddHistory;
+			sourceTree = "<group>";
+		};
+		CECD577426AE9BB00091E66D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CE0E191326626434003916E3 /* HomeViewController.swift */,
+				CECD577726AE9E020091E66D /* HomeViewModel.swift */,
+				CECD577526AE9BF20091E66D /* HomeView.swift */,
+				CECD578C26AF8EDB0091E66D /* HomeViewTableViewCell.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		CED529E12680E53E005E05A7 /* Common */ = {
@@ -327,47 +311,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE880A1926994CAD0034B0A5 /* AddHistoryButton.swift in Sources */,
+				CECD577826AE9E020091E66D /* HomeViewModel.swift in Sources */,
 				CE880A1D269AD36C0034B0A5 /* MyListTableViewModel.swift in Sources */,
 				CE880A2526A0A02B0034B0A5 /* DatePickerView.swift in Sources */,
 				CE880A2926A1E86B0034B0A5 /* MountainPickerView.swift in Sources */,
 				CE880A21269AE37E0034B0A5 /* MyListTableViewCellModel.swift in Sources */,
 				CE0E191426626434003916E3 /* HomeViewController.swift in Sources */,
 				FE480AD82695DC9B000A5D20 /* Date+Extension.swift in Sources */,
-				BC66DA7726AED1A9004160A0 /* regionTableCell.swift in Sources */,
 				CE0E1928266B3D49003916E3 /* MyListViewController.swift in Sources */,
 				CE0E19462675D75C003916E3 /* MyListCollectionViewCell.swift in Sources */,
-				BC66DA6A26AED13B004160A0 /* ViewController.swift in Sources */,
-				BC66DA7926AED1A9004160A0 /* mapkitViewController.swift in Sources */,
 				FE480AD32695DC94000A5D20 /* MapViewController.swift in Sources */,
 				FE480AC62695DC71000A5D20 /* DBInterface.swift in Sources */,
 				CE5DE72326870ACC009FA3E8 /* VisitedFlagView.swift in Sources */,
 				CE0E193F266BF4CE003916E3 /* UIColor+Extension.swift in Sources */,
 				CE0E193C266BE103003916E3 /* MyListTableViewCell.swift in Sources */,
+				CECD578D26AF8EDB0091E66D /* HomeViewTableViewCell.swift in Sources */,
 				CE880A12268888720034B0A5 /* MountainNameView.swift in Sources */,
+				BC7A6589265F202900C22E1C /* ViewController.swift in Sources */,
 				CE0E1910266260C1003916E3 /* RootTabBarController.swift in Sources */,
 				FE480AD42695DC94000A5D20 /* MountainView.swift in Sources */,
 				CE880A2326A099C30034B0A5 /* DatePickerViewController.swift in Sources */,
-				BC66DA7C26AED1A9004160A0 /* searchBarData.swift in Sources */,
 				CED529E32680E559005E05A7 /* MountainInfoBaseView.swift in Sources */,
-				BC66DA7F26AED1A9004160A0 /* selectRegionVC.swift in Sources */,
-				BC66DA7E26AED1A9004160A0 /* regionCell.swift in Sources */,
-				BC66DA7D26AED1A9004160A0 /* searchBarViewController.swift in Sources */,
-				BC66DA7626AED1A9004160A0 /* colorSet.swift in Sources */,
 				CE880A1726994A6C0034B0A5 /* AddHistoryViewController.swift in Sources */,
 				CE880A1B26995EFB0034B0A5 /* AddHistoryView.swift in Sources */,
 				CE880A2726A1E85E0034B0A5 /* MountainPickerViewController.swift in Sources */,
-				BC66DA7826AED1A9004160A0 /* regionData.swift in Sources */,
 				FE480AC72695DC71000A5D20 /* RegionInfo.swift in Sources */,
 				BC7A6585265F202900C22E1C /* AppDelegate.swift in Sources */,
 				CE5DE7212686F7E1009FA3E8 /* MountainInfoBookmarkView.swift in Sources */,
-				BC66DA7B26AED1A9004160A0 /* regionViewController.swift in Sources */,
-				BC66DA8026AED1A9004160A0 /* searchCell.swift in Sources */,
 				FE480AC82695DC71000A5D20 /* Mountain.swift in Sources */,
 				CE0E192F266B9248003916E3 /* MyListHeaderView.swift in Sources */,
 				CE5DE72526871350009FA3E8 /* MountainInfoHistoryView.swift in Sources */,
 				CE5DE71F2686DDCE009FA3E8 /* RegionTagView.swift in Sources */,
 				BC7A658F265F202900C22E1C /* santaProject.xcdatamodeld in Sources */,
-				BC66DA7A26AED1A9004160A0 /* extensionFile.swift in Sources */,
+				CECD577626AE9BF20091E66D /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
