@@ -56,7 +56,6 @@
 		FE480AD32695DC94000A5D20 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AD12695DC94000A5D20 /* MapViewController.swift */; };
 		FE480AD42695DC94000A5D20 /* MountainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AD22695DC94000A5D20 /* MountainView.swift */; };
 		FE480AD82695DC9B000A5D20 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AD72695DC9B000A5D20 /* Date+Extension.swift */; };
-		FE6CDEFB26A6E9C100F6E84B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6CDEFA26A6E9C100F6E84B /* UIImage+Extension.swift */; };
 		FE977A5226AEF9CA007980B9 /* Santa.db in Resources */ = {isa = PBXBuildFile; fileRef = FE977A5126AEF9CA007980B9 /* Santa.db */; };
 /* End PBXBuildFile section */
 
@@ -112,7 +111,6 @@
 		FE480AD12695DC94000A5D20 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FE480AD22695DC94000A5D20 /* MountainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainView.swift; sourceTree = "<group>"; };
 		FE480AD72695DC9B000A5D20 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		FE6CDEFA26A6E9C100F6E84B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImage+Extension.swift"; path = "../../../../../yeongbinro/Santa/santaProject/YBR/Util/UIImage+Extension.swift"; sourceTree = "<group>"; };
 		FE977A5126AEF9CA007980B9 /* Santa.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Santa.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -269,7 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				FE480AD72695DC9B000A5D20 /* Date+Extension.swift */,
-				FE6CDEFA26A6E9C100F6E84B /* UIImage+Extension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -368,7 +365,6 @@
 				BC1066A926B114B100AF6E72 /* searchBarData.swift in Sources */,
 				BC7A6589265F202900C22E1C /* ViewController.swift in Sources */,
 				CE0E1910266260C1003916E3 /* RootTabBarController.swift in Sources */,
-				FE6CDEFB26A6E9C100F6E84B /* UIImage+Extension.swift in Sources */,
 				FE480AD42695DC94000A5D20 /* MountainView.swift in Sources */,
 				BC1066A526B114B100AF6E72 /* regionData.swift in Sources */,
 				CE880A2326A099C30034B0A5 /* DatePickerViewController.swift in Sources */,
