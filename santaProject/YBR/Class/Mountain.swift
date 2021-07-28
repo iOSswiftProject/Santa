@@ -34,7 +34,7 @@ class Mountain: NSObject,MKAnnotation {
         self.id = id
         self.isFavorite = (isFavorite != 0)
         self.isVisit = (isVisit != 0)
-        self.title = name
+        self.title = name + " " + peak
 
     }
     
