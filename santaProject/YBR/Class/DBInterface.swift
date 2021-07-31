@@ -197,7 +197,7 @@ class DBInterface: NSObject {
          */
         var res:[Mountain] = []
         
-        let query = "SELECT NAME, HEIGHT, LATITUDE, LONGTITUDE, DEPTH1, DEPTH2, PEAK, ISFAVORITE, ISVISIT, ID, DATE FROM MOUNTAIN, LOG WHERE MOUNTAIN.ID = LOG.MOUNTAINID "
+        let query = "SELECT NAME, HEIGHT, LATITUDE, LONGTITUDE, DEPTH1, DEPTH2, PEAK, ISFAVORITE, ISVISIT, MOUNTAIN.ID, DATE, LOG.ID FROM MOUNTAIN, LOG WHERE MOUNTAIN.ID = LOG.MOUNTAINID "
         var queryStatment: OpaquePointer? = nil
         
         
@@ -222,16 +222,17 @@ class DBInterface: NSObject {
                     peak = String(cString: queryResultCol6)
                 }
                 
-                
                 let isFavorite = sqlite3_column_int(queryStatment, 7)
                 let isVisit = sqlite3_column_int(queryStatment, 8)
-                let id = sqlite3_column_int(queryStatment, 9)
-                
-                let mountain = Mountain.init(name: name, peak: peak, height: height, depth1: depth1, depth2: depth2, latitude: latitude, longtitude: longtitude, id: id, isFavorite: isFavorite, isVisit: isVisit)
+                let mountainId = sqlite3_column_int(queryStatment, 9)
+                let mountain = Mountain.init(name: name, peak: peak, height: height, depth1: depth1, depth2: depth2, latitude: latitude, longtitude: longtitude, id: mountainId, isFavorite: isFavorite, isVisit: isVisit)
                 
                 let queryResultCol10 = sqlite3_column_text(queryStatment, 10)
                 let date = String(cString: queryResultCol10!)
                 mountain.date = date
+
+                // TODO: Use history class instead of date in mountain
+                let logId = sqlite3_column_int(queryStatment, 11)
                         
                 res.append(mountain)
             }
