@@ -16,7 +16,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         setupHomeView()
-        setupHomeViewModel()
     }
 
     init() {
@@ -30,8 +29,10 @@ class HomeViewController: UIViewController {
         super.init(coder: aDecoder)
     }
 
-    private func setupHomeViewModel() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         homeViewModel.update()
+        homeView.tableView.reloadData()
     }
 
     private func setupHomeView() {
@@ -63,7 +64,11 @@ extension HomeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         guard section == 0 else { return 0 }
-        return HomeViewTableViewHeaderView.height
+        let safeAreaHeight = view.safeAreaInsets.top
+        let tableViewheight = tableView.frame.height
+        let mountainCellsHeight = homeViewModel.mountainCellsHeight
+        let extraSpace = tableViewheight - mountainCellsHeight - safeAreaHeight
+        return max(extraSpace, HomeViewTableViewHeaderView.height)
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -83,6 +88,7 @@ extension HomeViewController: UITableViewDelegate {
               let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier),
               let homeHeader = header as? HomeViewTableViewHeaderView
         else { return nil }
+        homeHeader.updateAccumulateHeight(homeViewModel.accumulateHeight)
         return homeHeader
     }
 

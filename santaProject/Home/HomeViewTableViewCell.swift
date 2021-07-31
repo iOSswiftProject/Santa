@@ -13,14 +13,49 @@ class HomeViewTableViewHeaderView: UITableViewHeaderFooterView {
     static let height: CGFloat = 253
 
     let climberImageView = UIImageView()
+    let accumulateHeightTitleLabel = UILabel()
+    let accumulateHeightLabel = UILabel()
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        setupAccumulateHeightLabel()
         setupClimber()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupAccumulateHeightLabel() {
+        let container = UIView()
+        addSubview(container)
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        container.topAnchor.constraint(equalTo: topAnchor, constant: 25).isActive = true
+
+        container.addSubview(accumulateHeightTitleLabel)
+        accumulateHeightTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        accumulateHeightTitleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
+        accumulateHeightTitleLabel.centerYAnchor.constraint(equalTo: container.centerYAnchor).isActive = true
+
+        container.addSubview(accumulateHeightLabel)
+        accumulateHeightLabel.translatesAutoresizingMaskIntoConstraints = false
+        accumulateHeightLabel.leadingAnchor.constraint(equalTo: accumulateHeightTitleLabel.trailingAnchor,
+                                                       constant: 8).isActive = true
+        accumulateHeightLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
+        accumulateHeightLabel.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
+        accumulateHeightLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
+
+        accumulateHeightTitleLabel.font = .systemFont(ofSize: 14, weight: .bold)
+        accumulateHeightTitleLabel.textColor = .stGreen40
+
+        accumulateHeightLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+        accumulateHeightLabel.textColor = .stGreen40
+
+        let attrTitle = NSMutableAttributedString(string: "총 높이")
+        let range = NSRange(location: 0, length: attrTitle.length)
+        attrTitle.addAttribute(.kern, value: -0.08, range: range)
+        accumulateHeightTitleLabel.attributedText = attrTitle
     }
 
     private func setupClimber() {
@@ -32,6 +67,21 @@ class HomeViewTableViewHeaderView: UITableViewHeaderFooterView {
         climberImageView.widthAnchor.constraint(equalToConstant: image.size.width).isActive = true
         climberImageView.heightAnchor.constraint(equalToConstant: image.size.height).isActive = true
         climberImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+    }
+
+    func updateAccumulateHeight(_ height: Int) {
+        let heightString: String
+        switch height {
+        case ..<1000:
+            heightString = "\(height)m"
+        default:
+            let kilometer = Double(height) / 1000
+            heightString = "\(kilometer)km"
+        }
+        let attrString = NSMutableAttributedString(string: heightString)
+        let range = NSRange(location: 0, length: attrString.length)
+        attrString.addAttribute(.kern, value: -0.02, range: range)
+        accumulateHeightLabel.attributedText = attrString
     }
 }
 
