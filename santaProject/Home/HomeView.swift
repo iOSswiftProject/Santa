@@ -9,16 +9,30 @@ import UIKit
 
 class HomeView: UIView {
 
+    let menuButton = UIButton()
     let tableView = UITableView(frame: .zero, style: .grouped)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
+        setupMenuButton()
         setupTableView()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupMenuButton() {
+        addSubview(menuButton)
+        menuButton.translatesAutoresizingMaskIntoConstraints = false
+        menuButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
+        menuButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 24).isActive = true
+        menuButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        menuButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+
+        menuButton.setImage(#imageLiteral(resourceName: "santaHomeMenuButton"), for: .normal)
+        menuButton.addTarget(self, action: #selector(didTapMenuButton(_:)), for: .touchUpInside)
     }
 
     private func setupTableView() {
@@ -35,5 +49,10 @@ class HomeView: UIView {
         tableView.register(HomeViewTableViewCell.self, forCellReuseIdentifier: HomeViewTableViewCell.identifier)
         tableView.register(HomeViewTableViewHeaderView.self,
                            forHeaderFooterViewReuseIdentifier: HomeViewTableViewHeaderView.identifier)
+    }
+
+    @objc
+    private func didTapMenuButton(_ sender: UIButton) {
+        print("home menu button tapped!")
     }
 }
