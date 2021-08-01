@@ -33,6 +33,7 @@ class MyListCollectionViewCell: UICollectionViewCell {
         setupTableView()
         setupAddHistoryButton()
         setupHistoryEmptyView()
+        setupFavoriteEmptyView()
     }
 
     required init?(coder: NSCoder) {
@@ -84,7 +85,53 @@ class MyListCollectionViewCell: UICollectionViewCell {
         button.layer.cornerRadius = 28
         button.addTarget(self, action: #selector(didTapAddHistoryButton(_:)), for: .touchUpInside)
 
-        historyEmptyView.isHidden = true
+        view.isHidden = true
+    }
+
+    private func setupFavoriteEmptyView() {
+        let view = favoriteEmptyView
+
+        addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        view.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+
+        let imageView = UIImageView(image: UIImage(named: "bookmark_empty"))
+        view.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 148).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 72).isActive = true
+        imageView.contentMode = .scaleAspectFit
+
+        let label = UILabel()
+        view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 148).isActive = true
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        label.numberOfLines = 2
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+
+        let str = "북마크된 산이 없습니다.\n관심 있는 산에 북마크 표시 눌러주세요"
+        let nsStr = str as NSString
+        let attrString = NSMutableAttributedString(string: str)
+        let range = NSRange(location: 0, length: attrString.length)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 9
+        paragraphStyle.alignment = .center
+
+        let highlightRange = nsStr.range(of: "북마크 표시")
+        let highlightFont = UIFont.systemFont(ofSize: 16, weight: .bold)
+
+        attrString.addAttribute(.kern, value: -0.08, range: range)
+        attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: range)
+        attrString.addAttribute(.foregroundColor, value: UIColor.stGreen40, range: highlightRange)
+        attrString.addAttribute(.font, value: highlightFont, range: highlightRange)
+        label.attributedText = attrString
+
+        view.isHidden = true
     }
 
     private func setupTableView() {
