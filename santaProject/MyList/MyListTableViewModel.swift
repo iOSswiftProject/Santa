@@ -106,6 +106,12 @@ class MyListFavoriteTableViewModel: MyListTableViewModel {
         }
     }
 
+    func removeBookmark(at index: Int) {
+        guard index < bookmarks.count else { fatalError("Index error! bookmark count: \(bookmarks.count), index: \(index)") }
+        bookmarks.remove(at: index)
+        cellModels.remove(at: index)
+    }
+
     private func loadFavorite() {
         let result = DBInterface.shared.seletMountainFavorite()
         bookmarks = result

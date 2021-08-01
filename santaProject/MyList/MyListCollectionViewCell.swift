@@ -10,6 +10,7 @@ import UIKit
 protocol MyListCollectionViewCellDelegate: AnyObject {
     func didTapAddHistoryButton()
     func didTapMoreButtonForHistoryIndexPath(_ indexPath: IndexPath)
+    func didTapBookmarkButton(for indexPath: IndexPath)
 }
 
 class MyListCollectionViewCell: UICollectionViewCell {
@@ -178,6 +179,16 @@ class MyListCollectionViewCell: UICollectionViewCell {
         addHistoryButton.isHidden = true
     }
 
+    func removeBookmark(at index: Int) {
+        guard viewModel is MyListFavoriteTableViewModel else { return }
+        tableView.beginUpdates()
+        tableView.deleteSections([index], with: .automatic)
+        tableView.endUpdates()
+
+        guard viewModel?.count == 0 else { return }
+        favoriteEmptyView.isHidden = false
+    }
+
     func applyViewModel(_ model: MyListTableViewModel) {
         self.viewModel = model
         let isEmpty = model.count == 0
@@ -214,14 +225,17 @@ extension MyListCollectionViewCell: UITableViewDataSource {
         case is MyListHistoryTableViewModel:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewHistoryCell.identifier),
                   let listCell = cell as? MyListTableViewHistoryCell,
-                  let cellModel = viewModel?.cellModel(for: indexPath) as? MyListTableViewHistoryCellModel else { return UITableViewCell() }
+                  let cellModel = viewModel?.cellModel(for: indexPath) as? MyListTableViewHistoryCellModel
+            else { return UITableViewCell() }
             listCell.delegate = self
             cellModel.configure(listCell)
             return listCell
         case is MyListFavoriteTableViewModel:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewBookmarkCell.identifier),
                   let listCell = cell as? MyListTableViewBookmarkCell,
-                  let cellModel = viewModel?.cellModel(for: indexPath) as? MyListTableViewBookmarkCellModel else { return UITableViewCell() }
+                  let cellModel = viewModel?.cellModel(for: indexPath) as? MyListTableViewBookmarkCellModel
+            else { return UITableViewCell() }
+            listCell.delegate = self
             cellModel.configure(listCell)
             return listCell
         default:
@@ -248,6 +262,15 @@ extension MyListCollectionViewCell: MyListTableViewHistoryCellDelegate {
               let indexPath = tableView.indexPath(for: historyCell)
         else { return }
         delegate?.didTapMoreButtonForHistoryIndexPath(indexPath)
+    }
+}
+
+extension MyListCollectionViewCell: MyListTableViewBookmarkCellDelegate {
+    func bookmarkCellDidTapMoreButton(_ bookmarkCell: MyListTableViewBookmarkCell) {
+        guard viewModel is MyListFavoriteTableViewModel,
+              let indexPath = tableView.indexPath(for: bookmarkCell)
+        else { return }
+        delegate?.didTapBookmarkButton(for: indexPath)
     }
 }
 

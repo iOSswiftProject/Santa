@@ -11,6 +11,10 @@ protocol MyListTableViewHistoryCellDelegate: AnyObject {
     func historyCellDidTapMoreButton(_ historyCell: MyListTableViewHistoryCell)
 }
 
+protocol MyListTableViewBookmarkCellDelegate: AnyObject {
+    func bookmarkCellDidTapMoreButton(_ bookmarkCell: MyListTableViewBookmarkCell)
+}
+
 class MyListTableViewHeaderFooterView: UITableViewHeaderFooterView {
     static let identifier = "MyListTableViewHeaderFooterView"
     override init(reuseIdentifier: String?) {
@@ -66,6 +70,7 @@ extension MyListTableViewHistoryCell: MountainInfoHistoryViewDelegate {
 
 class MyListTableViewBookmarkCell: UITableViewCell {
     static let identifier = "MyListTableViewBookmarkCell"
+    weak var delegate: MyListTableViewBookmarkCellDelegate?
     let infoView = MountainInfoBookmarkView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -88,9 +93,16 @@ class MyListTableViewBookmarkCell: UITableViewCell {
         infoView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         infoView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         infoView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        infoView.delegate = self
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
+    }
+}
+
+extension MyListTableViewBookmarkCell: MountainInfoBookmarkViewDelegate {
+    func bookmarkViewDidTapBookmarkButton(_ bookmarkView: MountainInfoBookmarkView) {
+        delegate?.bookmarkCellDidTapMoreButton(self)
     }
 }
