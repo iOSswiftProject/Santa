@@ -84,7 +84,7 @@ class MyListFavoriteTableViewModel: MyListTableViewModel {
 
     init() {
         loadFavorite()
-//        bookmarkSomeMountainsIfNeeded()
+        bookmarkSomeMountainsIfNeeded()
         createCellModels()
     }
 
