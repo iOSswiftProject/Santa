@@ -23,15 +23,115 @@ class MyListCollectionViewCell: UICollectionViewCell {
 
     let addHistoryButton = AddHistoryButton()
 
+    let historyEmptyView = UIView()
+
+    let favoriteEmptyView = UIView()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
         setupTableView()
         setupAddHistoryButton()
+        setupHistoryEmptyView()
+        setupFavoriteEmptyView()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupHistoryEmptyView() {
+        let view = historyEmptyView
+
+        addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        view.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+
+        let imageView = UIImageView(image: UIImage(named: "history_empty"))
+        view.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 63).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        imageView.contentMode = .scaleAspectFit
+
+        let label = UILabel()
+        view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 40).isActive = true
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        label.numberOfLines = 2
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+
+        let attrString = NSMutableAttributedString(string: "다녀온 산이 없습니다.\n다녀온 산을 추가해 보세요.")
+        let range = NSRange(location: 0, length: attrString.length)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 9
+        paragraphStyle.alignment = .center
+        attrString.addAttribute(.kern, value: -0.08, range: range)
+        attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: range)
+        label.attributedText = attrString
+
+        let button = AddHistoryButton()
+        view.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 56).isActive = true
+        button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 220).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        button.layer.cornerRadius = 28
+        button.addTarget(self, action: #selector(didTapAddHistoryButton(_:)), for: .touchUpInside)
+
+        view.isHidden = true
+    }
+
+    private func setupFavoriteEmptyView() {
+        let view = favoriteEmptyView
+
+        addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        view.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+
+        let imageView = UIImageView(image: UIImage(named: "bookmark_empty"))
+        view.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 148).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 72).isActive = true
+        imageView.contentMode = .scaleAspectFit
+
+        let label = UILabel()
+        view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 148).isActive = true
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        label.numberOfLines = 2
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+
+        let str = "북마크된 산이 없습니다.\n관심 있는 산에 북마크 표시 눌러주세요"
+        let nsStr = str as NSString
+        let attrString = NSMutableAttributedString(string: str)
+        let range = NSRange(location: 0, length: attrString.length)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 9
+        paragraphStyle.alignment = .center
+
+        let highlightRange = nsStr.range(of: "북마크 표시")
+        let highlightFont = UIFont.systemFont(ofSize: 16, weight: .bold)
+
+        attrString.addAttribute(.kern, value: -0.08, range: range)
+        attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: range)
+        attrString.addAttribute(.foregroundColor, value: UIColor.stGreen40, range: highlightRange)
+        attrString.addAttribute(.font, value: highlightFont, range: highlightRange)
+        label.attributedText = attrString
+
+        view.isHidden = true
     }
 
     private func setupTableView() {
@@ -45,6 +145,7 @@ class MyListCollectionViewCell: UICollectionViewCell {
 
         tableView.allowsSelection = false
         tableView.showsVerticalScrollIndicator = false
+        tableView.separatorStyle = .none
 
         tableView.register(MyListTableViewHistoryCell.self, forCellReuseIdentifier: MyListTableViewHistoryCell.identifier)
         tableView.register(MyListTableViewBookmarkCell.self, forCellReuseIdentifier: MyListTableViewBookmarkCell.identifier)
@@ -56,8 +157,12 @@ class MyListCollectionViewCell: UICollectionViewCell {
 
     private func setupAddHistoryButton() {
         addSubview(addHistoryButton)
+        translatesAutoresizingMaskIntoConstraints = false
         addHistoryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
         addHistoryButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -18).isActive = true
+        addHistoryButton.widthAnchor.constraint(equalToConstant: 148).isActive = true
+        addHistoryButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        addHistoryButton.layer.cornerRadius = 22
         addHistoryButton.addTarget(self, action: #selector(didTapAddHistoryButton(_:)), for: .touchUpInside)
         addHistoryButton.isHidden = true
     }
@@ -67,15 +172,24 @@ class MyListCollectionViewCell: UICollectionViewCell {
         tableView.beginUpdates()
         tableView.deleteSections([index], with: .automatic)
         tableView.endUpdates()
+
+        guard viewModel?.count == 0 else { return }
+        historyEmptyView.isHidden = false
+        addHistoryButton.isHidden = true
     }
 
     func applyViewModel(_ model: MyListTableViewModel) {
         self.viewModel = model
+        let isEmpty = model.count == 0
         switch viewModel {
         case is MyListHistoryTableViewModel:
-            addHistoryButton.isHidden = false
+            favoriteEmptyView.isHidden = true
+            historyEmptyView.isHidden = !isEmpty
+            addHistoryButton.isHidden = isEmpty
         default:
+            historyEmptyView.isHidden = true
             addHistoryButton.isHidden = true
+            favoriteEmptyView.isHidden = !isEmpty
         }
         tableView.reloadData()
     }
