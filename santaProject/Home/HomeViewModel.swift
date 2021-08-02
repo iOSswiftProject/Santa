@@ -55,6 +55,17 @@ class HomeViewModel: NSObject {
     var historyCellModels: [HomeViewHistoryCellModel] = []
     var accumulateHeight: Int = 0
 
+    var mountainCellsHeight: CGFloat {
+        let imageHeights = historyCellModels.map { cellModel in
+            cellModel.mountainImage?.size.height
+        }
+        var sumOfImageHeight: CGFloat = 0
+        imageHeights.forEach {
+            sumOfImageHeight += $0 ?? 0
+        }
+        return sumOfImageHeight
+    }
+
     private func cellImage(for index: Int) -> UIImage? {
         func imageName(for index: Int) -> String {
             let imagePrefix = "home_illust_"
@@ -88,6 +99,7 @@ class HomeViewModel: NSObject {
     }
 
     private func makeHistoryModel() {
+        historyCellModels = []
         for (idx, mountain) in history.enumerated() {
             let image = cellImage(for: idx)
             let model = HomeViewHistoryCellModel(with: mountain, image: image)

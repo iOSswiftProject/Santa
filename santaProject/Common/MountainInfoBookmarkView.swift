@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol MountainInfoBookmarkViewDelegate: AnyObject {
+    func bookmarkViewDidTapBookmarkButton(_ bookmarkView: MountainInfoBookmarkView)
+}
+
 class MountainInfoBookmarkView: MountainInfoBaseView {
+
+    weak var delegate: MountainInfoBookmarkViewDelegate?
+    
     var isBookmark: Bool = false {
         didSet {
             let imageName = isBookmark ? "santaBookmarkActive" : "santaBookmarkInactive"
@@ -68,8 +75,7 @@ class MountainInfoBookmarkView: MountainInfoBaseView {
 extension MountainInfoBookmarkView {
     @objc
     private func didTapBookmarkButton(_ sender: UIButton) {
-        // TODO: remove from data
-//        isBookmark = !isBookmark
+        delegate?.bookmarkViewDidTapBookmarkButton(self)
     }
 }
 

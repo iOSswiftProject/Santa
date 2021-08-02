@@ -51,9 +51,8 @@ class MyListViewController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        self.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "santaTabImageListInactive"), tag: 3)
+        self.tabBarItem = UITabBarItem(title: "나의 산", image: UIImage(named: "santaTabImageListInactive"), tag: 3)
         self.tabBarItem.selectedImage = UIImage(named: "santaTabImageListActive")
-        self.tabBarItem.imageInsets = UIEdgeInsets(top: 10, left: 0, bottom: -10, right: 0)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -133,6 +132,29 @@ extension MyListViewController: MyListCollectionViewCellDelegate {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let destructiveAction = UIAlertAction(title: "삭제", style: .destructive) { _ in
             removeHistory(at: indexPath)
+        }
+        let actionCancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        alertController.addAction(destructiveAction)
+        alertController.addAction(actionCancel)
+        present(alertController, animated: true)
+    }
+
+    func didTapBookmarkButton(for indexPath: IndexPath) {
+        func removeBookmark(at indexPath: IndexPath) {
+            guard let collectionViewCell = self.collectionView.cellForItem(at: IndexPath(row: 1, section: 0)),
+                  let collectionViewBookmarkCell = collectionViewCell as? MyListCollectionViewCell
+            else { return }
+
+            let mountain = favoriteTableViewModel.bookmarks[indexPath.section]
+            guard let id = mountain.id else { return }
+            DBInterface.shared.updateIsFavorite(mountainId: id, isFavorite: false)
+            favoriteTableViewModel.removeBookmark(at: indexPath.section)
+            collectionViewBookmarkCell.removeBookmark(at: indexPath.section)
+        }
+
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let destructiveAction = UIAlertAction(title: "북마크 제거", style: .destructive) { _ in
+            removeBookmark(at: indexPath)
         }
         let actionCancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         alertController.addAction(destructiveAction)
