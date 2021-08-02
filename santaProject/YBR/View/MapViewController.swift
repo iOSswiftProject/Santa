@@ -52,22 +52,21 @@ class MapViewController: UIViewController {
             depth1 = "경기도"
             depth2 = "남양주시"
             location = CLLocation.init(latitude: 37.6311948, longitude: 127.1697305)
-            
-            self.navigationItem.title = depth1 + " " + depth2
-            mapViewType = MapViewType.regionBased
-            mountains  = DBInterface.shared.selectMountain(depth1: depth1, depth2: depth2)
-            mapView.addAnnotations(mountains)
-            //        self.navigationItem.title = depth1 + " " + depth2
-            mapView.centerToLocation(location,regionRadius: 30_000)
         }
-
-//        self.navigationController?.pushViewController(DummyViewController2(), animated: false)
         
+        self.navigationItem.title = depth1 + " " + depth2
+        mapViewType = MapViewType.regionBased
+        mountains  = DBInterface.shared.selectMountain(depth1: depth1, depth2: depth2)
+        mapView.addAnnotations(mountains)
+        mapView.centerToLocation(location,regionRadius: 30_000)
+
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.tabBarController?.tabBar.isHidden = true
         setMapView()
         
         if mapViewType == MapViewType.regionBased {
@@ -232,7 +231,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath)
        
         cell?.layer.borderColor = UIColor(hex: "#007F36").cgColor
-        cell?.layer.borderWidth = 3
+        cell?.layer.borderWidth = 2
         
         mapView.centerToLocation(CLLocation(latitude: mountain.coordinate.latitude, longitude: mountain.coordinate.longitude), regionRadius: 8_000)
     }
@@ -257,7 +256,8 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
 
 //        tableView.allowsSelection = false
         tableView.showsVerticalScrollIndicator = false
-    
+        
+        tableView.tableFooterView = UIView.init(frame: .zero)
     }
 }
 
