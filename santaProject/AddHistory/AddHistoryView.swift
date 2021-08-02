@@ -86,7 +86,11 @@ class AddHistoryView: UIView {
     }
 
     private func setupMountainName() {
-        
+        setupTitleLabel()
+        setupSelectMountainButton()
+        setupMountainNamePlaceHolder()
+        setupMountainNameLine()
+        setupMountainNameLabel()
 
         func setupTitleLabel() {
             let label = mountainNameTitleLabel
@@ -171,16 +175,16 @@ class AddHistoryView: UIView {
             label.font = .systemFont(ofSize: 24)
             label.textColor = .stGreen40
         }
-        
-        setupTitleLabel()
-        setupSelectMountainButton()
-        setupMountainNamePlaceHolder()
-        setupMountainNameLine()
-        setupMountainNameLabel()
     }
 
     private func setupDate() {
-        
+        setupTitleLabel()
+        setupDatePickButton()
+        setupDatePickPlaceHolder()
+        setupDateLine()
+        setupDateLabel()
+        setupMountainEmptyMessage()
+        setupDateEmptyMessage()
 
         func setupTitleLabel() {
             let label = dateTitleLabel
@@ -265,14 +269,6 @@ class AddHistoryView: UIView {
             label.font = .systemFont(ofSize: 24, weight: .bold)
             label.textColor = .stGreen40
         }
-        
-        setupTitleLabel()
-        setupDatePickButton()
-        setupDatePickPlaceHolder()
-        setupDateLine()
-        setupDateLabel()
-        setupMountainEmptyMessage()
-        setupDateEmptyMessage()
     }
 
     private func setupDoneButton() {
