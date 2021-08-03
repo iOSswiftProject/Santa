@@ -65,8 +65,11 @@ class MountainView: MKAnnotationView {
         self.canShowCallout = true
         
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        btn.setBackgroundImage(UIImage(named: "santaIconArrow"), for: .normal)
-        
+//        btn.setBackgroundImage(UIImage(named: "santaIconArrow"), for: .normal)
+        let origImage = UIImage(named: "santaIconArrow")
+        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        btn.setImage(tintedImage, for: .normal)
+        btn.tintColor = .white
         btn.addTarget(self, action: #selector(touchRightButton), for: .touchUpInside)
         self.rightCalloutAccessoryView = btn
 
