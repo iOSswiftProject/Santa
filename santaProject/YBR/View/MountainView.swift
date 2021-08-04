@@ -30,7 +30,7 @@ class MountainView: MKAnnotationView {
     }
     
     func addFavoriteButton() {
-        let imgView = UIImageView.init(frame: CGRect(x: self.frame.width - 10, y: 0, width: 10, height: 10))
+        let imgView = UIImageView.init(frame: CGRect(x: self.frame.width - 10, y: 0, width: 16, height: 16))
         imgView.image = #imageLiteral(resourceName: "SantaBm")
         self.addSubview(imgView)
     }
