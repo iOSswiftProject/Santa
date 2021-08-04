@@ -77,7 +77,8 @@ class selectRegionVC: UIViewController {
 
         /* 내비게이션 바 줄 없애기*/
        // self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationItem.title = "지역별 검색"
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.backgroundColor = .white
         
