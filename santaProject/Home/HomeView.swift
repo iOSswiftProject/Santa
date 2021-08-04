@@ -54,6 +54,7 @@ class HomeView: UIView {
 
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
+        tableView.bounces = false
 
         tableView.register(HomeViewTableViewCell.self, forCellReuseIdentifier: HomeViewTableViewCell.identifier)
         tableView.register(HomeViewTableViewHeaderView.self,
