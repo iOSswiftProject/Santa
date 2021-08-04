@@ -13,17 +13,23 @@ class HomeView: UIView {
     let tableView = UITableView(frame: .zero, style: .grouped)
     let accumulateHeightTitleLabel = UILabel()
     let accumulateHeightLabel = UILabel()
+    let topGradientView = UIView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        setupMenuButton()
         setupTableView()
+        setupTopGradientView()
+        setupMenuButton()
         setupAccumulateHeightLabel()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setGradientLayer()
     }
 
     private func setupMenuButton() {
@@ -84,6 +90,27 @@ class HomeView: UIView {
         let range = NSRange(location: 0, length: attrTitle.length)
         attrTitle.addAttribute(.kern, value: -0.08, range: range)
         accumulateHeightTitleLabel.attributedText = attrTitle
+    }
+
+    private func setupTopGradientView() {
+        addSubview(topGradientView)
+        topGradientView.translatesAutoresizingMaskIntoConstraints = false
+        topGradientView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        topGradientView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        topGradientView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        topGradientView.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        topGradientView.backgroundColor = UIColor(hex: "FFE1CD")
+    }
+
+    private func setGradientLayer() {
+        let colors: [UIColor] = [.black, .black, .black, .black.withAlphaComponent(0.7), .clear]
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = topGradientView.bounds
+        gradientLayer.colors = colors.map { $0.cgColor }
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+
+        topGradientView.layer.mask = gradientLayer
     }
 
     @objc
