@@ -228,7 +228,8 @@ extension selectRegionVC: UICollectionViewDataSource {
         }
     
 //        cell.Tul.text = self.Data.item[indexPath.row]
-        cell.Tul.text = regionInfo.getDepth1Arr()[indexPath.row]
+        let depth1 = regionInfo.getDepth1Arr()[indexPath.row]
+        cell.Tul.text = regionInfo.getDepth1(depth1: depth1)
         return cell
     }
     
