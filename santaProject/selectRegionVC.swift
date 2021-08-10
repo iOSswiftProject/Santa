@@ -203,8 +203,6 @@ extension selectRegionVC: UITableViewDataSource {
                 mountainListLabel.append(mountain.name ?? "")
             }
             
-        } else {
-            mountainListLabel = "X"
         }
         
         cell.mountainListLabel.text = mountainListLabel
