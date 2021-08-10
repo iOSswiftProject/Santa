@@ -37,13 +37,6 @@ class regionTableCell: UITableViewCell {
        return button
     }()
     
-    lazy var mountainListLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 15))
-        label.textColor = UIColor.setColor(_names: .lightlightgray)
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        return label
-    }()
-    
     required init?(coder aDecorder: NSCoder) {
         fatalError("init(corder:) has not been implemented")
     }
@@ -55,7 +48,6 @@ class regionTableCell: UITableViewCell {
         self.view.addSubview(regionLabel)
         self.view.addSubview(mountainLabel)
         self.view.addSubview(nextButton)
-        self.view.addSubview(mountainListLabel)
         
         view.translatesAutoresizingMaskIntoConstraints = false
         view.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
@@ -67,18 +59,14 @@ class regionTableCell: UITableViewCell {
         regionLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 30).isActive = true
         regionLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         
-        mountainLabel.translatesAutoresizingMaskIntoConstraints = false
-        mountainLabel.leadingAnchor.constraint(equalTo: self.regionLabel.leadingAnchor, constant: 200).isActive = true
-        mountainLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         nextButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         nextButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         
-        mountainListLabel.translatesAutoresizingMaskIntoConstraints = false
-        mountainListLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        mountainListLabel.trailingAnchor.constraint(equalTo: nextButton.leadingAnchor, constant: -10).isActive = true
-        
+        mountainLabel.translatesAutoresizingMaskIntoConstraints = false
+        mountainLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        mountainLabel.trailingAnchor.constraint(equalTo: nextButton.leadingAnchor, constant: -10).isActive = true
+
     }
     
 }

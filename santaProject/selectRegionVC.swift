@@ -205,7 +205,7 @@ extension selectRegionVC: UITableViewDataSource {
             
         }
         
-        cell.mountainListLabel.text = mountainListLabel
+        cell.mountainLabel.text = mountainListLabel
 
         return cell
     }
