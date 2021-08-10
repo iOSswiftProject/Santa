@@ -115,6 +115,7 @@ extension selectRegionVC {
     }
 }
 
+//MARK: TableView Delegate
 extension selectRegionVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
@@ -179,10 +180,40 @@ extension selectRegionVC: UITableViewDataSource {
 //            cell.mountainLabel.text = self.Data.seoulItem[indexPath.row].1
 //        }
         cell.regionLabel.text = depth2Data[indexPath.row]
+        var depth1Row = 0
+        if collectionView.indexPathsForSelectedItems?.count != 0 {
+            depth1Row = collectionView.indexPathsForSelectedItems?[0].row ?? 0
+        }
+        let depth1 = regionInfo.getDepth1Arr()[depth1Row]
+        let depth2 = depth2Data[indexPath.row]
+        let mountains = DBInterface.shared.selectMountain(depth1: depth1, depth2: depth2)
+  
+        var mountainListLabel =  ""
+        
+        if !mountains.isEmpty {
+
+            for (idx, mountain) in mountains.enumerated() {
+                if idx == 2 {
+                    mountainListLabel.append(" 등")
+                    break
+                }
+                if idx == 1 {
+                    mountainListLabel.append(", ")
+                }
+                mountainListLabel.append(mountain.name ?? "")
+            }
+            
+        } else {
+            mountainListLabel = "X"
+        }
+        
+        cell.mountainListLabel.text = mountainListLabel
+
         return cell
     }
 }
 
+//MARK: CollectionView Delegate
 extension selectRegionVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        // let cell = collectionView.cellForItem(at: indexPath)
