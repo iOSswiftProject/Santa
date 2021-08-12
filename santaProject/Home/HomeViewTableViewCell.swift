@@ -47,6 +47,7 @@ class HomeViewTableViewCell: UITableViewCell {
     let line = UIView()
 
     let mountainImageView = UIImageView()
+    let backgroundImageView = UIImageView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -54,6 +55,7 @@ class HomeViewTableViewCell: UITableViewCell {
         setupLabels()
         setupLine()
         setupMountainImageView()
+        setupBackgroundImageView()
     }
 
     required init?(coder: NSCoder) {
@@ -116,5 +118,14 @@ class HomeViewTableViewCell: UITableViewCell {
         mountainImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         mountainImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         mountainImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+    }
+
+    private func setupBackgroundImageView() {
+        contentView.insertSubview(backgroundImageView, at: 0)
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        backgroundImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        backgroundImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        backgroundImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
 }
