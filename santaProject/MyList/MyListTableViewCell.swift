@@ -36,6 +36,7 @@ class MyListTableViewHistoryCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+        selectionStyle = .none
         layer.cornerRadius = 12
         clipsToBounds = true
         contentView.isUserInteractionEnabled = true
@@ -76,6 +77,7 @@ class MyListTableViewBookmarkCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+        selectionStyle = .none
         layer.cornerRadius = 12
         clipsToBounds = true
         contentView.isUserInteractionEnabled = true

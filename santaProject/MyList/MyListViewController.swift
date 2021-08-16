@@ -49,6 +49,11 @@ class MyListViewController: UIViewController {
         view.backgroundColor = UIColor(hex: "CFCFCF")
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
     init() {
         super.init(nibName: nil, bundle: nil)
         self.tabBarItem = UITabBarItem(title: "나의 산", image: UIImage(named: "santaTabImageListInactive"), tag: 3)
@@ -160,6 +165,15 @@ extension MyListViewController: MyListCollectionViewCellDelegate {
         alertController.addAction(destructiveAction)
         alertController.addAction(actionCancel)
         present(alertController, animated: true)
+    }
+
+    func listCollectionViewCell(_ cell: MyListCollectionViewCell, didSelectRowAt indexPath: IndexPath) {
+        guard let categoryIndex = collectionView.indexPath(for: cell)?.item,
+              let mountain = viewModels[categoryIndex].cellModel(for: indexPath)?.mountain
+              else { return }
+
+        let detailViewController = DetailViewController(with: mountain)
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 
