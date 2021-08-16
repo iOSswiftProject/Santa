@@ -13,10 +13,13 @@ class HomeViewTableViewHeaderView: UITableViewHeaderFooterView {
     static let height: CGFloat = 253
 
     let climberImageView = UIImageView()
+    let backgroundImageView = UIImageView()
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        contentView.clipsToBounds = true
         setupClimber()
+        setupBackgroundView()
     }
 
     required init?(coder: NSCoder) {
@@ -33,6 +36,17 @@ class HomeViewTableViewHeaderView: UITableViewHeaderFooterView {
         climberImageView.heightAnchor.constraint(equalToConstant: image.size.height).isActive = true
         climberImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
+
+    private func setupBackgroundView() {
+        let view = backgroundImageView
+        contentView.insertSubview(view, belowSubview: climberImageView)
+        view.image = UIImage(named: "home_bg_0")
+        view.contentMode = .scaleAspectFill
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+    }
 }
 
 class HomeViewTableViewCell: UITableViewCell {
@@ -47,6 +61,7 @@ class HomeViewTableViewCell: UITableViewCell {
     let line = UIView()
 
     let mountainImageView = UIImageView()
+    let backgroundImageView = UIImageView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -54,6 +69,7 @@ class HomeViewTableViewCell: UITableViewCell {
         setupLabels()
         setupLine()
         setupMountainImageView()
+        setupBackgroundImageView()
     }
 
     required init?(coder: NSCoder) {
@@ -116,5 +132,9 @@ class HomeViewTableViewCell: UITableViewCell {
         mountainImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         mountainImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         mountainImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+    }
+
+    private func setupBackgroundImageView() {
+        backgroundView = backgroundImageView
     }
 }
