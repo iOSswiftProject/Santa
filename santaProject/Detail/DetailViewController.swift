@@ -10,10 +10,12 @@ import UIKit
 class DetailViewController: UIViewController {
 
     private var mountain: Mountain
+    private let detailViewModel: DetailViewModel
     private let detailView = DetailView()
 
     init(with mountain: Mountain) {
         self.mountain = mountain
+        self.detailViewModel = DetailViewModel(with: mountain)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -49,5 +51,6 @@ class DetailViewController: UIViewController {
         detailView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
                                         constant: -navigationHeight).isActive = true
         detailView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        detailViewModel.congifure(detailView)
     }
 }
