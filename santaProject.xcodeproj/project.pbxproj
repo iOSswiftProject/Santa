@@ -49,6 +49,7 @@
 		CECD577826AE9E020091E66D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECD577726AE9E020091E66D /* HomeViewModel.swift */; };
 		CECD578D26AF8EDB0091E66D /* HomeViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECD578C26AF8EDB0091E66D /* HomeViewTableViewCell.swift */; };
 		CED529E32680E559005E05A7 /* MountainInfoBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */; };
+		CEDC746726CA4F3F002EFC2C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC746626CA4F3F002EFC2C /* DetailViewController.swift */; };
 		FE480AC62695DC71000A5D20 /* DBInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC32695DC71000A5D20 /* DBInterface.swift */; };
 		FE480AC72695DC71000A5D20 /* RegionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC42695DC71000A5D20 /* RegionInfo.swift */; };
 		FE480AC82695DC71000A5D20 /* Mountain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC52695DC71000A5D20 /* Mountain.swift */; };
@@ -104,6 +105,7 @@
 		CECD577726AE9E020091E66D /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CECD578C26AF8EDB0091E66D /* HomeViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewTableViewCell.swift; sourceTree = "<group>"; };
 		CED529E22680E559005E05A7 /* MountainInfoBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainInfoBaseView.swift; sourceTree = "<group>"; };
+		CEDC746626CA4F3F002EFC2C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FE480AC32695DC71000A5D20 /* DBInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBInterface.swift; sourceTree = "<group>"; };
 		FE480AC42695DC71000A5D20 /* RegionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionInfo.swift; sourceTree = "<group>"; };
 		FE480AC52695DC71000A5D20 /* Mountain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mountain.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				BC7A6584265F202900C22E1C /* AppDelegate.swift */,
 				BC7A6588265F202900C22E1C /* ViewController.swift */,
 				CE0E190F266260C1003916E3 /* RootTabBarController.swift */,
+				CEDC746526CA4F23002EFC2C /* Detail */,
 				CECD577426AE9BB00091E66D /* Home */,
 				CE0E1936266BDF80003916E3 /* MyList */,
 				CE880A1526994A480034B0A5 /* AddHistory */,
@@ -222,6 +225,14 @@
 				CE5DE71E2686DDCE009FA3E8 /* RegionTagView.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		CEDC746526CA4F23002EFC2C /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CEDC746626CA4F3F002EFC2C /* DetailViewController.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		FE480AC12695DC52000A5D20 /* YBR */ = {
@@ -368,6 +379,7 @@
 				FE480AD42695DC94000A5D20 /* MountainView.swift in Sources */,
 				BC1066A526B114B100AF6E72 /* regionData.swift in Sources */,
 				CE880A2326A099C30034B0A5 /* DatePickerViewController.swift in Sources */,
+				CEDC746726CA4F3F002EFC2C /* DetailViewController.swift in Sources */,
 				BC1066AA26B114B100AF6E72 /* regionCell.swift in Sources */,
 				CED529E32680E559005E05A7 /* MountainInfoBaseView.swift in Sources */,
 				CE880A1726994A6C0034B0A5 /* AddHistoryViewController.swift in Sources */,
