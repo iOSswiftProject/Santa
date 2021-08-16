@@ -59,6 +59,7 @@ class DetailView: UIView {
         textArea.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
         textArea.topAnchor.constraint(equalTo: mountainInfoView.bottomAnchor, constant: 32).isActive = true
         textArea.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        textArea.isEditable = false
 
         textArea.backgroundColor = .lightGray
     }
