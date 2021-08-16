@@ -13,10 +13,13 @@ class HomeViewTableViewHeaderView: UITableViewHeaderFooterView {
     static let height: CGFloat = 253
 
     let climberImageView = UIImageView()
+    let backgroundImageView = UIImageView()
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        contentView.clipsToBounds = true
         setupClimber()
+        setupBackgroundView()
     }
 
     required init?(coder: NSCoder) {
@@ -32,6 +35,17 @@ class HomeViewTableViewHeaderView: UITableViewHeaderFooterView {
         climberImageView.widthAnchor.constraint(equalToConstant: image.size.width).isActive = true
         climberImageView.heightAnchor.constraint(equalToConstant: image.size.height).isActive = true
         climberImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+    }
+
+    private func setupBackgroundView() {
+        let view = backgroundImageView
+        contentView.insertSubview(view, belowSubview: climberImageView)
+        view.image = UIImage(named: "home_bg_0")
+        view.contentMode = .scaleAspectFill
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
     }
 }
 
