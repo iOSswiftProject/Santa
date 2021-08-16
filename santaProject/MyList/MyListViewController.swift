@@ -161,6 +161,13 @@ extension MyListViewController: MyListCollectionViewCellDelegate {
         alertController.addAction(actionCancel)
         present(alertController, animated: true)
     }
+
+    func listCollectionViewCell(_ cell: MyListCollectionViewCell, didSelectRowAt indexPath: IndexPath) {
+        guard let categoryIndex = collectionView.indexPath(for: cell)?.item,
+              let mountain = viewModels[categoryIndex].cellModel(for: indexPath)?.mountain
+              else { return }
+        print("selected mountain : \(mountain.name)")
+    }
 }
 
 extension MyListViewController: AddHistoryViewControllerDelegate {
