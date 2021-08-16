@@ -121,11 +121,6 @@ class HomeViewTableViewCell: UITableViewCell {
     }
 
     private func setupBackgroundImageView() {
-        contentView.insertSubview(backgroundImageView, at: 0)
-        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        backgroundImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        backgroundImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        backgroundImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        backgroundView = backgroundImageView
     }
 }
