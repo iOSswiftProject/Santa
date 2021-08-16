@@ -13,6 +13,9 @@ class DetailViewController: UIViewController {
     private let detailViewModel: DetailViewModel
     private let detailView = DetailView()
 
+    private var navigationBarHidden: Bool?
+    private var tabbarHidden: Bool?
+
     init(with mountain: Mountain) {
         self.mountain = mountain
         self.detailViewModel = DetailViewModel(with: mountain)
@@ -23,34 +26,43 @@ class DetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-
-        tabBarController?.tabBar.isHidden = true
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        tabBarController?.tabBar.isHidden = false
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationBarHidden = navigationController?.isNavigationBarHidden
+        tabbarHidden = tabBarController?.tabBar.isHidden
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        tabBarController?.tabBar.isHidden = true
+
         setupDetailView()
     }
 
     private func setupDetailView() {
-        let navigationHeight = navigationController?.navigationBar.frame.height ?? 0
         view.addSubview(detailView)
         detailView.translatesAutoresizingMaskIntoConstraints = false
         detailView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         detailView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        detailView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-                                        constant: -navigationHeight).isActive = true
+        detailView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         detailView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        detailView.delegate = self
         detailViewModel.congifure(detailView)
+    }
+}
+
+extension DetailViewController: DetailViewDelegate {
+    func detailViewDidTapBackButton(_ detailView: DetailView) {
+        if let navigationBarHidden = navigationBarHidden {
+            navigationController?.setNavigationBarHidden(navigationBarHidden, animated: false)
+        }
+        if let tabbarHidden = tabbarHidden {
+            tabBarController?.tabBar.isHidden = tabbarHidden
+        }
+
+        if let navigationController = navigationController {
+            navigationController.popViewController(animated: true)
+        }
+        else {
+            dismiss(animated: true, completion: nil)
+        }
     }
 }
