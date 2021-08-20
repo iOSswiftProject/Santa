@@ -22,16 +22,19 @@ class HomeViewHistoryCellModel: NSObject {
     }
 
     var mountainImage: UIImage?
+    var backgroundImage: UIImage?
 
-    init(with mountain: Mountain, image: UIImage?) {
+    init(with mountain: Mountain, image: UIImage?, backgroundImage: UIImage?) {
         self.mountain = mountain
         self.mountainImage = image
+        self.backgroundImage = backgroundImage
     }
 
     func configure(cell: HomeViewTableViewCell) {
         cell.dateLabel.attributedText = attrDate()
         cell.nameLabel.attributedText = attrName()
         cell.mountainImageView.image = mountainImage
+        cell.backgroundImageView.image = backgroundImage
     }
 
     func attrDate() -> NSAttributedString {
@@ -64,6 +67,21 @@ class HomeViewModel: NSObject {
             sumOfImageHeight += $0 ?? 0
         }
         return sumOfImageHeight
+    }
+
+    private func cellBackgroundImage(for index: Int) -> UIImage? {
+        func imageName(for index: Int) -> String {
+            let imagePrefix = "home_bg_"
+            var imagePostfix = ""
+            if index < 3 {
+                imagePostfix = String(index + 1)
+            }
+            else {
+                imagePostfix = index % 2 == 0 ? String(5) : String(4)
+            }
+            return imagePrefix + imagePostfix
+        }
+        return UIImage(named: imageName(for: index))
     }
 
     private func cellImage(for index: Int) -> UIImage? {
@@ -102,7 +120,8 @@ class HomeViewModel: NSObject {
         historyCellModels = []
         for (idx, mountain) in history.enumerated() {
             let image = cellImage(for: idx)
-            let model = HomeViewHistoryCellModel(with: mountain, image: image)
+            let backgroundImage = cellBackgroundImage(for: idx)
+            let model = HomeViewHistoryCellModel(with: mountain, image: image, backgroundImage: backgroundImage)
             historyCellModels.append(model)
         }
     }

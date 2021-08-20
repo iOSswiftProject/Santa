@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         homeViewModel.update()
         homeView.tableView.reloadData()
+        homeView.updateAccumulateHeight(homeViewModel.accumulateHeight)
     }
 
     private func setupHomeView() {
@@ -87,7 +88,6 @@ extension HomeViewController: UITableViewDelegate {
               let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier),
               let homeHeader = header as? HomeViewTableViewHeaderView
         else { return nil }
-        homeHeader.updateAccumulateHeight(homeViewModel.accumulateHeight)
         return homeHeader
     }
 

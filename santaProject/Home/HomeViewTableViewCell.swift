@@ -13,49 +13,17 @@ class HomeViewTableViewHeaderView: UITableViewHeaderFooterView {
     static let height: CGFloat = 253
 
     let climberImageView = UIImageView()
-    let accumulateHeightTitleLabel = UILabel()
-    let accumulateHeightLabel = UILabel()
+    let backgroundImageView = UIImageView()
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        setupAccumulateHeightLabel()
+        contentView.clipsToBounds = true
         setupClimber()
+        setupBackgroundView()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    private func setupAccumulateHeightLabel() {
-        let container = UIView()
-        addSubview(container)
-        container.translatesAutoresizingMaskIntoConstraints = false
-        container.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        container.topAnchor.constraint(equalTo: topAnchor, constant: 25).isActive = true
-
-        container.addSubview(accumulateHeightTitleLabel)
-        accumulateHeightTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        accumulateHeightTitleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
-        accumulateHeightTitleLabel.centerYAnchor.constraint(equalTo: container.centerYAnchor).isActive = true
-
-        container.addSubview(accumulateHeightLabel)
-        accumulateHeightLabel.translatesAutoresizingMaskIntoConstraints = false
-        accumulateHeightLabel.leadingAnchor.constraint(equalTo: accumulateHeightTitleLabel.trailingAnchor,
-                                                       constant: 8).isActive = true
-        accumulateHeightLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
-        accumulateHeightLabel.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
-        accumulateHeightLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
-
-        accumulateHeightTitleLabel.font = .systemFont(ofSize: 14, weight: .bold)
-        accumulateHeightTitleLabel.textColor = .stGreen40
-
-        accumulateHeightLabel.font = .systemFont(ofSize: 20, weight: .semibold)
-        accumulateHeightLabel.textColor = .stGreen40
-
-        let attrTitle = NSMutableAttributedString(string: "총 높이")
-        let range = NSRange(location: 0, length: attrTitle.length)
-        attrTitle.addAttribute(.kern, value: -0.08, range: range)
-        accumulateHeightTitleLabel.attributedText = attrTitle
     }
 
     private func setupClimber() {
@@ -69,19 +37,15 @@ class HomeViewTableViewHeaderView: UITableViewHeaderFooterView {
         climberImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
 
-    func updateAccumulateHeight(_ height: Int) {
-        let heightString: String
-        switch height {
-        case ..<1000:
-            heightString = "\(height)m"
-        default:
-            let kilometer = Double(height) / 1000
-            heightString = "\(kilometer)km"
-        }
-        let attrString = NSMutableAttributedString(string: heightString)
-        let range = NSRange(location: 0, length: attrString.length)
-        attrString.addAttribute(.kern, value: -0.02, range: range)
-        accumulateHeightLabel.attributedText = attrString
+    private func setupBackgroundView() {
+        let view = backgroundImageView
+        contentView.insertSubview(view, belowSubview: climberImageView)
+        view.image = UIImage(named: "home_bg_0")
+        view.contentMode = .scaleAspectFill
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
     }
 }
 
@@ -97,6 +61,7 @@ class HomeViewTableViewCell: UITableViewCell {
     let line = UIView()
 
     let mountainImageView = UIImageView()
+    let backgroundImageView = UIImageView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -104,6 +69,7 @@ class HomeViewTableViewCell: UITableViewCell {
         setupLabels()
         setupLine()
         setupMountainImageView()
+        setupBackgroundImageView()
     }
 
     required init?(coder: NSCoder) {
@@ -166,5 +132,9 @@ class HomeViewTableViewCell: UITableViewCell {
         mountainImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         mountainImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         mountainImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+    }
+
+    private func setupBackgroundImageView() {
+        backgroundView = backgroundImageView
     }
 }

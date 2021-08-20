@@ -12,7 +12,7 @@ class RootTabBarController: UITabBarController {
     private let tabs: [UIViewController] = [
         HomeViewController(),
         UINavigationController(rootViewController: mapkitViewController()), // Dummy
-        MyListViewController(),
+        UINavigationController(rootViewController: MyListViewController()),
     ]
 
     override func viewDidLoad() {

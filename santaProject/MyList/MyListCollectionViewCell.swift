@@ -11,6 +11,7 @@ protocol MyListCollectionViewCellDelegate: AnyObject {
     func didTapAddHistoryButton()
     func didTapMoreButtonForHistoryIndexPath(_ indexPath: IndexPath)
     func didTapBookmarkButton(for indexPath: IndexPath)
+    func listCollectionViewCell(_ cell: MyListCollectionViewCell, didSelectRowAt indexPath: IndexPath)
 }
 
 class MyListCollectionViewCell: UICollectionViewCell {
@@ -144,7 +145,6 @@ class MyListCollectionViewCell: UICollectionViewCell {
         tableView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
 
-        tableView.allowsSelection = false
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
 
@@ -256,6 +256,12 @@ extension MyListCollectionViewCell: UITableViewDataSource {
     }
 }
 
+extension MyListCollectionViewCell: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.listCollectionViewCell(self, didSelectRowAt: indexPath)
+    }
+}
+
 extension MyListCollectionViewCell: MyListTableViewHistoryCellDelegate {
     func historyCellDidTapMoreButton(_ historyCell: MyListTableViewHistoryCell) {
         guard viewModel is MyListHistoryTableViewModel,
@@ -274,7 +280,7 @@ extension MyListCollectionViewCell: MyListTableViewBookmarkCellDelegate {
     }
 }
 
-extension MyListCollectionViewCell: UITableViewDelegate {
+extension MyListCollectionViewCell {
     private enum Layout {
         static let sideMargin: CGFloat = 20
         static let topSpacing: CGFloat = 16
