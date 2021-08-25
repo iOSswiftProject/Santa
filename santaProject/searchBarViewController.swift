@@ -132,22 +132,26 @@ extension searchBarViewController: UITableViewDataSource {
             UserDefaults.standard.setValue(self.data.searchItems, forKey: "searchArray")
             return 0
         }
-        return self.isFiltering ? self.data.filterValue.count : searchedItems.count
+//        return self.isFiltering ? self.data.filterValue.count : searchedItems.count
+        return self.isFiltering ? self.data.filteredValue.count : searchedItems.count
     }
     
+    //MARK: Make Cell. 최근검색어 또는 검색결과.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "mountinCell", for: indexPath) as? searchCell
         
         let searchedItems = UserDefaults.standard.array(forKey: "searchArray") as! [String]
 
-        if self.isFiltering == false {
+        if self.isFiltering == false { // 최근검색어 -> 하단 셀이 단순 스트링
             cell!.mountainLabel.text = searchedItems[indexPath.row]
             cell!.deleteButton.isHidden = false
             cell!.deleteButton.addTarget(self, action: #selector(pushDeleteButton(_:)), for: .touchUpInside)
           
-        } else {
-            cell!.mountainLabel.text = self.data.filterValue[indexPath.row]
+        } else { // 검색결과. -> 하단 셀이 Mountain객체.
+//            cell!.mountainLabel.text = self.data.filterValue[indexPath.row]
+            let mountain = self.data.filteredValue[indexPath.row]
+            cell!.mountainLabel.text = String(format: "%@ %@", mountain.name ?? "", mountain.peak ?? "")
             cell!.deleteButton.isHidden = true
         }
         return cell!
@@ -177,15 +181,24 @@ extension searchBarViewController: UITableViewDataSource {
     }
 
 }
+
 extension searchBarViewController: UITableViewDelegate {
+    // MARK: tableCell touch Event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.isFiltering == true {
-        let text = self.data.filterValue[indexPath.row]
-        self.data.searchItems.append(text)
-        UserDefaults.standard.setValue(self.data.searchItems, forKey: "searchArray")
+            //        let text = self.data.filterValue[indexPath.row]
+            let mountain = self.data.filteredValue[indexPath.row]
+            let text = String(format: "%@ %@", mountain.name ?? "", mountain.peak ?? "")
+            self.data.searchItems.append(text)
+            UserDefaults.standard.setValue(self.data.searchItems, forKey: "searchArray")
             
-        print(self.data.searchItems)
-        tableView.reloadData()
+            print("touch Search Result!!")
+            //TODO: 상세보기 프로세스 추가.
+            let detailViewController = DetailViewController(with: mountain)
+            navigationController?.pushViewController(detailViewController, animated: true)
+
+            print(self.data.searchItems)
+            tableView.reloadData()
         } else {
             print("No filteringView")
         }
@@ -195,6 +208,7 @@ extension searchBarViewController: UITableViewDelegate {
     }
 }
 
+// MARK: search Process
 extension searchBarViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else {
@@ -202,6 +216,13 @@ extension searchBarViewController: UISearchResultsUpdating {
         }
         print(text)
         self.data.filterValue = self.data.localItems.filter{ $0.localizedCaseInsensitiveContains(text)}
+        
+        self.data.filteredValue = self.data.mountainItems.filter({ (mountain) -> Bool in
+            var str = ""
+            if let name = mountain.name { str.append(name) }
+            if let peak = mountain.peak { str.append(String(format: " %@", peak)) }
+            return str.localizedCaseInsensitiveContains(text)
+        })
         
         self.tableView.reloadData()
     }
