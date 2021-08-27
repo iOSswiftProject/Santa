@@ -10,7 +10,7 @@ import UIKit
 class RootTabBarController: UITabBarController {
 
     private let tabs: [UIViewController] = [
-        HomeViewController(),
+        UINavigationController(rootViewController: HomeViewController()),
         UINavigationController(rootViewController: mapkitViewController()), // Dummy
         UINavigationController(rootViewController: MyListViewController()),
     ]

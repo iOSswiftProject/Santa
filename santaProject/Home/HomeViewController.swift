@@ -30,6 +30,7 @@ class HomeViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         homeViewModel.update()
         homeView.tableView.reloadData()
         homeView.updateAccumulateHeight(homeViewModel.accumulateHeight)
@@ -93,5 +94,12 @@ extension HomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         nil
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let mountain = homeViewModel.history[indexPath.row]
+        let detailViewController = DetailViewController(with: mountain)
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }

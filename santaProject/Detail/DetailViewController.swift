@@ -65,4 +65,12 @@ extension DetailViewController: DetailViewDelegate {
             dismiss(animated: true, completion: nil)
         }
     }
+
+    func detailViewDidTapBookmarkButton(_ detailView: DetailView) {
+        guard let isFavorite = mountain.isFavorite else { return }
+        mountain.isFavorite = !isFavorite
+        detailViewModel.congifure(detailView)
+        let mountainId = mountain.id ?? 0
+        DBInterface.shared.updateIsFavorite(mountainId: mountainId, isFavorite: !isFavorite)
+    }
 }

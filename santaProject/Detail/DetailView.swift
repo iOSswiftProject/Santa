@@ -9,6 +9,7 @@ import UIKit
 
 protocol DetailViewDelegate: AnyObject {
     func detailViewDidTapBackButton(_ detailView: DetailView)
+    func detailViewDidTapBookmarkButton(_ detailView: DetailView)
 }
 
 class DetailView: UIView {
@@ -58,6 +59,8 @@ class DetailView: UIView {
         view.layer.shadowRadius = 24
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.12
+
+        view.delegate = self
     }
 
     private func setupTextArea() {
@@ -88,5 +91,11 @@ class DetailView: UIView {
     @objc
     private func didTapBackButton() {
         delegate?.detailViewDidTapBackButton(self)
+    }
+}
+
+extension DetailView: MountainInfoBookmarkViewDelegate {
+    func bookmarkViewDidTapBookmarkButton(_ bookmarkView: MountainInfoBookmarkView) {
+        delegate?.detailViewDidTapBookmarkButton(self)
     }
 }

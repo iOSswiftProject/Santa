@@ -8,10 +8,7 @@
 import UIKit
 
 class MyListViewController: UIViewController {
-    let viewModels: [MyListTableViewModel] = [
-        MyListHistoryTableViewModel(),
-        MyListFavoriteTableViewModel(),
-    ]
+    var viewModels: [MyListTableViewModel] = []
 
     var historyTableViewModel: MyListHistoryTableViewModel {
         viewModels[0] as! MyListHistoryTableViewModel
@@ -52,6 +49,12 @@ class MyListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+
+        viewModels = [
+            MyListHistoryTableViewModel(),
+            MyListFavoriteTableViewModel(),
+        ]
+        collectionView.reloadData()
     }
 
     init() {
