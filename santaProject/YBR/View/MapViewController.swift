@@ -22,6 +22,7 @@ class MapViewController: UIViewController {
     
     let bottomSheetVC = UIViewController.init()
     let bottomHeight = CGFloat(200)
+    let bottomEmptyImageView = UIView()
     var region: String?
     
     var depth1: String!
@@ -72,6 +73,7 @@ class MapViewController: UIViewController {
         if mapViewType == MapViewType.regionBased {
             setBottomSheetVC()
             setupTableView()
+            setupBottomBackground()
         }
         
     }
@@ -137,6 +139,52 @@ class MapViewController: UIViewController {
         recognizer.setTranslation(CGPoint.zero, in: self.view)
         
     }
+    
+    // set backgroundView of BottomView
+    func setupBottomBackground() {
+        let view = bottomEmptyImageView
+        bottomSheetVC.view.addSubview(view)
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.leftAnchor.constraint(equalTo: bottomSheetVC.view.leftAnchor).isActive = true
+        view.rightAnchor.constraint(equalTo: bottomSheetVC.view.rightAnchor).isActive = true
+        view.topAnchor.constraint(equalTo: bottomSheetVC.view.topAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: bottomSheetVC.view.bottomAnchor).isActive = true
+        
+        let imageView = UIImageView(image: UIImage(named: "history_empty"))
+        view.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 114).isActive = true
+        imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -111).isActive = true
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -164).isActive = true
+        
+        let label = UILabel()
+        view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 49).isActive = true
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        label.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        let attrString = NSMutableAttributedString(string: "이 지역은 산이 없습니다.")
+        let range = NSRange(location: 0, length: attrString.length)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 9
+        paragraphStyle.alignment = .center
+        attrString.addAttribute(.kern, value: -0.08, range: range)
+        attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: range)
+        label.attributedText = attrString
+        
+        view.isHidden = true
+    }
+    
+    func showEmptyBackground() {
+        bottomEmptyImageView.isHidden = false
+    }
+    
+    func hideEmptyBackground() {
+        bottomEmptyImageView.isHidden = true
+    }
 
 }
 
@@ -179,6 +227,12 @@ private extension MKMapView {
 extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if mountains.count == 0 {
+            showEmptyBackground()
+        } else {
+            hideEmptyBackground()
+        }
+        
         return mountains.count
     }
     
