@@ -43,7 +43,7 @@ class MyListViewController: UIViewController {
 
         setupHeaderView()
         setupCollectionView()
-        view.backgroundColor = UIColor(hex: "CFCFCF")
+        view.backgroundColor = .stCoolGray25
     }
 
     override func viewWillAppear(_ animated: Bool) {

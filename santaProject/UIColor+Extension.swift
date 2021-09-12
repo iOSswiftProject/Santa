@@ -24,8 +24,8 @@ extension UIColor {
     }
 
     class var stCoolGray00: UIColor { UIColor(hex: "#FFFFFF") }
-    class var stCoolGray02: UIColor { UIColor(hex: "#F8F5F3") }
-    class var stCoolGray05: UIColor { UIColor(hex: "#F2EDEB") }
+    class var stCoolGray02: UIColor { UIColor(hex: "#F7F5F5") }
+    class var stCoolGray05: UIColor { UIColor(hex: "#F0EDEB") }
     class var stCoolGray10: UIColor { UIColor(hex: "#F2EDEB") }
     class var stCoolGray20: UIColor { UIColor(hex: "#EEEBEA") }
     class var stCoolGray25: UIColor { UIColor(hex: "#E5E3E2") }
