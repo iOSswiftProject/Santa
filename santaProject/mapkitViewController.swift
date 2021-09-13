@@ -7,8 +7,12 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class mapkitViewController: UIViewController {
+    let locationManager = CLLocationManager()
+    var mountains = [Mountain]()
+    
     let textField = UITextField()
 
     lazy var searchButton : UIButton = {
@@ -38,7 +42,8 @@ class mapkitViewController: UIViewController {
         let button = UIButton()
         let label = UILabel()
         button.frame = CGRect(x: 30, y: 300, width: 335, height: 63)
-        button.backgroundColor = UIColor.setColor(_names: .greengreen)
+//        button.backgroundColor = UIColor.setColor(_names: .greengreen)
+        button.backgroundColor = .stOrange30
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(gotoregionVC), for: .touchUpInside)
         button.setTitle("어떤 지역으로 등산 가실건가요?", for: .normal)
@@ -88,6 +93,9 @@ class mapkitViewController: UIViewController {
        // self.MapView.bringSubviewToFront(searchButton)
         setRegionButton()
         self.MapView.bringSubviewToFront(regionButton)
+        MapView.register(MountainView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        setLocationManager()
+        
 
         self.textField.delegate = self
 
@@ -116,6 +124,7 @@ class mapkitViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         //
        // self.navigationController?.navigationBar.barTintColor = .white
+        locationManager.startUpdatingLocation()
 
     }
     @objc func preshSearchBar() {
@@ -132,5 +141,98 @@ extension mapkitViewController: UITextFieldDelegate {
         let vc = searchBarViewController()
         textField.resignFirstResponder()
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension mapkitViewController: CLLocationManagerDelegate {
+    
+    func setLocationManager() {
+
+        // request location authroization when the app is in use
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        updateUserLocation()
+        
+    }
+    
+    func updateUserLocation() {
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    
+    func getAddress(location: CLLocation, completion: @escaping (_ city: String?, _ error: Error?) -> ()) {
+        
+        let geoCoder = CLGeocoder()
+        let locale = Locale(identifier: "Ko-kr")
+        geoCoder.reverseGeocodeLocation(location, preferredLocale: locale) { (placemarks, error) in
+            guard let placemark = placemarks?.first, let dict = placemark.addressDictionary else {
+                completion("",error)
+                return
+            }
+            
+            if let arr = dict["FormattedAddressLines"] as? NSArray {
+                let address = arr[0] as! String
+                print(address)
+                completion(address, error)
+            }
+        }
+//        CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
+//
+//            guard let placemark = placemarks?.first, let dict = placemark.addressDictionary else {
+//                completion("",error)
+//                return
+//            }
+//
+//            if let arr = dict["FormattedAddressLines"] as? NSArray {
+//                let address = arr[0] as! String
+//                print(address)
+//                completion(address, error)
+//            }
+//
+//        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        locationManager.stopUpdatingLocation()
+        print("update")
+        print(locationManager.location)
+
+        if let location = locationManager.location {
+            let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 50_000, longitudinalMeters: 50_000)
+            MapView.setRegion(coordinateRegion, animated: true)
+
+            getAddress(location: location) { (addr, error) in
+                let arr = addr?.split(separator: " ")
+                print(arr)
+                if arr?.count ?? 0 < 3 {
+                    return
+                }
+                let depth1 = String(arr?[0] ?? "") // 도
+                let addr1 = String(arr?[1] ?? "") // 시
+                let addr2 = String(arr?[2] ?? "") // 구
+                var depth2 = ""
+
+                let region = RegionInfo.init(resource: "location2", offType: "json")
+
+                let depth2Arr = region.getDepth2Arr(depth1: depth1)
+                var temp = depth2Arr.filter({ $0 == addr1})
+                depth2 = temp.count != 0 ? temp[0] : ""
+                temp = depth2Arr.filter({ $0 == String(format: "%@ %@", addr1,addr2)})
+                depth2 = temp.count != 0 ? temp[0] : depth2
+                print(depth2)
+                
+                self.MapView.addAnnotations(DBInterface.shared.selectMountain(depth1: depth1, depth2: depth2))
+      
+            }
+        }
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("fail")
+
     }
 }
