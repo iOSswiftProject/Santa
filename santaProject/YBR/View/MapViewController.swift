@@ -48,19 +48,15 @@ class MapViewController: UIViewController {
         mapView.delegate = self
         mapView.register(MountainView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     
-        // dummy process
-        if depth1 == nil || depth2 == nil || location == nil {
-            depth1 = "경기도"
-            depth2 = "남양주시"
-            location = CLLocation.init(latitude: 37.6311948, longitude: 127.1697305)
-        }
-        
-        self.navigationItem.title = depth1 + " " + depth2
-        mapViewType = MapViewType.regionBased
-        mountains  = DBInterface.shared.selectMountain(depth1: depth1, depth2: depth2)
-        mapView.addAnnotations(mountains)
         mapView.centerToLocation(location,regionRadius: 30_000)
-
+        if mapViewType == .regionBased {
+            self.navigationItem.title = depth1 + " " + depth2
+            mountains  = DBInterface.shared.selectMountain(depth1: depth1, depth2: depth2)
+            mapView.addAnnotations(mountains)
+        } else {
+        
+            mapView.addAnnotations(mountains)
+        }
 
     }
     
@@ -68,12 +64,14 @@ class MapViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = ""
         self.tabBarController?.tabBar.isHidden = true
-        setMapView()
+        setupMapView()
         
         if mapViewType == MapViewType.regionBased {
-            setBottomSheetVC()
+            setupBottomSheetVC()
             setupTableView()
             setupBottomBackground()
+        }else {
+            setupDetailView()
         }
         
     }
@@ -85,7 +83,7 @@ class MapViewController: UIViewController {
     
     
     //mapViewSetting
-    func setMapView() {
+    func setupMapView() {
         self.view.addSubview(mapView)
         mapView.isRotateEnabled = false
         mapView.translatesAutoresizingMaskIntoConstraints = false
@@ -102,44 +100,19 @@ class MapViewController: UIViewController {
     
     
     //set BottomView
-    func setBottomSheetVC() {
+    func setupBottomSheetVC() {
         self.addChild(bottomSheetVC)
         self.view.addSubview(bottomSheetVC.view)
         bottomSheetVC.didMove(toParent: self)
         
         bottomSheetVC.view.backgroundColor = UIColor.stCoolGray25
-//        let height = view.frame.height
-//        let width = view.frame.width
-//        bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY - bottomHeight, width: width, height: height)
         bottomSheetVC.view.translatesAutoresizingMaskIntoConstraints = false
         bottomSheetVC.view.topAnchor.constraint(equalTo: mapView.bottomAnchor).isActive = true
         bottomSheetVC.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         bottomSheetVC.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         bottomSheetVC.view.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        
-        let gesture = UIPanGestureRecognizer.init(target: self, action: #selector(panGesture))
-        bottomSheetVC.view.addGestureRecognizer(gesture)
     }
-    
-    @objc func panGesture(_ recognizer: UIPanGestureRecognizer) {
 
-        let translation = recognizer.translation(in: self.view)
-        let curY = bottomSheetVC.view.frame.origin.y
-        let nxtY = translation.y
-        
-        if nxtY < 0 && curY > view.frame.height/2 { // darg to up
-            
-            self.bottomSheetVC.view.frame = CGRect(x: 0, y: curY + translation.y , width: view.frame.width, height: view.frame.height)
-            
-        } else if nxtY > 0 && curY <= view.frame.maxY - bottomHeight { // drag to down
-            
-            self.bottomSheetVC.view.frame = CGRect(x: 0, y: curY + translation.y, width: view.frame.width, height: view.frame.height)
-        }
-        
-        recognizer.setTranslation(CGPoint.zero, in: self.view)
-        
-    }
-    
     // set backgroundView of BottomView
     func setupBottomBackground() {
         let view = bottomEmptyImageView
@@ -151,6 +124,7 @@ class MapViewController: UIViewController {
         view.topAnchor.constraint(equalTo: bottomSheetVC.view.topAnchor).isActive = true
         view.bottomAnchor.constraint(equalTo: bottomSheetVC.view.bottomAnchor).isActive = true
         
+        // Empty 이미지
         let imageView = UIImageView(image: UIImage(named: "history_empty"))
         view.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -185,6 +159,23 @@ class MapViewController: UIViewController {
     func hideEmptyBackground() {
         bottomEmptyImageView.isHidden = true
     }
+    
+    func setupDetailView() {
+        let mountainInfoView = MountainInfoBookmarkView()
+        self.view.addSubview(mountainInfoView)
+        mountainInfoView.translatesAutoresizingMaskIntoConstraints = false
+        mountainInfoView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
+        mountainInfoView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
+        mountainInfoView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -40).isActive = true
+        mountainInfoView.heightAnchor.constraint(equalToConstant: 96).isActive = true
+        
+        mountainInfoView.backgroundColor = .white
+        mountainInfoView.layer.cornerRadius = 12
+        mountainInfoView.layer.shadowRadius = 24
+        mountainInfoView.layer.shadowColor = UIColor.black.cgColor
+        mountainInfoView.layer.shadowOpacity = 0.12
+
+    }
 
 }
 
@@ -194,24 +185,12 @@ extension MapViewController: MKMapViewDelegate {
     /// Handling the Callout
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
-//        guard let artwork = view.annotation as? Artwork else {
-//            return
-//        }
-//                print("Callout touch")
-    }
-    
-    // Handling annotation touch
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        if let mountain = view.annotation as? Mountain {
-            print(mountain)
-//            let detailVC = MountainDetailTestViewController()
-//            detailVC.mountain = mountain
-//            detailVC.modalPresentationStyle = .currentContext
-//            self.present(detailVC, animated: false, completion: nil)
+        guard let mountain = view.annotation as? Mountain else {
+            return
         }
+        let detailVC = DetailViewController.init(with: mountain)
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
-    
-    
     
 }
 
