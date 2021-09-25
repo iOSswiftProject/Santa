@@ -129,11 +129,8 @@ extension selectRegionVC: UITableViewDelegate {
         let depth2 = depth2Data[indexPath.row]
         let loc = regionInfo.getLocation(depth1: depth1, depth2: depth2)
         
-       let mapViewController = MapViewController()
-        mapViewController.depth1 = depth1
-        mapViewController.depth2 = depth2
-        mapViewController.mapViewType = .regionBased
-        mapViewController.location = CLLocation.init(latitude: loc[0], longitude: loc[1])
+        let location =  CLLocation.init(latitude: loc[0], longitude: loc[1])
+        let mapViewController = MapViewController.init(.regionBased, depth1, depth2, location: location)
         self.navigationController?.pushViewController(mapViewController, animated: true);
 
     }

@@ -45,6 +45,9 @@ class searchBarViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
+//        self.navigationItem.setHidesBackButton(true, animated: true)
+//        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.backItem?.hidesBackButton = true
 
     }
 
@@ -219,12 +222,9 @@ extension searchBarViewController: UITableViewDelegate {
 //            let detailViewController = DetailViewController(with: mountain)
 //            navigationController?.pushViewController(detailViewController, animated: true)
             // TODO: 맵뷰로 변경
-            let mapVC = MapViewController()
-            mapVC.mapViewType = .searchResult
-//            mountain.coordinate.latitude
-//            mapVC.location = mountain.coordinate
-            mapVC.mountains = [mountain]
-            mapVC.location = CLLocation.init(latitude: mountain.coordinate.latitude, longitude: mountain.coordinate.longitude)
+            let location = CLLocation.init(latitude: mountain.coordinate.latitude, longitude: mountain.coordinate.longitude)
+            let mapVC = MapViewController.init(.searchResult, location, mountain)
+            
             navigationController?.pushViewController(mapVC, animated: true)
             print(self.data.searchItems)
             tableView.reloadData()

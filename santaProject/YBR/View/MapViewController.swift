@@ -9,10 +9,9 @@ import UIKit
 import MapKit
 
 enum MapViewType {
-    case searchResult
-    case regionBased
+    case searchResult   //mountain, location 필요
+    case regionBased    // depth1, depth2, location 필요
 }
-
 
 class MapViewController: UIViewController {
     
@@ -32,10 +31,27 @@ class MapViewController: UIViewController {
     let tableView = UITableView(frame: .zero, style: .plain)
     var mountains:[Mountain]!
     
-    init() {
+    // regionBased init
+    init(_ mapViewType: MapViewType,_ depth1: String, _ depth2: String, location: CLLocation) {
         super.init(nibName: nil, bundle: nil)
-        self.tabBarItem = UITabBarItem(title: "Map", image: nil, tag: 2)
+        self.mapViewType = mapViewType
+        self.depth1 = depth1
+        self.depth2 = depth2
+        self.location = location
     }
+    
+    // searchResult init
+    init(_ mapViewType: MapViewType, _ location: CLLocation, _ mountain: Mountain) {
+        super.init(nibName: nil, bundle: nil)
+        self.mapViewType = mapViewType
+        self.location = location
+        self.mountains = [mountain]
+    }
+    
+//    init() {
+//        super.init(nibName: nil, bundle: nil)
+////        self.tabBarItem = UITabBarItem(title: "Map", image: nil, tag: 2)
+//    }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -97,7 +113,6 @@ class MapViewController: UIViewController {
             mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: bottomHeight).isActive = true
         }
     }
-    
     
     //set BottomView
     func setupBottomSheetVC() {
@@ -237,6 +252,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         
         // Apply new Cell Model
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookmarkCell", for: indexPath) as! MyListTableViewBookmarkCell
+//        let cell = MyListTableViewBookmarkCell()
         cell.selectionStyle = .none
 
         let mountain = mountains[indexPath.section]
