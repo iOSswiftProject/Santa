@@ -94,9 +94,10 @@ class mapkitViewController: UIViewController {
         setRegionButton()
         self.MapView.bringSubviewToFront(regionButton)
         MapView.register(MountainView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        MapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: "userAnnotation")
         setLocationManager()
+        MapView.delegate = self
         
-
         self.textField.delegate = self
 
         /* 체크를 위한 값 저장 */
@@ -136,6 +137,8 @@ class mapkitViewController: UIViewController {
         navigationController?.pushViewController(selectViewController, animated: true)
     }
 }
+
+//MARK: TextField Delegate
 extension mapkitViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         let vc = searchBarViewController()
@@ -144,16 +147,34 @@ extension mapkitViewController: UITextFieldDelegate {
     }
 }
 
+//MARK: MKMapView Delegate
+extension mapkitViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        if let mountain = annotation as? Mountain {
+            return MapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        }
+
+        let userAnnotation = MKAnnotationView.init(annotation: annotation, reuseIdentifier: "userAnnotation")
+        userAnnotation.image = UIImage.init(named: "santaIconError")
+        return userAnnotation
+    }
+}
+
+
+
+//MARK: LocationManager Delegate
 extension mapkitViewController: CLLocationManagerDelegate {
     
     func setLocationManager() {
-
         // request location authroization when the app is in use
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         updateUserLocation()
-        
     }
     
     func updateUserLocation() {
@@ -179,20 +200,6 @@ extension mapkitViewController: CLLocationManagerDelegate {
                 completion(address, error)
             }
         }
-//        CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
-//
-//            guard let placemark = placemarks?.first, let dict = placemark.addressDictionary else {
-//                completion("",error)
-//                return
-//            }
-//
-//            if let arr = dict["FormattedAddressLines"] as? NSArray {
-//                let address = arr[0] as! String
-//                print(address)
-//                completion(address, error)
-//            }
-//
-//        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -225,6 +232,10 @@ extension mapkitViewController: CLLocationManagerDelegate {
                 print(depth2)
                 
                 self.MapView.addAnnotations(DBInterface.shared.selectMountain(depth1: depth1, depth2: depth2))
+                
+                let userAnnotation = MKPointAnnotation()
+                userAnnotation.coordinate = CLLocationCoordinate2D.init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+                self.MapView.addAnnotation(userAnnotation)
       
             }
         }
