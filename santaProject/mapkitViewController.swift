@@ -94,7 +94,6 @@ class mapkitViewController: UIViewController {
         setRegionButton()
         self.MapView.bringSubviewToFront(regionButton)
         MapView.register(MountainView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        MapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: "userAnnotation")
         setLocationManager()
         MapView.delegate = self
         
@@ -158,8 +157,10 @@ extension mapkitViewController: MKMapViewDelegate {
             return MapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         }
 
-        let userAnnotation = MKAnnotationView.init(annotation: annotation, reuseIdentifier: "userAnnotation")
-        userAnnotation.image = UIImage.init(named: "santaIconError")
+//        let userAnnotation = MKAnnotationView.init(annotation: annotation, reuseIdentifier: "userAnnotation")
+        
+//        userAnnotation.image = UIImage.init(named: "santaIconError")
+        let userAnnotation = MKPinAnnotationView.init(annotation: annotation, reuseIdentifier: "pin")
         return userAnnotation
     }
 }
