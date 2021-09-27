@@ -68,6 +68,10 @@ class MapViewController: UIViewController {
         if mapViewType == .regionBased {
             self.navigationItem.title = depth1 + " " + depth2
             mountains  = DBInterface.shared.selectMountain(depth1: depth1, depth2: depth2)
+            mountains.sort { (m1, m2) -> Bool in
+                guard let name1 = m1.name, let name2 = m2.name else { return false }
+                return name1 < name2
+            }
             mapView.addAnnotations(mountains)
         } else {
         
