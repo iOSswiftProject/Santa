@@ -10,6 +10,7 @@ import UIKit
 class DetailViewController: UIViewController {
 
     private var mountain: Mountain
+    private var detailInfo: DetailInfo?
     private let detailViewModel: DetailViewModel
     private let detailView = DetailView()
 
@@ -22,7 +23,8 @@ class DetailViewController: UIViewController {
 
     init(with mountain: Mountain) {
         self.mountain = mountain
-        self.detailViewModel = DetailViewModel(with: mountain)
+        self.detailInfo = mountain.detailInfo()
+        self.detailViewModel = DetailViewModel(with: mountain, detailInfo: detailInfo)
         super.init(nibName: nil, bundle: nil)
     }
 

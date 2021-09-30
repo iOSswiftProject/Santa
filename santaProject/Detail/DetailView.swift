@@ -17,7 +17,7 @@ class DetailView: UIView {
 
     let imageView = UIImageView()
     let mountainInfoView = MountainInfoBookmarkView()
-    let textArea = UITextView()
+    let emptyInfoView = UIView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,7 +25,7 @@ class DetailView: UIView {
 
         setupImageView()
         setupMountainInfoView()
-        setupTextArea()
+        setupEmptyView()
     }
 
     required init?(coder: NSCoder) {
@@ -60,16 +60,39 @@ class DetailView: UIView {
         view.delegate = self
     }
 
-    private func setupTextArea() {
-        addSubview(textArea)
-        textArea.translatesAutoresizingMaskIntoConstraints = false
-        textArea.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        textArea.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
-        textArea.topAnchor.constraint(equalTo: mountainInfoView.bottomAnchor, constant: 32).isActive = true
-        textArea.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        textArea.isEditable = false
+    private func setupEmptyView() {
+        addSubview(emptyInfoView)
+        emptyInfoView.translatesAutoresizingMaskIntoConstraints = false
+        emptyInfoView.topAnchor.constraint(equalTo: mountainInfoView.bottomAnchor, constant: 61).isActive = true
+        emptyInfoView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
 
-        textArea.backgroundColor = .lightGray
+        let imageView = UIImageView(image: UIImage(named: "detail_empty"))
+        let label = UILabel()
+
+        emptyInfoView.addSubview(imageView)
+        emptyInfoView.addSubview(label)
+
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.leadingAnchor.constraint(equalTo: emptyInfoView.leadingAnchor).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: emptyInfoView.trailingAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: emptyInfoView.topAnchor).isActive = true
+
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
+        label.bottomAnchor.constraint(equalTo: emptyInfoView.bottomAnchor).isActive = true
+        label.centerXAnchor.constraint(equalTo: emptyInfoView.centerXAnchor).isActive = true
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .stCoolGray60
+
+        let attrString = NSMutableAttributedString(string: "산에 대한 정보가 없습니다.")
+        let range = NSRange(location: 0, length: attrString.length)
+        attrString.addAttribute(.kern, value: -0.02, range: range)
+        label.attributedText = attrString
+    }
+
+    func setupDetailInfoView(with detailInfo: DetailInfo) {
+
     }
 }
 
