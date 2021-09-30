@@ -52,6 +52,7 @@
 		CEDC746726CA4F3F002EFC2C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC746626CA4F3F002EFC2C /* DetailViewController.swift */; };
 		CEDC746926CA6040002EFC2C /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC746826CA6040002EFC2C /* DetailViewModel.swift */; };
 		CEDC746B26CA628A002EFC2C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC746A26CA628A002EFC2C /* DetailView.swift */; };
+		CEDC74882705F663002EFC2C /* DetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC74872705F663002EFC2C /* DetailInfo.swift */; };
 		FE480AC62695DC71000A5D20 /* DBInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC32695DC71000A5D20 /* DBInterface.swift */; };
 		FE480AC72695DC71000A5D20 /* RegionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC42695DC71000A5D20 /* RegionInfo.swift */; };
 		FE480AC82695DC71000A5D20 /* Mountain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC52695DC71000A5D20 /* Mountain.swift */; };
@@ -110,6 +111,7 @@
 		CEDC746626CA4F3F002EFC2C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CEDC746826CA6040002EFC2C /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		CEDC746A26CA628A002EFC2C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		CEDC74872705F663002EFC2C /* DetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfo.swift; sourceTree = "<group>"; };
 		FE480AC32695DC71000A5D20 /* DBInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBInterface.swift; sourceTree = "<group>"; };
 		FE480AC42695DC71000A5D20 /* RegionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionInfo.swift; sourceTree = "<group>"; };
 		FE480AC52695DC71000A5D20 /* Mountain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mountain.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				CEDC746626CA4F3F002EFC2C /* DetailViewController.swift */,
 				CEDC746826CA6040002EFC2C /* DetailViewModel.swift */,
 				CEDC746A26CA628A002EFC2C /* DetailView.swift */,
+				CEDC74872705F663002EFC2C /* DetailInfo.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEDC74882705F663002EFC2C /* DetailInfo.swift in Sources */,
 				CE880A1926994CAD0034B0A5 /* AddHistoryButton.swift in Sources */,
 				BC1066AD26B114B100AF6E72 /* selectRegionVC.swift in Sources */,
 				CECD577826AE9E020091E66D /* HomeViewModel.swift in Sources */,

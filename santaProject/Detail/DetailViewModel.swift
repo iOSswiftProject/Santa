@@ -10,6 +10,7 @@ import Foundation
 class DetailViewModel {
 
     let mountain: Mountain
+    let detailInfo: DetailInfo?
 
     var mountainName: String {
         mountain.name ?? "ㅇㅇ산"
@@ -47,13 +48,14 @@ class DetailViewModel {
         mountain.subtitle ?? "내용?"
     }
 
-    init(with mountain: Mountain) {
+    init(with mountain: Mountain, detailInfo: DetailInfo?) {
         self.mountain = mountain
+        self.detailInfo = detailInfo
     }
 
     func congifure(_ view: DetailView) {
 
-        // TODO: 이미지 추가
+        // TODO: 맵뷰 그리기
 
         let infoView = view.mountainInfoView
         infoView.flagged = isVisit
@@ -63,8 +65,8 @@ class DetailViewModel {
         infoView.updateSubRegion(subregionName: subRegion)
         infoView.updateHeight(height)
 
-
-        // TODO: 자세한 설명 추가
-        view.textArea.text = "\(title)\n\(subtitle)"
+        if let detailInfo = detailInfo {
+            view.setupDetailInfoView(with: detailInfo)
+        }
     }
 }

@@ -37,6 +37,9 @@ class Mountain: NSObject,MKAnnotation {
         self.title = name + " " + peak
 
     }
-    
-    
+
+    func detailInfo() -> DetailInfo? {
+        // TODO: read detail info from DB
+        return nil
+    }
 }
