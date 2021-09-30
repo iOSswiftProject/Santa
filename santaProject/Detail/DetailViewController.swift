@@ -50,22 +50,6 @@ class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: DetailViewDelegate {
-    func detailViewDidTapBackButton(_ detailView: DetailView) {
-        if let navigationBarHidden = navigationBarHidden {
-            navigationController?.setNavigationBarHidden(navigationBarHidden, animated: false)
-        }
-        if let tabbarHidden = tabbarHidden {
-            tabBarController?.tabBar.isHidden = tabbarHidden
-        }
-
-        if let navigationController = navigationController {
-            navigationController.popViewController(animated: true)
-        }
-        else {
-            dismiss(animated: true, completion: nil)
-        }
-    }
-
     func detailViewDidTapBookmarkButton(_ detailView: DetailView) {
         guard let isFavorite = mountain.isFavorite else { return }
         mountain.isFavorite = !isFavorite

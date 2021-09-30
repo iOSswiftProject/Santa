@@ -8,7 +8,6 @@
 import UIKit
 
 protocol DetailViewDelegate: AnyObject {
-    func detailViewDidTapBackButton(_ detailView: DetailView)
     func detailViewDidTapBookmarkButton(_ detailView: DetailView)
 }
 
@@ -19,7 +18,6 @@ class DetailView: UIView {
     let imageView = UIImageView()
     let mountainInfoView = MountainInfoBookmarkView()
     let textArea = UITextView()
-    let backButton = UIButton()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,7 +26,6 @@ class DetailView: UIView {
         setupImageView()
         setupMountainInfoView()
         setupTextArea()
-        setupBackButton()
     }
 
     required init?(coder: NSCoder) {
@@ -73,24 +70,6 @@ class DetailView: UIView {
         textArea.isEditable = false
 
         textArea.backgroundColor = .lightGray
-    }
-
-    private func setupBackButton() {
-        addSubview(backButton)
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        backButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        backButton.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-        backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
-
-        backButton.setImage(UIImage(named: "santaBackButton"), for: .normal)
-        backButton.tintColor = .stCoolGray70
-    }
-
-    @objc
-    private func didTapBackButton() {
-        delegate?.detailViewDidTapBackButton(self)
     }
 }
 
