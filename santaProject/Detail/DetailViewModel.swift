@@ -55,7 +55,7 @@ class DetailViewModel {
 
     func congifure(_ view: DetailView) {
 
-        // TODO: 이미지 추가
+        // TODO: 맵뷰 그리기
 
         let infoView = view.mountainInfoView
         infoView.flagged = isVisit
@@ -65,8 +65,6 @@ class DetailViewModel {
         infoView.updateSubRegion(subregionName: subRegion)
         infoView.updateHeight(height)
 
-
-        // TODO: 자세한 설명 추가
         if let detailInfo = detailInfo {
             view.setupDetailInfoView(with: detailInfo)
         }

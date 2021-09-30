@@ -92,7 +92,9 @@ class DetailView: UIView {
     }
 
     func setupDetailInfoView(with detailInfo: DetailInfo) {
-
+        emptyInfoView.isHidden = true
+        // TODO: detail view 구성
+        backgroundColor = .red
     }
 }
 
