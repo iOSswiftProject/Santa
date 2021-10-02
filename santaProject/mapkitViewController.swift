@@ -101,7 +101,7 @@ class mapkitViewController: UIViewController {
 
         /* 체크를 위한 값 저장 */
         UserDefaults.standard.setValue(0, forKey: "region")
-
+        navigationController?.navigationBar.tintColor = .stCoolGray70
     }
         func makeCustomTextField() {
             let image = UIImage(named: "search")
