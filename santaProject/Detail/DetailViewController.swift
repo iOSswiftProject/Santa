@@ -55,11 +55,6 @@ class DetailViewController: UIViewController {
 
         naviTintColor = navigationBar.tintColor
         navigationBar.tintColor = .stCoolGray70
-
-        naviBackIndicatorImage = navigationBar.backIndicatorImage
-        naviBackIndicatorTransitionMaskImage = navigationBar.backIndicatorTransitionMaskImage
-        navigationBar.backIndicatorImage = UIImage(named: "santaBackButton")
-        navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "santaBackButton")
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,9 +69,6 @@ class DetailViewController: UIViewController {
         navigationBar.backgroundColor = nil
         navigationBar.backItem?.backButtonTitle = naviBackButtonTitle
         navigationBar.tintColor = naviTintColor
-
-        navigationBar.backIndicatorImage = naviBackIndicatorImage
-        navigationBar.backIndicatorTransitionMaskImage = naviBackIndicatorTransitionMaskImage
     }
 
     private func setupDetailView() {
