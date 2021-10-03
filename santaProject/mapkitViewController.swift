@@ -42,7 +42,6 @@ class mapkitViewController: UIViewController {
         let button = UIButton()
         let label = UILabel()
         button.frame = CGRect(x: 30, y: 300, width: 335, height: 63)
-//        button.backgroundColor = UIColor.setColor(_names: .greengreen)
         button.backgroundColor = .stOrange30
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(gotoregionVC), for: .touchUpInside)
@@ -53,6 +52,7 @@ class mapkitViewController: UIViewController {
     }()
     
     let MapView:MKMapView = MKMapView.init(frame:.zero)
+
 
     //mapViewSetting
     func setMapView() {
@@ -67,12 +67,14 @@ class mapkitViewController: UIViewController {
     
     func setRegionButton() {
         self.MapView.addSubview(regionButton)
+        let tabBarHeight = self.tabBarController?.tabBar.frame.size.height ?? -280
         regionButton.translatesAutoresizingMaskIntoConstraints = false
         regionButton.centerXAnchor.constraint(equalTo: self.MapView.centerXAnchor).isActive = true
         regionButton.widthAnchor.constraint(equalToConstant: 330).isActive = true
        // regionButton.centerYAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 200 + 30).isActive = true
         regionButton.heightAnchor.constraint(equalTo: regionButton.widthAnchor, multiplier: 1/6).isActive = true
-        regionButton.bottomAnchor.constraint(equalTo: self.MapView.bottomAnchor, constant: -280).isActive = true
+//        regionButton.bottomAnchor.constraint(equalTo: RootTabBarController().tabBar.topAnchor, constant: -280).isActive = true
+        regionButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -tabBarHeight - 20).isActive = true
     }
     
     required init?(coder: NSCoder) {
@@ -87,11 +89,12 @@ class mapkitViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setMapView()
-        makeCustomTextField()
         self.MapView.addSubview(textField)
         //self.searchBar.addSubview(searchButton)
        // self.MapView.bringSubviewToFront(searchButton)
+        makeCustomTextField()
         setRegionButton()
+
         self.MapView.bringSubviewToFront(regionButton)
         MapView.register(MountainView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         setLocationManager()
@@ -103,22 +106,31 @@ class mapkitViewController: UIViewController {
         UserDefaults.standard.setValue(0, forKey: "region")
         navigationController?.navigationBar.tintColor = .stCoolGray70
     }
-        func makeCustomTextField() {
-            let image = UIImage(named: "search")
-            let imageView = UIImageView(frame: CGRect(x: 293, y: 16, width: 25, height: 25))
-            imageView.image = image
-            textField.frame = CGRect(x: 40, y: 60, width: 335, height: 52)
-            textField.placeholder = "산 이름을 검색하세요"
-            textField.layer.cornerRadius = 25
-            textField.layer.borderWidth = 0.1
-            textField.backgroundColor = .white
-            textField.addLeftPadding()
-            self.view.addSubview(textField)
-            textField.addSubview(imageView)
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.trailingAnchor.constraint(equalTo: self.textField.trailingAnchor, constant: -23).isActive = true
-            imageView.centerYAnchor.constraint(equalTo: self.textField.centerYAnchor).isActive = true
-        }
+    func makeCustomTextField() {
+        let image = UIImage(named: "search")
+        let imageView = UIImageView(frame: CGRect(x: 10, y: 14, width: 25, height: 25))
+        imageView.image = image
+        textField.frame = CGRect(x: 10, y: 60, width: 335, height: 40)
+        textField.placeholder = "산 이름을 검색하세요"
+        textField.layer.cornerRadius = 8
+        textField.layer.borderWidth = 0.1
+        textField.backgroundColor = .white
+        textField.addLeftPadding()
+        self.view.addSubview(textField)
+        layoutOfTextFeild(textfield: textField)
+        textField.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.leadingAnchor.constraint(equalTo: self.textField.leadingAnchor, constant: 10).isActive = true
+        imageView.centerYAnchor.constraint(equalTo: self.textField.centerYAnchor).isActive = true
+    }
+    
+    func layoutOfTextFeild(textfield: UITextField) {
+        textfield.translatesAutoresizingMaskIntoConstraints = false
+        textfield.centerXAnchor.constraint(equalTo: self.MapView.centerXAnchor).isActive = true
+        textfield.topAnchor.constraint(equalTo: self.MapView.topAnchor, constant: 60).isActive = true
+        textfield.widthAnchor.constraint(equalToConstant: 335).isActive = true
+        textfield.heightAnchor.constraint(equalTo: textfield.widthAnchor, multiplier: 1/8).isActive = true
+    }
     override func viewWillAppear(_ animated: Bool) {
         UINavigationBar.appearance().barTintColor = UIColor.white
         self.navigationController?.navigationBar.isHidden = true
