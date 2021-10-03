@@ -7,7 +7,7 @@
 
 import UIKit
 import MapKit
-class searchBarViewController: UIViewController {
+class searchBarViewController: UIViewController, UISearchControllerDelegate {
     
     var tableView: UITableView!
 
@@ -27,9 +27,12 @@ class searchBarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.navigationController?.navigationBar.shadowImage = nil
+
         self.navigationController?.navigationBar.isHidden = false
         self.searchBar.delegate = self
         self.searchController.searchResultsUpdater = self
+        self.searchController.delegate = self
 
         self.navigationController?.navigationBar.barTintColor = .white
         UINavigationBar.appearance().barTintColor = UIColor.white
@@ -44,10 +47,8 @@ class searchBarViewController: UIViewController {
         navigationItem.hidesBackButton = true;
 
         self.maketableView()
-//        self.makeSearchTextField()
-//        self.makeNewSearchBar()
+
         self.makeSearchBar()
-//        self.makeBarButtonItem()
         self.makeCancelView()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -89,12 +90,12 @@ class searchBarViewController: UIViewController {
         
     }
     func makeSearchTextField() {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 335, height: 40))
         view.backgroundColor = .white
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 8
         view.layer.borderWidth = 0
         
-        let searchTextField = UITextField(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
+        let searchTextField = UITextField(frame: CGRect(x: 0, y: 0, width: 335, height:40))
         searchTextField.placeholder = "산 이름을 검색하세요"
         searchTextField.layer.borderWidth = 0
         view.addSubview(searchTextField)
