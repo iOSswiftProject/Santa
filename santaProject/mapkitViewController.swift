@@ -136,6 +136,9 @@ class mapkitViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         //
        // self.navigationController?.navigationBar.barTintColor = .white
+        let annotaions = MapView.annotations
+        MapView.removeAnnotations(annotaions)
+        
         locationManager.startUpdatingLocation()
 
     }
@@ -252,12 +255,11 @@ extension mapkitViewController: CLLocationManagerDelegate {
                 print(depth2)
                 
                 self.MapView.addAnnotations(DBInterface.shared.selectMountain(depth1: depth1, depth2: depth2))
-                
-                let userAnnotation = MKPointAnnotation()
-                userAnnotation.coordinate = CLLocationCoordinate2D.init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-                self.MapView.addAnnotation(userAnnotation)
-      
             }
+            
+            let userAnnotation = MKPointAnnotation()
+            userAnnotation.coordinate = CLLocationCoordinate2D.init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            self.MapView.addAnnotation(userAnnotation)
         }
         
     }

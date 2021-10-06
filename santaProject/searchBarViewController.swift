@@ -245,9 +245,7 @@ extension searchBarViewController: UITableViewDataSource, SearchCellDelegate {
 //            cell!.deleteButton.addTarget(self, action: #selector(pushDeleteButton(_:)), for: .touchUpInside)
             cell!.delegate = self
             cell!.idx = searchedItems.count - indexPath.row - 1
-            // TODO: Delete 프로세스 추가.
             // 삭제는 index로 가야함. 단순 String 이기때문에 idx가 key값으로사용.
-            // 추가로 searchArray에 용량제한과 중복 처리 추가필요
             return cell!
           
         } else { // 검색결과. -> 하단 셀이 Mountain객체.
@@ -311,7 +309,9 @@ extension searchBarViewController: UITableViewDelegate {
         } else {
             print("No filteringView")
             guard let searchedItems = UserDefaults.standard.array(forKey: "searchArray") as? [String] else { return }
-            let text = searchedItems[indexPath.row]
+            let row = searchedItems.count - indexPath.row - 1
+//            let text = searchedItems[indexPath.row]
+            let text = searchedItems[row]
 //            print(text)
             searchController.searchBar.text = text
             
