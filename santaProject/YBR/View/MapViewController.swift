@@ -147,10 +147,12 @@ class MapViewController: UIViewController {
         let imageView = UIImageView(image: UIImage(named: "history_empty"))
         view.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 114).isActive = true
-        imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -111).isActive = true
         imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -164).isActive = true
+        imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 114).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 148).isActive = true
+//        imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -111).isActive = true
+//        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -164).isActive = true
         
         let label = UILabel()
         view.addSubview(label)
