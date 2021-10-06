@@ -51,5 +51,4 @@ extension UIColor {
     class var stPink: UIColor { UIColor(hex: "#F9C5CE") }
     class var stBeige: UIColor { UIColor(hex: "#FFF0E6") }
 
-
 }

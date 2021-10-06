@@ -33,7 +33,7 @@ class searchBarData {
         }
         
     }
-    
+
     let localItems: [String] = {
         var mountainArr = [String]()
         let mountains = DBInterface.shared.selectMountain()

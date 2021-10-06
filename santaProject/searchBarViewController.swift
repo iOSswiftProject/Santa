@@ -7,13 +7,14 @@
 
 import UIKit
 import MapKit
-class searchBarViewController: UIViewController {
+class searchBarViewController: UIViewController, UISearchControllerDelegate {
     
     var tableView: UITableView!
-    
+
     
     let data = searchBarData()
     let searchController = UISearchController(searchResultsController: nil)
+    let searchBar = UISearchBar()
 
     var isFiltering: Bool {
         let searchController = self.navigationItem.searchController
@@ -26,8 +27,13 @@ class searchBarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.navigationController?.navigationBar.shadowImage = nil
+
         self.navigationController?.navigationBar.isHidden = false
-        
+        self.searchBar.delegate = self
+        self.searchController.searchResultsUpdater = self
+        self.searchController.delegate = self
+
         self.navigationController?.navigationBar.barTintColor = .white
         UINavigationBar.appearance().barTintColor = UIColor.white
     
@@ -37,11 +43,13 @@ class searchBarViewController: UIViewController {
         } else {
             self.data.searchItems = searchedItems!
         }
-        
-     
+        self.navigationController?.navigationBar.topItem?.title = ""
+        navigationItem.hidesBackButton = true;
+
         self.maketableView()
+
         self.makeSearchBar()
-        self.makeBarButtonItem()
+        self.makeCancelView()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
@@ -52,14 +60,31 @@ class searchBarViewController: UIViewController {
     }
 
     func makeBarButtonItem() {
-        let button = UIButton()
-        button.setImage(UIImage(named: "back_Button"), for: .normal)
-        button.addTarget(self, action: #selector(backToEx(_:)), for: .touchUpInside)
-        button.frame = CGRect(x: 0, y: 0, width: 53, height: 53)
+//        let backBarButtonItem =  UIBarButtonItem(image: UIImage(named: "back_Button"), style: .plain, target: self, action: #selector(backToEx(_:)))
+//        self.navigationItem.backBarButtonItem = backBarButtonItem
+//        navigationItem.hidesBackButton = true;
+//
+//        let leftButton = UIBarButtonItem(image: UIImage(named: "back_Button"), style: .plain, target: self, action: #selector(backToEx(_:)))
         
-        let barbuttonItem = UIBarButtonItem(customView: button)
+//        leftButton.setImage(UIImage(named: "back_Button"), for: .normal)
+//        leftButton.addTarget(self, action: #selector(backToEx(_:)), for: .touchUpInside)
+//        leftButton.frame = CGRect(x: 0, y: 0, width: 53, height: 53)
         
-        self.navigationItem.leftBarButtonItem = barbuttonItem
+//        let barbuttonItem = UIBarButtonItem(customView: leftButton)
+        
+//        self.navigationItem.leftBarButtonItem = leftButton
+        
+//        let rightButton = UIButton()
+//        rightButton.setImage(UIImage(named: "santaTabImageSearchActive"), for: .normal)
+//        rightButton.addTarget(self, action: #selector(searchButton(_:)), for: .touchUpInside)
+//        rightButton.frame = CGRect(x: 0, y: 0, width: 53, height: 53)
+//        let rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+//
+//        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        
+    }
+    @objc func searchButton(_ sender: Any) {
+        print("searchButton")
     }
     
     @objc func backToEx(_ sender: Any) {
@@ -67,20 +92,65 @@ class searchBarViewController: UIViewController {
         print("custom Button")
         
     }
+    func makeSearchTextField() {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 335, height: 40))
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 8
+        view.layer.borderWidth = 0
+        
+        let searchTextField = UITextField(frame: CGRect(x: 0, y: 0, width: 335, height:40))
+        searchTextField.placeholder = "산 이름을 검색하세요"
+        searchTextField.layer.borderWidth = 0
+        view.addSubview(searchTextField)
+        self.navigationItem.titleView = view
+    }
     
     func makeSearchBar() {
-        searchController.searchBar.placeholder = "산, 지역, 이름을 검색하세요"
-        searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.searchBar.placeholder = "산, 지역, 이름을 검색하세요"
+        self.searchController.obscuresBackgroundDuringPresentation = false
 
         //searchController에 UISearchResultsUpdating 프로토콜을 사용하기 위해서
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
+        self.searchController.searchResultsUpdater = self
+        self.searchController.searchBar.delegate = self
         self.navigationItem.hidesSearchBarWhenScrolling = false
-        self.navigationItem.searchController = searchController
+//        self.navigationItem.searchController = searchController
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.searchBar.searchBarStyle = UISearchBar.Style.minimal
+        if #available(iOS 13.0, *) {
+            self.searchController.automaticallyShowsCancelButton = false
+        } else {
+            // Fallback on earlier versions
+            self.searchController.searchBar.showsCancelButton = false
+        }
+        self.definesPresentationContext = true
+        
+        self.navigationItem.titleView = self.searchController.searchBar;
         //searchController
         //self.navigationItem.title = "Search"
         //self.navigationController?.navigationBar.prefersLargeTitles = true
-        
+        searchController.searchBar.setImage(UIImage(named: "santaTabImageSearchActive"), for: .search, state: .normal)
+        if #available(iOS 13.0, *) {
+            searchController.searchBar.searchTextField.backgroundColor = UIColor.stCoolGray02
+
+        } else {
+            // Fallback on earlier versions
+            searchController.searchBar.barTintColor = UIColor.stCoolGray02
+
+        }
+    }
+    func makeNewSearchBar() {
+        searchBar.placeholder = "산, 지역, 이름을 검색하세요"
+        searchBar.setImage(UIImage(named: "santaTabImageSearchActive"), for: .search, state: .normal)
+        if #available(iOS 13.0, *) {
+            self.searchBar.searchTextField.backgroundColor = UIColor.stCoolGray02
+
+        } else {
+            // Fallback on earlier versions
+            self.searchBar.barTintColor = UIColor.stCoolGray02
+
+        }
+//        self.navigationController?.navigationBar.topItem?.titleView = searchBar
+        self.navigationItem.titleView = searchBar
     }
     
     func maketableView() {
@@ -114,6 +184,15 @@ class searchBarViewController: UIViewController {
                                                            attribute: .trailing, relatedBy: .equal, toItem: self.view,
                                                            attribute: .trailing, multiplier: 1.0, constant: 0))
         
+    }
+    func makeCancelView() {
+        let rightBarButtonItem = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(pushDismissVC(_:)))
+        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        rightBarButtonItem.tintColor = UIColor.stCoolGray90
+    }
+    
+    @objc func pushDismissVC(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func pushDeleteButton(_ sender: UIButton) {
@@ -280,5 +359,8 @@ extension searchBarViewController: UISearchBarDelegate {
         let searchBarText = searchBar.text
         self.data.searchItems.append(searchBarText!)
         UserDefaults.standard.setValue(self.data.searchItems, forKey: "searchArray")
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("click cancel")
     }
 }
