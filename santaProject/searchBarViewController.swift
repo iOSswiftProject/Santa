@@ -235,7 +235,8 @@ extension searchBarViewController: UITableViewDataSource, SearchCellDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
  
-        let searchedItems = UserDefaults.standard.array(forKey: "searchArray") as! [String]
+        var searchedItems = UserDefaults.standard.array(forKey: "searchArray") as! [String]
+        searchedItems.reverse()
 
         if self.isFiltering == false { // 최근검색어 -> 하단 셀이 단순 스트링
             let cell = tableView.dequeueReusableCell(withIdentifier: "mountinCell", for: indexPath) as? searchCell
@@ -243,7 +244,7 @@ extension searchBarViewController: UITableViewDataSource, SearchCellDelegate {
             cell!.deleteButton.isHidden = false
 //            cell!.deleteButton.addTarget(self, action: #selector(pushDeleteButton(_:)), for: .touchUpInside)
             cell!.delegate = self
-            cell!.idx = indexPath.row
+            cell!.idx = searchedItems.count - indexPath.row - 1
             // TODO: Delete 프로세스 추가.
             // 삭제는 index로 가야함. 단순 String 이기때문에 idx가 key값으로사용.
             // 추가로 searchArray에 용량제한과 중복 처리 추가필요

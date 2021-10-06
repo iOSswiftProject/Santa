@@ -169,11 +169,18 @@ extension mapkitViewController: MKMapViewDelegate {
             return MapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         }
 
-//        let userAnnotation = MKAnnotationView.init(annotation: annotation, reuseIdentifier: "userAnnotation")
-        
-//        userAnnotation.image = UIImage.init(named: "santaIconError")
         let userAnnotation = MKPinAnnotationView.init(annotation: annotation, reuseIdentifier: "pin")
         return userAnnotation
+    }
+    
+    /// Handling the Callout
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        guard let mountain = view.annotation as? Mountain else {
+            return
+        }
+        let detailVC = DetailViewController.init(with: mountain)
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
