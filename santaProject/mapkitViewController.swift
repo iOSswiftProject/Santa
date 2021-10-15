@@ -171,8 +171,8 @@ extension mapkitViewController: MKMapViewDelegate {
         if let mountain = annotation as? Mountain {
             return MapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         }
-
-        let userAnnotation = MKPinAnnotationView.init(annotation: annotation, reuseIdentifier: "pin")
+        let userAnnotation = MKAnnotationView.init(annotation: annotation, reuseIdentifier: "userAnnotation")
+        userAnnotation.image = UIImage.init(named: "santaUserAnnotation")
         return userAnnotation
     }
     
