@@ -50,7 +50,7 @@ extension regionViewController: UICollectionViewDataSource {
 
 extension regionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let searchVC = searchBarViewController()
+        let searchVC = SearchBarViewController()
         if indexPath.row == 0 {
             self.navigationController?.pushViewController(searchVC, animated: true)
         }

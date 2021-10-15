@@ -140,7 +140,7 @@ class mapkitViewController: UIViewController {
 
     }
     @objc func preshSearchBar() {
-        let serachViewController = searchBarViewController()
+        let serachViewController = SearchBarViewController()
         navigationController?.pushViewController(serachViewController, animated: true)
     }
     @objc func gotoregionVC() {
@@ -152,7 +152,7 @@ class mapkitViewController: UIViewController {
 //MARK: TextField Delegate
 extension mapkitViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        let vc = searchBarViewController()
+        let vc = SearchBarViewController()
         textField.resignFirstResponder()
         self.navigationController?.pushViewController(vc, animated: true)
     }

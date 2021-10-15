@@ -13,7 +13,7 @@
 		BC1066A826B114B100AF6E72 /* mapkitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC10669D26B114B000AF6E72 /* mapkitViewController.swift */; };
 		BC1066A926B114B100AF6E72 /* searchBarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC10669E26B114B000AF6E72 /* searchBarData.swift */; };
 		BC1066AA26B114B100AF6E72 /* regionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC10669F26B114B000AF6E72 /* regionCell.swift */; };
-		BC1066AB26B114B100AF6E72 /* searchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1066A026B114B100AF6E72 /* searchBarViewController.swift */; };
+		BC1066AB26B114B100AF6E72 /* SearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1066A026B114B100AF6E72 /* SearchBarViewController.swift */; };
 		BC1066AC26B114B100AF6E72 /* searchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1066A126B114B100AF6E72 /* searchCell.swift */; };
 		BC1066AD26B114B100AF6E72 /* selectRegionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1066A226B114B100AF6E72 /* selectRegionVC.swift */; };
 		BC1066AE26B114B100AF6E72 /* regionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1066A326B114B100AF6E72 /* regionTableCell.swift */; };
@@ -70,7 +70,7 @@
 		BC10669D26B114B000AF6E72 /* mapkitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mapkitViewController.swift; sourceTree = "<group>"; };
 		BC10669E26B114B000AF6E72 /* searchBarData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchBarData.swift; sourceTree = "<group>"; };
 		BC10669F26B114B000AF6E72 /* regionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = regionCell.swift; sourceTree = "<group>"; };
-		BC1066A026B114B100AF6E72 /* searchBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchBarViewController.swift; sourceTree = "<group>"; };
+		BC1066A026B114B100AF6E72 /* SearchBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarViewController.swift; sourceTree = "<group>"; };
 		BC1066A126B114B100AF6E72 /* searchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchCell.swift; sourceTree = "<group>"; };
 		BC1066A226B114B100AF6E72 /* selectRegionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectRegionVC.swift; sourceTree = "<group>"; };
 		BC1066A326B114B100AF6E72 /* regionTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = regionTableCell.swift; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 				BC1066A326B114B100AF6E72 /* regionTableCell.swift */,
 				BC10669C26B114B000AF6E72 /* regionViewController.swift */,
 				BC10669E26B114B000AF6E72 /* searchBarData.swift */,
-				BC1066A026B114B100AF6E72 /* searchBarViewController.swift */,
+				BC1066A026B114B100AF6E72 /* SearchBarViewController.swift */,
 				BC1066A126B114B100AF6E72 /* searchCell.swift */,
 				BC1066A226B114B100AF6E72 /* selectRegionVC.swift */,
 				FE480AC12695DC52000A5D20 /* YBR */,
@@ -368,7 +368,7 @@
 				BC1066AD26B114B100AF6E72 /* selectRegionVC.swift in Sources */,
 				CECD577826AE9E020091E66D /* HomeViewModel.swift in Sources */,
 				CE880A1D269AD36C0034B0A5 /* MyListTableViewModel.swift in Sources */,
-				BC1066AB26B114B100AF6E72 /* searchBarViewController.swift in Sources */,
+				BC1066AB26B114B100AF6E72 /* SearchBarViewController.swift in Sources */,
 				CE880A2526A0A02B0034B0A5 /* DatePickerView.swift in Sources */,
 				CE880A2926A1E86B0034B0A5 /* MountainPickerView.swift in Sources */,
 				CE880A21269AE37E0034B0A5 /* MyListTableViewCellModel.swift in Sources */,
