@@ -84,7 +84,6 @@ class MyListFavoriteTableViewModel: MyListTableViewModel {
 
     init() {
         loadFavorite()
-        bookmarkSomeMountainsIfNeeded()
         createCellModels()
     }
 
@@ -120,17 +119,5 @@ class MyListFavoriteTableViewModel: MyListTableViewModel {
     private func createCellModels() {
         let cellModels = bookmarks.map { MyListTableViewBookmarkCellModel(with: $0) }
         self.cellModels = cellModels
-    }
-
-    // Need to remove
-    private func bookmarkSomeMountainsIfNeeded() {
-        guard bookmarks.isEmpty else { return }
-        let allMountains = DBInterface.shared.selectMountain()
-        let ids: [Int32] = allMountains.map{ $0.id! }
-        ids.forEach {
-            DBInterface.shared.updateIsFavorite(mountainId: $0, isFavorite: true)
-        }
-
-        loadFavorite()
     }
 }
