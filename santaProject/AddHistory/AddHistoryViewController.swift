@@ -70,7 +70,9 @@ extension AddHistoryViewController: AddHistoryViewDelegate {
     }
 
     func didTapSelectMountainButton() {
-        let vc = searchBarViewController()
+        let vc = SearchBarViewController()
+        vc.fromAddHistory = true
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -79,6 +81,14 @@ extension AddHistoryViewController: AddHistoryViewDelegate {
         vc.delegate = self
         vc.modalPresentationStyle = .formSheet
         present(vc, animated: true, completion: nil)
+    }
+}
+
+extension AddHistoryViewController: SearchBarViewControllerDelegate {
+    func didSelectMountain(_ mountain: Mountain) {
+        pickedMountain = mountain
+        addHistoryView.hideMountainEmptyMessage()
+        addHistoryView.updateMountainNameLabel(with: mountain)
     }
 }
 

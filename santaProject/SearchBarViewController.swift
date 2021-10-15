@@ -7,8 +7,17 @@
 
 import UIKit
 import MapKit
-class searchBarViewController: UIViewController, UISearchControllerDelegate {
-    
+
+protocol SearchBarViewControllerDelegate: AnyObject {
+    func didSelectMountain(_ mountain: Mountain)
+}
+
+
+class SearchBarViewController: UIViewController, UISearchControllerDelegate {
+
+    weak var delegate: SearchBarViewControllerDelegate?
+    var fromAddHistory = false
+
     var tableView: UITableView!
 
     
@@ -195,7 +204,7 @@ class searchBarViewController: UIViewController, UISearchControllerDelegate {
     
    
 }
-extension searchBarViewController: UITableViewDataSource, SearchCellDelegate {
+extension SearchBarViewController: UITableViewDataSource, SearchCellDelegate {
     func deleteButtonDidTouched(cell: searchCell) {
         print("touch deleteButton!!")
 //        self.data.searchItems.append(searchBarText!)
@@ -273,11 +282,10 @@ extension searchBarViewController: UITableViewDataSource, SearchCellDelegate {
 
 }
 
-extension searchBarViewController: UITableViewDelegate {
+extension SearchBarViewController: UITableViewDelegate {
     // MARK: tableCell touch Event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.isFiltering == true {
-            //        let text = self.data.filterValue[indexPath.row]
             let mountain = self.data.filteredValue[indexPath.row]
             let text = String(format: "%@ %@", mountain.name ?? "", mountain.peak ?? "")
             self.data.searchItems.append(text.trimmingCharacters(in: [" "]))
@@ -288,12 +296,21 @@ extension searchBarViewController: UITableViewDelegate {
 //            let detailViewController = DetailViewController(with: mountain)
 //            navigationController?.pushViewController(detailViewController, animated: true)
             // TODO: 맵뷰로 변경
-            let location = CLLocation.init(latitude: mountain.coordinate.latitude, longitude: mountain.coordinate.longitude)
-            let mapVC = MapViewController.init(.searchResult, location, mountain)
-            
-            navigationController?.pushViewController(mapVC, animated: true)
-            print(self.data.searchItems)
-            tableView.reloadData()
+
+            if fromAddHistory {
+                delegate?.didSelectMountain(mountain)
+                navigationController?.popViewController(animated: true)
+            }
+            else {
+                let location = CLLocation.init(latitude: mountain.coordinate.latitude, longitude: mountain.coordinate.longitude)
+                let mapVC = MapViewController.init(.searchResult, location, mountain)
+
+                navigationController?.pushViewController(mapVC, animated: true)
+                print(self.data.searchItems)
+                tableView.reloadData()
+            }
+
+
         } else {
             print("No filteringView")
             guard let searchedItems = UserDefaults.standard.array(forKey: "searchArray") as? [String] else { return }
@@ -313,7 +330,7 @@ extension searchBarViewController: UITableViewDelegate {
 }
 
 // MARK: search Process
-extension searchBarViewController: UISearchResultsUpdating {
+extension SearchBarViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else {
             return
@@ -339,7 +356,7 @@ extension searchBarViewController: UISearchResultsUpdating {
     
 }
 
-extension searchBarViewController: UISearchBarDelegate {
+extension SearchBarViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("click searchBar")
         let searchBarText = searchBar.text
