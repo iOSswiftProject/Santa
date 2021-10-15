@@ -173,6 +173,7 @@ extension mapkitViewController: MKMapViewDelegate {
         }
         let userAnnotation = MKAnnotationView.init(annotation: annotation, reuseIdentifier: "userAnnotation")
         userAnnotation.image = UIImage.init(named: "santaUserAnnotation")
+      
         return userAnnotation
     }
     
