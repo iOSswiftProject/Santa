@@ -112,8 +112,10 @@ extension MyListViewController: MyListCollectionViewCellDelegate {
     func didTapAddHistoryButton() {
         let viewController = AddHistoryViewController()
         viewController.delegate = self
-        viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: true)
+
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true)
     }
 
     func didTapMoreButtonForHistoryIndexPath(_ indexPath: IndexPath) {

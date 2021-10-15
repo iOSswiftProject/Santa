@@ -39,6 +39,11 @@ class AddHistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
 }
 
 extension AddHistoryViewController: AddHistoryViewDelegate {
@@ -65,9 +70,8 @@ extension AddHistoryViewController: AddHistoryViewDelegate {
     }
 
     func didTapSelectMountainButton() {
-        let vc = MountainPickerViewController()
-        vc.delegate = self
-        present(vc, animated: true, completion: nil)
+        let vc = searchBarViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     func didTapDatePickButton() {
