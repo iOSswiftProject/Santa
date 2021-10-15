@@ -17,9 +17,9 @@ class searchBarViewController: UIViewController, UISearchControllerDelegate {
     let searchBar = UISearchBar()
 
     var isFiltering: Bool {
-        let searchController = self.navigationItem.searchController
-        let isActive = searchController?.isActive ?? false
-        let isSearchBarHasText = searchController?.searchBar.text?.isEmpty == false
+//        let searchController = self.navigationItem.titleView.searchController
+        let isActive = searchController.isActive
+        let isSearchBarHasText = searchController.searchBar.text?.isEmpty == false
      
         return isActive && isSearchBarHasText
     }
@@ -137,20 +137,6 @@ class searchBarViewController: UIViewController, UISearchControllerDelegate {
             searchController.searchBar.barTintColor = UIColor.stCoolGray02
 
         }
-    }
-    func makeNewSearchBar() {
-        searchBar.placeholder = "산, 지역, 이름을 검색하세요"
-        searchBar.setImage(UIImage(named: "santaTabImageSearchActive"), for: .search, state: .normal)
-        if #available(iOS 13.0, *) {
-            self.searchBar.searchTextField.backgroundColor = UIColor.stCoolGray02
-
-        } else {
-            // Fallback on earlier versions
-            self.searchBar.barTintColor = UIColor.stCoolGray02
-
-        }
-//        self.navigationController?.navigationBar.topItem?.titleView = searchBar
-        self.navigationItem.titleView = searchBar
     }
     
     func maketableView() {
