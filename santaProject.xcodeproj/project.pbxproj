@@ -53,6 +53,7 @@
 		CEDC746926CA6040002EFC2C /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC746826CA6040002EFC2C /* DetailViewModel.swift */; };
 		CEDC746B26CA628A002EFC2C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC746A26CA628A002EFC2C /* DetailView.swift */; };
 		CEDC74882705F663002EFC2C /* DetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC74872705F663002EFC2C /* DetailInfo.swift */; };
+		CEDC748A271C052B002EFC2C /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC7489271C052B002EFC2C /* OnBoardingViewController.swift */; };
 		FE480AC62695DC71000A5D20 /* DBInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC32695DC71000A5D20 /* DBInterface.swift */; };
 		FE480AC72695DC71000A5D20 /* RegionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC42695DC71000A5D20 /* RegionInfo.swift */; };
 		FE480AC82695DC71000A5D20 /* Mountain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC52695DC71000A5D20 /* Mountain.swift */; };
@@ -112,6 +113,7 @@
 		CEDC746826CA6040002EFC2C /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		CEDC746A26CA628A002EFC2C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		CEDC74872705F663002EFC2C /* DetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfo.swift; sourceTree = "<group>"; };
+		CEDC7489271C052B002EFC2C /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		FE480AC32695DC71000A5D20 /* DBInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBInterface.swift; sourceTree = "<group>"; };
 		FE480AC42695DC71000A5D20 /* RegionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionInfo.swift; sourceTree = "<group>"; };
 		FE480AC52695DC71000A5D20 /* Mountain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mountain.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				BC7A6584265F202900C22E1C /* AppDelegate.swift */,
 				BC7A6588265F202900C22E1C /* ViewController.swift */,
 				CE0E190F266260C1003916E3 /* RootTabBarController.swift */,
+				CEDC7489271C052B002EFC2C /* OnBoardingViewController.swift */,
 				CEDC746526CA4F23002EFC2C /* Detail */,
 				CECD577426AE9BB00091E66D /* Home */,
 				CE0E1936266BDF80003916E3 /* MyList */,
@@ -392,6 +395,7 @@
 				CEDC746B26CA628A002EFC2C /* DetailView.swift in Sources */,
 				CE880A2326A099C30034B0A5 /* DatePickerViewController.swift in Sources */,
 				CEDC746726CA4F3F002EFC2C /* DetailViewController.swift in Sources */,
+				CEDC748A271C052B002EFC2C /* OnBoardingViewController.swift in Sources */,
 				BC1066AA26B114B100AF6E72 /* regionCell.swift in Sources */,
 				CED529E32680E559005E05A7 /* MountainInfoBaseView.swift in Sources */,
 				CE880A1726994A6C0034B0A5 /* AddHistoryViewController.swift in Sources */,
