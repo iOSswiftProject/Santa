@@ -13,10 +13,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    private func rootViewController() -> UIViewController {
+        let userDefault = UserDefaults.standard
+        if userDefault.object(forKey: "isFirstTime") == nil {
+            return OnBoardingViewController()
+        }
+        else {
+            return RootTabBarController()
+        }
+    }
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = RootTabBarController()
+        window.rootViewController = rootViewController()
         window.makeKeyAndVisible()
         self.window = window
         return true
