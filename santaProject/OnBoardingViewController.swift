@@ -139,7 +139,7 @@ extension OnBoardingViewController: OnBoardingCollectionViewCellDelegate {
         let vc = RootTabBarController()
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true) {
-//            UserDefaults.standard.setValue(false, forKey: "isFirstTime")
+            UserDefaults.standard.setValue(false, forKey: "isFirstTime")
         }
     }
 }
