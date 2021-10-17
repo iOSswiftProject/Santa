@@ -173,12 +173,7 @@ extension MyListViewController: MyListCollectionViewCellDelegate {
     }
 
     func listCollectionViewCell(_ cell: MyListCollectionViewCell, didSelectRowAt indexPath: IndexPath) {
-        guard let categoryIndex = collectionView.indexPath(for: cell)?.item,
-              let mountain = viewModels[categoryIndex].cellModel(for: indexPath)?.mountain
-              else { return }
-
-        let detailViewController = DetailViewController(with: mountain)
-        navigationController?.pushViewController(detailViewController, animated: true)
+        // detail view spec out
     }
 }
 

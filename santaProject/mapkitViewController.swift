@@ -176,11 +176,7 @@ extension mapkitViewController: MKMapViewDelegate {
     /// Handling the Callout
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
-        guard let mountain = view.annotation as? Mountain else {
-            return
-        }
-        let detailVC = DetailViewController.init(with: mountain)
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        // detail view spec out
     }
 }
 
