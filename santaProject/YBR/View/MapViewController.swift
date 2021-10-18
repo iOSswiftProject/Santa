@@ -183,6 +183,14 @@ class MapViewController: UIViewController {
     
     func setupDetailView() {
         let mountainInfoView = MountainInfoBookmarkView()
+        guard let mountain = mountains.first else { return }
+        
+        // update info of mountainInfoView
+        mountainInfoView.mountainNameView.updateMountainNameLabelAttributedText(mountainName: mountain.name ?? "", peakName: mountain.peak)
+        mountainInfoView.mountainNameView.updateRegionTag(regionName: mountain.depth1 ?? "")
+        mountainInfoView.updateHeight(mountain.height ?? 0.0)
+        mountainInfoView.updateSubRegion(subregionName: mountain.depth2 ?? "")
+        
         self.view.addSubview(mountainInfoView)
         mountainInfoView.translatesAutoresizingMaskIntoConstraints = false
         mountainInfoView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
