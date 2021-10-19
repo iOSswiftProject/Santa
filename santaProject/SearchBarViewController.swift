@@ -320,6 +320,8 @@ extension SearchBarViewController: UITableViewDelegate {
             
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 self.updateSearchResults(for: self.searchController)
+                self.searchController.isActive = true
+                self.tableView.reloadData()
             }
             
         }
