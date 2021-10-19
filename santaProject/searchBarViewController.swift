@@ -242,19 +242,18 @@ extension searchBarViewController: UITableViewDataSource, SearchCellDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "mountinCell", for: indexPath) as? searchCell
             cell!.mountainLabel.text = searchedItems[indexPath.row]
             cell!.deleteButton.isHidden = false
-//            cell!.deleteButton.addTarget(self, action: #selector(pushDeleteButton(_:)), for: .touchUpInside)
             cell!.delegate = self
             cell!.idx = searchedItems.count - indexPath.row - 1
             // 삭제는 index로 가야함. 단순 String 이기때문에 idx가 key값으로사용.
             return cell!
           
         } else { // 검색결과. -> 하단 셀이 Mountain객체.
-//            cell!.mountainLabel.text = self.data.filterValue[indexPath.row]
+
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell", for: indexPath) as? SearchResultCell
             let mountain = self.data.filteredValue[indexPath.row]
             cell?.mountain = mountain
             cell!.mountainLabel.text = String(format: "%@ %@", mountain.name ?? "", mountain.peak ?? "")
-//            cell!.deleteButton.isHidden = true
+
             return cell!
         }
         
@@ -317,6 +316,8 @@ extension searchBarViewController: UITableViewDelegate {
             
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 self.updateSearchResults(for: self.searchController)
+                self.searchController.isActive = true
+                self.tableView.reloadData()
             }
             
         }
