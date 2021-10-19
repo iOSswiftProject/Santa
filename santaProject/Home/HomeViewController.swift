@@ -44,6 +44,7 @@ class HomeViewController: UIViewController {
         homeView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         homeView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
 
+        homeView.tableView.allowsSelection = false
         homeView.tableView.dataSource = self
         homeView.tableView.delegate = self
     }
@@ -97,9 +98,6 @@ extension HomeViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let mountain = homeViewModel.history[indexPath.row]
-        let detailViewController = DetailViewController(with: mountain)
-        navigationController?.pushViewController(detailViewController, animated: true)
+        // detail view spec out
     }
 }
