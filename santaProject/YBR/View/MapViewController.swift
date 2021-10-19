@@ -266,8 +266,13 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         
         // Apply new Cell Model
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookmarkCell", for: indexPath) as! MyListTableViewBookmarkCell
-//        let cell = MyListTableViewBookmarkCell()
         cell.selectionStyle = .none
+        
+        if cell.isSelected {
+            cell.layer.borderWidth = 2
+        }else {
+            cell.layer.borderWidth = 0
+        }
 
         let mountain = mountains[indexPath.section]
         let cellModel = MyListTableViewBookmarkCellModel.init(with: mountain)
