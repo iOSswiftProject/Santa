@@ -24,7 +24,7 @@ class MountainView: MKAnnotationView {
             if mountain.isFavorite ?? false {
                 addFavoriteButton()
             }
-            setupCalloutView(mountain)
+//            setupCalloutView(mountain)
 
         }
     }
