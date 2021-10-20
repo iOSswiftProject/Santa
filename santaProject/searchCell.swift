@@ -87,12 +87,14 @@ class SearchResultCell: UITableViewCell {
     var mountainImage = UIImageView()
     var visitImage = UIImageView()
     var mountainLabel = UILabel()
+    var regionTagView = RegionTagView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 //        makeMountainBadge()
         makeVisitBadge()
         makeMountainLabel()
+        makeRegionTagView()
     }
     
     required init?(coder: NSCoder) {
@@ -138,6 +140,16 @@ class SearchResultCell: UITableViewCell {
         mountainLabel.leadingAnchor.constraint(equalTo: visitImage.trailingAnchor, constant: 13).isActive = true
     }
     
+    func makeRegionTagView() {
+        self.contentView.addSubview(regionTagView)
+        regionTagView.translatesAutoresizingMaskIntoConstraints = false
+        //38,24
+        regionTagView.widthAnchor.constraint(equalToConstant: 38).isActive = true
+        regionTagView.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        regionTagView.leadingAnchor.constraint(equalTo: mountainLabel.trailingAnchor, constant: 16).isActive = true
+        regionTagView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+    }
+    
     func update() {
         var favoriteImageName = "santaTabImageListInactive"
         if let isFavorite = mountain?.isFavorite, isFavorite {
@@ -150,6 +162,7 @@ class SearchResultCell: UITableViewCell {
         }
         visitImage.image = UIImage(named: visitImageName)
         mountainImage.image = UIImage(named: favoriteImageName)
+        regionTagView.applyRegionName(mountain?.depth1 ?? "서울특별시")
     }
     
 }
