@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -14,24 +14,24 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="launchscreen_illust" translatesAutoresizingMaskIntoConstraints="NO" id="5P8-hm-PLz">
-                                <rect key="frame" x="0.0" y="262" width="375" height="550"/>
+                                <rect key="frame" x="0.0" y="434.33333333333326" width="390" height="409.66666666666674"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="5P8-hm-PLz" secondAttribute="height" multiplier="375:550" id="w5b-5J-XYM"/>
+                                    <constraint firstAttribute="width" secondItem="5P8-hm-PLz" secondAttribute="height" multiplier="375:394" id="w5b-5J-XYM"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="mont_logo" translatesAutoresizingMaskIntoConstraints="NO" id="HgV-JK-icm">
-                                <rect key="frame" x="127.66666666666669" y="193" width="120" height="43"/>
+                                <rect key="frame" x="135" y="193" width="120" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HgV-JK-icm" secondAttribute="height" multiplier="120:43" id="etH-5Z-Dat"/>
                                     <constraint firstAttribute="width" constant="120" id="pzX-ol-Bdf"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="등산을 즐겁게, 등산을 가볍게" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kC2-Np-5Xt">
-                                <rect key="frame" x="74" y="129" width="227" height="24"/>
+                                <rect key="frame" x="81.666666666666686" y="129" width="227" height="24"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <color key="textColor" red="0.078431372549019607" green="0.56862745098039214" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
@@ -57,7 +57,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launchscreen_illust" width="375" height="550"/>
+        <image name="launchscreen_illust" width="375" height="394"/>
         <image name="mont_logo" width="202" height="72"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
