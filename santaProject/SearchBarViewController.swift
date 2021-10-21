@@ -292,10 +292,6 @@ extension SearchBarViewController: UITableViewDelegate {
             UserDefaults.standard.setValue(self.data.searchItems, forKey: "searchArray")
             
             print("touch Search Result!!")
-            //TODO: 상세보기 프로세스 추가.
-//            let detailViewController = DetailViewController(with: mountain)
-//            navigationController?.pushViewController(detailViewController, animated: true)
-            // TODO: 맵뷰로 변경
 
             if fromAddHistory {
                 delegate?.didSelectMountain(mountain)
@@ -314,8 +310,8 @@ extension SearchBarViewController: UITableViewDelegate {
         } else {
             print("No filteringView")
             guard let searchedItems = UserDefaults.standard.array(forKey: "searchArray") as? [String] else { return }
-            let text = searchedItems[indexPath.row]
-//            print(text)
+            let idx = searchedItems.count - indexPath.row - 1
+            let text = searchedItems[idx]
             searchController.searchBar.text = text
             
             DispatchQueue.main.asyncAfter(deadline: .now()) {
