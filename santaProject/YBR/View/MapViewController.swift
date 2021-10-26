@@ -191,6 +191,8 @@ class MapViewController: UIViewController {
         mountainInfoView.updateHeight(mountain.height ?? 0.0)
         mountainInfoView.updateSubRegion(subregionName: mountain.depth2 ?? "")
         
+        mountainInfoView.flagged = mountain.isVisit ?? false
+        
         self.view.addSubview(mountainInfoView)
         mountainInfoView.translatesAutoresizingMaskIntoConstraints = false
         mountainInfoView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
