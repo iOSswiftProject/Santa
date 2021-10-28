@@ -35,6 +35,7 @@ class selectRegionVC: UIViewController {
         DispatchQueue.main.async {
            cv.selectItem(at: indexPath, animated: true, scrollPosition: .left)
         }
+        cv.showsHorizontalScrollIndicator = false
         
         return cv
     }()
