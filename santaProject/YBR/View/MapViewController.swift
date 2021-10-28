@@ -338,6 +338,7 @@ extension MapViewController: MountainInfoBookmarkViewDelegate, MyListTableViewBo
         let mountain = bookmarkCell.infoView.mountain
         guard let isFavorite = mountain?.isFavorite, let mountainId = mountain?.id else { return }
         DBInterface.shared.updateIsFavorite(mountainId: mountainId, isFavorite: !isFavorite)
+        bookmarkCell.infoView.isBookmark = !isFavorite
         
         mountain?.isFavorite = !isFavorite
         bookmarkCell.infoView.mountain = mountain
@@ -352,6 +353,7 @@ extension MapViewController: MountainInfoBookmarkViewDelegate, MyListTableViewBo
         
         guard let isFavorite = mountain?.isFavorite, let mountainId = mountain?.id else { return }
         DBInterface.shared.updateIsFavorite(mountainId: mountainId, isFavorite: !isFavorite)
+        bookmarkView.isBookmark = !isFavorite
         
         mountain?.isFavorite = !isFavorite
         bookmarkView.mountain = mountain
