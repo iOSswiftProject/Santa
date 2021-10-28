@@ -42,6 +42,8 @@ class HomeView: UIView {
 
         menuButton.setImage(#imageLiteral(resourceName: "santaHomeMenuButton"), for: .normal)
         menuButton.addTarget(self, action: #selector(didTapMenuButton(_:)), for: .touchUpInside)
+        //FIXME: 기능없으므로 일단 hide
+        menuButton.isHidden = true
     }
 
     private func setupTableView() {

@@ -153,6 +153,7 @@ class SearchBarViewController: UIViewController, UISearchControllerDelegate {
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.isScrollEnabled = false
         
         self.view.addSubview(tableView)
 
