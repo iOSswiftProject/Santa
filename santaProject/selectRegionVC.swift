@@ -118,15 +118,15 @@ extension selectRegionVC {
 //MARK: TableView Delegate
 extension selectRegionVC: UITableViewDelegate, RegionTableCellDelegate {
     func didTouchNextButton(cell: regionTableCell) {
-        guard let depth1Row = collectionView.indexPathsForSelectedItems?[0].row else { return }
-        let depth1 = regionInfo.getDepth1Arr()[depth1Row]
-        guard let idx = cell.idx else { return }
-        let depth2 = depth2Data[idx]
-        
-        let loc = regionInfo.getLocation(depth1: depth1, depth2: depth2)
-        let location = CLLocation.init(latitude: loc[0], longitude: loc[1])
-        let mapViewController = MapViewController.init(.regionBased, depth1, depth2, location: location)
-        self.navigationController?.pushViewController(mapViewController, animated: true)
+//        guard let depth1Row = collectionView.indexPathsForSelectedItems?[0].row else { return }
+//        let depth1 = regionInfo.getDepth1Arr()[depth1Row]
+//        guard let idx = cell.idx else { return }
+//        let depth2 = depth2Data[idx]
+//        
+//        let loc = regionInfo.getLocation(depth1: depth1, depth2: depth2)
+//        let location = CLLocation.init(latitude: loc[0], longitude: loc[1])
+//        let mapViewController = MapViewController.init(.regionBased, depth1, depth2, location: location)
+//        self.navigationController?.pushViewController(mapViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -135,33 +135,21 @@ extension selectRegionVC: UITableViewDelegate, RegionTableCellDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        guard let depth1Row = collectionView.indexPathsForSelectedItems?[0].row else { return }
-//        let depth1 = regionInfo.getDepth1Arr()[depth1Row]
-////        let depth2Arr = regionInfo.getDepth2Arr(depth1: depth1)
-//        let depth2 = depth2Data[indexPath.row]
-//        let loc = regionInfo.getLocation(depth1: depth1, depth2: depth2)
-//        
-//        let location =  CLLocation.init(latitude: loc[0], longitude: loc[1])
-//        let mapViewController = MapViewController.init(.regionBased, depth1, depth2, location: location)
-//        self.navigationController?.pushViewController(mapViewController, animated: true);
+        guard let depth1Row = collectionView.indexPathsForSelectedItems?[0].row else { return }
+        let depth1 = regionInfo.getDepth1Arr()[depth1Row]
+//        let depth2Arr = regionInfo.getDepth2Arr(depth1: depth1)
+        let depth2 = depth2Data[indexPath.row]
+        let loc = regionInfo.getLocation(depth1: depth1, depth2: depth2)
+        
+        let location =  CLLocation.init(latitude: loc[0], longitude: loc[1])
+        let mapViewController = MapViewController.init(.regionBased, depth1, depth2, location: location)
+        self.navigationController?.pushViewController(mapViewController, animated: true);
 
     }
 }
 
 extension selectRegionVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let regionTest = UserDefaults.standard.integer(forKey: "region")
-//        if regionTest == 0 {
-//            return Data.firstData.count
-//        } else if regionTest == 1 {
-//            return Data.seoulItem.count
-//        }else if regionTest == 2 {
-//            return Data.gyeonggi.count
-//        } else if regionTest == 3{
-//            return Data.choongbuk.count
-//        } else  {
-//            return Data.seoulItem.count
-//        }
         return depth2Data.count
     }
     
@@ -170,24 +158,6 @@ extension selectRegionVC: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.contentView.backgroundColor = UIColor.setColor(_names: .lightlightgray)
-        /* 지역별 구분 */
-//        let regionTest = UserDefaults.standard.integer(forKey: "region")
-//
-//        if regionTest == 0 {
-//            return UITableViewCell()
-//        } else if regionTest == 1 {
-//            cell.regionLabel.text = self.Data.seoulItem[indexPath.row].0
-//            cell.mountainLabel.text = self.Data.seoulItem[indexPath.row].1
-//        } else if regionTest == 2 {
-//            cell.regionLabel.text = self.Data.gyeonggi[indexPath.row]
-//            cell.mountainLabel.text = nil
-//        } else if regionTest == 3 {
-//            cell.regionLabel.text = self.Data.choongbuk[indexPath.row]
-//            cell.mountainLabel.text = nil
-//        } else {
-//            cell.regionLabel.text = self.Data.seoulItem[indexPath.row].0
-//            cell.mountainLabel.text = self.Data.seoulItem[indexPath.row].1
-//        }
         cell.delegate = self
         cell.idx = indexPath.row
         cell.regionLabel.text = depth2Data[indexPath.row]
@@ -230,15 +200,7 @@ extension selectRegionVC: UICollectionViewDelegate {
             NSLog("collectionView cell의 인식자 error ")
             return
         }
-//        if indexPath.row == 0 {
-//            UserDefaults.standard.setValue(1, forKey: "region")
-//        } else if indexPath.row == 1 {
-//            UserDefaults.standard.setValue(2, forKey: "region")
-//        } else if indexPath.row == 2 {
-//            UserDefaults.standard.setValue(3, forKey: "region")
-//        } else {
-//            UserDefaults.standard.setValue(4, forKey: "region")
-//        }
+
         let depth1 = regionInfo.getDepth1Arr()[indexPath.row]
         depth2Data = regionInfo.getDepth2Arr(depth1: depth1)
         
