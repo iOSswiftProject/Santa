@@ -14,6 +14,7 @@ protocol MountainInfoBookmarkViewDelegate: AnyObject {
 class MountainInfoBookmarkView: MountainInfoBaseView {
 
     weak var delegate: MountainInfoBookmarkViewDelegate?
+    var mountain: Mountain!
     
     var isBookmark: Bool = false {
         didSet {

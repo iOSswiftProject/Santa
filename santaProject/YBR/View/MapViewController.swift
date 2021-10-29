@@ -185,11 +185,17 @@ class MapViewController: UIViewController {
         let mountainInfoView = MountainInfoBookmarkView()
         guard let mountain = mountains.first else { return }
         
+        mountainInfoView.flagged = mountain.isVisit ?? false
+        mountainInfoView.delegate = self
+        mountainInfoView.mountain = mountain
+        
         // update info of mountainInfoView
         mountainInfoView.mountainNameView.updateMountainNameLabelAttributedText(mountainName: mountain.name ?? "", peakName: mountain.peak)
         mountainInfoView.mountainNameView.updateRegionTag(regionName: mountain.depth1 ?? "")
         mountainInfoView.updateHeight(mountain.height ?? 0.0)
         mountainInfoView.updateSubRegion(subregionName: mountain.depth2 ?? "")
+        
+        mountainInfoView.flagged = mountain.isVisit ?? false
         
         self.view.addSubview(mountainInfoView)
         mountainInfoView.translatesAutoresizingMaskIntoConstraints = false
@@ -263,6 +269,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         // Apply new Cell Model
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookmarkCell", for: indexPath) as! MyListTableViewBookmarkCell
         cell.selectionStyle = .none
+        cell.delegate = self
         
         if cell.isSelected {
             cell.layer.borderWidth = 2
@@ -271,6 +278,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         }
 
         let mountain = mountains[indexPath.section]
+        cell.infoView.mountain = mountain
         let cellModel = MyListTableViewBookmarkCellModel.init(with: mountain)
         cellModel.configure(cell)
         
@@ -323,6 +331,38 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         
         tableView.tableFooterView = UIView.init(frame: .zero)
     }
+}
+
+extension MapViewController: MountainInfoBookmarkViewDelegate, MyListTableViewBookmarkCellDelegate {
+    func bookmarkCellDidTapMoreButton(_ bookmarkCell: MyListTableViewBookmarkCell) {
+        let mountain = bookmarkCell.infoView.mountain
+        guard let isFavorite = mountain?.isFavorite, let mountainId = mountain?.id else { return }
+        DBInterface.shared.updateIsFavorite(mountainId: mountainId, isFavorite: !isFavorite)
+        bookmarkCell.infoView.isBookmark = !isFavorite
+        
+        mountain?.isFavorite = !isFavorite
+        bookmarkCell.infoView.mountain = mountain
+        
+        guard let annotation = mountain, let annotationView = mapView.view(for: annotation), let mountainView = annotationView as? MountainView else { return }
+        mountainView.isFavorite = !isFavorite
+        
+    }
+    
+    func bookmarkViewDidTapBookmarkButton(_ bookmarkView: MountainInfoBookmarkView) {
+        let mountain = bookmarkView.mountain
+        
+        guard let isFavorite = mountain?.isFavorite, let mountainId = mountain?.id else { return }
+        DBInterface.shared.updateIsFavorite(mountainId: mountainId, isFavorite: !isFavorite)
+        bookmarkView.isBookmark = !isFavorite
+        
+        mountain?.isFavorite = !isFavorite
+        bookmarkView.mountain = mountain
+        
+        guard let annotation = mountain, let annotationView = mapView.view(for: annotation), let mountainView = annotationView as? MountainView else { return }
+        mountainView.isFavorite = !isFavorite
+        
+    }
+    
 }
 
 

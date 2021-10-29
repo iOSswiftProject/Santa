@@ -9,6 +9,14 @@ import Foundation
 import MapKit
 
 class MountainView: MKAnnotationView {
+    
+    var favoriteButton = UIImageView()
+    var isFavorite = false {
+        didSet {
+            favoriteButton.isHidden = !isFavorite
+        }
+    }
+    
     override var annotation: MKAnnotation? {
         willSet {
             guard let mountain = newValue as? Mountain else {
@@ -21,9 +29,8 @@ class MountainView: MKAnnotationView {
                 image = #imageLiteral(resourceName: "SantaMt")
             }
             
-            if mountain.isFavorite ?? false {
-                addFavoriteButton()
-            }
+            addFavoriteButton()
+            self.isFavorite = mountain.isFavorite ?? false
             setupCalloutView(mountain)
 
         }
@@ -33,6 +40,7 @@ class MountainView: MKAnnotationView {
         let imgView = UIImageView.init(frame: CGRect(x: self.frame.width - 10, y: 0, width: 16, height: 16))
         imgView.image = #imageLiteral(resourceName: "SantaBm")
         self.addSubview(imgView)
+        favoriteButton = imgView
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
