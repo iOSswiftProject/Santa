@@ -163,6 +163,15 @@ class SearchBarViewController: UIViewController, UISearchControllerDelegate {
         self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "customHeader")
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0.0
+        } else {
+            // Fallback on earlier versions
+            self.automaticallyAdjustsScrollViewInsets = false;
+
+        }
+
+
         let view = UIView()
         tableView.tableFooterView = view
         
@@ -263,21 +272,35 @@ extension SearchBarViewController: UITableViewDataSource, SearchCellDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 56
     }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return self.searchController.searchBar.text == "" ? 18.0 : 0
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "customHeader")
         
         let view: UIView = {
             let view = UIView(frame: .zero)
-            view.backgroundColor = .white
+            view.backgroundColor = .yellow
             return view
         }()
         
+        let dummyView: UIView = {
+            let view = UIView(frame: .zero)
+            view.backgroundColor = .red
+            view.frame.size.height = 0
+            return view
+        }()
+        
+
         headerView?.textLabel?.text = "최근 검색어"
         headerView?.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         headerView?.textLabel?.textColor = UIColor.setColor(_names: .searchFontGreen)
         headerView?.backgroundView = view
-
-        return headerView
+        if self.searchController.searchBar.text != ""  {
+            return dummyView
+        } else {
+            return headerView
+        }
     }
 
 }
