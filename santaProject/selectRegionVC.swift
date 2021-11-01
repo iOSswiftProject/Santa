@@ -23,7 +23,7 @@ class selectRegionVC: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 20
+        layout.minimumLineSpacing = 10
         layout.itemSize = CGSize(width: self.view.frame.width / 3 - 10, height: 64) //100
         cv.delegate = self
         cv.dataSource = self
