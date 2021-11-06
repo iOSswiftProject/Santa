@@ -153,7 +153,6 @@ class SearchBarViewController: UIViewController, UISearchControllerDelegate {
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.isScrollEnabled = false
         
         self.view.addSubview(tableView)
 
@@ -250,9 +249,7 @@ extension SearchBarViewController: UITableViewDataSource, SearchCellDelegate {
 //            cell!.deleteButton.addTarget(self, action: #selector(pushDeleteButton(_:)), for: .touchUpInside)
             cell!.delegate = self
             cell!.idx = searchedItems.count - indexPath.row - 1
-            // TODO: Delete 프로세스 추가.
-            // 삭제는 index로 가야함. 단순 String 이기때문에 idx가 key값으로사용.
-            // 추가로 searchArray에 용량제한과 중복 처리 추가필요
+            tableView.isScrollEnabled = false
             return cell!
           
         } else { // 검색결과. -> 하단 셀이 Mountain객체.
@@ -262,6 +259,7 @@ extension SearchBarViewController: UITableViewDataSource, SearchCellDelegate {
             cell?.mountain = mountain
             cell!.mountainLabel.text = String(format: "%@ %@", mountain.name ?? "", mountain.peak ?? "")
 //            cell!.deleteButton.isHidden = true
+            tableView.isScrollEnabled = true
             return cell!
         }
         

@@ -54,6 +54,7 @@
 		CEDC746B26CA628A002EFC2C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC746A26CA628A002EFC2C /* DetailView.swift */; };
 		CEDC74882705F663002EFC2C /* DetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC74872705F663002EFC2C /* DetailInfo.swift */; };
 		CEDC748A271C052B002EFC2C /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC7489271C052B002EFC2C /* OnBoardingViewController.swift */; };
+		FE1D1A5027317A2C0037F3D4 /* Santa.db in Resources */ = {isa = PBXBuildFile; fileRef = FE1D1A4F27317A2B0037F3D4 /* Santa.db */; };
 		FE480AC62695DC71000A5D20 /* DBInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC32695DC71000A5D20 /* DBInterface.swift */; };
 		FE480AC72695DC71000A5D20 /* RegionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC42695DC71000A5D20 /* RegionInfo.swift */; };
 		FE480AC82695DC71000A5D20 /* Mountain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AC52695DC71000A5D20 /* Mountain.swift */; };
@@ -61,7 +62,6 @@
 		FE480AD32695DC94000A5D20 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AD12695DC94000A5D20 /* MapViewController.swift */; };
 		FE480AD42695DC94000A5D20 /* MountainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AD22695DC94000A5D20 /* MountainView.swift */; };
 		FE480AD82695DC9B000A5D20 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE480AD72695DC9B000A5D20 /* Date+Extension.swift */; };
-		FE977A5226AEF9CA007980B9 /* Santa.db in Resources */ = {isa = PBXBuildFile; fileRef = FE977A5126AEF9CA007980B9 /* Santa.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +114,7 @@
 		CEDC746A26CA628A002EFC2C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		CEDC74872705F663002EFC2C /* DetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfo.swift; sourceTree = "<group>"; };
 		CEDC7489271C052B002EFC2C /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		FE1D1A4F27317A2B0037F3D4 /* Santa.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Santa.db; sourceTree = "<group>"; };
 		FE480AC32695DC71000A5D20 /* DBInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBInterface.swift; sourceTree = "<group>"; };
 		FE480AC42695DC71000A5D20 /* RegionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionInfo.swift; sourceTree = "<group>"; };
 		FE480AC52695DC71000A5D20 /* Mountain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mountain.swift; sourceTree = "<group>"; };
@@ -121,7 +122,6 @@
 		FE480AD12695DC94000A5D20 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FE480AD22695DC94000A5D20 /* MountainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainView.swift; sourceTree = "<group>"; };
 		FE480AD72695DC9B000A5D20 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		FE977A5126AEF9CA007980B9 /* Santa.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Santa.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,7 +271,7 @@
 		FE480ACA2695DC7C000A5D20 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				FE977A5126AEF9CA007980B9 /* Santa.db */,
+				FE1D1A4F27317A2B0037F3D4 /* Santa.db */,
 				FE480ACC2695DC7C000A5D20 /* location2.json */,
 			);
 			path = Resource;
@@ -351,7 +351,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE977A5226AEF9CA007980B9 /* Santa.db in Resources */,
+				FE1D1A5027317A2C0037F3D4 /* Santa.db in Resources */,
 				BC7A6594265F202900C22E1C /* LaunchScreen.storyboard in Resources */,
 				BC7A6591265F202900C22E1C /* Assets.xcassets in Resources */,
 				FE480ACE2695DC7C000A5D20 /* location2.json in Resources */,

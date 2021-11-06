@@ -148,9 +148,9 @@ class MapViewController: UIViewController {
         view.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
-        imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 114).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 148).isActive = true
+        imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 108).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 160).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 160).isActive = true
 //        imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -111).isActive = true
 //        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -164).isActive = true
         
@@ -300,17 +300,20 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let mountain = self.mountains[indexPath.row + indexPath.section]
-        let cell = tableView.cellForRow(at: indexPath)
+        guard let cell = tableView.cellForRow(at: indexPath) as? MyListTableViewBookmarkCell else { return }
        
-        cell?.layer.borderColor = UIColor(hex: "#007F36").cgColor
-        cell?.layer.borderWidth = 2
+        cell.layer.borderColor = UIColor(hex: "#007F36").cgColor
+        cell.layer.borderWidth = 2
+        
+        cell.infoView.mountainNameView.mountainNameLabel.textColor = .stGreen30
         
         mapView.centerToLocation(CLLocation(latitude: mountain.coordinate.latitude, longitude: mountain.coordinate.longitude), regionRadius: 8_000)
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.layer.borderWidth = 0
+        guard let cell = tableView.cellForRow(at: indexPath) as? MyListTableViewBookmarkCell else { return }
+        cell.layer.borderWidth = 0
+        cell.infoView.mountainNameView.mountainNameLabel.textColor = .stCoolGray120
     }
     
     func setupTableView(){
