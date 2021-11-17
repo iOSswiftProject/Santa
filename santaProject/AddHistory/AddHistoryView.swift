@@ -96,7 +96,8 @@ class AddHistoryView: UIView {
             let label = mountainNameTitleLabel
             addSubview(label)
             label.translatesAutoresizingMaskIntoConstraints = false
-            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 40).isActive = true
+            label.topAnchor.constraint(lessThanOrEqualTo: imageView.bottomAnchor, constant: 40).isActive = true
+            label.heightAnchor.constraint(equalToConstant: 20).isActive = true
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.sideMargin).isActive = true
             label.font = .systemFont(ofSize: 20, weight: .init(400))
             label.textColor = .stCoolGray70
@@ -273,6 +274,7 @@ class AddHistoryView: UIView {
 
     private func setupDoneButton() {
         addSubview(doneButton)
+        doneButton.topAnchor.constraint(greaterThanOrEqualTo: dateLine.bottomAnchor, constant: 40).isActive = true
         doneButton.translatesAutoresizingMaskIntoConstraints = false
         doneButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.LowerButton.sideMargin).isActive = true
         doneButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Layout.bottomMargin).isActive = true
