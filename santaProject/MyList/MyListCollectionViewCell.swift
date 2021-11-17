@@ -104,14 +104,14 @@ class MyListCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView(image: UIImage(named: "bookmark_empty"))
         view.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 148).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 72).isActive = true
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 170).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         imageView.contentMode = .scaleAspectFit
 
         let label = UILabel()
         view.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 148).isActive = true
+        label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 30).isActive = true
         label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         label.heightAnchor.constraint(equalToConstant: 50).isActive = true
         label.numberOfLines = 2
