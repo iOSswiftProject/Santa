@@ -15,12 +15,12 @@ class regionCell: UICollectionViewCell {
     override var isSelected: Bool {
            didSet{
                if isSelected {
-                self.contentView.backgroundColor = UIColor.setColor(_names: .searchFontGreen)
-                self.Tul.textColor = .white
+                self.contentView.backgroundColor = .stGreen50
+                self.Tul.textColor = .stCoolGray00
                }
                else {
-                self.contentView.backgroundColor = UIColor.setColor(_names: .searchUnselectback)
-                self.Tul.textColor = UIColor.setColor(_names: .searchUnselectFont)
+                self.contentView.backgroundColor = .stCoolGray02
+                self.Tul.textColor = .stCoolGray50
                }
            }
        }
