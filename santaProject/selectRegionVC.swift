@@ -21,15 +21,16 @@ class selectRegionVC: UIViewController {
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 10
-        layout.itemSize = CGSize(width: self.view.frame.width / 3 - 10, height: 64) //100
+        layout.itemSize = CGSize(width: 120, height: 64) //100
+        layout.minimumLineSpacing = 12
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.delegate = self
         cv.dataSource = self
         cv.register(regionCell.classForCoder(), forCellWithReuseIdentifier: "cell")
         cv.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 96) //110
         cv.backgroundColor = .white
+        cv.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         
         let indexPath = IndexPath(item: 0, section: 0)
         DispatchQueue.main.async {
@@ -41,24 +42,18 @@ class selectRegionVC: UIViewController {
     }()
     
     lazy var tableView: UITableView = {
-        let tv = UITableView(frame: .zero, style: .plain)
-//        let image = UIImageView(image: UIImage(named: "yomi"))
+        let tv = UITableView(frame: .zero, style: .grouped)
         tv.delegate = self
         tv.dataSource = self
-        tv.separatorStyle = UITableViewCell.SeparatorStyle.none
+        tv.separatorStyle = .none
         tv.register(regionTableCell.classForCoder(), forCellReuseIdentifier: "regionCell")
+        tv.register(RegionTableHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: RegionTableHeaderFooterView.identifier)
         tv.backgroundColor = UIColor.setColor(_names: .lightlightgray)
         tv.tableHeaderView = collectionView
         tv.tableFooterView = UIImageView(image: UIImage(named: "santa"))
+        tv.bounces = false
         return tv
     }()
-//    lazy var image: UIImageView = {
-//        let imageView = UIImageView(frame: .zero)
-//        let image = UIImage(named: "santa")
-//        imageView.image = image
-//        return imageView
-//    }()
-    
     
 
     override func viewDidLoad() {
@@ -66,12 +61,8 @@ class selectRegionVC: UIViewController {
        
         setView()
         setAutolayout()
-//        setImageViewlayout()
         collectionView.reloadData()
         tableView.reloadData()
-//        if(UserDefaults.standard.integer(forKey: "region") == 0) {
-//            tableView.tableFooterView = image
-//        }
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.barTintColor = .white
         UINavigationBar.appearance().barTintColor = UIColor.white
@@ -117,29 +108,17 @@ extension selectRegionVC {
 }
 
 //MARK: TableView Delegate
-extension selectRegionVC: UITableViewDelegate, RegionTableCellDelegate {
-    func didTouchNextButton(cell: regionTableCell) {
-//        guard let depth1Row = collectionView.indexPathsForSelectedItems?[0].row else { return }
-//        let depth1 = regionInfo.getDepth1Arr()[depth1Row]
-//        guard let idx = cell.idx else { return }
-//        let depth2 = depth2Data[idx]
-//        
-//        let loc = regionInfo.getLocation(depth1: depth1, depth2: depth2)
-//        let location = CLLocation.init(latitude: loc[0], longitude: loc[1])
-//        let mapViewController = MapViewController.init(.regionBased, depth1, depth2, location: location)
-//        self.navigationController?.pushViewController(mapViewController, animated: true)
-    }
+extension selectRegionVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 64
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         guard let depth1Row = collectionView.indexPathsForSelectedItems?[0].row else { return }
         let depth1 = regionInfo.getDepth1Arr()[depth1Row]
-//        let depth2Arr = regionInfo.getDepth2Arr(depth1: depth1)
-        let depth2 = depth2Data[indexPath.row]
+        let depth2 = depth2Data[indexPath.section]
         let loc = regionInfo.getLocation(depth1: depth1, depth2: depth2)
         
         let location =  CLLocation.init(latitude: loc[0], longitude: loc[1])
@@ -150,24 +129,46 @@ extension selectRegionVC: UITableViewDelegate, RegionTableCellDelegate {
 }
 
 extension selectRegionVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return depth2Data.count
+    func numberOfSections(in tableView: UITableView) -> Int {
+        depth2Data.count
     }
-    
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard section == 0 else { return nil }
+        return tableView.dequeueReusableHeaderFooterView(withIdentifier: RegionTableHeaderFooterView.identifier)
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard section == 0 else { return 0 }
+        return 12
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        tableView.dequeueReusableHeaderFooterView(withIdentifier: RegionTableHeaderFooterView.identifier)
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 12
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "regionCell") as? regionTableCell else {
             return UITableViewCell()
         }
-        cell.contentView.backgroundColor = UIColor.setColor(_names: .lightlightgray)
-        cell.delegate = self
-        cell.idx = indexPath.row
-        cell.regionLabel.text = depth2Data[indexPath.row]
+        let index = indexPath.section
+        cell.contentView.backgroundColor = .stCoolGray25
+        cell.idx = index
+        cell.regionLabel.text = depth2Data[index]
         var depth1Row = 0
         if collectionView.indexPathsForSelectedItems?.count != 0 {
             depth1Row = collectionView.indexPathsForSelectedItems?[0].row ?? 0
         }
         let depth1 = regionInfo.getDepth1Arr()[depth1Row]
-        let depth2 = depth2Data[indexPath.row]
+        let depth2 = depth2Data[index]
         let mountains = DBInterface.shared.selectMountain(depth1: depth1, depth2: depth2)
   
         var mountainListLabel =  ""
@@ -191,6 +192,8 @@ extension selectRegionVC: UITableViewDataSource {
 
         return cell
     }
+
+
 }
 
 //MARK: CollectionView Delegate
