@@ -141,7 +141,7 @@ extension selectRegionVC: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "regionCell") as? regionTableCell else {
             return UITableViewCell()
         }
-        cell.contentView.backgroundColor = UIColor.setColor(_names: .lightlightgray)
+        cell.contentView.backgroundColor = .stCoolGray25
         cell.idx = indexPath.row
         cell.regionLabel.text = depth2Data[indexPath.row]
         var depth1Row = 0
