@@ -43,7 +43,6 @@ class selectRegionVC: UIViewController {
     
     lazy var tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
-//        let image = UIImageView(image: UIImage(named: "yomi"))
         tv.delegate = self
         tv.dataSource = self
         tv.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -54,13 +53,6 @@ class selectRegionVC: UIViewController {
         tv.bounces = false
         return tv
     }()
-//    lazy var image: UIImageView = {
-//        let imageView = UIImageView(frame: .zero)
-//        let image = UIImage(named: "santa")
-//        imageView.image = image
-//        return imageView
-//    }()
-    
     
 
     override func viewDidLoad() {
