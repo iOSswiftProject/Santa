@@ -21,15 +21,16 @@ class selectRegionVC: UIViewController {
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 10
-        layout.itemSize = CGSize(width: self.view.frame.width / 3 - 10, height: 64) //100
+        layout.itemSize = CGSize(width: 120, height: 64) //100
+        layout.minimumLineSpacing = 12
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.delegate = self
         cv.dataSource = self
         cv.register(regionCell.classForCoder(), forCellWithReuseIdentifier: "cell")
         cv.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 96) //110
         cv.backgroundColor = .white
+        cv.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         
         let indexPath = IndexPath(item: 0, section: 0)
         DispatchQueue.main.async {
