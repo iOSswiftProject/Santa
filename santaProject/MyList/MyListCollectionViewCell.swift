@@ -55,14 +55,14 @@ class MyListCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView(image: UIImage(named: "history_empty"))
         view.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 63).isActive = true
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
         imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         imageView.contentMode = .scaleAspectFit
 
         let label = UILabel()
         view.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 40).isActive = true
+        label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
         label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         label.heightAnchor.constraint(equalToConstant: 50).isActive = true
         label.numberOfLines = 2
@@ -80,7 +80,8 @@ class MyListCollectionViewCell: UICollectionViewCell {
         let button = AddHistoryButton()
         view.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 56).isActive = true
+        button.topAnchor.constraint(greaterThanOrEqualTo: label.bottomAnchor, constant: 20).isActive = true
+        button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -60).isActive = true
         button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         button.widthAnchor.constraint(equalToConstant: 220).isActive = true
         button.heightAnchor.constraint(equalToConstant: 56).isActive = true
