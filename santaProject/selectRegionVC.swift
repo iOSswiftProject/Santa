@@ -51,6 +51,7 @@ class selectRegionVC: UIViewController {
         tv.backgroundColor = UIColor.setColor(_names: .lightlightgray)
         tv.tableHeaderView = collectionView
         tv.tableFooterView = UIImageView(image: UIImage(named: "santa"))
+        tv.bounces = false
         return tv
     }()
 //    lazy var image: UIImageView = {
