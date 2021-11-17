@@ -7,6 +7,25 @@
 
 import UIKit
 
+class RegionTableHeaderFooterView: UITableViewHeaderFooterView {
+    static let identifier = "RegionTableHeaderFooterView"
+
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        setup()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+
+    private func setup() {
+        backgroundView = UIView()
+        backgroundView?.backgroundColor = .stCoolGray25
+    }
+}
+
 class regionTableCell: UITableViewCell {
     var idx: Int?
     lazy var view: UIView = {

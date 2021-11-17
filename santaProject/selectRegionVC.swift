@@ -47,6 +47,7 @@ class selectRegionVC: UIViewController {
         tv.dataSource = self
         tv.separatorStyle = .none
         tv.register(regionTableCell.classForCoder(), forCellReuseIdentifier: "regionCell")
+        tv.register(RegionTableHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: RegionTableHeaderFooterView.identifier)
         tv.backgroundColor = UIColor.setColor(_names: .lightlightgray)
         tv.tableHeaderView = collectionView
         tv.tableFooterView = UIImageView(image: UIImage(named: "santa"))
@@ -138,10 +139,7 @@ extension selectRegionVC: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard section == 0 else { return nil }
-        // TODO: deque reusable view
-        let view = UIView()
-        view.backgroundColor = .stCoolGray25
-        return view
+        return tableView.dequeueReusableHeaderFooterView(withIdentifier: RegionTableHeaderFooterView.identifier)
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -150,10 +148,7 @@ extension selectRegionVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        // TODO: deque reusable view
-        let view = UIView()
-        view.backgroundColor = .stCoolGray25
-        return view
+        tableView.dequeueReusableHeaderFooterView(withIdentifier: RegionTableHeaderFooterView.identifier)
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
