@@ -111,18 +111,7 @@ extension selectRegionVC {
 }
 
 //MARK: TableView Delegate
-extension selectRegionVC: UITableViewDelegate, RegionTableCellDelegate {
-    func didTouchNextButton(cell: regionTableCell) {
-//        guard let depth1Row = collectionView.indexPathsForSelectedItems?[0].row else { return }
-//        let depth1 = regionInfo.getDepth1Arr()[depth1Row]
-//        guard let idx = cell.idx else { return }
-//        let depth2 = depth2Data[idx]
-//        
-//        let loc = regionInfo.getLocation(depth1: depth1, depth2: depth2)
-//        let location = CLLocation.init(latitude: loc[0], longitude: loc[1])
-//        let mapViewController = MapViewController.init(.regionBased, depth1, depth2, location: location)
-//        self.navigationController?.pushViewController(mapViewController, animated: true)
-    }
+extension selectRegionVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
@@ -153,7 +142,6 @@ extension selectRegionVC: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.contentView.backgroundColor = UIColor.setColor(_names: .lightlightgray)
-        cell.delegate = self
         cell.idx = indexPath.row
         cell.regionLabel.text = depth2Data[indexPath.row]
         var depth1Row = 0

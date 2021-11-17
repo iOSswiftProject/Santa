@@ -7,13 +7,7 @@
 
 import UIKit
 
-protocol RegionTableCellDelegate {
-    func didTouchNextButton(cell: regionTableCell)
-}
-
 class regionTableCell: UITableViewCell {
-    
-    var delegate:RegionTableCellDelegate?
     var idx: Int?
     lazy var view: UIView = {
         let view = UIView(frame: CGRect(x: 10, y: 10, width: 200, height: 30))
@@ -40,14 +34,8 @@ class regionTableCell: UITableViewCell {
     lazy var nextButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         button.setImage(UIImage(named: "santaIconArrow"), for: .normal)
-        button.addTarget(self, action: #selector(didTouchNextButton), for: .touchUpInside)
        return button
     }()
-    
-    @objc
-    private func didTouchNextButton() {
-        delegate?.didTouchNextButton(cell: self)
-    }
     
     required init?(coder aDecorder: NSCoder) {
         fatalError("init(corder:) has not been implemented")
@@ -72,6 +60,7 @@ class regionTableCell: UITableViewCell {
         regionLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         
         nextButton.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.isUserInteractionEnabled = false
         nextButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         nextButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         
