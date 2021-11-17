@@ -42,10 +42,10 @@ class selectRegionVC: UIViewController {
     }()
     
     lazy var tableView: UITableView = {
-        let tv = UITableView(frame: .zero, style: .plain)
+        let tv = UITableView(frame: .zero, style: .grouped)
         tv.delegate = self
         tv.dataSource = self
-        tv.separatorStyle = UITableViewCell.SeparatorStyle.none
+        tv.separatorStyle = .none
         tv.register(regionTableCell.classForCoder(), forCellReuseIdentifier: "regionCell")
         tv.backgroundColor = UIColor.setColor(_names: .lightlightgray)
         tv.tableHeaderView = collectionView
@@ -60,12 +60,8 @@ class selectRegionVC: UIViewController {
        
         setView()
         setAutolayout()
-//        setImageViewlayout()
         collectionView.reloadData()
         tableView.reloadData()
-//        if(UserDefaults.standard.integer(forKey: "region") == 0) {
-//            tableView.tableFooterView = image
-//        }
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.barTintColor = .white
         UINavigationBar.appearance().barTintColor = UIColor.white
@@ -114,14 +110,13 @@ extension selectRegionVC {
 extension selectRegionVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 64
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         guard let depth1Row = collectionView.indexPathsForSelectedItems?[0].row else { return }
         let depth1 = regionInfo.getDepth1Arr()[depth1Row]
-//        let depth2Arr = regionInfo.getDepth2Arr(depth1: depth1)
         let depth2 = depth2Data[indexPath.row]
         let loc = regionInfo.getLocation(depth1: depth1, depth2: depth2)
         
@@ -133,10 +128,38 @@ extension selectRegionVC: UITableViewDelegate {
 }
 
 extension selectRegionVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return depth2Data.count
+    func numberOfSections(in tableView: UITableView) -> Int {
+        depth2Data.count
     }
-    
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard section == 0 else { return nil }
+        // TODO: deque reusable view
+        let view = UIView()
+        view.backgroundColor = .stCoolGray25
+        return view
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard section == 0 else { return 0 }
+        return 12
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        // TODO: deque reusable view
+        let view = UIView()
+        view.backgroundColor = .stCoolGray25
+        return view
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 12
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "regionCell") as? regionTableCell else {
             return UITableViewCell()
@@ -173,6 +196,8 @@ extension selectRegionVC: UITableViewDataSource {
 
         return cell
     }
+
+
 }
 
 //MARK: CollectionView Delegate
