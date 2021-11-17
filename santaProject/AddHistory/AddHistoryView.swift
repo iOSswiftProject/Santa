@@ -134,7 +134,7 @@ class AddHistoryView: UIView {
             label.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             label.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 
-            label.font = .systemFont(ofSize: 24, weight: .init(400))
+            label.font = .systemFont(ofSize: 24, weight: .regular)
             label.textColor = .stCoolGray70
 
             let attrString = NSMutableAttributedString(string: "산 검색하기")
@@ -228,7 +228,7 @@ class AddHistoryView: UIView {
             label.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             label.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 
-            label.font = .systemFont(ofSize: 24, weight: .init(400))
+            label.font = .systemFont(ofSize: 24, weight: .regular)
             label.textColor = .stCoolGray70
 
             let attrString = NSMutableAttributedString(string: "날짜 선택하기")
