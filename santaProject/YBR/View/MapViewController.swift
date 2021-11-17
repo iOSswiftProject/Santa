@@ -148,7 +148,7 @@ class MapViewController: UIViewController {
         view.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
-        imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 108).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 160).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 160).isActive = true
 //        imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -111).isActive = true
