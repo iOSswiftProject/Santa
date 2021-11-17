@@ -118,7 +118,7 @@ extension selectRegionVC: UITableViewDelegate {
         
         guard let depth1Row = collectionView.indexPathsForSelectedItems?[0].row else { return }
         let depth1 = regionInfo.getDepth1Arr()[depth1Row]
-        let depth2 = depth2Data[indexPath.row]
+        let depth2 = depth2Data[indexPath.section]
         let loc = regionInfo.getLocation(depth1: depth1, depth2: depth2)
         
         let location =  CLLocation.init(latitude: loc[0], longitude: loc[1])
@@ -159,15 +159,16 @@ extension selectRegionVC: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "regionCell") as? regionTableCell else {
             return UITableViewCell()
         }
+        let index = indexPath.section
         cell.contentView.backgroundColor = .stCoolGray25
-        cell.idx = indexPath.row
-        cell.regionLabel.text = depth2Data[indexPath.row]
+        cell.idx = index
+        cell.regionLabel.text = depth2Data[index]
         var depth1Row = 0
         if collectionView.indexPathsForSelectedItems?.count != 0 {
             depth1Row = collectionView.indexPathsForSelectedItems?[0].row ?? 0
         }
         let depth1 = regionInfo.getDepth1Arr()[depth1Row]
-        let depth2 = depth2Data[indexPath.row]
+        let depth2 = depth2Data[index]
         let mountains = DBInterface.shared.selectMountain(depth1: depth1, depth2: depth2)
   
         var mountainListLabel =  ""
