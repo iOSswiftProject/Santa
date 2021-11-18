@@ -23,10 +23,8 @@ class SearchBarViewController: UIViewController, UISearchControllerDelegate {
     
     let data = searchBarData()
     let searchController = UISearchController(searchResultsController: nil)
-    let searchBar = UISearchBar()
 
     var isFiltering: Bool {
-//        let searchController = self.navigationItem.titleView.searchController
         let isActive = searchController.isActive
         let isSearchBarHasText = searchController.searchBar.text?.isEmpty == false
      
@@ -39,7 +37,6 @@ class SearchBarViewController: UIViewController, UISearchControllerDelegate {
         self.navigationController?.navigationBar.shadowImage = nil
 
         self.navigationController?.navigationBar.isHidden = false
-        self.searchBar.delegate = self
         self.searchController.searchResultsUpdater = self
         self.searchController.delegate = self
 
@@ -62,45 +59,10 @@ class SearchBarViewController: UIViewController, UISearchControllerDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
-//        self.navigationItem.setHidesBackButton(true, animated: true)
-//        self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.navigationBar.backItem?.hidesBackButton = true
 
     }
 
-    func makeBarButtonItem() {
-//        let backBarButtonItem =  UIBarButtonItem(image: UIImage(named: "back_Button"), style: .plain, target: self, action: #selector(backToEx(_:)))
-//        self.navigationItem.backBarButtonItem = backBarButtonItem
-//        navigationItem.hidesBackButton = true;
-//
-//        let leftButton = UIBarButtonItem(image: UIImage(named: "back_Button"), style: .plain, target: self, action: #selector(backToEx(_:)))
-        
-//        leftButton.setImage(UIImage(named: "back_Button"), for: .normal)
-//        leftButton.addTarget(self, action: #selector(backToEx(_:)), for: .touchUpInside)
-//        leftButton.frame = CGRect(x: 0, y: 0, width: 53, height: 53)
-        
-//        let barbuttonItem = UIBarButtonItem(customView: leftButton)
-        
-//        self.navigationItem.leftBarButtonItem = leftButton
-        
-//        let rightButton = UIButton()
-//        rightButton.setImage(UIImage(named: "santaTabImageSearchActive"), for: .normal)
-//        rightButton.addTarget(self, action: #selector(searchButton(_:)), for: .touchUpInside)
-//        rightButton.frame = CGRect(x: 0, y: 0, width: 53, height: 53)
-//        let rightBarButtonItem = UIBarButtonItem(customView: rightButton)
-//
-//        self.navigationItem.rightBarButtonItem = rightBarButtonItem
-        
-    }
-    @objc func searchButton(_ sender: Any) {
-        print("searchButton")
-    }
-    
-    @objc func backToEx(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-        print("custom Button")
-        
-    }
     func makeSearchTextField() {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 335, height: 40))
         view.backgroundColor = .white
