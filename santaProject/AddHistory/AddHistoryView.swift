@@ -278,7 +278,6 @@ class AddHistoryView: UIView {
         doneButton.translatesAutoresizingMaskIntoConstraints = false
         doneButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Layout.LowerButton.sideMargin).isActive = true
         doneButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Layout.bottomMargin).isActive = true
-        doneButton.widthAnchor.constraint(equalToConstant: Layout.LowerButton.width).isActive = true
         doneButton.heightAnchor.constraint(equalToConstant: Layout.LowerButton.height).isActive = true
         doneButton.addTarget(self, action: #selector(didTapDoneButton(_:)), for: .touchUpInside)
 
@@ -299,7 +298,8 @@ class AddHistoryView: UIView {
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.LowerButton.sideMargin).isActive = true
         cancelButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Layout.bottomMargin).isActive = true
-        cancelButton.widthAnchor.constraint(equalToConstant: Layout.LowerButton.width).isActive = true
+        cancelButton.trailingAnchor.constraint(equalTo: doneButton.leadingAnchor, constant: -9).isActive = true
+        cancelButton.widthAnchor.constraint(equalTo: doneButton.widthAnchor).isActive = true
         cancelButton.heightAnchor.constraint(equalToConstant: Layout.LowerButton.height).isActive = true
         cancelButton.addTarget(self, action: #selector(didTapCancelButton(_:)), for: .touchUpInside)
 
