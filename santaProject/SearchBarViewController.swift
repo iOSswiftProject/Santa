@@ -162,19 +162,21 @@ class SearchBarViewController: UIViewController, UISearchControllerDelegate {
         /* 테이블 헤더 뷰 커스텀 하기 위한 */
         self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "customHeader")
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        if #available(iOS 15.0, *) {
-            tableView.sectionHeaderTopPadding = 0.0
-        } else {
-            // Fallback on earlier versions
-            self.automaticallyAdjustsScrollViewInsets = false;
 
-        }
+
+        // TODO: 필요한 코드라면 살리기
+//        if #available(iOS 15.0, *) {
+////            tableView.sectionHeaderTopPadding = 0.0
+//        } else {
+//            // Fallback on earlier versions
+//            self.automaticallyAdjustsScrollViewInsets = false;
+//
+//        }
 
 
         let view = UIView()
         tableView.tableFooterView = view
-        
+
         self.view.addConstraint(NSLayoutConstraint(item: self.tableView!,
                                                            attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top,
                                                            multiplier: 1.0, constant: 0.0))
@@ -246,19 +248,16 @@ extension SearchBarViewController: UITableViewDataSource, SearchCellDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "mountinCell", for: indexPath) as? searchCell
             cell!.mountainLabel.text = searchedItems[indexPath.row]
             cell!.deleteButton.isHidden = false
-//            cell!.deleteButton.addTarget(self, action: #selector(pushDeleteButton(_:)), for: .touchUpInside)
             cell!.delegate = self
             cell!.idx = searchedItems.count - indexPath.row - 1
             tableView.isScrollEnabled = false
             return cell!
           
         } else { // 검색결과. -> 하단 셀이 Mountain객체.
-//            cell!.mountainLabel.text = self.data.filterValue[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultCell", for: indexPath) as? SearchResultCell
             let mountain = self.data.filteredValue[indexPath.row]
             cell?.mountain = mountain
             cell!.mountainLabel.text = String(format: "%@ %@", mountain.name ?? "", mountain.peak ?? "")
-//            cell!.deleteButton.isHidden = true
             tableView.isScrollEnabled = true
             return cell!
         }
@@ -272,34 +271,16 @@ extension SearchBarViewController: UITableViewDataSource, SearchCellDelegate {
         return 56
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.searchController.searchBar.text == "" ? 18.0 : 0
+        return self.searchController.searchBar.text == "" ? 60.0 : 0
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        // TODO: label 위치 조정
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "customHeader")
-        
-        let view: UIView = {
-            let view = UIView(frame: .zero)
-            view.backgroundColor = .yellow
-            return view
-        }()
-        
-        let dummyView: UIView = {
-            let view = UIView(frame: .zero)
-            view.backgroundColor = .red
-            view.frame.size.height = 0
-            return view
-        }()
-        
-
         headerView?.textLabel?.text = "최근 검색어"
-        headerView?.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        headerView?.textLabel?.textColor = UIColor.setColor(_names: .searchFontGreen)
-        headerView?.backgroundView = view
-        if self.searchController.searchBar.text != ""  {
-            return dummyView
-        } else {
-            return headerView
-        }
+        headerView?.textLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        headerView?.textLabel?.textColor = .stGreen50
+        headerView?.backgroundView = UIView()
+        return headerView
     }
 
 }
