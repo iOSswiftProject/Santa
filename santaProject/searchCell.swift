@@ -35,7 +35,8 @@ class searchCell: UITableViewCell {
         mountainLabel = UILabel()
         //register도 무조건 설정
         self.contentView.addSubview(mountainLabel)
-        mountainLabel.font = UIFont.systemFont(ofSize: 13)
+        mountainLabel.font = .systemFont(ofSize: 16, weight: .regular)
+        mountainLabel.textColor = .stCoolGray120
         
         mountainLabel.translatesAutoresizingMaskIntoConstraints = false
         mountainLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: margin).isActive = true
