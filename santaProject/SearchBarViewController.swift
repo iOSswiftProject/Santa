@@ -77,7 +77,7 @@ class SearchBarViewController: UIViewController, UISearchControllerDelegate {
     }
     
     func makeSearchBar() {
-        self.searchController.searchBar.placeholder = "산, 지역, 이름을 검색하세요"
+        self.searchController.searchBar.placeholder = "산 이름을 검색하세요"
         self.searchController.obscuresBackgroundDuringPresentation = false
 
         //searchController에 UISearchResultsUpdating 프로토콜을 사용하기 위해서
