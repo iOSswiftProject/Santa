@@ -236,12 +236,16 @@ extension SearchBarViewController: UITableViewDataSource, SearchCellDelegate {
         return self.searchController.searchBar.text == "" ? 60.0 : 0
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        // TODO: label 위치 조정
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "customHeader")
-        headerView?.textLabel?.text = "최근 검색어"
-        headerView?.textLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-        headerView?.textLabel?.textColor = .stGreen50
-        headerView?.backgroundView = UIView()
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "customHeader") else { return nil }
+        let label = UILabel()
+        headerView.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 20).isActive = true
+        label.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -16).isActive = true
+        label.text = "최근 검색어"
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .stGreen50
+        headerView.backgroundView = UIView()
         return headerView
     }
 

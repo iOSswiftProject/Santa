@@ -48,7 +48,7 @@ class selectRegionVC: UIViewController {
         tv.separatorStyle = .none
         tv.register(regionTableCell.classForCoder(), forCellReuseIdentifier: "regionCell")
         tv.register(RegionTableHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: RegionTableHeaderFooterView.identifier)
-        tv.backgroundColor = UIColor.setColor(_names: .lightlightgray)
+        tv.backgroundColor = .stCoolGray25
         tv.tableHeaderView = collectionView
         tv.tableFooterView = UIImageView(image: UIImage(named: "santa"))
         tv.bounces = false

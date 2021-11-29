@@ -88,19 +88,19 @@ class MyListHeaderView: UIView {
     private func setupButtons() {
         addSubview(historyButton)
         historyButton.translatesAutoresizingMaskIntoConstraints = false
-        historyButton.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor).isActive = true
+        historyButton.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: Layout.SelectView.sideMargin).isActive = true
         historyButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
         historyButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         historyButton.addTarget(self, action: #selector(handleButtonSelect(_:)), for: .touchUpInside)
 
         addSubview(favoriteButton)
         favoriteButton.translatesAutoresizingMaskIntoConstraints = false
-        favoriteButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor).isActive = true
+        favoriteButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -Layout.SelectView.sideMargin).isActive = true
         favoriteButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
         favoriteButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         favoriteButton.addTarget(self, action: #selector(handleButtonSelect(_:)), for: .touchUpInside)
 
-        historyButton.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -Layout.spacing).isActive = true
+        historyButton.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor).isActive = true
         historyButton.widthAnchor.constraint(equalTo: favoriteButton.widthAnchor, multiplier: 1).isActive = true
 
         historyButton.setTitleColor(.white, for: .normal)
@@ -109,7 +109,7 @@ class MyListHeaderView: UIView {
     private func setupSelectView() {
         insertSubview(selectView, aboveSubview: backgroundView)
         selectView.translatesAutoresizingMaskIntoConstraints = false
-        selectView.widthAnchor.constraint(equalToConstant: Layout.SelectView.width).isActive = true
+        selectView.widthAnchor.constraint(equalTo: historyButton.widthAnchor).isActive = true
         selectView.heightAnchor.constraint(equalToConstant: Layout.SelectView.height).isActive = true
         selectView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         selectView.backgroundColor = Layout.SelectView.backgroundColor
